@@ -1,0 +1,12 @@
+package co.tiendabarrio.pedido;
+
+import java.util.List;
+
+import co.tiendabarrio.inventario.LineaProductoRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+
+public record PedidoRequest(
+        @NotEmpty(message = "El pedido debe tener al menos un producto")
+        List<@Valid LineaProductoRequest> lineas) {
+}
