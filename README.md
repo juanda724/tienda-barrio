@@ -47,17 +47,26 @@ cd backend
 
 ## Estructura
 
+El proyecto está organizado por capas. Cada petición recorre
+`controller → service → repository → base de datos`, y los datos viajan entre la API y el cliente como DTOs.
+
 ```
 backend/   API REST (Spring Boot)
   src/main/java/co/tiendabarrio/
-    producto/     Productos con stock actual y stock mínimo
-    inventario/   Movimientos de entrada/salida y compras (F-01)
-    pedido/       Pedidos que descargan productos del inventario (F-01)
-    proveedor/    Proveedores e ingreso de mercancía (F-02)
-    comun/        Manejo de errores
-    config/       Datos de ejemplo
+    controller/     Capa web: endpoints REST, validan la entrada y delegan en los servicios
+    service/        Lógica de negocio y reglas (stock, pedidos, ingresos); manejan las transacciones
+    repository/     Acceso a datos con Spring Data JPA
+    model/          Entidades JPA (Producto, MovimientoInventario, Pedido, Proveedor, IngresoMercancia...)
+    dto/request/    Datos que recibe la API (con sus validaciones)
+    dto/response/   Datos que devuelve la API (nunca se exponen las entidades directamente)
+    exception/      Excepciones de negocio y manejador global de errores
+    config/         Datos de ejemplo al arrancar
 frontend/  Interfaz web (React)
-  src/paginas/    Una página por pestaña
+  src/
+    paginas/        Una página por pestaña (Inventario, Movimientos, Proveedores, Ingresos)
+    componentes/    Componentes reutilizables (avisos de éxito/error)
+    hooks/          Lógica reutilizable de React (avisos, evitar doble envío)
+    servicios/      Cliente de la API REST del backend
 ```
 
 ## Reglas implementadas

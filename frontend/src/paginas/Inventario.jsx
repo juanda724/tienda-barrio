@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { api } from '../api.js'
-import Aviso from './Aviso.jsx'
-import { useAviso } from './useAviso.js'
-import { useEnvio } from './useEnvio.js'
+import { api } from '../servicios/api.js'
+import Aviso from '../componentes/Aviso.jsx'
+import { useAviso } from '../hooks/useAviso.js'
+import { useEnvio } from '../hooks/useEnvio.js'
 
 const VACIO = { nombre: '', categoria: '', stockMinimo: '', stockInicial: '' }
 

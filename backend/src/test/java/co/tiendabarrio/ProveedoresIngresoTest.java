@@ -10,19 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.tiendabarrio.comun.NegocioException;
-import co.tiendabarrio.inventario.InventarioService;
-import co.tiendabarrio.inventario.LineaProductoRequest;
-import co.tiendabarrio.inventario.OrigenMovimiento;
-import co.tiendabarrio.producto.Producto;
-import co.tiendabarrio.producto.ProductoRepository;
-import co.tiendabarrio.producto.ProductoRequest;
-import co.tiendabarrio.producto.ProductoService;
-import co.tiendabarrio.proveedor.IngresoRequest;
-import co.tiendabarrio.proveedor.IngresoService;
-import co.tiendabarrio.proveedor.Proveedor;
-import co.tiendabarrio.proveedor.ProveedorRequest;
-import co.tiendabarrio.proveedor.ProveedorService;
+import co.tiendabarrio.dto.request.IngresoRequest;
+import co.tiendabarrio.dto.request.LineaProductoRequest;
+import co.tiendabarrio.dto.request.ProductoRequest;
+import co.tiendabarrio.dto.request.ProveedorRequest;
+import co.tiendabarrio.dto.response.ProductoResponse;
+import co.tiendabarrio.dto.response.ProveedorResponse;
+import co.tiendabarrio.exception.NegocioException;
+import co.tiendabarrio.model.OrigenMovimiento;
+import co.tiendabarrio.repository.ProductoRepository;
+import co.tiendabarrio.service.IngresoService;
+import co.tiendabarrio.service.InventarioService;
+import co.tiendabarrio.service.ProductoService;
+import co.tiendabarrio.service.ProveedorService;
 
 /** Verificación de F-02 / PBI-02: registrar un proveedor, generar un ingreso y validar el inventario. */
 @SpringBootTest
@@ -42,49 +42,49 @@ class ProveedoresIngresoTest {
 
     @Test
     void proveedorConservaContactoYProductosAsociados() {
-        Producto arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 0));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 0));
 
-        Proveedor proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", "Luis", "300 123 4567",
-                "luis@example.com", List.of(arroz.getId())));
+        ProveedorResponse proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", "Luis", "300 123 4567",
+                "luis@example.com", List.of(arroz.id())));
 
-        Proveedor guardado = proveedores.obtener(proveedor.getId());
-        assertThat(guardado.getTelefono()).isEqualTo("300 123 4567");
-        assertThat(guardado.getCorreo()).isEqualTo("luis@example.com");
-        assertThat(guardado.getProductos()).extracting(Producto::getNombre).containsExactly("Arroz");
+        ProveedorResponse guardado = proveedores.obtener(proveedor.id());
+        assertThat(guardado.telefono()).isEqualTo("300 123 4567");
+        assertThat(guardado.correo()).isEqualTo("luis@example.com");
+        assertThat(guardado.productos()).extracting(ProductoResponse::nombre).containsExactly("Arroz");
     }
 
     @Test
     void ingresoDeMercanciaIncrementaElStock() {
-        Producto arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2));
-        Producto azucar = productos.crear(new ProductoRequest("Azúcar", "Granos", 5, 1));
-        Proveedor proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", null, "3001234567",
-                null, List.of(arroz.getId(), azucar.getId())));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2));
+        ProductoResponse azucar = productos.crear(new ProductoRequest("Azúcar", "Granos", 5, 1));
+        ProveedorResponse proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", null, "3001234567",
+                null, List.of(arroz.id(), azucar.id())));
 
-        ingresos.registrar(new IngresoRequest(proveedor.getId(), "FV-100", List.of(
-                new LineaProductoRequest(arroz.getId(), 20),
-                new LineaProductoRequest(azucar.getId(), 10))));
+        ingresos.registrar(new IngresoRequest(proveedor.id(), "FV-100", List.of(
+                new LineaProductoRequest(arroz.id(), 20),
+                new LineaProductoRequest(azucar.id(), 10))));
 
         assertThat(stockDe(arroz)).isEqualTo(22);
         assertThat(stockDe(azucar)).isEqualTo(11);
-        assertThat(inventario.historial(arroz.getId()).get(0).origen()).isEqualTo(OrigenMovimiento.INGRESO_PROVEEDOR);
-        assertThat(inventario.historial(arroz.getId()).get(0).referencia()).contains("Factura FV-100");
+        assertThat(inventario.historial(arroz.id()).get(0).origen()).isEqualTo(OrigenMovimiento.INGRESO_PROVEEDOR);
+        assertThat(inventario.historial(arroz.id()).get(0).referencia()).contains("Factura FV-100");
     }
 
     @Test
     void ingresoConProductoNoAsociadoSeRechaza() {
-        Producto arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2));
-        Producto leche = productos.crear(new ProductoRequest("Leche", "Lácteos", 5, 2));
-        Proveedor proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", null, "3001234567",
-                null, List.of(arroz.getId())));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2));
+        ProductoResponse leche = productos.crear(new ProductoRequest("Leche", "Lácteos", 5, 2));
+        ProveedorResponse proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", null, "3001234567",
+                null, List.of(arroz.id())));
 
-        assertThatThrownBy(() -> ingresos.registrar(new IngresoRequest(proveedor.getId(), null, List.of(
-                new LineaProductoRequest(leche.getId(), 5)))))
+        assertThatThrownBy(() -> ingresos.registrar(new IngresoRequest(proveedor.id(), null, List.of(
+                new LineaProductoRequest(leche.id(), 5)))))
                 .isInstanceOf(NegocioException.class)
                 .hasMessageContaining("no está asociado");
         assertThat(stockDe(leche)).isEqualTo(2);
     }
 
-    private int stockDe(Producto producto) {
-        return productoRepository.findById(producto.getId()).orElseThrow().getStockActual();
+    private int stockDe(ProductoResponse producto) {
+        return productoRepository.findById(producto.id()).orElseThrow().getStockActual();
     }
 }

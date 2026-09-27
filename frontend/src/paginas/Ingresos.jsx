@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { api, formatearFecha } from '../api.js'
-import Aviso from './Aviso.jsx'
-import { useAviso } from './useAviso.js'
-import { useEnvio } from './useEnvio.js'
+import { api, formatearFecha } from '../servicios/api.js'
+import Aviso from '../componentes/Aviso.jsx'
+import { useAviso } from '../hooks/useAviso.js'
+import { useEnvio } from '../hooks/useEnvio.js'
 
 export default function Ingresos({ proveedores, recargar }) {
   const [ingresos, setIngresos] = useState([])

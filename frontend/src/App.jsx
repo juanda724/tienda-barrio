@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { api } from './api.js'
+import { api } from './servicios/api.js'
 import Inventario from './paginas/Inventario.jsx'
 import Movimientos from './paginas/Movimientos.jsx'
 import Proveedores from './paginas/Proveedores.jsx'
