@@ -1,0 +1,9 @@
+# Backend (Maven / Spring Boot)
+backend/target/
+backend/data/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.DS_Store
