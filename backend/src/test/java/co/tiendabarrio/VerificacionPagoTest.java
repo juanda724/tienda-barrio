@@ -24,6 +24,7 @@ import co.tiendabarrio.dto.response.ProveedorResponse;
 import co.tiendabarrio.exception.NegocioException;
 import co.tiendabarrio.model.FormaPago;
 import co.tiendabarrio.repository.ProductoRepository;
+import co.tiendabarrio.service.ComprobantePagoService;
 import co.tiendabarrio.service.IngresoService;
 import co.tiendabarrio.service.ProductoService;
 import co.tiendabarrio.service.ProveedorService;
@@ -44,6 +45,8 @@ class VerificacionPagoTest {
     ProveedorService proveedores;
     @Autowired
     IngresoService ingresos;
+    @Autowired
+    ComprobantePagoService comprobantes;
 
     ProductoResponse aceite;
     ProductoResponse arroz;
@@ -66,7 +69,7 @@ class VerificacionPagoTest {
         assertThat(ingreso.estadoPago()).isEqualTo("PENDIENTE");
         assertThat(ingreso.pagable()).isTrue();
 
-        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null));
+        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, null));
 
         assertThat(pagado.estadoPago()).isEqualTo("PAGADO");
         assertThat(pagado.montoPagado()).isEqualTo(ingreso.totalFacturado());
@@ -82,10 +85,10 @@ class VerificacionPagoTest {
         assertThat(ingreso.pagable()).isFalse();
         assertThat(stockDe(aceite)).as("al stock entra solo lo recibido").isEqualTo(12);
 
-        assertThatThrownBy(() -> ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null)))
+        assertThatThrownBy(() -> ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, null)))
                 .isInstanceOf(NegocioException.class).hasMessageContaining("RN-01");
         assertThatThrownBy(() -> ingresos.pagar(ingreso.id(),
-                new PagoProveedorRequest(FormaPago.CREDITO, LocalDate.now().plusDays(15))))
+                new PagoProveedorRequest(FormaPago.CREDITO, LocalDate.now().plusDays(15), null)))
                 .isInstanceOf(NegocioException.class).hasMessageContaining("diferencias");
     }
 
@@ -100,7 +103,7 @@ class VerificacionPagoTest {
         assertThat(resuelto.totalAPagar()).as("se paga lo recibido").isEqualTo(10 * 7800);
         assertThat(resuelto.notaVerificacion()).contains("nota crédito");
 
-        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.TRANSFERENCIA, null));
+        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.TRANSFERENCIA, null, null));
         assertThat(pagado.montoPagado()).isEqualTo(10 * 7800);
     }
 
@@ -109,16 +112,16 @@ class VerificacionPagoTest {
         IngresoResponse ingreso = recibir(linea(arroz, 20, 20, 2200L));
         LocalDate vence = LocalDate.now().plusDays(15);
 
-        IngresoResponse credito = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.CREDITO, vence));
+        IngresoResponse credito = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.CREDITO, vence, null));
 
         assertThat(credito.estadoPago()).isEqualTo("CREDITO");
         assertThat(credito.fechaVencimiento()).isEqualTo(vence);
         assertThat(credito.vencido()).isFalse();
         assertThat(credito.pagable()).isTrue();
 
-        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null));
+        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, null));
         assertThat(pagado.estadoPago()).isEqualTo("PAGADO");
-        assertThatThrownBy(() -> ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null)))
+        assertThatThrownBy(() -> ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, null)))
                 .isInstanceOf(NegocioException.class).hasMessageContaining("ya está pagado");
     }
 
@@ -142,6 +145,54 @@ class VerificacionPagoTest {
     void ingresoSinCantidadesSeRechaza() {
         assertThatThrownBy(() -> recibir(linea(aceite, 0, 0, 7800L)))
                 .isInstanceOf(NegocioException.class).hasMessageContaining("al menos un producto");
+    }
+
+    @Test
+    void pagoEnEfectivoRegistraLoEntregadoYElCambioDelRepartidor() {
+        IngresoResponse ingreso = recibir(linea(aceite, 12, 12, 7800L)); // $ 93.600
+
+        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, 100000L));
+
+        assertThat(pagado.montoEntregado()).isEqualTo(100000L);
+        assertThat(pagado.cambio()).isEqualTo(6400L);
+    }
+
+    @Test
+    void efectivoEntregadoInsuficienteSeRechazaYNoQuedaPagado() {
+        IngresoResponse ingreso = recibir(linea(aceite, 12, 12, 7800L));
+
+        assertThatThrownBy(() -> ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, 90000L)))
+                .isInstanceOf(NegocioException.class).hasMessageContaining("menor que el total a pagar");
+        assertThat(ingresos.listar().get(0).estadoPago()).isEqualTo("PENDIENTE");
+    }
+
+    @Test
+    void loEntregadoSoloSeGuardaEnPagosEnEfectivo() {
+        IngresoResponse ingreso = recibir(linea(aceite, 12, 12, 7800L));
+
+        IngresoResponse pagado = ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.TRANSFERENCIA, null, 100000L));
+
+        assertThat(pagado.montoEntregado()).isNull();
+        assertThat(pagado.cambio()).isNull();
+    }
+
+    @Test
+    void comprobanteDePagoConTotalYCambio() {
+        IngresoResponse ingreso = recibir(linea(aceite, 12, 12, 7800L));
+        assertThatThrownBy(() -> comprobantes.generar(ingreso.id()))
+                .isInstanceOf(NegocioException.class).hasMessageContaining("todavía no está pagado");
+
+        ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, 100000L));
+        var comprobante = comprobantes.generar(ingreso.id());
+
+        assertThat(comprobante.texto())
+                .contains("Comprobante de pago al proveedor")
+                .contains("Ingreso #" + ingreso.id() + " · Factura FV-1")
+                .contains("TOTAL PAGADO: $ 93.600")
+                .contains("Efectivo entregado: $ 100.000")
+                .contains("Cambio devuelto: $ 6.400");
+        assertThat(comprobante.whatsappUrl()).startsWith("https://wa.me/573001234567");
+        assertThat(comprobante.correoUrl()).isNull();
     }
 
     private IngresoResponse recibir(LineaIngresoRequest... lineas) {

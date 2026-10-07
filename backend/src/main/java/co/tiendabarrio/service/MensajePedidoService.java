@@ -51,7 +51,7 @@ public class MensajePedidoService {
         return telefono == null || telefono.isBlank() ? null : Enlaces.whatsapp(telefono, mensaje);
     }
 
-    /** Enlace mailto: con asunto y mensaje; null si el proveedor no tiene correo. */
+    /** Enlace de Gmail con asunto y mensaje; null si el proveedor no tiene correo. */
     public String correoUrl(PedidoProveedor pedido, String mensaje) {
         return Enlaces.correo(pedido.getProveedor().getCorreo(), "Pedido #" + pedido.getId() + " - " + nombreTienda,
                 mensaje);

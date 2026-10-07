@@ -9,19 +9,23 @@ const normalizar = (texto) => (texto ?? '').normalize('NFD').replace(/\p{M}/gu, 
 /**
  * Campo de búsqueda de productos por nombre o categoría. Al elegir un resultado (clic o Enter)
  * llama a onElegir(producto) y se limpia para seguir buscando. Flechas ↑/↓ mueven la selección.
+ *
+ * Con controlarStock (por defecto, para ventas) muestra precio y disponibles y no deja elegir lo agotado;
+ * sin él (p. ej. al asociar productos a un proveedor) solo busca. excluidos oculta los ids ya elegidos.
  */
-export default function BuscadorProducto({ productos, onElegir, cantidadEnUso = () => 0, ref }) {
+export default function BuscadorProducto({ productos, onElegir, cantidadEnUso = () => 0, controlarStock = true, excluidos = [], ref }) {
   const [texto, setTexto] = useState('')
   const [resaltado, setResaltado] = useState(0)
 
   const consulta = normalizar(texto.trim())
   const resultados = consulta
     ? productos
+      .filter((p) => !excluidos.includes(p.id))
       .filter((p) => normalizar(p.nombre).includes(consulta) || normalizar(p.categoria).includes(consulta))
       .slice(0, MAX_RESULTADOS)
     : []
 
-  const disponibles = (p) => p.stockActual - cantidadEnUso(p.id)
+  const disponibles = (p) => (controlarStock ? p.stockActual - cantidadEnUso(p.id) : Infinity)
 
   const elegir = (producto) => {
     if (!producto || disponibles(producto) <= 0) return
@@ -85,16 +89,20 @@ export default function BuscadorProducto({ productos, onElegir, cantidadEnUso = 
                   {p.nombre}
                   {p.categoria && <span className="tenue pequeno"> · {p.categoria}</span>}
                 </span>
-                <span className="resultado-detalle">
-                  {p.precioVenta != null && <span className="fuerte">{formatearPesos(p.precioVenta)}</span>}
-                  <span className={quedan <= 0 ? 'insignia peligro' : 'tenue pequeno'}>
-                    {quedan <= 0 ? 'Agotado' : `${quedan} disponibles`}
+                {controlarStock && (
+                  <span className="resultado-detalle">
+                    {p.precioVenta != null && <span className="fuerte">{formatearPesos(p.precioVenta)}</span>}
+                    <span className={quedan <= 0 ? 'insignia peligro' : 'tenue pequeno'}>
+                      {quedan <= 0 ? 'Agotado' : `${quedan} disponibles`}
+                    </span>
                   </span>
-                </span>
+                )}
               </li>
             )
           })}
-          {resultados.length === 0 && <li className="sin-resultados">No se encontraron productos</li>}
+          {resultados.length === 0 && (
+            <li className="sin-resultados">{excluidos.length > 0 ? 'No hay más productos con ese nombre' : 'No se encontraron productos'}</li>
+          )}
         </ul>
       )}
     </div>

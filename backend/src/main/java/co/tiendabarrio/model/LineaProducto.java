@@ -34,6 +34,12 @@ public class LineaProducto {
      */
     private Integer cantidadFacturada;
 
+    /**
+     * Solo en ingresos de mercancía: unidades faltantes que el proveedor entregó después del ingreso.
+     * Se guardan aparte de "cantidad" para que se vea qué llegó el primer día y qué llegó después.
+     */
+    private Integer cantidadEntregadaDespues;
+
     protected LineaProducto() {
     }
 
@@ -76,9 +82,28 @@ public class LineaProducto {
         return cantidadFacturada == null ? cantidad : cantidadFacturada;
     }
 
-    /** Recibido menos facturado: negativo si faltaron unidades, positivo si llegaron de más. */
+    public int getCantidadEntregadaDespues() {
+        return cantidadEntregadaDespues == null ? 0 : cantidadEntregadaDespues;
+    }
+
+    /** Lo recibido con el ingreso más los faltantes entregados después. */
+    public int getCantidadRecibidaTotal() {
+        return cantidad + getCantidadEntregadaDespues();
+    }
+
+    /** Suma unidades faltantes que el proveedor entregó después del ingreso. */
+    public void registrarEntregaPosterior(int unidades) {
+        cantidadEntregadaDespues = getCantidadEntregadaDespues() + unidades;
+    }
+
+    /** Recibido (contando entregas posteriores) menos facturado: negativo si faltan unidades, positivo si sobran. */
     public int getDiferencia() {
-        return cantidad - getCantidadFacturada();
+        return getCantidadRecibidaTotal() - getCantidadFacturada();
+    }
+
+    /** Valor de lo recibido, contando entregas posteriores: cantidad recibida total × costo unitario. */
+    public long getSubtotalRecibido() {
+        return precioUnitario == null ? 0 : precioUnitario * getCantidadRecibidaTotal();
     }
 
     /** Valor de lo facturado: cantidad facturada × costo unitario. */

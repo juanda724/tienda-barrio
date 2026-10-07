@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.tiendabarrio.dto.request.EntregaFaltantesRequest;
 import co.tiendabarrio.dto.request.IngresoRequest;
 import co.tiendabarrio.dto.request.LineaIngresoRequest;
 import co.tiendabarrio.dto.request.PagoProveedorRequest;
@@ -14,6 +15,7 @@ import co.tiendabarrio.dto.request.ResolverDiferenciasRequest;
 import co.tiendabarrio.dto.response.IngresoResponse;
 import co.tiendabarrio.exception.NegocioException;
 import co.tiendabarrio.exception.NoEncontradoException;
+import co.tiendabarrio.model.EntregaFaltantes;
 import co.tiendabarrio.model.FormaPago;
 import co.tiendabarrio.model.IngresoMercancia;
 import co.tiendabarrio.model.LineaProducto;
@@ -104,6 +106,28 @@ public class IngresoService {
     }
 
     /**
+     * El proveedor entregó faltantes del ingreso (todo o parte): entran al inventario como entrada del
+     * mismo ingreso. Cuando ya no falta nada, el ingreso queda resuelto y se paga lo facturado.
+     */
+    @Transactional
+    public IngresoResponse registrarEntregaFaltantes(Long id, EntregaFaltantesRequest datos) {
+        IngresoMercancia ingreso = buscar(id);
+        Map<Long, Integer> cantidades = new LinkedHashMap<>();
+        for (EntregaFaltantesRequest.Linea l : datos.lineas()) {
+            cantidades.merge(l.productoId(), l.cantidad(), Integer::sum);
+        }
+        String nota = datos.nota() == null || datos.nota().isBlank() ? null : datos.nota().trim();
+        EntregaFaltantes entrega = ingreso.registrarEntregaFaltantes(cantidades, nota);
+        String referencia = ingreso.getProveedor().getNombre() + " · Entrega de faltantes del ingreso #" + ingreso.getId();
+        for (LineaProducto linea : entrega.getLineas()) {
+            inventario.registrarEntrada(linea.getProducto(), linea.getCantidad(), OrigenMovimiento.INGRESO_PROVEEDOR,
+                    ingreso.getId(), referencia);
+        }
+        ingresos.flush();
+        return IngresoResponse.de(ingreso);
+    }
+
+    /**
      * Paga el ingreso (efectivo, transferencia o tarjeta) o acuerda un crédito con fecha de vencimiento.
      * Ambas opciones se rechazan si hay diferencias sin resolver (SWR-16, RN-01).
      */
@@ -119,7 +143,7 @@ public class IngresoService {
             }
             ingreso.acordarCredito(datos.fechaVencimiento());
         } else {
-            ingreso.pagar(datos.formaPago());
+            ingreso.pagar(datos.formaPago(), datos.montoEntregado());
         }
         return IngresoResponse.de(ingreso);
     }

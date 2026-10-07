@@ -59,7 +59,9 @@ export const api = {
   ingresos: () => pedir('/ingresos'),
   registrarIngreso: (datos) => post('/ingresos', datos),
   resolverDiferencias: (id, nota) => post(`/ingresos/${id}/resolver-diferencias`, { nota }),
+  entregarFaltantes: (id, datos) => post(`/ingresos/${id}/entregas-faltantes`, datos),
   pagarIngreso: (id, datos) => post(`/ingresos/${id}/pago`, datos),
+  comprobantePago: (id) => pedir(`/ingresos/${id}/comprobante-pago`),
 
   reporteInventario: (filtros) => pedir(`/reportes/inventario${consulta(filtros)}`),
   reporteVentas: (rango) => pedir(`/reportes/ventas${consulta(rango)}`),

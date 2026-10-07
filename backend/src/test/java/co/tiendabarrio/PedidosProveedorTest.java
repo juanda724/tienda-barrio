@@ -70,7 +70,7 @@ class PedidosProveedorTest {
                 .containsExactly(EstadoPedido.ACEPTADO, EstadoPedido.RECHAZADO, EstadoPedido.CANCELADO);
         assertThat(pedido.mensaje()).contains("Hola Luis").contains("- Arroz: 20").contains("Pedido #" + pedido.id());
         assertThat(pedido.whatsappUrl()).startsWith("https://wa.me/573001234567?text=").doesNotContain("+");
-        assertThat(pedido.correoUrl()).startsWith("mailto:pedidos@example.com?subject=");
+        assertThat(pedido.correoUrl()).startsWith("https://mail.google.com/mail/?view=cm&fs=1&to=pedidos%40example.com&su=Pedido");
         assertThat(stockDe(arroz)).as("crear el pedido no cambia el stock").isEqualTo(4);
     }
 

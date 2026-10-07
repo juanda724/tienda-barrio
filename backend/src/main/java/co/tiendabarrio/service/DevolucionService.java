@@ -81,11 +81,11 @@ public class DevolucionService {
         Devolucion devolucion = new Devolucion(ingreso, datos.descripcion().trim());
         for (LineaDevolucionRequest l : datos.lineas()) {
             LineaProducto recibida = ingreso.getLineas().stream()
-                    .filter(x -> x.getProducto().getId().equals(l.productoId()) && x.getCantidad() > 0)
+                    .filter(x -> x.getProducto().getId().equals(l.productoId()) && x.getCantidadRecibidaTotal() > 0)
                     .findFirst()
                     .orElseThrow(() -> new NegocioException("El producto no llegó en el ingreso #" + ingreso.getId()));
             int yaDevueltas = ingreso.unidadesDevueltas(l.productoId()) + pedidoAhora.getOrDefault(l.productoId(), 0);
-            int disponibles = recibida.getCantidad() - yaDevueltas;
+            int disponibles = recibida.getCantidadRecibidaTotal() - yaDevueltas;
             if (l.cantidad() > disponibles) {
                 throw new NegocioException("Del ingreso #" + ingreso.getId() + " solo se pueden devolver " + disponibles
                         + " unidades de " + recibida.getProducto().getNombre());

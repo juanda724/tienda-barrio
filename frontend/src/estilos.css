@@ -105,8 +105,6 @@ button.icono { padding: 6px 12px; }
 
 .linea { display: grid; grid-template-columns: 1fr 90px auto; gap: 8px; }
 
-.casillas { border: 1px solid var(--borde); border-radius: 8px; padding: 10px 12px; display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; }
-.casillas legend { font-size: 0.88rem; color: var(--tenue); padding: 0 4px; }
 .casilla { flex-direction: row; align-items: center; gap: 6px; color: var(--texto); font-size: 0.95rem; }
 
 .buscador { width: 100%; margin-bottom: 12px; }
@@ -201,6 +199,18 @@ input.cantidad.invalida { border-color: var(--peligro); color: var(--peligro); }
 .titulo-tabla .filtros { margin-bottom: 0; }
 
 .peligro-texto { color: var(--peligro); font-weight: 600; }
+.info-texto { color: var(--info); font-weight: 600; }
+
+/* Ingresos: faltantes que el proveedor entrega después */
+.entregas-faltantes p { margin: 0 0 4px; }
+.entregas-faltantes ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.entrega-faltantes {
+  display: flex; flex-direction: column; gap: 10px; margin: 0;
+  border: 1px solid var(--borde); border-radius: 8px; padding: 10px 12px;
+}
+.entrega-faltantes legend { padding: 0 4px; font-weight: 600; }
+.linea-faltante { display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 12px; }
+.linea-faltante input { width: 90px; }
 
 /* Buscador: precio y disponibilidad de cada resultado */
 .resultado-detalle { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; }
@@ -352,3 +362,15 @@ tr.fila-total td { font-weight: 700; border-top: 2px solid var(--borde); }
   .encabezado h1 { font-size: 1.35rem; }
   .total-venta strong { font-size: 1.5rem; }
 }
+
+/* Proveedores: productos que suministra, elegidos con el buscador y mostrados como etiquetas quitables */
+.productos-proveedor { border: 1px solid var(--borde); border-radius: 8px; padding: 10px 12px; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.productos-proveedor legend { font-size: 0.88rem; color: var(--tenue); padding: 0 4px; }
+.chip.quitable { display: inline-flex; align-items: center; gap: 4px; padding-right: 4px; }
+.chip.quitable button {
+  border: none; background: none; color: inherit; padding: 0 6px; font-size: 1rem; line-height: 1; border-radius: 999px;
+}
+.chip.quitable button:hover { background: var(--primario); color: var(--primario-texto); }
+
+.pago-realizado { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pago-realizado p { margin: 0; }

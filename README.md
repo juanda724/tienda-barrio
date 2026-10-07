@@ -111,7 +111,8 @@ frontend/  Interfaz web (React)
 - La pestaña **Fiados** muestra el total por cobrar y cada cliente con su **saldo pendiente** (SWR-22), primero los que
   más deben. Al elegir un cliente se ve su **libreta**: ventas fiadas y abonos con el saldo después de cada uno.
 - **Abonos** en efectivo, transferencia o tarjeta, parciales o con "Pagar todo", hasta saldar la deuda (SWR-23). Un
-  abono no puede superar el saldo.
+  abono no puede superar el saldo. En efectivo se puede anotar lo que entregó el cliente y la app calcula su cambio,
+  que queda registrado en la libreta.
 - Si el cliente tiene celular, se le puede enviar un **recordatorio de saldo por WhatsApp**. El comprobante de una venta
   fiada incluye el nombre del cliente y su saldo, y por defecto va a su celular.
 
@@ -135,8 +136,18 @@ frontend/  Interfaz web (React)
   formulario lo muestra en vivo por producto ("Coincide", "Faltan 2").
 - Cada ingreso queda **Pendiente de pago**. Se puede **pagar** (efectivo, transferencia o tarjeta) o **acordar un
   crédito** con fecha de vencimiento y pagarlo después; los créditos vencidos se marcan.
-- **Regla RN-01 / SWR-16:** con diferencias sin resolver no se puede pagar ni acordar crédito. Al **resolver
-  diferencias** (p. ej. el proveedor ajustó la factura o envió nota crédito) se paga solo lo recibido.
+- Al pagar en **efectivo** se puede anotar lo entregado al repartidor y la app calcula el **cambio** que debe devolver
+  (si no alcanza, no deja confirmar). Queda guardado y se ve en la factura.
+- Cada pago tiene su **comprobante de pago** (total, forma de pago, entregado y cambio, y las entregas posteriores
+  de faltantes si las hubo) para imprimir o enviar al proveedor por WhatsApp o correo.
+- **Regla RN-01 / SWR-16:** con diferencias sin resolver no se puede pagar ni acordar crédito. Hay dos formas de
+  resolverlas:
+  - **Llegaron faltantes:** el proveedor entregó después lo que faltó. Se indica cuánto llegó de cada producto (puede
+    ser una entrega parcial; se registran tantas entregas como haga falta). Lo entregado entra al inventario como
+    "Entrega de faltantes del ingreso #X" y la factura muestra qué llegó el primer día y qué llegó después. Cuando ya
+    no falta nada, el ingreso queda resuelto y se paga lo facturado completo.
+  - **Ajustar factura:** el proveedor ajustó la factura o envió nota crédito; se paga solo lo recibido (contando las
+    entregas posteriores).
 
 ### Devoluciones al proveedor (F-07)
 
@@ -167,9 +178,11 @@ frontend/  Interfaz web (React)
 ### Pedidos a proveedor
 
 - El dueño arma el pedido (proveedor, productos, cantidades y, si quiere, una fecha deseada de entrega) y lo envía
-  con **Enviar por WhatsApp** o **Enviar por correo**. Los botones abren WhatsApp o el correo con el mensaje ya
-  escrito; el dueño lo revisa y lo envía desde su cuenta. Los celulares de 10 dígitos se completan con el indicativo
-  de Colombia (57).
+  con **Enviar por WhatsApp** o **Enviar por Gmail**. Los botones abren WhatsApp o Gmail (en el navegador) con el
+  mensaje ya escrito; el dueño lo revisa y lo envía desde su cuenta. Se usa Gmail web en vez de `mailto:` porque
+  `mailto:` depende del programa de correo configurado en cada computador. El botón **Copiar mensaje** copia el
+  texto para pegarlo en cualquier otro correo o chat. Los celulares de 10 dígitos se completan con el indicativo de
+  Colombia (57).
 - Estados y cambios permitidos (los marca el dueño según lo que le informe el proveedor; cada cambio guarda la fecha,
   la hora y una nota opcional):
 
@@ -196,7 +209,7 @@ frontend/  Interfaz web (React)
 | GET / POST / PUT | `/api/proveedores`, `/api/proveedores/{id}` | Proveedores y sus productos |
 | GET / POST / PUT | `/api/clientes`, `/api/clientes/{id}` | Clientes con lo fiado, lo abonado y el saldo pendiente |
 | GET | `/api/clientes/{id}/estado-cuenta` | Libreta del cliente y recordatorio de saldo por WhatsApp |
-| POST | `/api/clientes/{id}/abonos` | Registrar un abono (`{"monto": 5000, "formaPago": "EFECTIVO", "nota": "..."}`) |
+| POST | `/api/clientes/{id}/abonos` | Registrar un abono (`{"monto": 5000, "formaPago": "EFECTIVO", "montoEntregado": 10000, "nota": "..."}`) |
 | GET | `/api/alertas` | Alertas de stock mínimo activas |
 | POST | `/api/alertas/vistas` | Marcar las alertas activas como vistas |
 | GET | `/api/reposicion` | Lista de pedido sugerida, agrupada por proveedor |
@@ -210,7 +223,9 @@ frontend/  Interfaz web (React)
 | POST | `/api/pedidos-proveedor/{id}/estado` | Cambiar el estado de un pedido (`{"estado": "ACEPTADO", "nota": "..."}`) |
 | GET / POST | `/api/ingresos` | Ingresos de mercancía (entrada) con `lineas: [{productoId, cantidadFacturada, cantidadRecibida, costoUnitario}]`; con `pedidoId` recibe ese pedido y lo marca entregado |
 | POST | `/api/ingresos/{id}/resolver-diferencias` | Registrar cómo se resolvieron las diferencias (`{"nota": "..."}`) |
-| POST | `/api/ingresos/{id}/pago` | Pagar (`{"formaPago": "EFECTIVO"}`) o acordar crédito (`{"formaPago": "CREDITO", "fechaVencimiento": "2026-10-22"}`) |
+| POST | `/api/ingresos/{id}/entregas-faltantes` | Registrar faltantes que el proveedor entregó después (`{"lineas": [{"productoId", "cantidad"}], "nota"}`) |
+| POST | `/api/ingresos/{id}/pago` | Pagar (`{"formaPago": "EFECTIVO", "montoEntregado": 50000}`) o acordar crédito (`{"formaPago": "CREDITO", "fechaVencimiento": "2026-10-22"}`) |
+| GET | `/api/ingresos/{id}/comprobante-pago` | Comprobante del pago al proveedor, con enlaces de WhatsApp y correo |
 
 Los errores se responden con HTTP 400 o 404 y un cuerpo `{"mensaje": "..."}`. La consola de la base de datos está en
 http://localhost:8080/h2-console (JDBC URL `jdbc:h2:file:./data/tienda-barrio`, usuario `sa`, sin contraseña).

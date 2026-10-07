@@ -34,14 +34,27 @@ public class Abono {
 
     private String nota;
 
+    /** Efectivo que entregó el cliente; con él se calcula el cambio que le devuelve el dueño. */
+    private Long montoEntregado;
+
     protected Abono() {
     }
 
-    public Abono(Cliente cliente, long monto, FormaPago formaPago, String nota) {
+    public Abono(Cliente cliente, long monto, FormaPago formaPago, String nota, Long montoEntregado) {
         this.cliente = cliente;
         this.monto = monto;
         this.formaPago = formaPago;
         this.nota = nota;
+        this.montoEntregado = montoEntregado;
+    }
+
+    /** Cambio devuelto al cliente; null si no pagó en efectivo o no se indicó lo entregado. */
+    public Long getCambio() {
+        return montoEntregado == null ? null : montoEntregado - monto;
+    }
+
+    public Long getMontoEntregado() {
+        return montoEntregado;
     }
 
     public Long getId() {

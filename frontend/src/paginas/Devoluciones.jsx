@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { api, formatearFecha, formatearPesos } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
+import BotonCopiar from '../componentes/BotonCopiar.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
 
@@ -330,7 +331,10 @@ function TarjetaDevolucion({ devolucion: d, enviando, onVerNota, onCambiarEstado
         {d.enCurso && d.whatsappUrl && (
           <a className="boton whatsapp" href={d.whatsappUrl} target="_blank" rel="noreferrer">Enviar por WhatsApp</a>
         )}
-        {d.enCurso && d.correoUrl && <a className="boton" href={d.correoUrl}>Enviar por correo</a>}
+        {d.enCurso && d.correoUrl && (
+          <a className="boton" href={d.correoUrl} target="_blank" rel="noreferrer">Enviar por Gmail</a>
+        )}
+        {d.enCurso && <BotonCopiar texto={d.nota} etiqueta="Copiar nota" />}
         {d.fotos.length < MAX_FOTOS && (
           <>
             <button disabled={enviando} onClick={() => selector.current?.click()}>+ Foto</button>

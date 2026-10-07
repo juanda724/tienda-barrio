@@ -100,6 +100,8 @@ public class ClienteService {
         }
         for (Abono a : abonos.findByClienteIdOrderByFechaHoraAscIdAsc(id)) {
             String descripcion = "Abono en " + a.getFormaPago().getNombre().toLowerCase()
+                    + (a.getMontoEntregado() == null ? "" : " · entregó " + Dinero.formatear(a.getMontoEntregado())
+                            + ", cambio " + Dinero.formatear(a.getCambio()))
                     + (a.getNota() == null ? "" : " · " + a.getNota());
             sinSaldo.add(new Movimiento("ABONO", a.getId(), a.getFechaHora(), descripcion, 0, a.getMonto(), 0));
         }
@@ -134,8 +136,13 @@ public class ClienteService {
             throw new NegocioException("El abono (" + Dinero.formatear(datos.monto())
                     + ") supera el saldo pendiente (" + Dinero.formatear(saldo) + ")");
         }
+        Long entregado = datos.formaPago() == FormaPago.EFECTIVO ? datos.montoEntregado() : null;
+        if (entregado != null && entregado < datos.monto()) {
+            throw new NegocioException("El efectivo entregado (" + Dinero.formatear(entregado)
+                    + ") es menor que el abono (" + Dinero.formatear(datos.monto()) + ")");
+        }
         String nota = datos.nota() == null || datos.nota().isBlank() ? null : datos.nota().trim();
-        abonos.save(new Abono(cliente, datos.monto(), datos.formaPago(), nota));
+        abonos.save(new Abono(cliente, datos.monto(), datos.formaPago(), nota, entregado));
         return estadoCuenta(id);
     }
 

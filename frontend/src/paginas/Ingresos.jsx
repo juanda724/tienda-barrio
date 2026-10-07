@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api, formatearDia, formatearFecha, formatearPesos } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
+import BotonCopiar from '../componentes/BotonCopiar.jsx'
 import InsigniaEstado from '../componentes/InsigniaEstado.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
@@ -246,6 +247,10 @@ export default function Ingresos({ productos, proveedores, recargar, pedidoInici
           <TarjetaIngreso key={i.id} ingreso={i} enviando={enviando} onDevolver={() => onDevolver(i)}
             onResolver={(nota) => accion(() => api.resolverDiferencias(i.id, nota),
               (r) => `Ingreso #${r.id}: diferencias resueltas. Ya puede pagar ${formatearPesos(r.totalAPagar)}.`)}
+            onEntregarFaltantes={(datos) => accion(() => api.entregarFaltantes(i.id, datos),
+              (r) => r.resultadoVerificacion === 'CON_DIFERENCIAS'
+                ? `Ingreso #${r.id}: entrega registrada y sumada al inventario. Todavía faltan productos.`
+                : `Ingreso #${r.id}: llegó todo lo que faltaba. Ya puede pagar ${formatearPesos(r.totalAPagar)}.`)}
             onPagar={(datos) => accion(() => api.pagarIngreso(i.id, datos),
               (r) => r.estadoPago === 'PAGADO'
                 ? `Ingreso #${r.id} pagado: ${formatearPesos(r.montoPagado)}.`
@@ -257,14 +262,41 @@ export default function Ingresos({ productos, proveedores, recargar, pedidoInici
   )
 }
 
-function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver }) {
-  // Formulario en curso: null, { tipo: 'resolver', nota } o { tipo: 'pagar', formaPago, fechaVencimiento }
+function TarjetaIngreso({ ingreso: i, enviando, onResolver, onEntregarFaltantes, onPagar, onDevolver }) {
+  // Formulario en curso: null, { tipo: 'resolver', nota }, { tipo: 'faltantes', cantidades, nota }
+  // o { tipo: 'pagar', formaPago, fechaVencimiento, entregado }
   const [abierto, setAbierto] = useState(null)
+  const conFaltantes = i.lineas.filter((l) => l.diferencia < 0)
+  // Unidades que seguirían faltando después de la entrega que se está registrando
+  const pendientes = abierto?.tipo === 'faltantes'
+    ? conFaltantes.reduce((suma, l) => suma + Math.max(-l.diferencia - numero(abierto.cantidades[l.productoId]), 0), 0)
+    : 0
+  const quedaCompleto = abierto?.tipo === 'faltantes' && pendientes === 0 && i.lineas.every((l) => l.diferencia <= 0)
+  // Al menos una unidad, y ninguna cantidad negativa ni mayor que lo que falta
+  const entregaValida = abierto?.tipo === 'faltantes'
+    && conFaltantes.some((l) => numero(abierto.cantidades[l.productoId]) > 0)
+    && conFaltantes.every((l) => {
+      const c = numero(abierto.cantidades[l.productoId])
+      return c >= 0 && c <= -l.diferencia
+    })
+  const [verComprobante, setVerComprobante] = useState(false)
+
+  // En efectivo: cambio que debe devolver el repartidor según lo que se le entrega
+  const enEfectivo = abierto?.tipo === 'pagar' && abierto.formaPago === 'EFECTIVO'
+  const cambio = enEfectivo && abierto.entregado !== '' ? Number(abierto.entregado) - i.totalAPagar : null
 
   const confirmar = (e) => {
     e.preventDefault()
     if (abierto.tipo === 'resolver') onResolver(abierto.nota)
-    else onPagar({ formaPago: abierto.formaPago, fechaVencimiento: abierto.fechaVencimiento || null })
+    else if (abierto.tipo === 'faltantes') onEntregarFaltantes({
+      lineas: conFaltantes.map((l) => ({ productoId: l.productoId, cantidad: numero(abierto.cantidades[l.productoId]) })),
+      nota: abierto.nota.trim() || null,
+    })
+    else onPagar({
+      formaPago: abierto.formaPago,
+      fechaVencimiento: abierto.fechaVencimiento || null,
+      montoEntregado: enEfectivo && abierto.entregado !== '' ? Number(abierto.entregado) : null,
+    })
     setAbierto(null)
   }
 
@@ -305,6 +337,7 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver 
                 <td className="num">{l.cantidadFacturada}</td>
                 <td className="num fuerte">
                   {l.cantidadRecibida}
+                  {l.cantidadEntregadaDespues > 0 && <span className="info-texto"> + {l.cantidadEntregadaDespues} después</span>}
                   {l.diferencia !== 0 && <span className="peligro-texto"> ({l.diferencia > 0 ? '+' : ''}{l.diferencia})</span>}
                 </td>
                 <td className="num tenue">{formatearPesos(l.costoUnitario)}</td>
@@ -318,6 +351,19 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver 
         <span>Facturado: <strong>{formatearPesos(i.totalFacturado)}</strong></span>
         {i.totalAPagar !== i.totalFacturado && <span>A pagar: <strong>{formatearPesos(i.totalAPagar)}</strong></span>}
       </div>
+      {i.entregasFaltantes.length > 0 && (
+        <div className="entregas-faltantes">
+          <p className="pequeno fuerte">Entregas posteriores de faltantes</p>
+          <ul>
+            {i.entregasFaltantes.map((e) => (
+              <li key={e.id} className="pequeno">
+                {formatearFecha(e.fechaHora)}: {e.lineas.map((l) => `${l.cantidad} × ${l.productoNombre}`).join(', ')}
+                {e.nota && <span className="tenue"> ({e.nota})</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       {i.notaVerificacion && <p className="pequeno tenue">Resolución: {i.notaVerificacion}</p>}
       {i.totalCreditoDevoluciones > 0 && (
         <p className="pequeno">Nota crédito por devoluciones: −{formatearPesos(i.totalCreditoDevoluciones)}</p>
@@ -331,7 +377,18 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver 
       {i.resultadoVerificacion === 'CON_DIFERENCIAS' && !abierto && (
         <div className="aviso error pago-bloqueado">
           <span>Pago bloqueado: la factura no coincide con lo recibido (RN-01).</span>
-          <button onClick={() => setAbierto({ tipo: 'resolver', nota: '' })} disabled={enviando}>Resolver diferencias</button>
+          <div className="acciones izquierda">
+            {conFaltantes.length > 0 && (
+              <button disabled={enviando} onClick={() => setAbierto({
+                tipo: 'faltantes',
+                nota: '',
+                cantidades: Object.fromEntries(conFaltantes.map((l) => [l.productoId, String(-l.diferencia)])),
+              })}>
+                Llegaron faltantes
+              </button>
+            )}
+            <button onClick={() => setAbierto({ tipo: 'resolver', nota: '' })} disabled={enviando}>Ajustar factura</button>
+          </div>
         </div>
       )}
 
@@ -341,16 +398,21 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver 
         </p>
       )}
       {i.estadoPago === 'PAGADO' && (
-        <p className="pequeno tenue">
-          Pagado el {formatearFecha(i.fechaPago)}: {formatearPesos(i.montoPagado)}
-          {i.formaPagoPagoNombre && ` en ${i.formaPagoPagoNombre.toLowerCase()}`}
-        </p>
+        <div className="pago-realizado">
+          <p className="pequeno tenue">
+            Pagado el {formatearFecha(i.fechaPago)}: {formatearPesos(i.montoPagado)}
+            {i.formaPagoPagoNombre && ` en ${i.formaPagoPagoNombre.toLowerCase()}`}
+            {i.montoEntregado != null && ` · Entregado ${formatearPesos(i.montoEntregado)} · Cambio ${formatearPesos(i.cambio)}`}
+          </p>
+          <button className="enlace" onClick={() => setVerComprobante(true)}>Comprobante de pago</button>
+        </div>
       )}
+      {verComprobante && <ComprobantePago ingreso={i} onCerrar={() => setVerComprobante(false)} />}
 
       {i.pagable && !abierto && (
         <div className="acciones izquierda">
           <button className="primario" disabled={enviando}
-            onClick={() => setAbierto({ tipo: 'pagar', formaPago: 'EFECTIVO', fechaVencimiento: '' })}>
+            onClick={() => setAbierto({ tipo: 'pagar', formaPago: 'EFECTIVO', fechaVencimiento: '', entregado: '' })}>
             {i.estadoPago === 'CREDITO' ? 'Registrar pago' : `Pagar ${formatearPesos(i.totalAPagar)}`}
           </button>
           {i.estadoPago === 'PENDIENTE' && (
@@ -362,7 +424,7 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver 
         </div>
       )}
 
-      {!abierto && i.lineas.some((l) => l.cantidadRecibida > 0) && (
+      {!abierto && i.lineas.some((l) => l.cantidadRecibida + l.cantidadEntregadaDespues > 0) && (
         <div className="acciones izquierda">
           <button className="enlace izquierda" onClick={onDevolver}>Registrar devolución de productos en mal estado</button>
         </div>
@@ -377,6 +439,30 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver 
                 onChange={(e) => setAbierto({ ...abierto, nota: e.target.value })} />
               <span className="pequeno tenue">Se pagará solo lo recibido: {formatearPesos(i.totalRecibido)}.</span>
             </label>
+          ) : abierto.tipo === 'faltantes' ? (
+            <fieldset className="entrega-faltantes">
+              <legend>¿Cuánto entregó el proveedor?</legend>
+              {conFaltantes.map((l) => (
+                <label key={l.productoId} className="linea-faltante">
+                  <span>{l.productoNombre} <span className="tenue pequeno">(faltan {-l.diferencia})</span></span>
+                  <input type="number" min="0" max={-l.diferencia} className="cantidad" value={abierto.cantidades[l.productoId]}
+                    onChange={(e) => setAbierto({ ...abierto, cantidades: { ...abierto.cantidades, [l.productoId]: e.target.value } })} />
+                </label>
+              ))}
+              <label>
+                Nota (opcional)
+                <input value={abierto.nota} placeholder="Ej. Las trajo el repartidor el martes"
+                  onChange={(e) => setAbierto({ ...abierto, nota: e.target.value })} />
+              </label>
+              <span className="pequeno tenue">
+                {quedaCompleto
+                  ? `Con esta entrega llega todo: se pagará lo facturado, ${formatearPesos(i.totalFacturado)}.`
+                  : pendientes > 0
+                    ? `Quedarán faltando ${pendientes} ${pendientes === 1 ? 'unidad' : 'unidades'}; el pago sigue bloqueado.`
+                    : 'Quedan productos con unidades de más; resuélvalos ajustando la factura.'}
+                {' '}Lo entregado se suma al inventario.
+              </span>
+            </fieldset>
           ) : abierto.formaPago === 'CREDITO' ? (
             <label>
               Fecha de vencimiento del crédito
@@ -384,21 +470,116 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onPagar, onDevolver 
                 onChange={(e) => setAbierto({ ...abierto, fechaVencimiento: e.target.value })} />
             </label>
           ) : (
-            <label>
-              Forma de pago ({formatearPesos(i.totalAPagar)})
-              <select value={abierto.formaPago} autoFocus onChange={(e) => setAbierto({ ...abierto, formaPago: e.target.value })}>
-                <option value="EFECTIVO">Efectivo</option>
-                <option value="TRANSFERENCIA">Transferencia</option>
-                <option value="TARJETA">Tarjeta / datáfono</option>
-              </select>
-            </label>
+            <>
+              <label>
+                Forma de pago ({formatearPesos(i.totalAPagar)})
+                <select value={abierto.formaPago} autoFocus onChange={(e) => setAbierto({ ...abierto, formaPago: e.target.value })}>
+                  <option value="EFECTIVO">Efectivo</option>
+                  <option value="TRANSFERENCIA">Transferencia</option>
+                  <option value="TARJETA">Tarjeta / datáfono</option>
+                </select>
+              </label>
+              {enEfectivo && (
+                <div className="campos">
+                  <label>
+                    Efectivo entregado al repartidor (opcional)
+                    <input type="number" min="0" value={abierto.entregado} placeholder={String(i.totalAPagar)}
+                      onChange={(e) => setAbierto({ ...abierto, entregado: e.target.value })} />
+                  </label>
+                  {cambio != null && (
+                    <div className={cambio < 0 ? 'cambio negativo' : 'cambio'}>
+                      <span>{cambio < 0 ? 'Faltan' : 'El repartidor debe devolver'}</span>
+                      <strong>{formatearPesos(Math.abs(cambio))}</strong>
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
           )}
           <div className="acciones">
             <button type="button" onClick={() => setAbierto(null)}>Volver</button>
-            <button type="submit" className="primario" disabled={enviando}>Confirmar</button>
+            <button type="submit" className="primario"
+              disabled={enviando || (cambio != null && cambio < 0) || (abierto.tipo === 'faltantes' && !entregaValida)}>
+              Confirmar
+            </button>
           </div>
         </form>
       )}
     </article>
+  )
+}
+
+/** Comprobante del pago al proveedor, para imprimir o enviárselo por WhatsApp o correo. */
+function ComprobantePago({ ingreso: i, onCerrar }) {
+  const [enlaces, setEnlaces] = useState(null)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    api.comprobantePago(i.id).then(setEnlaces).catch((e) => setError(e.message))
+    const tecla = (e) => e.key === 'Escape' && onCerrar()
+    window.addEventListener('keydown', tecla)
+    return () => window.removeEventListener('keydown', tecla)
+  }, [i.id, onCerrar])
+
+  return (
+    <div className="fondo-modal" onClick={onCerrar}>
+      <div className="modal" role="dialog" aria-modal="true" aria-labelledby={`titulo-pago-${i.id}`} onClick={(e) => e.stopPropagation()}>
+        <div className="comprobante imprimible">
+          <h3 id={`titulo-pago-${i.id}`}>Tienda de Barrio</h3>
+          <p className="tenue">Comprobante de pago al proveedor</p>
+          <p>
+            <strong>{i.proveedorNombre}</strong><br />
+            Ingreso #{i.id}{i.numeroFactura && ` · Factura ${i.numeroFactura}`} · {formatearFecha(i.fechaPago)}
+          </p>
+          <table>
+            <tbody>
+              <tr><td>Valor facturado</td><td className="num">{formatearPesos(i.totalFacturado)}</td></tr>
+              {i.totalCreditoDevoluciones > 0 && (
+                <tr><td>Notas crédito por devoluciones</td><td className="num">−{formatearPesos(i.totalCreditoDevoluciones)}</td></tr>
+              )}
+              {i.notaVerificacion && i.montoPagado !== i.totalFacturado && (
+                <tr><td colSpan="2" className="pequeno tenue">Ajuste de factura: {i.notaVerificacion}</td></tr>
+              )}
+              {i.entregasFaltantes.length > 0 && (
+                <tr>
+                  <td colSpan="2" className="pequeno">
+                    <strong>Entregas posteriores de faltantes</strong>
+                    {i.entregasFaltantes.map((e) => (
+                      <div key={e.id}>
+                        {formatearFecha(e.fechaHora)}: {e.lineas.map((l) => `${l.cantidad} × ${l.productoNombre}`).join(', ')}
+                        {e.nota && ` (${e.nota})`}
+                      </div>
+                    ))}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+            <tfoot>
+              <tr className="total"><td>Total pagado</td><td className="num">{formatearPesos(i.montoPagado)}</td></tr>
+              <tr><td>Forma de pago</td><td className="num">{i.formaPagoPagoNombre}</td></tr>
+              {i.montoEntregado != null && (
+                <>
+                  <tr><td>Efectivo entregado</td><td className="num">{formatearPesos(i.montoEntregado)}</td></tr>
+                  <tr><td>Cambio devuelto</td><td className="num fuerte">{formatearPesos(i.cambio)}</td></tr>
+                </>
+              )}
+            </tfoot>
+          </table>
+          <p className="firmas">Recibí conforme (proveedor): ____________________</p>
+        </div>
+        {error && <div className="aviso error">{error}</div>}
+        <div className="acciones">
+          <button type="button" onClick={onCerrar}>Cerrar</button>
+          {enlaces?.texto && <BotonCopiar texto={enlaces.texto} />}
+          {enlaces?.correoUrl && (
+            <a className="boton" href={enlaces.correoUrl} target="_blank" rel="noreferrer">Enviar por Gmail</a>
+          )}
+          {enlaces?.whatsappUrl && (
+            <a className="boton whatsapp" href={enlaces.whatsappUrl} target="_blank" rel="noreferrer">Enviar por WhatsApp</a>
+          )}
+          <button type="button" className="primario" onClick={() => window.print()}>Imprimir</button>
+        </div>
+      </div>
+    </div>
   )
 }

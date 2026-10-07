@@ -26,12 +26,17 @@ public final class Enlaces {
         return "https://wa.me/" + digitos + "?text=" + codificar(mensaje);
     }
 
-    /** Enlace mailto: con asunto y mensaje; null si no hay correo. */
+    /**
+     * Enlace que abre Gmail en el navegador con el correo ya escrito (destinatario, asunto y mensaje);
+     * null si no hay correo. Se usa Gmail web en vez de mailto: porque mailto depende del programa de
+     * correo configurado en cada computador y en muchos no abre nada.
+     */
     public static String correo(String correo, String asunto, String mensaje) {
         if (correo == null || correo.isBlank()) {
             return null;
         }
-        return "mailto:" + correo.trim() + "?subject=" + codificar(asunto) + "&body=" + codificar(mensaje);
+        return "https://mail.google.com/mail/?view=cm&fs=1&to=" + codificar(correo.trim())
+                + "&su=" + codificar(asunto) + "&body=" + codificar(mensaje);
     }
 
     /** URLEncoder usa "+" para los espacios; WhatsApp y los clientes de correo esperan "%20". */

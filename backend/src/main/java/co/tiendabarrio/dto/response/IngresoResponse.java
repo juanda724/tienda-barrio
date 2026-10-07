@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import co.tiendabarrio.model.EntregaFaltantes;
 import co.tiendabarrio.model.IngresoMercancia;
 import co.tiendabarrio.model.LineaProducto;
 
@@ -32,23 +33,39 @@ public record IngresoResponse(
         LocalDateTime fechaPago,
         String formaPagoPagoNombre,
         Long montoPagado,
+        Long montoEntregado,
+        Long cambio,
         boolean pagable,
         Long devolucionEnCursoId,
-        long totalCreditoDevoluciones) {
+        long totalCreditoDevoluciones,
+        List<Entrega> entregasFaltantes) {
 
-    /** diferencia = recibida − facturada: negativa si faltaron unidades. */
+    /**
+     * cantidadRecibida es lo que llegó con el ingreso y cantidadEntregadaDespues lo que el proveedor entregó
+     * después; diferencia = (recibida + entregada después) − facturada: negativa si faltan unidades.
+     */
     public record Linea(
             Long productoId,
             String productoNombre,
             int cantidadFacturada,
             int cantidadRecibida,
+            int cantidadEntregadaDespues,
             int diferencia,
             Long costoUnitario,
             long subtotalFacturado) {
 
         static Linea de(LineaProducto l) {
             return new Linea(l.getProducto().getId(), l.getProducto().getNombre(), l.getCantidadFacturada(),
-                    l.getCantidad(), l.getDiferencia(), l.getPrecioUnitario(), l.getSubtotalFacturado());
+                    l.getCantidad(), l.getCantidadEntregadaDespues(), l.getDiferencia(), l.getPrecioUnitario(), l.getSubtotalFacturado());
+        }
+    }
+
+    /** Entrega posterior de faltantes, con las unidades de cada producto. */
+    public record Entrega(Long id, LocalDateTime fechaHora, String nota, List<LineaProductoResponse> lineas) {
+
+        static Entrega de(EntregaFaltantes e) {
+            return new Entrega(e.getId(), e.getFechaHora(), e.getNota(),
+                    e.getLineas().stream().map(LineaProductoResponse::de).toList());
         }
     }
 
@@ -74,8 +91,11 @@ public record IngresoResponse(
                 i.getFechaPago(),
                 i.getFormaPagoPago() == null ? null : i.getFormaPagoPago().getNombre(),
                 i.getMontoPagado(),
+                i.getMontoEntregado(),
+                i.getCambio(),
                 i.isPagable(),
                 i.getDevolucionEnCurso() == null ? null : i.getDevolucionEnCurso().getId(),
-                i.getTotalCreditoDevoluciones());
+                i.getTotalCreditoDevoluciones(),
+                i.getEntregasFaltantes().stream().map(Entrega::de).toList());
     }
 }

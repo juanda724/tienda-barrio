@@ -88,7 +88,7 @@ public class DatosDemo implements CommandLineRunner {
         ventas.registrar(new VentaRequest(List.of(
                 new LineaProductoRequest(leche.id(), 2),
                 new LineaProductoRequest(pan.id(), 1)), FormaPago.CREDITO, null, maria.id()));
-        clientes.registrarAbono(maria.id(), new AbonoRequest(5000L, FormaPago.EFECTIVO, null));
+        clientes.registrarAbono(maria.id(), new AbonoRequest(5000L, FormaPago.EFECTIVO, null, null));
     }
 
     private ProductoResponse crear(String nombre, String categoria, int stockMinimo, int stockInicial,

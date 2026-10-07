@@ -5,7 +5,7 @@ import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
 
 const CLIENTE_VACIO = { nombre: '', telefono: '', direccion: '' }
-const ABONO_VACIO = { monto: '', formaPago: 'EFECTIVO', nota: '' }
+const ABONO_VACIO = { monto: '', formaPago: 'EFECTIVO', nota: '', entregado: '' }
 
 /** Normaliza para buscar sin importar tildes ni mayúsculas. */
 const normalizar = (texto) => (texto ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
@@ -60,16 +60,27 @@ export default function Fiados({ clientes, recargar }) {
     })
   }
 
+  // En efectivo: cambio que el dueño le devuelve al cliente según lo que entrega
+  const abonoEnEfectivo = abono.formaPago === 'EFECTIVO'
+  const cambioAbono = abonoEnEfectivo && abono.entregado !== '' && abono.monto !== ''
+    ? Number(abono.entregado) - Number(abono.monto) : null
+
   const registrarAbono = (e) => {
     e.preventDefault()
     ejecutar(async () => {
       try {
-        const nueva = await api.registrarAbono(seleccionadoId, { ...abono, monto: Number(abono.monto) })
+        const nueva = await api.registrarAbono(seleccionadoId, {
+          monto: Number(abono.monto),
+          formaPago: abono.formaPago,
+          nota: abono.nota,
+          montoEntregado: abonoEnEfectivo && abono.entregado !== '' ? Number(abono.entregado) : null,
+        })
         setCuenta(nueva)
         setAbono(ABONO_VACIO)
-        avisos.exito(nueva.cliente.saldoPendiente === 0
+        const cambio = cambioAbono > 0 ? ` Entregue ${formatearPesos(cambioAbono)} de cambio.` : ''
+        avisos.exito((nueva.cliente.saldoPendiente === 0
           ? `Abono registrado. ${nueva.cliente.nombre} quedó al día.`
-          : `Abono registrado. Saldo pendiente: ${formatearPesos(nueva.cliente.saldoPendiente)}`)
+          : `Abono registrado. Saldo pendiente: ${formatearPesos(nueva.cliente.saldoPendiente)}.`) + cambio)
         recargar()
       } catch (err) {
         avisos.error(err.message)
@@ -198,6 +209,19 @@ export default function Fiados({ clientes, recargar }) {
                         <option value="TARJETA">Tarjeta / datáfono</option>
                       </select>
                     </label>
+                    {abonoEnEfectivo && (
+                      <label>
+                        Efectivo entregado (opcional)
+                        <input type="number" min="0" value={abono.entregado} placeholder={abono.monto || '0'}
+                          onChange={(e) => setAbono({ ...abono, entregado: e.target.value })} />
+                      </label>
+                    )}
+                    {cambioAbono != null && (
+                      <div className={cambioAbono < 0 ? 'cambio negativo' : 'cambio'}>
+                        <span>{cambioAbono < 0 ? 'Faltan' : 'Cambio para el cliente'}</span>
+                        <strong>{formatearPesos(Math.abs(cambioAbono))}</strong>
+                      </div>
+                    )}
                     <label className="ancho">
                       Nota
                       <input value={abono.nota} placeholder="Opcional"
@@ -208,7 +232,9 @@ export default function Fiados({ clientes, recargar }) {
                     <button type="button" onClick={() => setAbono({ ...abono, monto: String(cliente.saldoPendiente) })}>
                       Pagar todo ({formatearPesos(cliente.saldoPendiente)})
                     </button>
-                    <button type="submit" className="primario" disabled={enviando}>Registrar abono</button>
+                    <button type="submit" className="primario" disabled={enviando || (cambioAbono != null && cambioAbono < 0)}>
+                      Registrar abono
+                    </button>
                   </div>
                 </form>
               )}

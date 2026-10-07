@@ -84,7 +84,7 @@ class DevolucionesTest {
                 .contains("3 x Leche — En mal estado o empaque roto ($ 10.500)")
                 .contains("Empaques rotos");
         assertThat(d.whatsappUrl()).startsWith("https://wa.me/573107654321");
-        assertThat(d.correoUrl()).startsWith("mailto:ana@example.com");
+        assertThat(d.correoUrl()).startsWith("https://mail.google.com/mail/?view=cm&fs=1&to=ana%40example.com&su=");
         assertThat(inventario.historial(leche.id()).get(0).origen().name()).isEqualTo("DEVOLUCION_PROVEEDOR");
     }
 
@@ -94,7 +94,7 @@ class DevolucionesTest {
 
         assertThat(ingresos.listar().get(0).pagable()).isFalse();
         assertThat(ingresos.listar().get(0).devolucionEnCursoId()).isEqualTo(d.id());
-        assertThatThrownBy(() -> ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null)))
+        assertThatThrownBy(() -> ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, null)))
                 .isInstanceOf(NegocioException.class)
                 .hasMessageContaining("devolución #" + d.id());
     }
@@ -110,7 +110,7 @@ class DevolucionesTest {
         IngresoResponse actualizado = ingresos.listar().get(0);
         assertThat(actualizado.pagable()).isTrue();
         assertThat(actualizado.totalAPagar()).isEqualTo(12 * 3500 - 10500);
-        assertThat(ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null)).montoPagado())
+        assertThat(ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, null)).montoPagado())
                 .isEqualTo(31500L);
     }
 

@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import co.tiendabarrio.exception.NegocioException;
+import co.tiendabarrio.util.Dinero;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -73,9 +75,17 @@ public class IngresoMercancia {
 
     private Long montoPagado;
 
+    /** Efectivo entregado al repartidor; con él se calcula el cambio que debe devolver. */
+    private Long montoEntregado;
+
     @OneToMany(mappedBy = "ingreso")
     @OrderBy("fechaHora ASC, id ASC")
     private List<Devolucion> devoluciones = new ArrayList<>();
+
+    /** Faltantes que el proveedor entregó después del ingreso, en el orden en que llegaron. */
+    @OneToMany(mappedBy = "ingreso", cascade = CascadeType.ALL)
+    @OrderBy("fechaHora ASC, id ASC")
+    private List<EntregaFaltantes> entregasFaltantes = new ArrayList<>();
 
     protected IngresoMercancia() {
     }
@@ -111,16 +121,82 @@ public class IngresoMercancia {
         notaVerificacion = nota;
     }
 
-    /** Paga el total al proveedor, de contado o saldando un crédito. */
-    public void pagar(FormaPago formaPago) {
+    /**
+     * El proveedor entregó (todo o parte de) lo que faltó. Cada cantidad debe ser de un producto con
+     * faltante y no superarlo. Si ya no queda ninguna diferencia, el ingreso queda resuelto y se paga lo
+     * facturado completo; si queda algo pendiente, sigue con diferencias (RN-01).
+     *
+     * @param cantidades unidades entregadas por id de producto
+     */
+    public EntregaFaltantes registrarEntregaFaltantes(Map<Long, Integer> cantidades, String nota) {
+        if (resultadoVerificacion != ResultadoVerificacion.CON_DIFERENCIAS) {
+            throw new NegocioException("El ingreso #" + id + " no tiene diferencias por resolver");
+        }
+        if (cantidades.values().stream().allMatch(c -> c == null || c <= 0)) {
+            throw new NegocioException("Indique cuántas unidades entregó el proveedor de al menos un producto");
+        }
+        EntregaFaltantes entrega = new EntregaFaltantes(this, nota);
+        // Primero se valida todo, para no registrar entregas a medias
+        for (Map.Entry<Long, Integer> e : cantidades.entrySet()) {
+            int unidades = e.getValue() == null ? 0 : e.getValue();
+            if (unidades < 0) {
+                throw new NegocioException("Las cantidades entregadas no pueden ser negativas");
+            }
+            if (unidades == 0) {
+                continue;
+            }
+            LineaProducto linea = buscarLinea(e.getKey());
+            int faltan = -linea.getDiferencia();
+            if (faltan <= 0) {
+                throw new NegocioException("De " + linea.getProducto().getNombre() + " no faltan unidades en el ingreso #" + id);
+            }
+            if (unidades > faltan) {
+                throw new NegocioException("De " + linea.getProducto().getNombre() + " solo faltan " + faltan
+                        + " unidades; no se pueden registrar " + unidades);
+            }
+            entrega.agregarLinea(linea.getProducto(), unidades);
+        }
+        for (LineaProducto entregada : entrega.getLineas()) {
+            buscarLinea(entregada.getProducto().getId()).registrarEntregaPosterior(entregada.getCantidad());
+        }
+        entregasFaltantes.add(entrega);
+        if (lineas.stream().allMatch(l -> l.getDiferencia() == 0)) {
+            resultadoVerificacion = ResultadoVerificacion.DIFERENCIAS_RESUELTAS;
+            notaVerificacion = "El proveedor entregó los productos faltantes";
+        }
+        return entrega;
+    }
+
+    private LineaProducto buscarLinea(Long productoId) {
+        return lineas.stream().filter(l -> l.getProducto().getId().equals(productoId)).findFirst()
+                .orElseThrow(() -> new NegocioException("El producto no está en el ingreso #" + id));
+    }
+
+    /**
+     * Paga el total al proveedor, de contado o saldando un crédito. En efectivo se puede indicar lo
+     * entregado al repartidor para registrar el cambio que debe devolver; no puede ser menos que el total.
+     */
+    public void pagar(FormaPago formaPago, Long entregado) {
         if (formaPago == FormaPago.CREDITO) {
             throw new NegocioException("Para pagar a crédito use \"Acordar crédito\"");
         }
         validarQueSePuedePagar();
+        long total = getTotalAPagar();
+        Long efectivo = formaPago == FormaPago.EFECTIVO ? entregado : null;
+        if (efectivo != null && efectivo < total) {
+            throw new NegocioException("El efectivo entregado (" + Dinero.formatear(efectivo)
+                    + ") es menor que el total a pagar (" + Dinero.formatear(total) + ")");
+        }
         estadoPago = EstadoPago.PAGADO;
         fechaPago = LocalDateTime.now();
         formaPagoPago = formaPago;
-        montoPagado = getTotalAPagar();
+        montoPagado = total;
+        montoEntregado = efectivo;
+    }
+
+    /** Cambio que el repartidor debe devolver; null si no se pagó en efectivo o no se indicó lo entregado. */
+    public Long getCambio() {
+        return montoEntregado == null || montoPagado == null ? null : montoEntregado - montoPagado;
     }
 
     /** Acuerdo de pago a crédito con el proveedor: queda por pagar hasta la fecha de vencimiento. */
@@ -186,9 +262,9 @@ public class IngresoMercancia {
         return lineas.stream().mapToLong(LineaProducto::getSubtotalFacturado).sum();
     }
 
-    /** Valor de lo que realmente llegó: cantidad recibida × costo unitario. */
+    /** Valor de lo que realmente llegó, contando entregas posteriores: cantidad recibida × costo unitario. */
     public long getTotalRecibido() {
-        return lineas.stream().mapToLong(LineaProducto::getSubtotal).sum();
+        return lineas.stream().mapToLong(LineaProducto::getSubtotalRecibido).sum();
     }
 
     /**
@@ -253,7 +329,15 @@ public class IngresoMercancia {
         return montoPagado;
     }
 
+    public Long getMontoEntregado() {
+        return montoEntregado;
+    }
+
     public List<Devolucion> getDevoluciones() {
         return devoluciones;
+    }
+
+    public List<EntregaFaltantes> getEntregasFaltantes() {
+        return entregasFaltantes;
     }
 }

@@ -69,7 +69,7 @@ class FiadosTest {
     void abonoParcialReduceElSaldo() {
         fiar(3);
 
-        EstadoCuentaResponse cuenta = clientes.registrarAbono(maria.id(), new AbonoRequest(5000L, FormaPago.EFECTIVO, null));
+        EstadoCuentaResponse cuenta = clientes.registrarAbono(maria.id(), new AbonoRequest(5000L, FormaPago.EFECTIVO, null, null));
 
         assertThat(cuenta.cliente().totalFiado()).isEqualTo(12600L);
         assertThat(cuenta.cliente().totalAbonado()).isEqualTo(5000L);
@@ -83,14 +83,14 @@ class FiadosTest {
     @Test
     void abonosHastaSaldarLaDeuda() {
         fiar(1);
-        clientes.registrarAbono(maria.id(), new AbonoRequest(2000L, FormaPago.EFECTIVO, null));
+        clientes.registrarAbono(maria.id(), new AbonoRequest(2000L, FormaPago.EFECTIVO, null, null));
 
         EstadoCuentaResponse cuenta = clientes.registrarAbono(maria.id(),
-                new AbonoRequest(2200L, FormaPago.TRANSFERENCIA, "Nequi"));
+                new AbonoRequest(2200L, FormaPago.TRANSFERENCIA, "Nequi", null));
 
         assertThat(cuenta.cliente().saldoPendiente()).isZero();
         assertThat(cuenta.recordatorio()).contains("al día");
-        assertThatThrownBy(() -> clientes.registrarAbono(maria.id(), new AbonoRequest(100L, FormaPago.EFECTIVO, null)))
+        assertThatThrownBy(() -> clientes.registrarAbono(maria.id(), new AbonoRequest(100L, FormaPago.EFECTIVO, null, null)))
                 .isInstanceOf(NegocioException.class)
                 .hasMessageContaining("no tiene saldo pendiente");
     }
@@ -99,7 +99,7 @@ class FiadosTest {
     void abonoMayorQueElSaldoSeRechaza() {
         fiar(1);
 
-        assertThatThrownBy(() -> clientes.registrarAbono(maria.id(), new AbonoRequest(10000L, FormaPago.EFECTIVO, null)))
+        assertThatThrownBy(() -> clientes.registrarAbono(maria.id(), new AbonoRequest(10000L, FormaPago.EFECTIVO, null, null)))
                 .isInstanceOf(NegocioException.class)
                 .hasMessageContaining("supera el saldo pendiente");
     }
@@ -138,6 +138,27 @@ class FiadosTest {
         fiar(1);
 
         assertThat(clientes.listar()).extracting(ClienteResponse::nombre).startsWith("María Elena");
+    }
+
+    @Test
+    void abonoEnEfectivoRegistraLoEntregadoYElCambio() {
+        fiar(3); // $ 12.600
+
+        EstadoCuentaResponse cuenta = clientes.registrarAbono(maria.id(),
+                new AbonoRequest(5000L, FormaPago.EFECTIVO, null, 10000L));
+
+        assertThat(cuenta.cliente().saldoPendiente()).isEqualTo(7600L);
+        assertThat(cuenta.movimientos().get(1).descripcion()).contains("entregó $ 10.000, cambio $ 5.000");
+    }
+
+    @Test
+    void efectivoEntregadoMenorQueElAbonoSeRechaza() {
+        fiar(3);
+
+        assertThatThrownBy(() -> clientes.registrarAbono(maria.id(), new AbonoRequest(5000L, FormaPago.EFECTIVO, null, 2000L)))
+                .isInstanceOf(NegocioException.class)
+                .hasMessageContaining("menor que el abono");
+        assertThat(clientes.obtener(maria.id()).saldoPendiente()).isEqualTo(12600L);
     }
 
     private VentaResponse fiar(int cantidad) {

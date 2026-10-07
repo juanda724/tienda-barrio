@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { api, formatearDia, formatearFecha } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
+import BotonCopiar from '../componentes/BotonCopiar.jsx'
 import InsigniaEstado from '../componentes/InsigniaEstado.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
@@ -233,8 +234,9 @@ function TarjetaPedido({ pedido, enviando, onCambiarEstado, onRecibir }) {
             <a className="boton whatsapp" href={pedido.whatsappUrl} target="_blank" rel="noreferrer">Enviar por WhatsApp</a>
           )}
           {pedido.correoUrl
-            ? <a className="boton" href={pedido.correoUrl}>Enviar por correo</a>
+            ? <a className="boton" href={pedido.correoUrl} target="_blank" rel="noreferrer">Enviar por Gmail</a>
             : <span className="tenue pequeno">Sin correo registrado</span>}
+          <BotonCopiar texto={pedido.mensaje} />
         </div>
       )}
 
