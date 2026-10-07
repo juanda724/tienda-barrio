@@ -15,6 +15,9 @@
   --entrada-suave: #e2f1ec;
   --salida: #9a5b00;
   --salida-suave: #fdf0dc;
+  --info: #1a5fb4;
+  --info-suave: #e3edfb;
+  --whatsapp: #1c8a4a;
   --radio: 10px;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--texto);
@@ -40,6 +43,9 @@
     --entrada-suave: #1c3530;
     --salida: #f0b35a;
     --salida-suave: #3a2c16;
+    --info: #8ab4f8;
+    --info-suave: #1c2a40;
+    --whatsapp: #5bd18b;
   }
 }
 
@@ -49,24 +55,20 @@ h1, h2, h3 { margin: 0; line-height: 1.2; }
 h2 { font-size: 1.35rem; }
 h3 { font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
 
-.app { max-width: 1120px; margin: 0 auto; padding: 20px 16px 48px; }
+.app { max-width: 1240px; margin: 0 auto; padding: 20px 16px 48px; }
 
 .encabezado { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .encabezado h1 { font-size: 1.6rem; }
 .subtitulo { margin: 2px 0 0; color: var(--tenue); }
 
-.alerta-chip {
-  background: var(--peligro-suave); color: var(--peligro); border: 1px solid transparent;
-  font-weight: 600; border-radius: 999px; padding: 6px 14px;
-}
-
-.pestanas { display: flex; gap: 4px; border-bottom: 1px solid var(--borde); margin-bottom: 20px; overflow-x: auto; }
+/* Si las pestañas no caben, pasan a otra fila en lugar de esconderse tras una barra de desplazamiento */
+.pestanas { display: flex; flex-wrap: wrap; gap: 0 4px; border-bottom: 1px solid var(--borde); margin-bottom: 20px; }
 .pestana {
   background: none; border: none; border-bottom: 2px solid transparent; border-radius: 0;
-  padding: 10px 14px; color: var(--tenue); font-weight: 500; white-space: nowrap;
+  padding: 10px 8px; color: var(--tenue); font-weight: 500; white-space: nowrap;
 }
 .pestana.activa { color: var(--texto); border-bottom-color: var(--primario); }
-.etiqueta-f { font-size: 0.7rem; margin-left: 6px; padding: 1px 6px; border-radius: 4px; background: var(--borde); color: var(--tenue); }
+.etiqueta-f { font-size: 0.7rem; margin-left: 4px; padding: 1px 6px; border-radius: 4px; background: var(--borde); color: var(--tenue); }
 
 .titulo-seccion { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .ayuda { margin: 4px 0 0; color: var(--tenue); font-size: 0.92rem; }
@@ -123,7 +125,7 @@ tr:last-child td { border-bottom: none; }
 .vacio { text-align: center; color: var(--tenue); padding: 24px; }
 input.cantidad { width: 90px; text-align: right; }
 
-.insignia { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+.insignia { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
 .insignia.peligro { background: var(--peligro-suave); color: var(--peligro); }
 .insignia.ok { background: var(--ok-suave); color: var(--ok); }
 .insignia.entrada { background: var(--entrada-suave); color: var(--entrada); }
@@ -137,8 +139,216 @@ input.cantidad { width: 90px; text-align: right; }
 
 .rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 .rejilla .tarjeta { margin-bottom: 0; }
-.proveedor dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0 0 12px; font-size: 0.92rem; }
-.proveedor dt { color: var(--tenue); }
-.proveedor dd { margin: 0; overflow-wrap: anywhere; }
+.proveedor dl, .pedido dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0 0 12px; font-size: 0.92rem; }
+.proveedor dt, .pedido dt { color: var(--tenue); }
+.proveedor dd, .pedido dd { margin: 0; overflow-wrap: anywhere; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font-size: 0.8rem; padding: 3px 10px; border-radius: 999px; background: var(--primario-suave); color: var(--primario); }
+
+/* Botones que son enlaces (WhatsApp, correo) y acciones destructivas */
+a.boton {
+  display: inline-block; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--borde);
+  background: var(--superficie); color: var(--texto); text-decoration: none; font-weight: 500;
+}
+a.boton.whatsapp { background: var(--whatsapp); border-color: var(--whatsapp); color: var(--superficie); }
+button.peligro { color: var(--peligro); border-color: var(--peligro); }
+.acciones.izquierda { justify-content: flex-start; }
+.pequeno { font-size: 0.85rem; }
+
+/* Estados de pedido */
+.insignia.neutra { background: var(--borde); color: var(--texto); }
+.insignia.info { background: var(--info-suave); color: var(--info); }
+
+/* Filtros de la lista de pedidos */
+.filtros { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.filtro { border-radius: 999px; padding: 5px 14px; font-size: 0.9rem; color: var(--tenue); }
+.filtro.activo { background: var(--primario-suave); color: var(--primario); border-color: var(--primario); font-weight: 600; }
+
+/* Tarjeta de pedido a proveedor */
+.rejilla.pedidos { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.pedido { display: flex; flex-direction: column; gap: 12px; }
+.pedido .titulo-tabla, .pedido dl { margin-bottom: 0; }
+.lineas-pedido { margin: 0; padding-left: 18px; }
+.cambio-estado { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--borde); padding-top: 12px; }
+.cambio-estado p { margin: 0; }
+.historial summary { cursor: pointer; color: var(--tenue); font-size: 0.9rem; }
+.historial ol { margin: 8px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+
+/* Buscador de productos con resultados para agregar a la venta */
+.buscador-producto .buscador { margin-bottom: 0; }
+.resultados {
+  list-style: none; margin: 6px 0 0; padding: 4px; border: 1px solid var(--borde); border-radius: 8px;
+  background: var(--superficie); max-height: 320px; overflow-y: auto;
+}
+.resultados li {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 9px 10px; border-radius: 6px; cursor: pointer;
+}
+.resultados li.resaltado { background: var(--primario-suave); }
+.resultados li.agotado { cursor: not-allowed; opacity: 0.6; }
+.resultados li.sin-resultados { color: var(--tenue); cursor: default; justify-content: center; }
+
+/* Cantidad con botones − / + */
+.contador { display: inline-flex; align-items: center; gap: 4px; }
+.contador .icono { padding: 4px 10px; }
+.contador input.cantidad { width: 64px; text-align: center; }
+input.cantidad.invalida { border-color: var(--peligro); color: var(--peligro); }
+
+/* Historial de ventas: una fila por venta, con el detalle desplegable */
+.detalle-venta summary { cursor: pointer; }
+.detalle-venta ul { margin: 6px 0 0; padding-left: 18px; }
+
+.titulo-tabla .filtros { margin-bottom: 0; }
+
+.peligro-texto { color: var(--peligro); font-weight: 600; }
+
+/* Buscador: precio y disponibilidad de cada resultado */
+.resultado-detalle { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; }
+
+/* Cobro de la venta: total, forma de pago y cambio */
+.cobro { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--borde); padding-top: 14px; }
+.total-venta { display: flex; justify-content: space-between; align-items: baseline; font-size: 1.1rem; }
+.total-venta strong { font-size: 1.8rem; font-variant-numeric: tabular-nums; }
+.cambio {
+  display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 6px 12px;
+  border-radius: 8px; background: var(--ok-suave); color: var(--ok);
+}
+.cambio strong { font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.cambio.negativo { background: var(--peligro-suave); color: var(--peligro); }
+
+/* Ventana del comprobante */
+.fondo-modal {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55); display: flex; align-items: flex-start;
+  justify-content: center; padding: 40px 16px; overflow-y: auto; z-index: 10;
+}
+.modal {
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); padding: 20px;
+  width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 16px; outline: none;
+}
+.comprobante { display: flex; flex-direction: column; gap: 6px; }
+.comprobante h3 { justify-content: center; font-size: 1.2rem; }
+.comprobante > p { margin: 0; text-align: center; font-size: 0.9rem; }
+.comprobante td { padding: 6px 4px; }
+.comprobante tfoot td { border-bottom: none; padding: 3px 4px; }
+.comprobante tr.total td { font-size: 1.15rem; font-weight: 700; border-top: 2px solid var(--texto); padding-top: 8px; }
+.comprobante .gracias { margin-top: 6px; font-weight: 600; }
+.enviar-comprobante { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--borde); padding-top: 14px; }
+button.whatsapp-boton { background: var(--whatsapp); border-color: var(--whatsapp); color: var(--superficie); font-weight: 600; }
+
+/* Al imprimir solo sale el comprobante, en blanco y negro */
+@media print {
+  body * { visibility: hidden; }
+  .imprimible, .imprimible * { visibility: visible; color: #000 !important; }
+  .imprimible { position: absolute; left: 0; top: 0; width: 80mm; }
+  .fondo-modal { background: none; }
+}
+
+/* Venta a crédito: cliente nuevo sin salir de Ventas */
+.cliente-nuevo { display: flex; flex-direction: column; gap: 8px; grid-column: 1 / -1; }
+button.enlace.izquierda { align-self: flex-start; padding: 2px 0; }
+
+/* Fiados: lista de clientes a la izquierda y su cuenta a la derecha */
+.resumen-fiados { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 16px; }
+.resumen-fiados .tarjeta { margin-bottom: 0; }
+.indicador { display: flex; flex-direction: column; gap: 4px; }
+.indicador strong { font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.fiados { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 16px; align-items: start; }
+@media (max-width: 760px) { .fiados { grid-template-columns: 1fr; } }
+.lista-clientes ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; max-height: 480px; overflow-y: auto; }
+button.cliente {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 8px; text-align: left;
+  border-color: transparent; background: none;
+}
+button.cliente:hover { background: var(--fondo); }
+button.cliente.activo { background: var(--primario-suave); border-color: var(--primario); }
+.cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 12px; }
+.cifras div { display: flex; flex-direction: column; gap: 2px; }
+.cifras strong { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.cifras .saldo { padding: 6px 10px; border-radius: 8px; background: var(--ok-suave); color: var(--ok); }
+.cifras .saldo.deuda { background: var(--peligro-suave); color: var(--peligro); }
+
+/* Campana de alertas de stock mínimo */
+.campana { position: relative; }
+.boton-campana { position: relative; font-size: 1.2rem; padding: 6px 12px; border-radius: 999px; }
+.boton-campana.nuevas { border-color: var(--peligro); background: var(--peligro-suave); }
+.contador-alertas {
+  position: absolute; top: -6px; right: -6px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px;
+  background: var(--peligro); color: var(--superficie); font-size: 0.75rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.panel-alertas {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 5; width: min(340px, calc(100vw - 32px));
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); padding: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18); display: flex; flex-direction: column; gap: 10px;
+}
+.panel-alertas ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; max-height: 300px; overflow-y: auto; }
+.panel-alertas li { padding: 8px 10px; border-radius: 8px; background: var(--fondo); }
+.panel-alertas li.nueva { border-left: 3px solid var(--peligro); }
+.panel-alertas p { margin: 0; }
+
+/* Lista de pedido sugerida */
+.rejilla.reposicion { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); margin-top: 12px; }
+.grupo-reposicion { border: 1px solid var(--borde); border-radius: 8px; padding: 12px; }
+.grupo-reposicion ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.grupo-reposicion li { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+
+/* Ingreso de mercancía: verificación factura vs. recibido y facturas con su pago */
+input.cantidad.ancha { width: 110px; }
+.resumen-verificacion { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.rejilla.facturas { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+.factura { display: flex; flex-direction: column; gap: 10px; }
+.factura .titulo-tabla, .factura p { margin: 0; }
+.insignias { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+table.compacta th, table.compacta td { padding: 6px 8px; }
+tr.con-diferencia td { background: var(--peligro-suave); }
+.totales-factura { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.aviso.pago-bloqueado { margin: 0; flex-wrap: wrap; }
+
+/* Devoluciones: evidencia escrita y fotográfica, y nota de devolución */
+textarea {
+  font: inherit; padding: 8px 10px; border: 1px solid var(--borde); border-radius: 8px;
+  background: var(--superficie); color: var(--texto); resize: vertical;
+}
+textarea:focus { outline: 2px solid var(--primario); outline-offset: -1px; }
+.evidencia-fotos { display: flex; flex-direction: column; gap: 8px; border: 1px dashed var(--borde); border-radius: 8px; padding: 10px 12px; }
+.evidencia-fotos .titulo-tabla { margin-bottom: 0; font-size: 0.9rem; color: var(--tenue); }
+.miniaturas { display: flex; flex-wrap: wrap; gap: 8px; }
+.miniaturas img { width: 84px; height: 84px; object-fit: cover; border-radius: 6px; border: 1px solid var(--borde); display: block; }
+.miniaturas figure { position: relative; margin: 0; }
+.miniaturas figure .icono { position: absolute; top: -8px; right: -8px; padding: 0 7px; border-radius: 999px; }
+.modal.ancho { max-width: 560px; }
+.comprobante .firmas { margin-top: 18px; font-size: 0.85rem; color: var(--tenue); }
+
+/* Con 9 pestañas, en pantallas medianas se ocultan las etiquetas F-0x para que quepan en una fila */
+@media (max-width: 1300px) {
+  .etiqueta-f { display: none; }
+}
+
+/* Reportes */
+.controles-reporte { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; }
+.controles-reporte .acciones { margin-left: auto; }
+.controles-reporte .filtros { margin-bottom: 0; }
+.indicadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.indicadores .indicador { border: 1px solid var(--borde); border-radius: 8px; padding: 10px 12px; }
+.indicadores .indicador strong { font-size: 1.25rem; }
+.indicador.alerta strong { color: var(--peligro); }
+tr.fila-total td { font-weight: 700; border-top: 2px solid var(--borde); }
+.columna-barra { width: 28%; }
+.barra { display: block; height: 10px; border-radius: 999px; background: var(--primario); min-width: 4px; }
+
+/* Al imprimir un reporte se usa todo el ancho de la hoja */
+@media print {
+  .imprimible.reporte { width: 100%; border: none; padding: 0; }
+  .imprimible.reporte .tabla-contenedor { overflow: visible; }
+  .imprimible.reporte .barra { background: #555 !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+/* En el celular las pestañas van en una sola franja que se desliza con el dedo, en vez de ocupar tres filas */
+@media (max-width: 640px) {
+  .pestanas { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .pestanas::-webkit-scrollbar { display: none; }
+  .pestana { scroll-snap-align: center; }
+  .app { padding-top: 14px; }
+  .encabezado h1 { font-size: 1.35rem; }
+  .total-venta strong { font-size: 1.5rem; }
+}

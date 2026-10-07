@@ -1,134 +1,67 @@
 import { useEffect, useState } from 'react'
 import { api, formatearFecha } from '../servicios/api.js'
-import Aviso from '../componentes/Aviso.jsx'
-import { useAviso } from '../hooks/useAviso.js'
-import { useEnvio } from '../hooks/useEnvio.js'
 
-const ORIGENES = {
-  INVENTARIO_INICIAL: 'Inventario inicial',
-  COMPRA: 'Compra',
-  PEDIDO: 'Pedido',
-  INGRESO_PROVEEDOR: 'Ingreso de proveedor',
+// Cómo se muestra cada origen de movimiento: nombre de la operación, color y prefijo del número
+const OPERACIONES = {
+  VENTA: { nombre: 'Venta', clase: 'salida', documento: 'Venta' },
+  INGRESO_PROVEEDOR: { nombre: 'Compra', clase: 'entrada', documento: 'Ingreso' },
+  INVENTARIO_INICIAL: { nombre: 'Inventario inicial', clase: 'neutra', documento: null },
+  DEVOLUCION_PROVEEDOR: { nombre: 'Devolución', clase: 'peligro', documento: 'Devolución' },
+  REEMPLAZO_DEVOLUCION: { nombre: 'Reemplazo', clase: 'entrada', documento: 'Devolución' },
 }
 
-const lineaVacia = () => ({ productoId: '', cantidad: 1 })
+const FILTROS = [
+  { id: 'todas', titulo: 'Todas', incluye: () => true },
+  { id: 'ventas', titulo: 'Ventas', incluye: (m) => m.origen === 'VENTA' },
+  { id: 'compras', titulo: 'Compras', incluye: (m) => m.origen === 'INGRESO_PROVEEDOR' },
+  { id: 'devoluciones', titulo: 'Devoluciones', incluye: (m) => m.origen === 'DEVOLUCION_PROVEEDOR' || m.origen === 'REEMPLAZO_DEVOLUCION' },
+]
 
-export default function Movimientos({ productos, recargar }) {
+/**
+ * Cada entrada y salida de producto con fecha, hora y cantidad (SWR-01, SWR-04),
+ * indicando si vino de una venta o de una compra (ingreso de mercancía) y su número.
+ */
+export default function Movimientos({ productos }) {
   const [historial, setHistorial] = useState([])
   const [filtroProducto, setFiltroProducto] = useState('')
-  const [version, setVersion] = useState(0)
-  const [compra, setCompra] = useState({ productoId: '', cantidad: 1, referencia: '' })
-  const [lineas, setLineas] = useState([lineaVacia()])
-  const avisos = useAviso()
-  const { error } = avisos
-  const [enviando, ejecutar] = useEnvio()
+  const [filtroOperacion, setFiltroOperacion] = useState('todas')
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    api.movimientos(filtroProducto).then(setHistorial).catch((e) => error(e.message))
-  }, [filtroProducto, version, error])
+    api.movimientos(filtroProducto)
+      .then((lista) => {
+        setHistorial(lista)
+        setError(null)
+      })
+      .catch((e) => setError(e.message))
+  }, [filtroProducto])
 
-  const despuesDeRegistrar = (mensaje) => {
-    avisos.exito(mensaje)
-    setVersion((v) => v + 1)
-    recargar()
-  }
-
-  const registrarCompra = (e) => {
-    e.preventDefault()
-    ejecutar(async () => {
-      try {
-        const m = await api.registrarCompra({
-          productoId: Number(compra.productoId),
-          cantidad: Number(compra.cantidad),
-          referencia: compra.referencia || null,
-        })
-        setCompra({ productoId: '', cantidad: 1, referencia: '' })
-        despuesDeRegistrar(`Compra registrada: +${m.cantidad} ${m.productoNombre} (stock: ${m.stockResultante})`)
-      } catch (err) {
-        avisos.error(err.message)
-      }
-    })
-  }
-
-  const registrarPedido = (e) => {
-    e.preventDefault()
-    ejecutar(async () => {
-      try {
-        const pedido = await api.registrarPedido({
-          lineas: lineas.map((l) => ({ productoId: Number(l.productoId), cantidad: Number(l.cantidad) })),
-        })
-        setLineas([lineaVacia()])
-        despuesDeRegistrar(`Pedido #${pedido.id} registrado: los productos se descargaron del inventario`)
-      } catch (err) {
-        avisos.error(err.message)
-      }
-    })
-  }
-
-  const cambiarLinea = (i, campo, valor) =>
-    setLineas(lineas.map((l, j) => (j === i ? { ...l, [campo]: valor } : l)))
+  const visibles = historial.filter(FILTROS.find((f) => f.id === filtroOperacion).incluye)
 
   return (
     <section>
       <div className="titulo-seccion">
         <div>
           <h2>Movimientos de inventario</h2>
-          <p className="ayuda">Las compras suman al stock; los pedidos lo descargan automáticamente.</p>
+          <p className="ayuda">
+            Cada entrada y salida de producto con su fecha, hora y stock resultante. Las ventas descargan el
+            inventario y las compras (ingresos de mercancía) lo suman.
+          </p>
         </div>
       </div>
 
-      <Aviso aviso={avisos.aviso} onCerrar={avisos.limpiar} />
-
-      <div className="dos-columnas">
-        <form className="tarjeta formulario" onSubmit={registrarCompra}>
-          <h3>Registrar compra <span className="insignia entrada">Entrada</span></h3>
-          <div className="campos">
-            <label className="ancho">
-              Producto
-              <SelectorProducto productos={productos} value={compra.productoId}
-                onChange={(v) => setCompra({ ...compra, productoId: v })} />
-            </label>
-            <label>
-              Cantidad
-              <input type="number" min="1" value={compra.cantidad} required
-                onChange={(e) => setCompra({ ...compra, cantidad: e.target.value })} />
-            </label>
-            <label>
-              Referencia
-              <input value={compra.referencia} placeholder="Ej. factura 123"
-                onChange={(e) => setCompra({ ...compra, referencia: e.target.value })} />
-            </label>
-          </div>
-          <div className="acciones">
-            <button type="submit" className="primario" disabled={enviando}>Registrar compra</button>
-          </div>
-        </form>
-
-        <form className="tarjeta formulario" onSubmit={registrarPedido}>
-          <h3>Nuevo pedido <span className="insignia salida">Salida</span></h3>
-          {lineas.map((linea, i) => {
-            const producto = productos.find((p) => p.id === Number(linea.productoId))
-            return (
-              <div className="linea" key={i}>
-                <SelectorProducto productos={productos} value={linea.productoId} mostrarStock
-                  onChange={(v) => cambiarLinea(i, 'productoId', v)} />
-                <input type="number" min="1" max={producto?.stockActual} value={linea.cantidad} required
-                  aria-label="Cantidad" onChange={(e) => cambiarLinea(i, 'cantidad', e.target.value)} />
-                <button type="button" className="icono" aria-label="Quitar línea" disabled={lineas.length === 1}
-                  onClick={() => setLineas(lineas.filter((_, j) => j !== i))}>×</button>
-              </div>
-            )
-          })}
-          <div className="acciones">
-            <button type="button" onClick={() => setLineas([...lineas, lineaVacia()])}>+ Agregar producto</button>
-            <button type="submit" className="primario" disabled={enviando}>Registrar pedido</button>
-          </div>
-        </form>
-      </div>
+      {error && <div className="aviso error">{error}</div>}
 
       <div className="tarjeta">
         <div className="titulo-tabla">
-          <h3>Historial</h3>
+          <div className="filtros" role="group" aria-label="Filtrar por operación">
+            {FILTROS.map((f) => (
+              <button key={f.id} className={f.id === filtroOperacion ? 'filtro activo' : 'filtro'}
+                onClick={() => setFiltroOperacion(f.id)}>
+                {f.titulo} ({historial.filter(f.incluye).length})
+              </button>
+            ))}
+          </div>
           <select value={filtroProducto} onChange={(e) => setFiltroProducto(e.target.value)} aria-label="Filtrar por producto">
             <option value="">Todos los productos</option>
             {productos.map((p) => <option key={p.id} value={p.id}>{p.nombre}</option>)}
@@ -139,48 +72,38 @@ export default function Movimientos({ productos, recargar }) {
             <thead>
               <tr>
                 <th>Fecha y hora</th>
+                <th>Operación</th>
+                <th>N.º</th>
                 <th>Producto</th>
-                <th>Tipo</th>
                 <th className="num">Cantidad</th>
                 <th className="num">Stock resultante</th>
-                <th>Origen</th>
+                <th>Detalle</th>
               </tr>
             </thead>
             <tbody>
-              {historial.map((m) => (
-                <tr key={m.id}>
-                  <td className="tenue nowrap">{formatearFecha(m.fechaHora)}</td>
-                  <td>{m.productoNombre}</td>
-                  <td>
-                    <span className={m.tipo === 'ENTRADA' ? 'insignia entrada' : 'insignia salida'}>
-                      {m.tipo === 'ENTRADA' ? 'Entrada' : 'Salida'}
-                    </span>
-                  </td>
-                  <td className="num fuerte">{m.tipo === 'ENTRADA' ? '+' : '−'}{m.cantidad}</td>
-                  <td className="num">{m.stockResultante}</td>
-                  <td className="tenue">{m.referencia ?? ORIGENES[m.origen]}</td>
-                </tr>
-              ))}
-              {historial.length === 0 && (
-                <tr><td colSpan="6" className="vacio">Aún no hay movimientos</td></tr>
+              {visibles.map((m) => {
+                const operacion = OPERACIONES[m.origen] ?? { nombre: m.origen, clase: 'neutra', documento: null }
+                return (
+                  <tr key={m.id}>
+                    <td className="tenue nowrap">{formatearFecha(m.fechaHora)}</td>
+                    <td><span className={`insignia ${operacion.clase}`}>{operacion.nombre}</span></td>
+                    <td className="fuerte nowrap">
+                      {operacion.documento && m.numeroDocumento ? `${operacion.documento} #${m.numeroDocumento}` : '—'}
+                    </td>
+                    <td>{m.productoNombre}</td>
+                    <td className="num fuerte">{m.tipo === 'ENTRADA' ? '+' : '−'}{m.cantidad}</td>
+                    <td className="num">{m.stockResultante}</td>
+                    <td className="tenue">{m.referencia ?? '—'}</td>
+                  </tr>
+                )
+              })}
+              {visibles.length === 0 && (
+                <tr><td colSpan="7" className="vacio">No hay movimientos para mostrar</td></tr>
               )}
             </tbody>
           </table>
         </div>
       </div>
     </section>
-  )
-}
-
-function SelectorProducto({ productos, value, onChange, mostrarStock = false }) {
-  return (
-    <select value={value} onChange={(e) => onChange(e.target.value)} required aria-label="Producto">
-      <option value="" disabled>Seleccione un producto…</option>
-      {productos.map((p) => (
-        <option key={p.id} value={p.id}>
-          {p.nombre}{mostrarStock ? ` (disponibles: ${p.stockActual})` : ''}
-        </option>
-      ))}
-    </select>
   )
 }

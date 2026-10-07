@@ -40,20 +40,24 @@ public class MovimientoInventario {
     @Column(nullable = false)
     private LocalDateTime fechaHora;
 
-    /** Texto libre que identifica el documento de origen, p. ej. "Pedido #3". */
+    /** Número de la venta o del ingreso de mercancía que generó el movimiento; vacío en el inventario inicial. */
+    private Long numeroDocumento;
+
+    /** Información adicional del origen, p. ej. el proveedor y la factura de un ingreso. */
     private String referencia;
 
     protected MovimientoInventario() {
     }
 
     public MovimientoInventario(Producto producto, TipoMovimiento tipo, OrigenMovimiento origen,
-                                int cantidad, String referencia) {
+                                int cantidad, Long numeroDocumento, String referencia) {
         this.producto = producto;
         this.tipo = tipo;
         this.origen = origen;
         this.cantidad = cantidad;
         this.stockResultante = producto.getStockActual();
         this.fechaHora = LocalDateTime.now();
+        this.numeroDocumento = numeroDocumento;
         this.referencia = referencia;
     }
 
@@ -83,6 +87,10 @@ public class MovimientoInventario {
 
     public LocalDateTime getFechaHora() {
         return fechaHora;
+    }
+
+    public Long getNumeroDocumento() {
+        return numeroDocumento;
     }
 
     public String getReferencia() {

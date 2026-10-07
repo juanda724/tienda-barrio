@@ -18,10 +18,12 @@ public class ProductoService {
 
     private final ProductoRepository productos;
     private final InventarioService inventario;
+    private final AlertaService alertas;
 
-    public ProductoService(ProductoRepository productos, InventarioService inventario) {
+    public ProductoService(ProductoRepository productos, InventarioService inventario, AlertaService alertas) {
         this.productos = productos;
         this.inventario = inventario;
+        this.alertas = alertas;
     }
 
     @Transactional(readOnly = true)
@@ -41,11 +43,13 @@ public class ProductoService {
         if (productos.existsByNombreIgnoreCase(nombre)) {
             throw new NegocioException("Ya existe un producto llamado " + nombre);
         }
-        Producto producto = productos.save(new Producto(nombre, limpiar(datos.categoria()), datos.stockMinimo()));
+        Producto producto = productos.save(new Producto(nombre, limpiar(datos.categoria()), datos.stockMinimo(),
+                datos.precioVenta(), datos.costo()));
         if (datos.stockInicial() != null && datos.stockInicial() > 0) {
             inventario.registrarEntrada(producto, datos.stockInicial(), OrigenMovimiento.INVENTARIO_INICIAL,
-                    "Inventario inicial");
+                    null, null);
         }
+        alertas.revisar(producto);
         return ProductoResponse.de(producto);
     }
 
@@ -60,6 +64,9 @@ public class ProductoService {
         producto.setNombre(nombre);
         producto.setCategoria(limpiar(datos.categoria()));
         producto.setStockMinimo(datos.stockMinimo());
+        producto.setPrecioVenta(datos.precioVenta());
+        producto.setCosto(datos.costo());
+        alertas.revisar(producto); // cambiar el mínimo puede abrir o cerrar una alerta
         return ProductoResponse.de(productos.save(producto));
     }
 

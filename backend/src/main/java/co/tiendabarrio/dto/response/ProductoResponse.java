@@ -8,10 +8,12 @@ public record ProductoResponse(
         String categoria,
         int stockActual,
         int stockMinimo,
-        boolean bajoMinimo) {
+        boolean bajoMinimo,
+        Long precioVenta,
+        Long costo) {
 
     public static ProductoResponse de(Producto p) {
         return new ProductoResponse(p.getId(), p.getNombre(), p.getCategoria(), p.getStockActual(),
-                p.getStockMinimo(), p.isBajoMinimo());
+                p.getStockMinimo(), p.isBajoMinimo(), p.getPrecioVenta(), p.getCosto());
     }
 }
