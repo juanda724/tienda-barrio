@@ -37,6 +37,8 @@ export const api = {
   comprobante: (id, telefono) =>
     pedir(`/ventas/${id}/comprobante${telefono ? `?telefono=${encodeURIComponent(telefono)}` : ''}`),
   registrarVenta: (datos) => post('/ventas', datos),
+  // Datos guardados de un cliente de factura electrónica; null si nunca la ha pedido
+  buscarAdquiriente: (tipo, numero) => pedir(`/adquirientes/buscar${consulta({ tipo, numero })}`),
 
   proveedores: () => pedir('/proveedores'),
   crearProveedor: (datos) => post('/proveedores', datos),
@@ -55,6 +57,7 @@ export const api = {
   pedidosProveedor: () => pedir('/pedidos-proveedor'),
   crearPedidoProveedor: (datos) => post('/pedidos-proveedor', datos),
   cambiarEstadoPedido: (id, datos) => post(`/pedidos-proveedor/${id}/estado`, datos),
+  facturaPedido: (id) => pedir(`/pedidos-proveedor/${id}/factura`),
 
   ingresos: () => pedir('/ingresos'),
   registrarIngreso: (datos) => post('/ingresos', datos),

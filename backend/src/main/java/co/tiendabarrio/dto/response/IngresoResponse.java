@@ -63,7 +63,7 @@ public record IngresoResponse(
     /** Entrega posterior de faltantes, con las unidades de cada producto. */
     public record Entrega(Long id, LocalDateTime fechaHora, String nota, List<LineaProductoResponse> lineas) {
 
-        static Entrega de(EntregaFaltantes e) {
+        public static Entrega de(EntregaFaltantes e) {
             return new Entrega(e.getId(), e.getFechaHora(), e.getNota(),
                     e.getLineas().stream().map(LineaProductoResponse::de).toList());
         }

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.tiendabarrio.dto.request.CambioEstadoRequest;
 import co.tiendabarrio.dto.request.PedidoProveedorRequest;
+import co.tiendabarrio.dto.response.FacturaPedidoResponse;
 import co.tiendabarrio.dto.response.PedidoProveedorResponse;
 import co.tiendabarrio.model.EstadoPedido;
+import co.tiendabarrio.service.FacturaPedidoService;
 import co.tiendabarrio.service.PedidoProveedorService;
 import jakarta.validation.Valid;
 
@@ -24,9 +26,11 @@ import jakarta.validation.Valid;
 public class PedidoProveedorController {
 
     private final PedidoProveedorService pedidos;
+    private final FacturaPedidoService facturas;
 
-    public PedidoProveedorController(PedidoProveedorService pedidos) {
+    public PedidoProveedorController(PedidoProveedorService pedidos, FacturaPedidoService facturas) {
         this.pedidos = pedidos;
+        this.facturas = facturas;
     }
 
     @GetMapping
@@ -37,6 +41,12 @@ public class PedidoProveedorController {
     @GetMapping("/{id}")
     public PedidoProveedorResponse obtener(@PathVariable Long id) {
         return pedidos.obtener(id);
+    }
+
+    /** Factura del pedido: solo cuando ya se recibió y su ingreso está pagado. */
+    @GetMapping("/{id}/factura")
+    public FacturaPedidoResponse factura(@PathVariable Long id) {
+        return facturas.generar(id);
     }
 
     @PostMapping

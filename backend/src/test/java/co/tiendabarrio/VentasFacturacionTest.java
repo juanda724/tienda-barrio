@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.tiendabarrio.dto.request.FacturaElectronicaRequest;
 import co.tiendabarrio.dto.request.LineaProductoRequest;
 import co.tiendabarrio.dto.request.ProductoRequest;
 import co.tiendabarrio.dto.request.VentaRequest;
@@ -19,7 +20,10 @@ import co.tiendabarrio.dto.response.VentaResponse;
 import co.tiendabarrio.exception.NegocioException;
 import co.tiendabarrio.model.FormaPago;
 import co.tiendabarrio.model.Producto;
+import co.tiendabarrio.model.TipoDocumento;
+import co.tiendabarrio.repository.AdquirienteRepository;
 import co.tiendabarrio.repository.ProductoRepository;
+import co.tiendabarrio.service.AdquirienteService;
 import co.tiendabarrio.service.ProductoService;
 import co.tiendabarrio.service.VentaService;
 
@@ -37,6 +41,10 @@ class VentasFacturacionTest {
     ProductoRepository productoRepository;
     @Autowired
     VentaService ventas;
+    @Autowired
+    AdquirienteService adquirientes;
+    @Autowired
+    AdquirienteRepository adquirienteRepository;
 
     @Test
     void ventaCalculaElTotalConLosPreciosDeVenta() {
@@ -116,6 +124,61 @@ class VentasFacturacionTest {
                 .contains("Cambio: $ 1.600");
         assertThat(comprobante.whatsappUrl()).startsWith("https://wa.me/573001234567?text=");
         assertThat(ventas.comprobante(venta.id(), null).whatsappUrl()).startsWith("https://wa.me/?text=");
+    }
+
+    @Test
+    void ventaConFacturaElectronicaGuardaLosDatosDelCliente() {
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 20, 2800L, 2200L));
+
+        VentaResponse venta = ventas.registrar(new VentaRequest(List.of(new LineaProductoRequest(arroz.id(), 2)),
+                FormaPago.TARJETA, null, null, new FacturaElectronicaRequest(TipoDocumento.CC, "1.023.456.789",
+                        "Ana Gómez", "ana@example.com", "3001112233", "Calle 10 # 5-20", "Bogotá")));
+
+        assertThat(venta.numeroFacturaElectronica()).isEqualTo(String.format("FE-%06d", venta.id()));
+        assertThat(venta.facturaElectronica().numeroDocumento()).as("sin puntos").isEqualTo("1023456789");
+        assertThat(venta.facturaElectronica().tipoDocumentoNombre()).isEqualTo("Cédula de ciudadanía");
+
+        ComprobanteResponse comprobante = ventas.comprobante(venta.id(), null);
+        assertThat(comprobante.texto())
+                .contains("Factura electrónica de venta " + venta.numeroFacturaElectronica())
+                .contains("Cliente: Ana Gómez")
+                .contains("Cédula de ciudadanía: 1023456789")
+                .contains("Correo: ana@example.com")
+                .contains("Dirección: Calle 10 # 5-20, Bogotá")
+                .contains("TOTAL: $ 5.600")
+                .contains("no ha sido validado por la DIAN");
+        assertThat(comprobante.correoUrl())
+                .startsWith("https://mail.google.com/mail/?view=cm&fs=1&to=ana%40example.com&su=Factura%20electr");
+    }
+
+    @Test
+    void elClienteDeFacturaElectronicaSeReutilizaPorSuDocumento() {
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 20, 2800L, 2200L));
+        ventas.registrar(new VentaRequest(List.of(new LineaProductoRequest(arroz.id(), 1)), FormaPago.EFECTIVO, null,
+                null, new FacturaElectronicaRequest(TipoDocumento.NIT, "900123456-7", "Tienda Ejemplo SAS",
+                        "compras@example.com", null, null, null)));
+
+        assertThat(adquirientes.buscar(TipoDocumento.NIT, "900123456-7")).hasValueSatisfying(a ->
+                assertThat(a.nombre()).isEqualTo("Tienda Ejemplo SAS"));
+        assertThat(adquirientes.buscar(TipoDocumento.CC, "900123456-7")).as("otro tipo de documento").isEmpty();
+
+        VentaResponse segunda = ventas.registrar(new VentaRequest(List.of(new LineaProductoRequest(arroz.id(), 1)),
+                FormaPago.EFECTIVO, null, null, new FacturaElectronicaRequest(TipoDocumento.NIT, "900123456-7",
+                        "Tienda Ejemplo SAS", "facturas@example.com", null, null, null)));
+
+        assertThat(adquirienteRepository.count()).isEqualTo(1);
+        assertThat(segunda.facturaElectronica().correo()).as("se actualiza el correo").isEqualTo("facturas@example.com");
+    }
+
+    @Test
+    void ventaSinFacturaElectronicaNoTieneNumeroNiCorreo() {
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 20, 2800L, 2200L));
+        VentaResponse venta = ventas.registrar(new VentaRequest(List.of(
+                new LineaProductoRequest(arroz.id(), 1)), FormaPago.EFECTIVO, null, null));
+
+        assertThat(venta.numeroFacturaElectronica()).isNull();
+        assertThat(venta.facturaElectronica()).isNull();
+        assertThat(ventas.comprobante(venta.id(), null).correoUrl()).isNull();
     }
 
     private int stockDe(ProductoResponse producto) {

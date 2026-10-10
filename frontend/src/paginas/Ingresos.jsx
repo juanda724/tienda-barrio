@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { api, formatearDia, formatearFecha, formatearPesos } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
 import BotonCopiar from '../componentes/BotonCopiar.jsx'
+import FacturaPedido from '../componentes/FacturaPedido.jsx'
 import InsigniaEstado from '../componentes/InsigniaEstado.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
@@ -34,6 +35,9 @@ export default function Ingresos({ productos, proveedores, recargar, pedidoInici
   const [lineas, setLineas] = useState(() => lineasDesdePedido(pedidoInicial, productos))
   const [filtro, setFiltro] = useState('porPagar')
   const [version, setVersion] = useState(0)
+  // Ingreso recién pagado: como en las ventas, se abre su documento para imprimirlo
+  const [recienPagado, setRecienPagado] = useState(null)
+  const cerrarRecienPagado = useCallback(() => setRecienPagado(null), [])
   const avisos = useAviso()
   const { error } = avisos
   const [enviando, ejecutar] = useEnvio()
@@ -106,12 +110,13 @@ export default function Ingresos({ productos, proveedores, recargar, pedidoInici
   }
 
   // Acciones sobre un ingreso ya registrado (resolver diferencias, pagar, acordar crédito)
-  const accion = (promesa, mensaje) =>
+  const accion = (promesa, mensaje, despues) =>
     ejecutar(async () => {
       try {
         const actualizado = await promesa()
         avisos.exito(mensaje(actualizado))
         setVersion((v) => v + 1)
+        despues?.(actualizado)
       } catch (err) {
         avisos.error(err.message)
       }
@@ -254,10 +259,15 @@ export default function Ingresos({ productos, proveedores, recargar, pedidoInici
             onPagar={(datos) => accion(() => api.pagarIngreso(i.id, datos),
               (r) => r.estadoPago === 'PAGADO'
                 ? `Ingreso #${r.id} pagado: ${formatearPesos(r.montoPagado)}.`
-                : `Ingreso #${r.id}: crédito acordado hasta el ${formatearDia(r.fechaVencimiento)}.`)} />
+                : `Ingreso #${r.id}: crédito acordado hasta el ${formatearDia(r.fechaVencimiento)}.`,
+              (r) => r.estadoPago === 'PAGADO' && setRecienPagado(r))} />
         ))}
         {visibles.length === 0 && <p className="vacio">No hay facturas para mostrar</p>}
       </div>
+      {/* Si el ingreso llegó con un pedido se muestra la factura del pedido; si no, el comprobante de pago */}
+      {recienPagado && (recienPagado.pedidoId
+        ? <FacturaPedido pedidoId={recienPagado.pedidoId} onCerrar={cerrarRecienPagado} />
+        : <ComprobantePago ingreso={recienPagado} onCerrar={cerrarRecienPagado} />)}
     </section>
   )
 }
@@ -280,6 +290,7 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onEntregarFaltantes,
       return c >= 0 && c <= -l.diferencia
     })
   const [verComprobante, setVerComprobante] = useState(false)
+  const [verFactura, setVerFactura] = useState(false)
 
   // En efectivo: cambio que debe devolver el repartidor según lo que se le entrega
   const enEfectivo = abierto?.tipo === 'pagar' && abierto.formaPago === 'EFECTIVO'
@@ -404,10 +415,14 @@ function TarjetaIngreso({ ingreso: i, enviando, onResolver, onEntregarFaltantes,
             {i.formaPagoPagoNombre && ` en ${i.formaPagoPagoNombre.toLowerCase()}`}
             {i.montoEntregado != null && ` · Entregado ${formatearPesos(i.montoEntregado)} · Cambio ${formatearPesos(i.cambio)}`}
           </p>
-          <button className="enlace" onClick={() => setVerComprobante(true)}>Comprobante de pago</button>
+          <div className="acciones izquierda">
+            <button className="enlace" onClick={() => setVerComprobante(true)}>Comprobante de pago</button>
+            {i.pedidoId && <button className="enlace" onClick={() => setVerFactura(true)}>Factura del pedido</button>}
+          </div>
         </div>
       )}
       {verComprobante && <ComprobantePago ingreso={i} onCerrar={() => setVerComprobante(false)} />}
+      {verFactura && <FacturaPedido pedidoId={i.pedidoId} onCerrar={() => setVerFactura(false)} />}
 
       {i.pagable && !abierto && (
         <div className="acciones izquierda">

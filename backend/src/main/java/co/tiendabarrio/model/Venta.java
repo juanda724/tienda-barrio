@@ -49,6 +49,10 @@ public class Venta {
     @JoinColumn(name = "venta_id")
     private List<LineaProducto> lineas = new ArrayList<>();
 
+    /** Cliente que pidió factura electrónica; vacío si solo se le dio el comprobante. */
+    @ManyToOne
+    private Adquiriente adquiriente;
+
     protected Venta() {
     }
 
@@ -62,6 +66,19 @@ public class Venta {
     public void agregarLinea(LineaProducto linea) {
         lineas.add(linea);
         total = lineas.stream().mapToLong(LineaProducto::getSubtotal).sum();
+    }
+
+    public void solicitarFacturaElectronica(Adquiriente adquiriente) {
+        this.adquiriente = adquiriente;
+    }
+
+    /** Número de la factura electrónica (FE-000012 para la venta 12); null si no se pidió. */
+    public String getNumeroFacturaElectronica() {
+        return adquiriente == null || id == null ? null : String.format("FE-%06d", id);
+    }
+
+    public Adquiriente getAdquiriente() {
+        return adquiriente;
     }
 
     /** Cambio a devolver al cliente; null si no pagó en efectivo o no se indicó lo recibido. */

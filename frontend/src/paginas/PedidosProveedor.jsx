@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { api, formatearDia, formatearFecha } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
 import BotonCopiar from '../componentes/BotonCopiar.jsx'
+import FacturaPedido from '../componentes/FacturaPedido.jsx'
 import InsigniaEstado from '../componentes/InsigniaEstado.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
@@ -199,6 +200,8 @@ export default function PedidosProveedor({ proveedores, onRecibir }) {
 function TarjetaPedido({ pedido, enviando, onCambiarEstado, onRecibir }) {
   // Cambio de estado en curso: el dueño elige el estado y puede agregar una nota y la fecha de entrega
   const [cambio, setCambio] = useState(null)
+  const [verFactura, setVerFactura] = useState(false)
+  const cerrarFactura = useCallback(() => setVerFactura(false), [])
 
   const confirmar = (e) => {
     e.preventDefault()
@@ -278,6 +281,20 @@ function TarjetaPedido({ pedido, enviando, onCambiarEstado, onRecibir }) {
           <button className="primario" onClick={onRecibir}>Registrar llegada</button>
         </div>
       )}
+
+      {pedido.ingresoId && (
+        pedido.estadoPagoIngreso === 'PAGADO' ? (
+          <div className="acciones">
+            <button className="primario" onClick={() => setVerFactura(true)}>Ver factura</button>
+          </div>
+        ) : (
+          <p className="pequeno tenue">
+            Recibido con el ingreso #{pedido.ingresoId} ({pedido.estadoPagoIngresoNombre.toLowerCase()}).
+            La factura estará disponible al pagarlo en Ingresos.
+          </p>
+        )
+      )}
+      {verFactura && <FacturaPedido pedidoId={pedido.id} onCerrar={cerrarFactura} />}
 
       <details className="historial">
         <summary>Historial ({pedido.historial.length})</summary>

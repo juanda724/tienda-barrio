@@ -13,10 +13,12 @@ import co.tiendabarrio.dto.response.PedidoProveedorResponse;
 import co.tiendabarrio.exception.NegocioException;
 import co.tiendabarrio.exception.NoEncontradoException;
 import co.tiendabarrio.model.EstadoPedido;
+import co.tiendabarrio.model.IngresoMercancia;
 import co.tiendabarrio.model.LineaProducto;
 import co.tiendabarrio.model.PedidoProveedor;
 import co.tiendabarrio.model.Producto;
 import co.tiendabarrio.model.Proveedor;
+import co.tiendabarrio.repository.IngresoRepository;
 import co.tiendabarrio.repository.PedidoProveedorRepository;
 import co.tiendabarrio.repository.ProductoRepository;
 import co.tiendabarrio.repository.ProveedorRepository;
@@ -32,13 +34,16 @@ public class PedidoProveedorService {
     private final ProveedorRepository proveedores;
     private final ProductoRepository productos;
     private final MensajePedidoService mensajes;
+    private final IngresoRepository ingresos;
 
     public PedidoProveedorService(PedidoProveedorRepository pedidos, ProveedorRepository proveedores,
-                                  ProductoRepository productos, MensajePedidoService mensajes) {
+                                  ProductoRepository productos, MensajePedidoService mensajes,
+                                  IngresoRepository ingresos) {
         this.pedidos = pedidos;
         this.proveedores = proveedores;
         this.productos = productos;
         this.mensajes = mensajes;
+        this.ingresos = ingresos;
     }
 
     @Transactional(readOnly = true)
@@ -101,6 +106,12 @@ public class PedidoProveedorService {
     private PedidoProveedorResponse respuesta(PedidoProveedor pedido) {
         String mensaje = mensajes.mensaje(pedido);
         return PedidoProveedorResponse.de(pedido, mensaje, mensajes.whatsappUrl(pedido, mensaje),
-                mensajes.correoUrl(pedido, mensaje));
+                mensajes.correoUrl(pedido, mensaje), ingresoDe(pedido));
+    }
+
+    /** Ingreso con el que llegó el pedido; null si aún no se ha recibido. */
+    private IngresoMercancia ingresoDe(PedidoProveedor pedido) {
+        return pedido.getEstado() == EstadoPedido.ENTREGADO
+                ? ingresos.findFirstByPedidoIdOrderByIdDesc(pedido.getId()).orElse(null) : null;
     }
 }

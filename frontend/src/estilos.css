@@ -255,6 +255,16 @@ button.whatsapp-boton { background: var(--whatsapp); border-color: var(--whatsap
 
 /* Venta a crédito: cliente nuevo sin salir de Ventas */
 .cliente-nuevo { display: flex; flex-direction: column; gap: 8px; grid-column: 1 / -1; }
+
+/* Ventas: datos del cliente que pide factura electrónica */
+button.activo { background: var(--primario-suave); color: var(--primario); border-color: var(--primario); font-weight: 600; }
+.factura-electronica {
+  display: flex; flex-direction: column; gap: 8px; margin: 0;
+  border: 1px solid var(--borde); border-radius: 8px; padding: 10px 12px;
+}
+.factura-electronica legend { padding: 0 4px; font-weight: 600; }
+.factura-electronica p { margin: 0; }
+.datos-adquiriente { margin: 4px 0 8px; }
 button.enlace.izquierda { align-self: flex-start; padding: 2px 0; }
 
 /* Fiados: lista de clientes a la izquierda y su cuenta a la derecha */

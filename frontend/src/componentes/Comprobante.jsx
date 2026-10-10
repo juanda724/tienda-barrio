@@ -6,10 +6,19 @@ import { api, formatearFecha, formatearPesos } from '../servicios/api.js'
  * venta es un VentaResponse del backend.
  */
 export default function Comprobante({ venta, onCerrar }) {
-  const [telefono, setTelefono] = useState('')
+  // Si pidió factura electrónica con celular, ese es el destino sugerido para WhatsApp
+  const [telefono, setTelefono] = useState(venta.facturaElectronica?.telefono ?? '')
   const [error, setError] = useState(null)
   const [abriendo, setAbriendo] = useState(false)
+  // Con factura electrónica: texto y enlace de Gmail para enviarla al correo del cliente
+  const [envioCorreo, setEnvioCorreo] = useState(null)
   const dialogo = useRef(null)
+  const fe = venta.facturaElectronica
+
+  useEffect(() => {
+    if (!fe) return
+    api.comprobante(venta.id).then(setEnvioCorreo).catch((e) => setError(e.message))
+  }, [venta.id, fe])
 
   // Esc cierra el comprobante; el foco va al diálogo para que lo lean los lectores de pantalla
   useEffect(() => {
@@ -43,8 +52,25 @@ export default function Comprobante({ venta, onCerrar }) {
         ref={dialogo} onClick={(e) => e.stopPropagation()}>
         <div className="comprobante imprimible">
           <h3 id="titulo-comprobante">Tienda de Barrio</h3>
-          <p className="tenue">Comprobante de venta #{venta.id} · {formatearFecha(venta.fechaHora)}</p>
-          {venta.clienteNombre && <p>Cliente: <strong>{venta.clienteNombre}</strong></p>}
+          {fe ? (
+            <>
+              <p className="tenue">
+                Factura electrónica de venta <strong>{venta.numeroFacturaElectronica}</strong> · Venta #{venta.id} ·{' '}
+                {formatearFecha(venta.fechaHora)}
+              </p>
+              <p className="datos-adquiriente">
+                <strong>{fe.nombre}</strong><br />
+                <span className="pequeno">
+                  {fe.tipoDocumentoNombre}: {fe.numeroDocumento}<br />
+                  {fe.correo}{fe.telefono && ` · ${fe.telefono}`}
+                  {(fe.direccion || fe.ciudad) && <><br />{[fe.direccion, fe.ciudad].filter(Boolean).join(', ')}</>}
+                </span>
+              </p>
+            </>
+          ) : (
+            <p className="tenue">Comprobante de venta #{venta.id} · {formatearFecha(venta.fechaHora)}</p>
+          )}
+          {venta.clienteNombre && <p>{fe ? 'Fiado a' : 'Cliente'}: <strong>{venta.clienteNombre}</strong></p>}
           <table>
             <tbody>
               {venta.lineas.map((l) => (
@@ -68,6 +94,7 @@ export default function Comprobante({ venta, onCerrar }) {
               )}
             </tfoot>
           </table>
+          {fe && <p className="pequeno tenue"></p>}
           <p className="gracias">¡Gracias por su compra!</p>
         </div>
 
@@ -80,6 +107,9 @@ export default function Comprobante({ venta, onCerrar }) {
           <div className="acciones">
             <button type="button" onClick={onCerrar}>Cerrar</button>
             <button type="button" onClick={() => window.print()}>Imprimir</button>
+            {envioCorreo?.correoUrl && (
+              <a className="boton" href={envioCorreo.correoUrl} target="_blank" rel="noreferrer">Enviar por Gmail</a>
+            )}
             <button type="submit" className="whatsapp-boton" disabled={abriendo}>Enviar por WhatsApp</button>
           </div>
         </form>

@@ -103,6 +103,13 @@ frontend/  Interfaz web (React)
   **cambio**; si lo recibido no alcanza, la venta se rechaza.
 - Al registrar la venta se abre el **comprobante digital** (SWR-14), que se puede **imprimir** o **enviar por
   WhatsApp** al cliente (con o sin su número). También se puede abrir después desde el historial de ventas.
+- **Factura electrónica:** si el cliente la pide, el botón **Factura electrónica** de la ventana de cobro pide sus
+  datos: tipo y número de documento (cédula, NIT, cédula de extranjería o pasaporte), nombre o razón social, correo
+  y, opcionales, celular, dirección y ciudad. Los datos quedan guardados por documento: la próxima vez basta con
+  escribir el número para que se llenen solos. La venta recibe un número de factura (FE-000012 para la venta 12) y el
+  comprobante se convierte en la factura, con los datos del cliente y el botón **Enviar por Gmail** a su correo.
+  *Es un prototipo:* la factura no se transmite a la DIAN (eso exige habilitarse como facturador electrónico y un
+  proveedor tecnológico que la firme y le asigne el CUFE), y así lo indica el documento.
 
 ### Ventas a crédito (F-08)
 
@@ -140,6 +147,9 @@ frontend/  Interfaz web (React)
   (si no alcanza, no deja confirmar). Queda guardado y se ve en la factura.
 - Cada pago tiene su **comprobante de pago** (total, forma de pago, entregado y cambio, y las entregas posteriores
   de faltantes si las hubo) para imprimir o enviar al proveedor por WhatsApp o correo.
+- Como en las ventas, al confirmar un pago se abre de inmediato la ventana para imprimir: la **factura del pedido**
+  si el ingreso llegó con un pedido a proveedor, o el comprobante de pago si llegó sin pedido. Después se pueden
+  volver a abrir desde la factura pagada ("Comprobante de pago" / "Factura del pedido").
 - **Regla RN-01 / SWR-16:** con diferencias sin resolver no se puede pagar ni acordar crédito. Hay dos formas de
   resolverlas:
   - **Llegaron faltantes:** el proveedor entregó después lo que faltó. Se indica cuánto llegó de cada producto (puede
@@ -195,6 +205,11 @@ frontend/  Interfaz web (React)
 - **Entregado** no se marca a mano: se asigna al registrar el **ingreso de mercancía** de ese pedido, que precarga
   las cantidades pedidas para ajustarlas si llegó algo distinto. Un pedido entregado, rechazado o cancelado ya no
   puede recibirse.
+- Cuando el ingreso del pedido queda **pagado**, el pedido muestra el botón **Ver factura**: los datos del proveedor
+  (nombre, contacto, teléfono y correo, los que tenga registrados), lo pedido y lo cobrado
+  producto por producto (costo y subtotal), notas crédito, entregas posteriores de faltantes, total pagado, forma de
+  pago y cambio. Se puede imprimir (o guardar en PDF), enviar por Gmail o WhatsApp, o copiar. Mientras no esté pagado,
+  el pedido indica con qué ingreso llegó y que la factura estará disponible al pagarlo en *Ingresos*.
 - Los productos con stock igual o menor al mínimo se marcan como **Reabastecer**.
 
 ## API REST
@@ -205,7 +220,8 @@ frontend/  Interfaz web (React)
 | POST / PUT | `/api/productos`, `/api/productos/{id}` | Crear o editar un producto (el stock no se edita directamente) |
 | GET | `/api/movimientos?productoId=` | Historial de movimientos, opcionalmente de un solo producto |
 | GET / POST | `/api/ventas`, `/api/ventas/{id}` | Listar, consultar o registrar ventas (`{"lineas": [...], "formaPago": "EFECTIVO", "montoRecibido": 20000, "clienteId": null}`) |
-| GET | `/api/ventas/{id}/comprobante?telefono=` | Comprobante en texto y enlace de WhatsApp para el cliente |
+| GET | `/api/ventas/{id}/comprobante?telefono=` | Comprobante en texto y enlace de WhatsApp para el cliente (y de Gmail si tiene factura electrónica) |
+| GET | `/api/adquirientes/buscar?tipo=CC&numero=` | Datos guardados de un cliente de factura electrónica (204 si no existe) |
 | GET / POST / PUT | `/api/proveedores`, `/api/proveedores/{id}` | Proveedores y sus productos |
 | GET / POST / PUT | `/api/clientes`, `/api/clientes/{id}` | Clientes con lo fiado, lo abonado y el saldo pendiente |
 | GET | `/api/clientes/{id}/estado-cuenta` | Libreta del cliente y recordatorio de saldo por WhatsApp |
@@ -221,6 +237,7 @@ frontend/  Interfaz web (React)
 | GET | `/api/reportes/ventas?desde=AAAA-MM-DD&hasta=AAAA-MM-DD` | Ventas por producto en el rango (también `/api/reportes/ventas.csv`) |
 | GET / POST | `/api/pedidos-proveedor`, `/api/pedidos-proveedor/{id}` | Pedidos a proveedor, con su mensaje y enlaces de WhatsApp y correo |
 | POST | `/api/pedidos-proveedor/{id}/estado` | Cambiar el estado de un pedido (`{"estado": "ACEPTADO", "nota": "..."}`) |
+| GET | `/api/pedidos-proveedor/{id}/factura` | Factura del pedido ya recibido y pagado, con enlaces de WhatsApp y correo |
 | GET / POST | `/api/ingresos` | Ingresos de mercancía (entrada) con `lineas: [{productoId, cantidadFacturada, cantidadRecibida, costoUnitario}]`; con `pedidoId` recibe ese pedido y lo marca entregado |
 | POST | `/api/ingresos/{id}/resolver-diferencias` | Registrar cómo se resolvieron las diferencias (`{"nota": "..."}`) |
 | POST | `/api/ingresos/{id}/entregas-faltantes` | Registrar faltantes que el proveedor entregó después (`{"lineas": [{"productoId", "cantidad"}], "nota"}`) |

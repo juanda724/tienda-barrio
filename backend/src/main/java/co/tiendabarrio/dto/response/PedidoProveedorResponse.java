@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import co.tiendabarrio.model.IngresoMercancia;
 import co.tiendabarrio.model.PedidoProveedor;
 
 /**
  * Pedido a proveedor con todo lo que la pantalla necesita: su estado, los cambios de estado
- * permitidos y los enlaces para enviarlo por WhatsApp o correo (null si falta el dato de contacto).
+ * permitidos y los enlaces para enviarlo por WhatsApp o correo (null si falta el dato de contacto). Si ya
+ * se recibió, el ingreso con que llegó y el estado de su pago: pagado, se puede ver su factura.
  */
 public record PedidoProveedorResponse(
         Long id,
@@ -24,10 +26,13 @@ public record PedidoProveedorResponse(
         boolean puedeRecibirse,
         String mensaje,
         String whatsappUrl,
-        String correoUrl) {
+        String correoUrl,
+        Long ingresoId,
+        String estadoPagoIngreso,
+        String estadoPagoIngresoNombre) {
 
     public static PedidoProveedorResponse de(PedidoProveedor pedido, String mensaje, String whatsappUrl,
-                                             String correoUrl) {
+                                             String correoUrl, IngresoMercancia ingreso) {
         return new PedidoProveedorResponse(
                 pedido.getId(),
                 pedido.getProveedor().getId(),
@@ -42,6 +47,9 @@ public record PedidoProveedorResponse(
                 pedido.getEstado().esActivo(),
                 mensaje,
                 whatsappUrl,
-                correoUrl);
+                correoUrl,
+                ingreso == null ? null : ingreso.getId(),
+                ingreso == null ? null : ingreso.getEstadoPago().name(),
+                ingreso == null ? null : ingreso.getEstadoPago().getNombre());
     }
 }

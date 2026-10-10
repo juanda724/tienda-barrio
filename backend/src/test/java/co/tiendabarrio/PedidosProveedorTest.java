@@ -16,17 +16,22 @@ import co.tiendabarrio.dto.request.CambioEstadoRequest;
 import co.tiendabarrio.dto.request.IngresoRequest;
 import co.tiendabarrio.dto.request.LineaIngresoRequest;
 import co.tiendabarrio.dto.request.LineaProductoRequest;
+import co.tiendabarrio.dto.request.PagoProveedorRequest;
 import co.tiendabarrio.dto.request.PedidoProveedorRequest;
 import co.tiendabarrio.dto.request.ProductoRequest;
 import co.tiendabarrio.dto.request.ProveedorRequest;
+import co.tiendabarrio.dto.request.ResolverDiferenciasRequest;
 import co.tiendabarrio.dto.response.EstadoResponse;
+import co.tiendabarrio.dto.response.FacturaPedidoResponse;
 import co.tiendabarrio.dto.response.IngresoResponse;
 import co.tiendabarrio.dto.response.PedidoProveedorResponse;
 import co.tiendabarrio.dto.response.ProductoResponse;
 import co.tiendabarrio.dto.response.ProveedorResponse;
 import co.tiendabarrio.exception.NegocioException;
 import co.tiendabarrio.model.EstadoPedido;
+import co.tiendabarrio.model.FormaPago;
 import co.tiendabarrio.repository.ProductoRepository;
+import co.tiendabarrio.service.FacturaPedidoService;
 import co.tiendabarrio.service.IngresoService;
 import co.tiendabarrio.service.PedidoProveedorService;
 import co.tiendabarrio.service.ProductoService;
@@ -47,6 +52,8 @@ class PedidosProveedorTest {
     PedidoProveedorService pedidos;
     @Autowired
     IngresoService ingresos;
+    @Autowired
+    FacturaPedidoService facturas;
 
     ProductoResponse arroz;
     ProductoResponse leche;
@@ -164,6 +171,61 @@ class PedidosProveedorTest {
                 List.of(new LineaProductoRequest(leche.id(), 5)), null, null)))
                 .isInstanceOf(NegocioException.class)
                 .hasMessageContaining("no está asociado");
+    }
+
+    @Test
+    void facturaDelPedidoSoloCuandoEstaRecibidoYPagado() {
+        Long id = crearPedido(20).id();
+        assertThatThrownBy(() -> facturas.generar(id))
+                .isInstanceOf(NegocioException.class).hasMessageContaining("todavía no se ha recibido");
+
+        IngresoResponse ingreso = ingresos.registrar(new IngresoRequest(distribuidora.id(), id, "FV-9",
+                List.of(new LineaIngresoRequest(arroz.id(), 20, 20, 1000L))));
+        PedidoProveedorResponse recibido = pedidos.obtener(id);
+        assertThat(recibido.ingresoId()).isEqualTo(ingreso.id());
+        assertThat(recibido.estadoPagoIngreso()).isEqualTo("PENDIENTE");
+        assertThatThrownBy(() -> facturas.generar(id))
+                .isInstanceOf(NegocioException.class).hasMessageContaining("todavía no está pagado");
+
+        ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.EFECTIVO, null, 25000L));
+        assertThat(pedidos.obtener(id).estadoPagoIngreso()).isEqualTo("PAGADO");
+        FacturaPedidoResponse factura = facturas.generar(id);
+
+        assertThat(factura.ingresoId()).isEqualTo(ingreso.id());
+        assertThat(factura.proveedorContacto()).isEqualTo("Luis");
+        assertThat(factura.proveedorCorreo()).isEqualTo("pedidos@example.com");
+        assertThat(factura.lineas()).singleElement().satisfies(l -> {
+            assertThat(l.cantidadPedida()).isEqualTo(20);
+            assertThat(l.cantidadCobrada()).isEqualTo(20);
+            assertThat(l.subtotal()).isEqualTo(20_000L);
+        });
+        assertThat(factura.totalPagado()).isEqualTo(20_000L);
+        assertThat(factura.cambio()).isEqualTo(5_000L);
+        assertThat(factura.texto())
+                .contains("Factura del pedido #" + id)
+                .contains("Contacto: Luis")
+                .contains("Teléfono: 300 123 4567")
+                .contains("Correo: pedidos@example.com")
+                .contains("Factura del proveedor: FV-9")
+                .contains("- 20 x Arroz a $ 1.000 = $ 20.000")
+                .contains("TOTAL PAGADO: $ 20.000")
+                .contains("Cambio devuelto: $ 5.000");
+        assertThat(factura.correoUrl()).startsWith("https://mail.google.com/mail/?view=cm&fs=1&to=pedidos%40example.com&su=Factura");
+    }
+
+    @Test
+    void facturaDeUnPedidoConFacturaAjustadaCobraLoRecibido() {
+        Long id = crearPedido(20).id();
+        IngresoResponse ingreso = ingresos.registrar(new IngresoRequest(distribuidora.id(), id, null,
+                List.of(new LineaIngresoRequest(arroz.id(), 18, 20, 1000L))));
+        ingresos.resolverDiferencias(ingreso.id(), new ResolverDiferenciasRequest("Ajustaron la factura"));
+        ingresos.pagar(ingreso.id(), new PagoProveedorRequest(FormaPago.TRANSFERENCIA, null, null));
+
+        FacturaPedidoResponse factura = facturas.generar(id);
+
+        assertThat(factura.lineas().get(0).cantidadCobrada()).isEqualTo(18);
+        assertThat(factura.subtotal()).isEqualTo(18_000L);
+        assertThat(factura.totalPagado()).isEqualTo(18_000L);
     }
 
     private PedidoProveedorResponse crearPedido(int cantidadArroz) {
