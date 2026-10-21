@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { api, formatearFecha } from '../servicios/api.js'
+import Aviso from '../componentes/Aviso.jsx'
+import Comprobante from '../componentes/Comprobante.jsx'
+import ComprobantePago from '../componentes/ComprobantePago.jsx'
+import FacturaPedido from '../componentes/FacturaPedido.jsx'
+import NotaDevolucion from '../componentes/NotaDevolucion.jsx'
 
-// Cómo se muestra cada origen de movimiento: nombre de la operación, color y prefijo del número
+// Cómo se muestra cada origen de movimiento: nombre de la operación, color, prefijo del número y su documento
 const OPERACIONES = {
-  VENTA: { nombre: 'Venta', clase: 'salida', documento: 'Venta' },
-  INGRESO_PROVEEDOR: { nombre: 'Compra', clase: 'entrada', documento: 'Ingreso' },
-  INVENTARIO_INICIAL: { nombre: 'Inventario inicial', clase: 'neutra', documento: null },
-  DEVOLUCION_PROVEEDOR: { nombre: 'Devolución', clase: 'peligro', documento: 'Devolución' },
-  REEMPLAZO_DEVOLUCION: { nombre: 'Reemplazo', clase: 'entrada', documento: 'Devolución' },
+  VENTA: { nombre: 'Venta', clase: 'salida', documento: 'Venta', ver: 'Comprobante' },
+  INGRESO_PROVEEDOR: { nombre: 'Compra', clase: 'entrada', documento: 'Ingreso', ver: 'Factura' },
+  INVENTARIO_INICIAL: { nombre: 'Inventario inicial', clase: 'neutra', documento: null, ver: null },
+  DEVOLUCION_PROVEEDOR: { nombre: 'Devolución', clase: 'peligro', documento: 'Devolución', ver: 'Nota' },
+  REEMPLAZO_DEVOLUCION: { nombre: 'Reemplazo', clase: 'entrada', documento: 'Devolución', ver: 'Nota' },
 }
 
 const FILTROS = [
@@ -26,6 +31,35 @@ export default function Movimientos({ productos }) {
   const [filtroProducto, setFiltroProducto] = useState('')
   const [filtroOperacion, setFiltroOperacion] = useState('todas')
   const [error, setError] = useState(null)
+  // Documento abierto: { tipo: 'venta' | 'factura' | 'pago' | 'devolucion', datos }
+  const [documento, setDocumento] = useState(null)
+  const [aviso, setAviso] = useState(null)
+  const cerrarDocumento = useCallback(() => setDocumento(null), [])
+
+  // Venta → su comprobante. Ingreso pagado → la factura del pedido o, si llegó sin pedido, el comprobante
+  // de pago (sin pagar todavía no tiene). Devolución o reemplazo → la nota de devolución.
+  const abrirDocumento = async (m) => {
+    setAviso(null)
+    try {
+      if (m.origen === 'VENTA') {
+        setDocumento({ tipo: 'venta', datos: await api.venta(m.numeroDocumento) })
+      } else if (m.origen === 'INGRESO_PROVEEDOR') {
+        const ingreso = await api.ingreso(m.numeroDocumento)
+        if (ingreso.estadoPago !== 'PAGADO') {
+          setAviso(`El ingreso #${ingreso.id} todavía no está pagado (${ingreso.estadoPagoNombre.toLowerCase()}). `
+            + `Su ${ingreso.pedidoId ? 'factura' : 'comprobante de pago'} estará disponible al pagarlo en Ingresos.`)
+          return
+        }
+        setDocumento(ingreso.pedidoId
+          ? { tipo: 'factura', datos: ingreso }
+          : { tipo: 'pago', datos: ingreso })
+      } else {
+        setDocumento({ tipo: 'devolucion', datos: await api.devolucion(m.numeroDocumento) })
+      }
+    } catch (e) {
+      setAviso(e.message)
+    }
+  }
 
   useEffect(() => {
     api.movimientos(filtroProducto)
@@ -51,6 +85,7 @@ export default function Movimientos({ productos }) {
       </div>
 
       {error && <div className="aviso error">{error}</div>}
+      <Aviso aviso={aviso && { tipo: 'info', texto: aviso }} onCerrar={() => setAviso(null)} />
 
       <div className="tarjeta">
         <div className="titulo-tabla">
@@ -78,6 +113,7 @@ export default function Movimientos({ productos }) {
                 <th className="num">Cantidad</th>
                 <th className="num">Stock resultante</th>
                 <th>Detalle</th>
+                <th>Documento</th>
               </tr>
             </thead>
             <tbody>
@@ -94,16 +130,26 @@ export default function Movimientos({ productos }) {
                     <td className="num fuerte">{m.tipo === 'ENTRADA' ? '+' : '−'}{m.cantidad}</td>
                     <td className="num">{m.stockResultante}</td>
                     <td className="tenue">{m.referencia ?? '—'}</td>
+                    <td>
+                      {operacion.ver && m.numeroDocumento
+                        ? <button className="enlace" onClick={() => abrirDocumento(m)}>{operacion.ver}</button>
+                        : <span className="tenue">—</span>}
+                    </td>
                   </tr>
                 )
               })}
               {visibles.length === 0 && (
-                <tr><td colSpan="7" className="vacio">No hay movimientos para mostrar</td></tr>
+                <tr><td colSpan="8" className="vacio">No hay movimientos para mostrar</td></tr>
               )}
             </tbody>
           </table>
         </div>
       </div>
+
+      {documento?.tipo === 'venta' && <Comprobante venta={documento.datos} onCerrar={cerrarDocumento} />}
+      {documento?.tipo === 'factura' && <FacturaPedido pedidoId={documento.datos.pedidoId} onCerrar={cerrarDocumento} />}
+      {documento?.tipo === 'pago' && <ComprobantePago ingreso={documento.datos} onCerrar={cerrarDocumento} />}
+      {documento?.tipo === 'devolucion' && <NotaDevolucion devolucion={documento.datos} onCerrar={cerrarDocumento} />}
     </section>
   )
 }

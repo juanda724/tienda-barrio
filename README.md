@@ -87,6 +87,9 @@ frontend/  Interfaz web (React)
 - El stock **solo cambia con movimientos**: las ventas lo descargan y los ingresos de mercancía lo suman. Cada
   movimiento guarda la fecha, la hora, la cantidad y el stock resultante (SWR-01, SWR-04). El stock inicial de un
   producto también queda registrado como movimiento.
+- En *Movimientos*, cada movimiento abre su documento: el **comprobante** de la venta, la **factura del pedido** o
+  el comprobante de pago del ingreso (si ya está pagado; si no, avisa que estará disponible al pagarlo) y la **nota
+  de devolución** de las devoluciones y reemplazos.
 - Una **venta** descarga automáticamente sus productos del inventario (SWR-02). Si algún producto no tiene stock
   suficiente, se rechaza la venta completa y no se modifica nada.
 - El **ingreso de mercancía** es la única forma de sumar stock (SWR-03, SWR-06).
@@ -212,6 +215,7 @@ frontend/  Interfaz web (React)
 | GET | `/api/productos` | Lista de productos con su stock |
 | POST / PUT | `/api/productos`, `/api/productos/{id}` | Crear o editar un producto (el stock no se edita directamente) |
 | GET | `/api/movimientos?productoId=` | Historial de movimientos, opcionalmente de un solo producto |
+| GET | `/api/ingresos/{id}` | Un ingreso de mercancía con su verificación y su pago |
 | GET / POST | `/api/ventas`, `/api/ventas/{id}` | Listar, consultar o registrar ventas (`{"lineas": [...], "formaPago": "EFECTIVO", "montoRecibido": 20000, "clienteId": null}`) |
 | GET | `/api/ventas/{id}/comprobante?telefono=` | Comprobante en texto y enlace de WhatsApp para el cliente |
 | GET / POST / PUT | `/api/proveedores`, `/api/proveedores/{id}` | Proveedores y sus productos |

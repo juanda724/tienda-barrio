@@ -38,6 +38,11 @@ public class IngresoController {
         return ingresos.listar();
     }
 
+    @GetMapping("/{id}")
+    public IngresoResponse obtener(@PathVariable Long id) {
+        return ingresos.obtener(id);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public IngresoResponse registrar(@Valid @RequestBody IngresoRequest datos) {

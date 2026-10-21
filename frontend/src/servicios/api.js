@@ -34,6 +34,7 @@ export const api = {
 
   movimientos: (productoId) => pedir(productoId ? `/movimientos?productoId=${productoId}` : '/movimientos'),
   ventas: () => pedir('/ventas'),
+  venta: (id) => pedir(`/ventas/${id}`),
   comprobante: (id, telefono) =>
     pedir(`/ventas/${id}/comprobante${telefono ? `?telefono=${encodeURIComponent(telefono)}` : ''}`),
   registrarVenta: (datos) => post('/ventas', datos),
@@ -57,6 +58,7 @@ export const api = {
   facturaPedido: (id) => pedir(`/pedidos-proveedor/${id}/factura`),
 
   ingresos: () => pedir('/ingresos'),
+  ingreso: (id) => pedir(`/ingresos/${id}`),
   registrarIngreso: (datos) => post('/ingresos', datos),
   resolverDiferencias: (id, nota) => post(`/ingresos/${id}/resolver-diferencias`, { nota }),
   entregarFaltantes: (id, datos) => post(`/ingresos/${id}/entregas-faltantes`, datos),
@@ -70,6 +72,7 @@ export const api = {
   csvVentas: (rango) => `/api/reportes/ventas.csv${consulta(rango)}`,
 
   devoluciones: () => pedir('/devoluciones'),
+  devolucion: (id) => pedir(`/devoluciones/${id}`),
   registrarDevolucion: (datos) => post('/devoluciones', datos),
   cambiarEstadoDevolucion: (id, datos) => post(`/devoluciones/${id}/estado`, datos),
   // Fotos como multipart: sin cabecera JSON, el navegador pone la del formulario

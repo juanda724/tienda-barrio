@@ -52,6 +52,11 @@ public class IngresoService {
         return ingresos.findAllByOrderByFechaHoraDescIdDesc().stream().map(IngresoResponse::de).toList();
     }
 
+    @Transactional(readOnly = true)
+    public IngresoResponse obtener(Long id) {
+        return IngresoResponse.de(buscar(id));
+    }
+
     /**
      * Registra la mercancía recibida, la suma al inventario (SWR-03, SWR-06) y confronta la factura
      * con lo recibido (SWR-15, SWR-17). Solo se aceptan productos que el proveedor tiene asociados

@@ -133,6 +133,7 @@ input.cantidad { width: 90px; text-align: right; }
 .aviso { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; }
 .aviso.exito { background: var(--ok-suave); color: var(--ok); }
 .aviso.error { background: var(--peligro-suave); color: var(--peligro); }
+.aviso.info { background: var(--info-suave); color: var(--info); }
 .aviso .cerrar { border: none; background: none; color: inherit; font-size: 1.2rem; padding: 0 4px; }
 
 .rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
