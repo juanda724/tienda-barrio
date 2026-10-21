@@ -103,13 +103,6 @@ frontend/  Interfaz web (React)
   **cambio**; si lo recibido no alcanza, la venta se rechaza.
 - Al registrar la venta se abre el **comprobante digital** (SWR-14), que se puede **imprimir** o **enviar por
   WhatsApp** al cliente (con o sin su número). También se puede abrir después desde el historial de ventas.
-- **Factura electrónica:** si el cliente la pide, el botón **Factura electrónica** de la ventana de cobro pide sus
-  datos: tipo y número de documento (cédula, NIT, cédula de extranjería o pasaporte), nombre o razón social, correo
-  y, opcionales, celular, dirección y ciudad. Los datos quedan guardados por documento: la próxima vez basta con
-  escribir el número para que se llenen solos. La venta recibe un número de factura (FE-000012 para la venta 12) y el
-  comprobante se convierte en la factura, con los datos del cliente y el botón **Enviar por Gmail** a su correo.
-  *Es un prototipo:* la factura no se transmite a la DIAN (eso exige habilitarse como facturador electrónico y un
-  proveedor tecnológico que la firme y le asigne el CUFE), y así lo indica el documento.
 
 ### Ventas a crédito (F-08)
 
@@ -220,8 +213,7 @@ frontend/  Interfaz web (React)
 | POST / PUT | `/api/productos`, `/api/productos/{id}` | Crear o editar un producto (el stock no se edita directamente) |
 | GET | `/api/movimientos?productoId=` | Historial de movimientos, opcionalmente de un solo producto |
 | GET / POST | `/api/ventas`, `/api/ventas/{id}` | Listar, consultar o registrar ventas (`{"lineas": [...], "formaPago": "EFECTIVO", "montoRecibido": 20000, "clienteId": null}`) |
-| GET | `/api/ventas/{id}/comprobante?telefono=` | Comprobante en texto y enlace de WhatsApp para el cliente (y de Gmail si tiene factura electrónica) |
-| GET | `/api/adquirientes/buscar?tipo=CC&numero=` | Datos guardados de un cliente de factura electrónica (204 si no existe) |
+| GET | `/api/ventas/{id}/comprobante?telefono=` | Comprobante en texto y enlace de WhatsApp para el cliente |
 | GET / POST / PUT | `/api/proveedores`, `/api/proveedores/{id}` | Proveedores y sus productos |
 | GET / POST / PUT | `/api/clientes`, `/api/clientes/{id}` | Clientes con lo fiado, lo abonado y el saldo pendiente |
 | GET | `/api/clientes/{id}/estado-cuenta` | Libreta del cliente y recordatorio de saldo por WhatsApp |
