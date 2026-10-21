@@ -19,16 +19,20 @@ import co.tiendabarrio.repository.ProductoRepository;
 /**
  * Único punto donde cambia el stock. Cada entrada o salida actualiza el producto y
  * deja un movimiento con fecha, hora y cantidad (F-01: SWR-01, SWR-03, SWR-04).
+ * Después de cada movimiento revisa si hay que generar o resolver una alerta de stock mínimo (F-03).
  */
 @Service
 public class InventarioService {
 
     private final ProductoRepository productos;
     private final MovimientoRepository movimientos;
+    private final AlertaService alertas;
 
-    public InventarioService(ProductoRepository productos, MovimientoRepository movimientos) {
+    public InventarioService(ProductoRepository productos, MovimientoRepository movimientos,
+                             AlertaService alertas) {
         this.productos = productos;
         this.movimientos = movimientos;
+        this.alertas = alertas;
     }
 
     @Transactional
@@ -36,7 +40,10 @@ public class InventarioService {
                                                  String referencia) {
         validarCantidad(cantidad);
         producto.aumentarStock(cantidad);
-        return movimientos.save(new MovimientoInventario(producto, TipoMovimiento.ENTRADA, origen, cantidad, referencia));
+        MovimientoInventario movimiento = movimientos.save(
+                new MovimientoInventario(producto, TipoMovimiento.ENTRADA, origen, cantidad, referencia));
+        alertas.sincronizar(producto);
+        return movimiento;
     }
 
     @Transactional
@@ -48,7 +55,10 @@ public class InventarioService {
                     + producto.getStockActual() + ", solicitado " + cantidad);
         }
         producto.disminuirStock(cantidad);
-        return movimientos.save(new MovimientoInventario(producto, TipoMovimiento.SALIDA, origen, cantidad, referencia));
+        MovimientoInventario movimiento = movimientos.save(
+                new MovimientoInventario(producto, TipoMovimiento.SALIDA, origen, cantidad, referencia));
+        alertas.sincronizar(producto);
+        return movimiento;
     }
 
     /** Compra directa de un producto: incrementa su stock (SWR-03). */

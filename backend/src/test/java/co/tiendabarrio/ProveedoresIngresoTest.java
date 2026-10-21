@@ -42,7 +42,7 @@ class ProveedoresIngresoTest {
 
     @Test
     void proveedorConservaContactoYProductosAsociados() {
-        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 0));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 0, null, null));
 
         ProveedorResponse proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", "Luis", "300 123 4567",
                 "luis@example.com", List.of(arroz.id())));
@@ -55,8 +55,8 @@ class ProveedoresIngresoTest {
 
     @Test
     void ingresoDeMercanciaIncrementaElStock() {
-        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2));
-        ProductoResponse azucar = productos.crear(new ProductoRequest("Azúcar", "Granos", 5, 1));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2, null, null));
+        ProductoResponse azucar = productos.crear(new ProductoRequest("Azúcar", "Granos", 5, 1, null, null));
         ProveedorResponse proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", null, "3001234567",
                 null, List.of(arroz.id(), azucar.id())));
 
@@ -72,8 +72,8 @@ class ProveedoresIngresoTest {
 
     @Test
     void ingresoConProductoNoAsociadoSeRechaza() {
-        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2));
-        ProductoResponse leche = productos.crear(new ProductoRequest("Leche", "Lácteos", 5, 2));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 2, null, null));
+        ProductoResponse leche = productos.crear(new ProductoRequest("Leche", "Lácteos", 5, 2, null, null));
         ProveedorResponse proveedor = proveedores.crear(new ProveedorRequest("Distribuidora", null, "3001234567",
                 null, List.of(arroz.id())));
 

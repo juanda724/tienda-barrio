@@ -1,5 +1,6 @@
 package co.tiendabarrio.config;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
@@ -36,12 +37,12 @@ public class DatosDemo implements CommandLineRunner {
         if (productoRepository.count() > 0) {
             return;
         }
-        ProductoResponse arroz = crear("Arroz 500 g", "Granos", 10, 24);
-        ProductoResponse azucar = crear("Azúcar 1 kg", "Granos", 8, 6);
-        ProductoResponse aceite = crear("Aceite 1 L", "Aceites", 10, 15);
-        ProductoResponse leche = crear("Leche entera 1 L", "Lácteos", 12, 20);
-        ProductoResponse huevos = crear("Huevos x 30", "Lácteos", 3, 4);
-        crear("Pan tajado", "Panadería", 5, 9);
+        ProductoResponse arroz = crear("Arroz 500 g", "Granos", 10, 24, 3200, 2500);
+        ProductoResponse azucar = crear("Azúcar 1 kg", "Granos", 8, 6, 4800, 3900);
+        ProductoResponse aceite = crear("Aceite 1 L", "Aceites", 10, 15, 11500, 9800);
+        ProductoResponse leche = crear("Leche entera 1 L", "Lácteos", 12, 20, 4200, 3500);
+        ProductoResponse huevos = crear("Huevos x 30", "Lácteos", 3, 4, 17500, 15000);
+        crear("Pan tajado", "Panadería", 5, 9, 5600, 4300);
 
         proveedores.crear(new ProveedorRequest("Distribuidora El Nogal", "Luis Pérez", "300 123 4567",
                 "pedidos@distrinogal.example", List.of(arroz.id(), azucar.id(), aceite.id())));
@@ -49,7 +50,9 @@ public class DatosDemo implements CommandLineRunner {
                 null, List.of(leche.id(), huevos.id())));
     }
 
-    private ProductoResponse crear(String nombre, String categoria, int stockMinimo, int stockInicial) {
-        return productos.crear(new ProductoRequest(nombre, categoria, stockMinimo, stockInicial));
+    private ProductoResponse crear(String nombre, String categoria, int stockMinimo, int stockInicial,
+                                   int precioVenta, int costo) {
+        return productos.crear(new ProductoRequest(nombre, categoria, stockMinimo, stockInicial,
+                BigDecimal.valueOf(precioVenta), BigDecimal.valueOf(costo)));
     }
 }

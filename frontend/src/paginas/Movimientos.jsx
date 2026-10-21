@@ -9,6 +9,9 @@ const ORIGENES = {
   COMPRA: 'Compra',
   PEDIDO: 'Pedido',
   INGRESO_PROVEEDOR: 'Ingreso de proveedor',
+  VENTA: 'Venta',
+  DEVOLUCION_PROVEEDOR: 'Devolución al proveedor',
+  REEMPLAZO_PROVEEDOR: 'Reemplazo del proveedor',
 }
 
 const lineaVacia = () => ({ productoId: '', cantidad: 1 })

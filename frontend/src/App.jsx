@@ -4,12 +4,24 @@ import Inventario from './paginas/Inventario.jsx'
 import Movimientos from './paginas/Movimientos.jsx'
 import Proveedores from './paginas/Proveedores.jsx'
 import Ingresos from './paginas/Ingresos.jsx'
+import Reposicion from './paginas/Reposicion.jsx'
+import Reportes from './paginas/Reportes.jsx'
+import Ventas from './paginas/Ventas.jsx'
+import Recepcion from './paginas/Recepcion.jsx'
+import Devoluciones from './paginas/Devoluciones.jsx'
+import Fiado from './paginas/Fiado.jsx'
 
 const SECCIONES = [
   { id: 'inventario', titulo: 'Inventario', funcionalidad: 'F-01' },
   { id: 'movimientos', titulo: 'Movimientos', funcionalidad: 'F-01' },
   { id: 'proveedores', titulo: 'Proveedores', funcionalidad: 'F-02' },
   { id: 'ingresos', titulo: 'Ingreso de mercancía', funcionalidad: 'F-02' },
+  { id: 'reposicion', titulo: 'Reposición', funcionalidad: 'F-03' },
+  { id: 'reportes', titulo: 'Reportes', funcionalidad: 'F-04' },
+  { id: 'ventas', titulo: 'Ventas', funcionalidad: 'F-05' },
+  { id: 'recepcion', titulo: 'Validar recepción', funcionalidad: 'F-06' },
+  { id: 'devoluciones', titulo: 'Devoluciones', funcionalidad: 'F-07' },
+  { id: 'fiado', titulo: 'Fiado', funcionalidad: 'F-08' },
 ]
 
 export default function App() {
@@ -34,7 +46,7 @@ export default function App() {
   }, [version])
 
   const bajoMinimo = productos.filter((p) => p.bajoMinimo).length
-  const props = { productos, proveedores, recargar }
+  const props = { productos, proveedores, recargar, irA: setSeccion }
 
   return (
     <div className="app">
@@ -44,7 +56,7 @@ export default function App() {
           <p className="subtitulo">Sistema de gestión de inventarios</p>
         </div>
         {bajoMinimo > 0 && (
-          <button className="alerta-chip" onClick={() => setSeccion('inventario')}>
+          <button className="alerta-chip" onClick={() => setSeccion('reposicion')}>
             {bajoMinimo} {bajoMinimo === 1 ? 'producto' : 'productos'} en stock mínimo
           </button>
         )}
@@ -69,6 +81,12 @@ export default function App() {
         {seccion === 'movimientos' && <Movimientos {...props} />}
         {seccion === 'proveedores' && <Proveedores {...props} />}
         {seccion === 'ingresos' && <Ingresos {...props} />}
+        {seccion === 'reposicion' && <Reposicion {...props} />}
+        {seccion === 'reportes' && <Reportes {...props} />}
+        {seccion === 'ventas' && <Ventas {...props} />}
+        {seccion === 'recepcion' && <Recepcion {...props} />}
+        {seccion === 'devoluciones' && <Devoluciones {...props} />}
+        {seccion === 'fiado' && <Fiado {...props} />}
       </main>
     </div>
   )

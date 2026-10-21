@@ -3,6 +3,8 @@ package co.tiendabarrio.dto.response;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import co.tiendabarrio.model.EstadoPago;
+import co.tiendabarrio.model.EstadoVerificacion;
 import co.tiendabarrio.model.IngresoMercancia;
 
 public record IngresoResponse(
@@ -11,11 +13,15 @@ public record IngresoResponse(
         String proveedorNombre,
         String numeroFactura,
         LocalDateTime fechaHora,
-        List<LineaProductoResponse> lineas) {
+        List<LineaProductoResponse> lineas,
+        EstadoVerificacion estadoVerificacion,
+        EstadoPago estadoPago,
+        LocalDateTime fechaPago) {
 
     public static IngresoResponse de(IngresoMercancia ingreso) {
         return new IngresoResponse(ingreso.getId(), ingreso.getProveedor().getId(),
                 ingreso.getProveedor().getNombre(), ingreso.getNumeroFactura(), ingreso.getFechaHora(),
-                ingreso.getLineas().stream().map(LineaProductoResponse::de).toList());
+                ingreso.getLineas().stream().map(LineaProductoResponse::de).toList(),
+                ingreso.getEstadoVerificacion(), ingreso.getEstadoPago(), ingreso.getFechaPago());
     }
 }

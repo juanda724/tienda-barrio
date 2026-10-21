@@ -7,6 +7,8 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,6 +32,15 @@ public class IngresoMercancia {
     private LocalDateTime fechaHora = LocalDateTime.now();
 
     private String numeroFactura;
+
+    /** Nulo en ingresos de bases de datos anteriores: se toma como PENDIENTE. */
+    @Enumerated(EnumType.STRING)
+    private EstadoVerificacion estadoVerificacion = EstadoVerificacion.PENDIENTE;
+
+    @Enumerated(EnumType.STRING)
+    private EstadoPago estadoPago = EstadoPago.PENDIENTE;
+
+    private LocalDateTime fechaPago;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "ingreso_id")
@@ -65,5 +76,27 @@ public class IngresoMercancia {
 
     public List<LineaProducto> getLineas() {
         return lineas;
+    }
+
+    public EstadoVerificacion getEstadoVerificacion() {
+        return estadoVerificacion == null ? EstadoVerificacion.PENDIENTE : estadoVerificacion;
+    }
+
+    public void setEstadoVerificacion(EstadoVerificacion estadoVerificacion) {
+        this.estadoVerificacion = estadoVerificacion;
+    }
+
+    public EstadoPago getEstadoPago() {
+        return estadoPago == null ? EstadoPago.PENDIENTE : estadoPago;
+    }
+
+    public LocalDateTime getFechaPago() {
+        return fechaPago;
+    }
+
+    /** Marca el ingreso como pagado. Quien lo llame debe haber validado antes la verificación (SWR-16). */
+    public void marcarPagado() {
+        this.estadoPago = EstadoPago.PAGADO;
+        this.fechaPago = LocalDateTime.now();
     }
 }

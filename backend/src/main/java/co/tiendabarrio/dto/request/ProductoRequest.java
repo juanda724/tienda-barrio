@@ -1,14 +1,22 @@
 package co.tiendabarrio.dto.request;
 
+import java.math.BigDecimal;
+
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-/** Datos para crear o editar un producto. stockInicial solo se usa al crear. */
+/**
+ * Datos para crear o editar un producto. stockInicial solo se usa al crear.
+ * precioVenta y costo son opcionales: al crear valen 0 y al editar, si no vienen, se conservan.
+ */
 public record ProductoRequest(
         @NotBlank(message = "El nombre del producto es obligatorio") String nombre,
         String categoria,
         @NotNull(message = "El stock mínimo es obligatorio")
         @Min(value = 0, message = "El stock mínimo no puede ser negativo") Integer stockMinimo,
-        @Min(value = 0, message = "El stock inicial no puede ser negativo") Integer stockInicial) {
+        @Min(value = 0, message = "El stock inicial no puede ser negativo") Integer stockInicial,
+        @DecimalMin(value = "0", message = "El precio de venta no puede ser negativo") BigDecimal precioVenta,
+        @DecimalMin(value = "0", message = "El costo no puede ser negativo") BigDecimal costo) {
 }

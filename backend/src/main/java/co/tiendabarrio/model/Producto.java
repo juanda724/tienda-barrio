@@ -1,5 +1,7 @@
 package co.tiendabarrio.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +30,14 @@ public class Producto {
 
     @Column(nullable = false)
     private int stockMinimo;
+
+    /** Precio al que se vende el producto (SWR-13). Nulo en bases de datos anteriores: se toma como 0. */
+    @Column(precision = 14, scale = 2)
+    private BigDecimal precioVenta;
+
+    /** Lo que cuesta el producto a la tienda (SWR-13). */
+    @Column(precision = 14, scale = 2)
+    private BigDecimal costo;
 
     @Version
     private Long version;
@@ -83,5 +93,21 @@ public class Producto {
 
     public void setStockMinimo(int stockMinimo) {
         this.stockMinimo = stockMinimo;
+    }
+
+    public BigDecimal getPrecioVenta() {
+        return precioVenta == null ? BigDecimal.ZERO : precioVenta;
+    }
+
+    public void setPrecioVenta(BigDecimal precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+    public BigDecimal getCosto() {
+        return costo == null ? BigDecimal.ZERO : costo;
+    }
+
+    public void setCosto(BigDecimal costo) {
+        this.costo = costo;
     }
 }

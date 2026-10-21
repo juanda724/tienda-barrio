@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { api } from '../servicios/api.js'
+import { api, formatearMoneda } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
 
-const VACIO = { nombre: '', categoria: '', stockMinimo: '', stockInicial: '' }
+const VACIO = { nombre: '', categoria: '', stockMinimo: '', stockInicial: '', precioVenta: '', costo: '' }
 
 export default function Inventario({ productos, recargar }) {
   const [form, setForm] = useState(null) // null = oculto; { id?, ...campos }
@@ -13,7 +13,10 @@ export default function Inventario({ productos, recargar }) {
   const [enviando, ejecutar] = useEnvio()
 
   const editar = (p) =>
-    setForm({ id: p.id, nombre: p.nombre, categoria: p.categoria ?? '', stockMinimo: p.stockMinimo, stockInicial: '' })
+    setForm({
+      id: p.id, nombre: p.nombre, categoria: p.categoria ?? '', stockMinimo: p.stockMinimo, stockInicial: '',
+      precioVenta: p.precioVenta, costo: p.costo,
+    })
 
   const guardar = (e) => {
     e.preventDefault()
@@ -23,6 +26,8 @@ export default function Inventario({ productos, recargar }) {
         categoria: form.categoria,
         stockMinimo: form.stockMinimo === '' ? null : Number(form.stockMinimo),
         stockInicial: form.stockInicial === '' ? 0 : Number(form.stockInicial),
+        precioVenta: form.precioVenta === '' ? null : Number(form.precioVenta),
+        costo: form.costo === '' ? null : Number(form.costo),
       }
       try {
         if (form.id) {
@@ -74,6 +79,16 @@ export default function Inventario({ productos, recargar }) {
               <input type="number" min="0" value={form.stockMinimo}
                 onChange={(e) => setForm({ ...form, stockMinimo: e.target.value })} required />
             </label>
+            <label>
+              Precio de venta
+              <input type="number" min="0" step="any" value={form.precioVenta} placeholder="0"
+                onChange={(e) => setForm({ ...form, precioVenta: e.target.value })} />
+            </label>
+            <label>
+              Costo
+              <input type="number" min="0" step="any" value={form.costo} placeholder="0"
+                onChange={(e) => setForm({ ...form, costo: e.target.value })} />
+            </label>
             {!form.id && (
               <label>
                 Stock inicial
@@ -100,6 +115,8 @@ export default function Inventario({ productos, recargar }) {
                 <th>Categoría</th>
                 <th className="num">Stock</th>
                 <th className="num">Mínimo</th>
+                <th className="num">Costo</th>
+                <th className="num">Precio</th>
                 <th>Estado</th>
                 <th></th>
               </tr>
@@ -111,6 +128,8 @@ export default function Inventario({ productos, recargar }) {
                   <td className="tenue">{p.categoria ?? '—'}</td>
                   <td className="num fuerte">{p.stockActual}</td>
                   <td className="num tenue">{p.stockMinimo}</td>
+                  <td className="num tenue">{formatearMoneda(p.costo)}</td>
+                  <td className="num">{p.precioVenta > 0 ? formatearMoneda(p.precioVenta) : <span className="insignia salida">Sin precio</span>}</td>
                   <td>
                     {p.bajoMinimo
                       ? <span className="insignia peligro">Reabastecer</span>
@@ -120,7 +139,7 @@ export default function Inventario({ productos, recargar }) {
                 </tr>
               ))}
               {visibles.length === 0 && (
-                <tr><td colSpan="6" className="vacio">No hay productos para mostrar</td></tr>
+                <tr><td colSpan="8" className="vacio">No hay productos para mostrar</td></tr>
               )}
             </tbody>
           </table>

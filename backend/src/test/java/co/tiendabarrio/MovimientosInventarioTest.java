@@ -40,7 +40,7 @@ class MovimientosInventarioTest {
 
     @Test
     void compraIncrementaStockYRegistraMovimiento() {
-        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 10));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 10, null, null));
 
         inventario.registrarCompra(new CompraRequest(arroz.id(), 7, "Factura 123"));
 
@@ -55,8 +55,8 @@ class MovimientosInventarioTest {
 
     @Test
     void pedidoDescargaProductosDelInventario() {
-        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 10));
-        ProductoResponse aceite = productos.crear(new ProductoRequest("Aceite", "Aceites", 5, 8));
+        ProductoResponse arroz = productos.crear(new ProductoRequest("Arroz", "Granos", 5, 10, null, null));
+        ProductoResponse aceite = productos.crear(new ProductoRequest("Aceite", "Aceites", 5, 8, null, null));
 
         pedidos.registrar(new PedidoRequest(List.of(
                 new LineaProductoRequest(arroz.id(), 3),
@@ -73,7 +73,7 @@ class MovimientosInventarioTest {
 
     @Test
     void pedidoSinStockSuficienteSeRechaza() {
-        ProductoResponse leche = productos.crear(new ProductoRequest("Leche", "Lácteos", 2, 3));
+        ProductoResponse leche = productos.crear(new ProductoRequest("Leche", "Lácteos", 2, 3, null, null));
 
         assertThatThrownBy(() -> pedidos.registrar(new PedidoRequest(List.of(
                 new LineaProductoRequest(leche.id(), 5)))))
@@ -84,7 +84,7 @@ class MovimientosInventarioTest {
 
     @Test
     void stockInicialQuedaRegistradoComoMovimiento() {
-        ProductoResponse pan = productos.crear(new ProductoRequest("Pan", "Panadería", 2, 9));
+        ProductoResponse pan = productos.crear(new ProductoRequest("Pan", "Panadería", 2, 9, null, null));
 
         List<MovimientoResponse> historial = inventario.historial(pan.id());
         assertThat(historial).hasSize(1);
