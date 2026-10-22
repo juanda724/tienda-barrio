@@ -15,11 +15,12 @@ public record MovimientoResponse(
         int cantidad,
         int stockResultante,
         LocalDateTime fechaHora,
+        Long numeroDocumento,
         String referencia) {
 
     public static MovimientoResponse de(MovimientoInventario m) {
         return new MovimientoResponse(m.getId(), m.getProducto().getId(), m.getProducto().getNombre(),
                 m.getTipo(), m.getOrigen(), m.getCantidad(), m.getStockResultante(), m.getFechaHora(),
-                m.getReferencia());
+                m.getNumeroDocumento(), m.getReferencia());
     }
 }

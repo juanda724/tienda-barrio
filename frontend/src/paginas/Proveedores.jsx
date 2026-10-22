@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { api } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
+import BuscadorProducto from '../componentes/BuscadorProducto.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
 
@@ -21,13 +22,10 @@ export default function Proveedores({ productos, proveedores, recargar }) {
       productoIds: p.productos.map((x) => x.id),
     })
 
-  const alternarProducto = (id) =>
-    setForm({
-      ...form,
-      productoIds: form.productoIds.includes(id)
-        ? form.productoIds.filter((x) => x !== id)
-        : [...form.productoIds, id],
-    })
+  const agregarProducto = (id) =>
+    setForm((actual) => (actual.productoIds.includes(id) ? actual : { ...actual, productoIds: [...actual.productoIds, id] }))
+
+  const quitarProducto = (id) => setForm((actual) => ({ ...actual, productoIds: actual.productoIds.filter((x) => x !== id) }))
 
   const guardar = (e) => {
     e.preventDefault()
@@ -83,14 +81,22 @@ export default function Proveedores({ productos, proveedores, recargar }) {
               <input type="email" value={form.correo} onChange={(e) => setForm({ ...form, correo: e.target.value })} />
             </label>
           </div>
-          <fieldset className="casillas">
-            <legend>Productos que suministra</legend>
-            {productos.map((p) => (
-              <label key={p.id} className="casilla">
-                <input type="checkbox" checked={form.productoIds.includes(p.id)} onChange={() => alternarProducto(p.id)} />
-                {p.nombre}
-              </label>
-            ))}
+          <fieldset className="productos-proveedor">
+            <legend>Productos que suministra ({form.productoIds.length})</legend>
+            <BuscadorProducto productos={productos} controlarStock={false} excluidos={form.productoIds}
+              onElegir={(p) => agregarProducto(p.id)} />
+            <div className="chips">
+              {form.productoIds.length === 0 && <span className="tenue pequeno">Busque y agregue los productos que le compra a este proveedor.</span>}
+              {form.productoIds.map((id) => {
+                const producto = productos.find((p) => p.id === id)
+                return (
+                  <span key={id} className="chip quitable">
+                    {producto?.nombre ?? `Producto #${id}`}
+                    <button type="button" aria-label={`Quitar ${producto?.nombre ?? 'producto'}`} onClick={() => quitarProducto(id)}>×</button>
+                  </span>
+                )
+              })}
+            </div>
           </fieldset>
           <div className="acciones">
             <button type="button" onClick={() => setForm(null)}>Cancelar</button>
