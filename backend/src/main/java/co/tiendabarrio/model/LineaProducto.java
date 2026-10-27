@@ -103,11 +103,21 @@ public class LineaProducto {
 
     /** Valor de lo recibido, contando entregas posteriores: cantidad recibida total × costo unitario. */
     public long getSubtotalRecibido() {
-        return precioUnitario == null ? 0 : precioUnitario * getCantidadRecibidaTotal();
+        return valorDe(getCantidadRecibidaTotal());
     }
 
     /** Valor de lo facturado: cantidad facturada × costo unitario. */
     public long getSubtotalFacturado() {
-        return precioUnitario == null ? 0 : precioUnitario * getCantidadFacturada();
+        return valorDe(getCantidadFacturada());
+    }
+
+    /** Precio por unidad de la línea; 0 si no tiene (pedidos a proveedor). */
+    public long getCostoUnitario() {
+        return precioUnitario == null ? 0 : precioUnitario;
+    }
+
+    /** Valor de una cantidad de unidades de esta línea a su precio unitario. */
+    public long valorDe(int unidades) {
+        return getCostoUnitario() * unidades;
     }
 }

@@ -268,13 +268,28 @@ public class IngresoMercancia {
     }
 
     /**
-     * Lo facturado (o solo lo recibido si se resolvieron diferencias ajustando la factura), menos las
-     * notas crédito de devoluciones.
+     * Unidades que se pagan de una línea: las facturadas o, si las diferencias se resolvieron (la factura
+     * se ajustó a lo recibido o llegaron los faltantes), las recibidas contando las entregas posteriores.
+     * Es la única definición de la regla: la usan el pago y la factura del pedido.
      */
+    public int getCantidadCobrada(LineaProducto linea) {
+        return resultadoVerificacion == ResultadoVerificacion.DIFERENCIAS_RESUELTAS
+                ? linea.getCantidadRecibidaTotal() : linea.getCantidadFacturada();
+    }
+
+    /** Valor que se paga de una línea: cantidad cobrada × costo unitario. */
+    public long getSubtotalCobrado(LineaProducto linea) {
+        return linea.valorDe(getCantidadCobrada(linea));
+    }
+
+    /** Suma de lo que se paga por todas las líneas, antes de descontar notas crédito. */
+    public long getTotalCobrado() {
+        return lineas.stream().mapToLong(this::getSubtotalCobrado).sum();
+    }
+
+    /** Lo cobrado por las líneas menos las notas crédito de devoluciones; nunca negativo. */
     public long getTotalAPagar() {
-        long base = resultadoVerificacion == ResultadoVerificacion.DIFERENCIAS_RESUELTAS
-                ? getTotalRecibido() : getTotalFacturado();
-        return Math.max(base - getTotalCreditoDevoluciones(), 0);
+        return Math.max(getTotalCobrado() - getTotalCreditoDevoluciones(), 0);
     }
 
     public Long getId() {

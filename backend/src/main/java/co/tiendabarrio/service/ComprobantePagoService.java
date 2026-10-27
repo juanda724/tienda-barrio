@@ -1,8 +1,5 @@
 package co.tiendabarrio.service;
 
-import java.time.format.DateTimeFormatter;
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,14 +21,12 @@ import co.tiendabarrio.util.Enlaces;
 @Service
 public class ComprobantePagoService {
 
-    private static final DateTimeFormatter FECHA_HORA = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
-
     private final IngresoRepository ingresos;
-    private final String nombreTienda;
+    private final RedaccionPagoProveedor redaccion;
 
-    public ComprobantePagoService(IngresoRepository ingresos, @Value("${tienda.nombre:Tienda de Barrio}") String nombreTienda) {
+    public ComprobantePagoService(IngresoRepository ingresos, RedaccionPagoProveedor redaccion) {
         this.ingresos = ingresos;
-        this.nombreTienda = nombreTienda;
+        this.redaccion = redaccion;
     }
 
     @Transactional(readOnly = true)
@@ -45,25 +40,24 @@ public class ComprobantePagoService {
         Proveedor proveedor = ingreso.getProveedor();
         String whatsapp = proveedor.getTelefono() == null ? null : Enlaces.whatsapp(proveedor.getTelefono(), texto);
         String correo = Enlaces.correo(proveedor.getCorreo(), "Comprobante de pago - Ingreso #" + ingresoId + " - "
-                + nombreTienda, texto);
+                + redaccion.nombreTienda(), texto);
         return new ComprobantePagoResponse(ingresoId, texto, whatsapp, correo);
     }
 
     String texto(IngresoMercancia i) {
         StringBuilder t = new StringBuilder()
-                .append(nombreTienda).append('\n')
+                .append(redaccion.nombreTienda()).append('\n')
                 .append("Comprobante de pago al proveedor\n")
                 .append("Proveedor: ").append(i.getProveedor().getNombre()).append('\n')
                 .append("Ingreso #").append(i.getId());
         if (i.getNumeroFactura() != null) {
             t.append(" · Factura ").append(i.getNumeroFactura());
         }
-        t.append('\n').append("Fecha de pago: ").append(i.getFechaPago().format(FECHA_HORA)).append("\n\n")
+        t.append('\n').append("Fecha de pago: ").append(redaccion.fecha(i.getFechaPago())).append("\n\n")
                 .append("Valor facturado: ").append(Dinero.formatear(i.getTotalFacturado())).append('\n');
         if (i.getMontoPagado() != i.getTotalFacturado()) {
             if (i.getTotalCreditoDevoluciones() > 0) {
-                t.append("Notas crédito por devoluciones: -").append(Dinero.formatear(i.getTotalCreditoDevoluciones()))
-                        .append('\n');
+                t.append(redaccion.notasCredito(i));
             }
             if (i.getNotaVerificacion() != null) {
                 t.append("Ajuste de factura: ").append(i.getNotaVerificacion()).append('\n');
@@ -72,9 +66,8 @@ public class ComprobantePagoService {
         if (!i.getEntregasFaltantes().isEmpty()) {
             t.append("\nEntregas posteriores de faltantes:\n");
             for (EntregaFaltantes entrega : i.getEntregasFaltantes()) {
-                t.append("- ").append(entrega.getFechaHora().format(FECHA_HORA)).append(": ");
-                t.append(String.join(", ", entrega.getLineas().stream()
-                        .map(l -> l.getCantidad() + " x " + l.getProducto().getNombre()).toList()));
+                t.append("- ").append(redaccion.fecha(entrega.getFechaHora())).append(": ")
+                        .append(redaccion.productosEntregados(entrega));
                 if (entrega.getNota() != null) {
                     t.append(" (").append(entrega.getNota()).append(')');
                 }
@@ -82,12 +75,7 @@ public class ComprobantePagoService {
             }
             t.append('\n');
         }
-        t.append("TOTAL PAGADO: ").append(Dinero.formatear(i.getMontoPagado())).append('\n')
-                .append("Forma de pago: ").append(i.getFormaPagoPago().getNombre()).append('\n');
-        if (i.getMontoEntregado() != null) {
-            t.append("Efectivo entregado: ").append(Dinero.formatear(i.getMontoEntregado())).append('\n')
-                    .append("Cambio devuelto: ").append(Dinero.formatear(i.getCambio())).append('\n');
-        }
-        return t.append("\nGracias por su atención.").toString();
+        redaccion.agregarPago(t, i);
+        return t.append(redaccion.despedida()).toString();
     }
 }
