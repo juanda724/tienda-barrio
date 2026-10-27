@@ -1,0 +1,26 @@
+Sensibilidad de las pruebas de caracterización (mutaciones temporales)
+Fecha: 2026-10-27
+Comando: backend\mvnw.cmd test -Dtest=DocumentosPagoCaracterizacionTest
+
+Objetivo: demostrar que las pruebas de caracterización detectan cambios de comportamiento, es decir, que
+"todas en verde" después de refactorizar significa que el comportamiento se conservó y no que las pruebas
+no miran nada. Cada mutación se aplicó sobre el código ya refactorizado, se ejecutó la prueba y se revirtió.
+
+Mutación 1 · Cambio de un carácter en el bloque de pago (H-02)
+  RedaccionPagoProveedor.agregarPago(): "TOTAL PAGADO: " -> "TOTAL PAGADO :"
+  Resultado: Tests run: 6, Failures: 6
+    pedidoAprobadoPagadoPorTransferencia      FALLA
+    pedidoPagadoEnEfectivoConCambio            FALLA
+    pedidoConFaltantesEntregadosEnDosPartes    FALLA
+    pedidoConFacturaAjustadaALoRecibido        FALLA
+    pedidoConNotaCreditoPorDevolucion          FALLA
+    ingresoSinPedidoSoloTieneComprobante       FALLA
+  Conclusión: el texto del comprobante y de la factura queda fijado carácter por carácter.
+
+Mutación 2 · Romper la regla de la cantidad cobrada (H-01)
+  IngresoMercancia.getCantidadCobrada(): con la factura ajustada se cobra lo facturado en vez de lo recibido
+  Resultado: Tests run: 6, Failures: 1
+    pedidoConFacturaAjustadaALoRecibido        FALLA (único escenario donde facturado y recibido difieren)
+  Conclusión: la regla de negocio que se movió al dominio está protegida.
+
+Código restaurado: Tests run: 6, Failures: 0. Se verificó que no quedó ningún resto de las mutaciones.

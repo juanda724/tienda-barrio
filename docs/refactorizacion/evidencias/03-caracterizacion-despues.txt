@@ -1,0 +1,28 @@
+Caracterizacion DESPUES de refactorizar
+Commit: d55e458 (main) - refactor: separar responsabilidades del pago al proveedor
+Fecha: 2026-10-27 02:28
+
+1) Referencias de caracterizacion: no se regeneraron (las mismas del commit fd28b3c).
+   Huella SHA-256 (16 primeros caracteres), identica a 02-caracterizacion-antes.txt:
+   300397347DA2D806  01-pedido-aprobado-transferencia.txt
+   792CDAB20A5AE959  02-pedido-efectivo-con-cambio.txt
+   C89CC0A61FAD0125  03-pedido-entregas-posteriores.txt
+   E7261B94B97E602E  04-pedido-factura-ajustada.txt
+   06984BC10F8F2150  05-pedido-nota-credito.txt
+   A9EB33F201075FD1  06-ingreso-sin-pedido.txt
+   Cambios en las referencias desde fd28b3c: ninguno
+
+2) Suite completa: backend\mvnw.cmd test
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.AlertasReposicionTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DevolucionesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DocumentosPagoCaracterizacionTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.EntregaFaltantesTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.FiadosTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.MovimientosInventarioTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.PedidosProveedorTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ProveedoresIngresoTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ReportesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VentasFacturacionTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VerificacionPagoTest
+
+Total: 80 pruebas, 0 fallos o errores
