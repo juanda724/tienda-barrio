@@ -1,0 +1,123 @@
+== Ingreso
+totalFacturado=102400 totalRecibido=102400 totalAPagar=102400 creditoDevoluciones=0 montoPagado=102400 entregado=null cambio=null
+
+== Comprobante de pago
+Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-103
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 102.400
+
+Entregas posteriores de faltantes:
+- {FECHA}: 3 x Aceite 1 L (Primera entrega)
+- {FECHA}: 2 x Aceite 1 L, 4 x Arroz 500 g
+
+TOTAL PAGADO: $ 102.400
+Forma de pago: Efectivo
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-103
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 102.400
+
+Entregas posteriores de faltantes:
+- {FECHA}: 3 x Aceite 1 L (Primera entrega)
+- {FECHA}: 2 x Aceite 1 L, 4 x Arroz 500 g
+
+TOTAL PAGADO: $ 102.400
+Forma de pago: Efectivo
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Comprobante de pago - Ingreso #{INGRESO} - Tienda de Barrio&body=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-103
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 102.400
+
+Entregas posteriores de faltantes:
+- {FECHA}: 3 x Aceite 1 L (Primera entrega)
+- {FECHA}: 2 x Aceite 1 L, 4 x Arroz 500 g
+
+TOTAL PAGADO: $ 102.400
+Forma de pago: Efectivo
+
+Gracias por su atención.
+
+== Factura del pedido
+Aceite 1 L: pedida=12 facturada=12 recibida=12 cobrada=12 costo=7800 subtotal=93600
+Arroz 500 g: pedida=4 facturada=4 recibida=4 cobrada=4 costo=2200 subtotal=8800
+subtotal=102400 creditoDevoluciones=0 totalPagado=102400
+Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-103
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 12 x Aceite 1 L a $ 7.800 = $ 93.600
+- 4 x Arroz 500 g a $ 2.200 = $ 8.800
+
+Subtotal: $ 102.400
+Entregas posteriores de faltantes:
+  {FECHA}: 3 x Aceite 1 L
+  {FECHA}: 2 x Aceite 1 L, 4 x Arroz 500 g
+TOTAL PAGADO: $ 102.400
+Forma de pago: Efectivo
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-103
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 12 x Aceite 1 L a $ 7.800 = $ 93.600
+- 4 x Arroz 500 g a $ 2.200 = $ 8.800
+
+Subtotal: $ 102.400
+Entregas posteriores de faltantes:
+  {FECHA}: 3 x Aceite 1 L
+  {FECHA}: 2 x Aceite 1 L, 4 x Arroz 500 g
+TOTAL PAGADO: $ 102.400
+Forma de pago: Efectivo
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Factura del pedido #{PEDIDO} - Tienda de Barrio&body=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-103
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 12 x Aceite 1 L a $ 7.800 = $ 93.600
+- 4 x Arroz 500 g a $ 2.200 = $ 8.800
+
+Subtotal: $ 102.400
+Entregas posteriores de faltantes:
+  {FECHA}: 3 x Aceite 1 L
+  {FECHA}: 2 x Aceite 1 L, 4 x Arroz 500 g
+TOTAL PAGADO: $ 102.400
+Forma de pago: Efectivo
+
+Gracias por su atención.

@@ -1,0 +1,76 @@
+== Ingreso
+totalFacturado=93600 totalRecibido=78000 totalAPagar=78000 creditoDevoluciones=0 montoPagado=78000 entregado=null cambio=null
+
+== Comprobante de pago
+Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Granos del Valle
+Ingreso #{INGRESO}
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 93.600
+Ajuste de factura: Las otras 2 no las tenían
+
+Entregas posteriores de faltantes:
+- {FECHA}: 3 x Aceite 1 L (Llegaron el martes)
+
+TOTAL PAGADO: $ 78.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+whatsapp=https://wa.me/573107654321?text=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Granos del Valle
+Ingreso #{INGRESO}
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 93.600
+Ajuste de factura: Las otras 2 no las tenían
+
+Entregas posteriores de faltantes:
+- {FECHA}: 3 x Aceite 1 L (Llegaron el martes)
+
+TOTAL PAGADO: $ 78.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+correo=null
+
+== Factura del pedido
+Aceite 1 L: pedida=12 facturada=12 recibida=10 cobrada=10 costo=7800 subtotal=78000
+subtotal=78000 creditoDevoluciones=0 totalPagado=78000
+Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Granos del Valle
+Teléfono: 3107654321
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Aceite 1 L a $ 7.800 = $ 78.000
+
+Subtotal: $ 78.000
+Entregas posteriores de faltantes:
+  {FECHA}: 3 x Aceite 1 L
+TOTAL PAGADO: $ 78.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+whatsapp=https://wa.me/573107654321?text=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Granos del Valle
+Teléfono: 3107654321
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Aceite 1 L a $ 7.800 = $ 78.000
+
+Subtotal: $ 78.000
+Entregas posteriores de faltantes:
+  {FECHA}: 3 x Aceite 1 L
+TOTAL PAGADO: $ 78.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+correo=null

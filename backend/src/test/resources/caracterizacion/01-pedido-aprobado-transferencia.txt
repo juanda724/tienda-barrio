@@ -1,0 +1,95 @@
+== Ingreso
+totalFacturado=22000 totalRecibido=22000 totalAPagar=22000 creditoDevoluciones=0 montoPagado=22000 entregado=null cambio=null
+
+== Comprobante de pago
+Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-101
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 22.000
+TOTAL PAGADO: $ 22.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-101
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 22.000
+TOTAL PAGADO: $ 22.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Comprobante de pago - Ingreso #{INGRESO} - Tienda de Barrio&body=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-101
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 22.000
+TOTAL PAGADO: $ 22.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+
+== Factura del pedido
+Arroz 500 g: pedida=10 facturada=10 recibida=10 cobrada=10 costo=2200 subtotal=22000
+subtotal=22000 creditoDevoluciones=0 totalPagado=22000
+Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-101
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Arroz 500 g a $ 2.200 = $ 22.000
+
+Subtotal: $ 22.000
+TOTAL PAGADO: $ 22.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-101
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Arroz 500 g a $ 2.200 = $ 22.000
+
+Subtotal: $ 22.000
+TOTAL PAGADO: $ 22.000
+Forma de pago: Transferencia
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Factura del pedido #{PEDIDO} - Tienda de Barrio&body=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-101
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Arroz 500 g a $ 2.200 = $ 22.000
+
+Subtotal: $ 22.000
+TOTAL PAGADO: $ 22.000
+Forma de pago: Transferencia
+
+Gracias por su atención.

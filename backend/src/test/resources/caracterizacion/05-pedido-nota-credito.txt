@@ -1,0 +1,113 @@
+== Ingreso
+totalFacturado=78000 totalRecibido=78000 totalAPagar=62400 creditoDevoluciones=15600 montoPagado=62400 entregado=70000 cambio=7600
+
+== Comprobante de pago
+Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-105
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 78.000
+Notas crédito por devoluciones: -$ 15.600
+TOTAL PAGADO: $ 62.400
+Forma de pago: Efectivo
+Efectivo entregado: $ 70.000
+Cambio devuelto: $ 7.600
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-105
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 78.000
+Notas crédito por devoluciones: -$ 15.600
+TOTAL PAGADO: $ 62.400
+Forma de pago: Efectivo
+Efectivo entregado: $ 70.000
+Cambio devuelto: $ 7.600
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Comprobante de pago - Ingreso #{INGRESO} - Tienda de Barrio&body=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-105
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 78.000
+Notas crédito por devoluciones: -$ 15.600
+TOTAL PAGADO: $ 62.400
+Forma de pago: Efectivo
+Efectivo entregado: $ 70.000
+Cambio devuelto: $ 7.600
+
+Gracias por su atención.
+
+== Factura del pedido
+Aceite 1 L: pedida=10 facturada=10 recibida=10 cobrada=10 costo=7800 subtotal=78000
+subtotal=78000 creditoDevoluciones=15600 totalPagado=62400
+Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-105
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Aceite 1 L a $ 7.800 = $ 78.000
+
+Subtotal: $ 78.000
+Notas crédito por devoluciones: -$ 15.600
+TOTAL PAGADO: $ 62.400
+Forma de pago: Efectivo
+Efectivo entregado: $ 70.000
+Cambio devuelto: $ 7.600
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-105
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Aceite 1 L a $ 7.800 = $ 78.000
+
+Subtotal: $ 78.000
+Notas crédito por devoluciones: -$ 15.600
+TOTAL PAGADO: $ 62.400
+Forma de pago: Efectivo
+Efectivo entregado: $ 70.000
+Cambio devuelto: $ 7.600
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Factura del pedido #{PEDIDO} - Tienda de Barrio&body=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-105
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 10 x Aceite 1 L a $ 7.800 = $ 78.000
+
+Subtotal: $ 78.000
+Notas crédito por devoluciones: -$ 15.600
+TOTAL PAGADO: $ 62.400
+Forma de pago: Efectivo
+Efectivo entregado: $ 70.000
+Cambio devuelto: $ 7.600
+
+Gracias por su atención.

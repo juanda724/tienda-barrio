@@ -1,0 +1,27 @@
+Caracterizacion ANTES de refactorizar (codigo de produccion sin cambios)
+Commit base: 13fb7e9 (main) + pruebas de caracterizacion sin commit
+Fecha: 2026-10-27 02:13
+
+1) Referencias generadas con: backend\mvnw.cmd test -Dtest=DocumentosPagoCaracterizacionTest -Dcaracterizacion.generar=true
+   Huella SHA-256 (16 primeros caracteres) de cada referencia:
+   300397347DA2D806  01-pedido-aprobado-transferencia.txt
+   792CDAB20A5AE959  02-pedido-efectivo-con-cambio.txt
+   C89CC0A61FAD0125  03-pedido-entregas-posteriores.txt
+   E7261B94B97E602E  04-pedido-factura-ajustada.txt
+   06984BC10F8F2150  05-pedido-nota-credito.txt
+   A9EB33F201075FD1  06-ingreso-sin-pedido.txt
+
+2) Suite completa: backend\mvnw.cmd test
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.AlertasReposicionTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DevolucionesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DocumentosPagoCaracterizacionTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.EntregaFaltantesTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.FiadosTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.MovimientosInventarioTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.PedidosProveedorTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ProveedoresIngresoTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ReportesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VentasFacturacionTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VerificacionPagoTest
+
+Total: 80 pruebas, 0 fallos, 0 errores

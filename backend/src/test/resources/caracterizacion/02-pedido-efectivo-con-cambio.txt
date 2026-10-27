@@ -1,0 +1,111 @@
+== Ingreso
+totalFacturado=73200 totalRecibido=73200 totalAPagar=73200 creditoDevoluciones=0 montoPagado=73200 entregado=100000 cambio=26800
+
+== Comprobante de pago
+Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-102
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 73.200
+TOTAL PAGADO: $ 73.200
+Forma de pago: Efectivo
+Efectivo entregado: $ 100.000
+Cambio devuelto: $ 26.800
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-102
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 73.200
+TOTAL PAGADO: $ 73.200
+Forma de pago: Efectivo
+Efectivo entregado: $ 100.000
+Cambio devuelto: $ 26.800
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Comprobante de pago - Ingreso #{INGRESO} - Tienda de Barrio&body=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura FV-102
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 73.200
+TOTAL PAGADO: $ 73.200
+Forma de pago: Efectivo
+Efectivo entregado: $ 100.000
+Cambio devuelto: $ 26.800
+
+Gracias por su atención.
+
+== Factura del pedido
+Aceite 1 L: pedida=6 facturada=6 recibida=6 cobrada=6 costo=7800 subtotal=46800
+Arroz 500 g: pedida=12 facturada=12 recibida=12 cobrada=12 costo=2200 subtotal=26400
+subtotal=73200 creditoDevoluciones=0 totalPagado=73200
+Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-102
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 6 x Aceite 1 L a $ 7.800 = $ 46.800
+- 12 x Arroz 500 g a $ 2.200 = $ 26.400
+
+Subtotal: $ 73.200
+TOTAL PAGADO: $ 73.200
+Forma de pago: Efectivo
+Efectivo entregado: $ 100.000
+Cambio devuelto: $ 26.800
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-102
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 6 x Aceite 1 L a $ 7.800 = $ 46.800
+- 12 x Arroz 500 g a $ 2.200 = $ 26.400
+
+Subtotal: $ 73.200
+TOTAL PAGADO: $ 73.200
+Forma de pago: Efectivo
+Efectivo entregado: $ 100.000
+Cambio devuelto: $ 26.800
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Factura del pedido #{PEDIDO} - Tienda de Barrio&body=Tienda de Barrio
+Factura del pedido #{PEDIDO}
+Proveedor: Distribuidora El Nogal
+Contacto: Luis Pérez
+Teléfono: 300 123 4567
+Correo: pedidos@nogal.example
+Factura del proveedor: FV-102
+Pedido: {FECHA}
+Recibido: {FECHA} (ingreso #{INGRESO})
+Pagado: {FECHA}
+
+- 6 x Aceite 1 L a $ 7.800 = $ 46.800
+- 12 x Arroz 500 g a $ 2.200 = $ 26.400
+
+Subtotal: $ 73.200
+TOTAL PAGADO: $ 73.200
+Forma de pago: Efectivo
+Efectivo entregado: $ 100.000
+Cambio devuelto: $ 26.800
+
+Gracias por su atención.

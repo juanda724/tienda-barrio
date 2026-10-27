@@ -1,0 +1,37 @@
+== Ingreso
+totalFacturado=23400 totalRecibido=23400 totalAPagar=23400 creditoDevoluciones=0 montoPagado=23400 entregado=null cambio=null
+
+== Comprobante de pago
+Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura SIN-1
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 23.400
+TOTAL PAGADO: $ 23.400
+Forma de pago: Tarjeta / datáfono
+
+Gracias por su atención.
+whatsapp=https://wa.me/573001234567?text=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura SIN-1
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 23.400
+TOTAL PAGADO: $ 23.400
+Forma de pago: Tarjeta / datáfono
+
+Gracias por su atención.
+correo=https://mail.google.com/mail/?view=cm&fs=1&to=pedidos@nogal.example&su=Comprobante de pago - Ingreso #{INGRESO} - Tienda de Barrio&body=Tienda de Barrio
+Comprobante de pago al proveedor
+Proveedor: Distribuidora El Nogal
+Ingreso #{INGRESO} · Factura SIN-1
+Fecha de pago: {FECHA}
+
+Valor facturado: $ 23.400
+TOTAL PAGADO: $ 23.400
+Forma de pago: Tarjeta / datáfono
+
+Gracias por su atención.
