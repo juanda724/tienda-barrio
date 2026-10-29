@@ -3,6 +3,8 @@ package co.tiendabarrio.model;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import co.tiendabarrio.exception.NegocioException;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -44,6 +46,13 @@ public class Proveedor {
 
     public boolean suministra(Producto producto) {
         return productos.stream().anyMatch(p -> p.getId().equals(producto.getId()));
+    }
+
+    /** Solo se pide o se recibe de un proveedor lo que tiene asociado (SWR-05). */
+    public void validarQueSuministra(Producto producto) {
+        if (!suministra(producto)) {
+            throw new NegocioException(producto.getNombre() + " no está asociado al proveedor " + nombre);
+        }
     }
 
     public Long getId() {

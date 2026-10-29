@@ -73,10 +73,7 @@ public class PedidoProveedorService {
         for (Map.Entry<Long, Integer> linea : LineaProductoRequest.agrupar(datos.lineas()).entrySet()) {
             Producto producto = productos.findById(linea.getKey())
                     .orElseThrow(() -> new NoEncontradoException("Producto no encontrado"));
-            if (!proveedor.suministra(producto)) {
-                throw new NegocioException(producto.getNombre() + " no está asociado al proveedor "
-                        + proveedor.getNombre());
-            }
+            proveedor.validarQueSuministra(producto);
             if (!producto.isBajoMinimo()) {
                 throw new NegocioException(producto.getNombre() + " tiene stock suficiente (" + producto.getStockActual()
                         + ", mínimo " + producto.getStockMinimo() + "). Solo se piden productos en o por debajo "

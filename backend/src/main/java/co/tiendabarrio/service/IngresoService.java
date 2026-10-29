@@ -65,41 +65,83 @@ public class IngresoService {
      */
     @Transactional
     public IngresoResponse registrar(IngresoRequest datos) {
-        Proveedor proveedor = proveedores.findById(datos.proveedorId())
-                .orElseThrow(() -> new NoEncontradoException("Proveedor no encontrado"));
-        String factura = datos.numeroFactura() == null || datos.numeroFactura().isBlank()
-                ? null : datos.numeroFactura().trim();
+        Proveedor proveedor = buscarProveedor(datos.proveedorId());
+        String factura = normalizarFactura(datos.numeroFactura());
         PedidoProveedor pedido = datos.pedidoId() == null ? null : buscarPedido(datos.pedidoId(), proveedor);
-        Map<Long, LineaIngresoRequest> lineas = agrupar(datos.lineas());
-        if (lineas.values().stream().allMatch(l -> l.cantidadRecibida() == 0 && l.cantidadFacturada() == 0)) {
-            throw new NegocioException("Indique lo recibido o lo facturado de al menos un producto");
-        }
-        IngresoMercancia ingreso = ingresos.save(new IngresoMercancia(proveedor, factura, pedido));
+        List<LineaIngresoRequest> lineas = lineasConCantidades(datos.lineas());
 
-        String referencia = proveedor.getNombre() + (factura == null ? "" : " · Factura " + factura);
-        for (LineaIngresoRequest linea : lineas.values()) {
-            if (linea.cantidadRecibida() == 0 && linea.cantidadFacturada() == 0) {
-                continue;
-            }
-            Producto producto = productos.findById(linea.productoId())
-                    .orElseThrow(() -> new NoEncontradoException("Producto no encontrado"));
-            if (!proveedor.suministra(producto)) {
-                throw new NegocioException(producto.getNombre() + " no está asociado al proveedor "
-                        + proveedor.getNombre());
-            }
-            if (linea.cantidadRecibida() > 0) {
-                inventario.registrarEntrada(producto, linea.cantidadRecibida(), OrigenMovimiento.INGRESO_PROVEEDOR,
-                        ingreso.getId(), referencia);
-                producto.setCosto(linea.costoUnitario());
-            }
-            ingreso.agregarLinea(LineaProducto.deIngreso(producto, linea.cantidadRecibida(),
-                    linea.cantidadFacturada(), linea.costoUnitario()));
+        IngresoMercancia ingreso = ingresos.save(new IngresoMercancia(proveedor, factura, pedido));
+        String referencia = referenciaDeMovimiento(proveedor, factura);
+        for (LineaIngresoRequest linea : lineas) {
+            recibirLinea(ingreso, proveedor, linea, referencia);
         }
         ingreso.verificar();
+        cerrarPedido(pedido, ingreso);
+        return IngresoResponse.de(ingreso);
+    }
+
+    /**
+     * Recibe una línea: el producto debe ser del proveedor (SWR-05); lo que llegó entra al inventario
+     * (SWR-03, SWR-06) y actualiza el costo del catálogo, y lo facturado queda para la verificación (SWR-15).
+     */
+    private void recibirLinea(IngresoMercancia ingreso, Proveedor proveedor, LineaIngresoRequest linea,
+                              String referencia) {
+        Producto producto = buscarProducto(linea.productoId());
+        proveedor.validarQueSuministra(producto);
+        if (linea.cantidadRecibida() > 0) {
+            inventario.registrarEntrada(producto, linea.cantidadRecibida(), OrigenMovimiento.INGRESO_PROVEEDOR,
+                    ingreso.getId(), referencia);
+            actualizarCostoDelCatalogo(producto, linea.costoUnitario());
+        }
+        ingreso.agregarLinea(LineaProducto.deIngreso(producto, linea.cantidadRecibida(),
+                linea.cantidadFacturada(), linea.costoUnitario()));
+    }
+
+    /**
+     * El costo del producto en el catálogo pasa a ser el de la última factura con la que llegó mercancía.
+     * Una línea solo facturada, sin unidades recibidas, no lo cambia.
+     */
+    private static void actualizarCostoDelCatalogo(Producto producto, Long costoUnitario) {
+        producto.setCosto(costoUnitario);
+    }
+
+    /** El pedido que llegó con este ingreso queda entregado. */
+    private static void cerrarPedido(PedidoProveedor pedido, IngresoMercancia ingreso) {
         if (pedido != null) {
             pedido.marcarEntregado("Recibido con el ingreso #" + ingreso.getId());
         }
-        return IngresoResponse.de(ingreso);
+    }
+
+    /**
+     * Une las líneas repetidas, exige que al menos una tenga cantidades y descarta las que no traen nada
+     * (ni recibido ni facturado). Conserva el orden en que llegaron.
+     */
+    private static List<LineaIngresoRequest> lineasConCantidades(List<LineaIngresoRequest> lineas) {
+        List<LineaIngresoRequest> conCantidades = agrupar(lineas).values().stream()
+                .filter(l -> !(l.cantidadRecibida() == 0 && l.cantidadFacturada() == 0))
+                .toList();
+        if (conCantidades.isEmpty()) {
+            throw new NegocioException("Indique lo recibido o lo facturado de al menos un producto");
+        }
+        return conCantidades;
+    }
+
+    /** Número de factura sin espacios sobrantes; vacío si no se indicó. */
+    private static String normalizarFactura(String numeroFactura) {
+        return numeroFactura == null || numeroFactura.isBlank() ? null : numeroFactura.trim();
+    }
+
+    /** Detalle con que los movimientos de inventario del ingreso identifican su origen. */
+    private static String referenciaDeMovimiento(Proveedor proveedor, String factura) {
+        return proveedor.getNombre() + (factura == null ? "" : " · Factura " + factura);
+    }
+
+    private Proveedor buscarProveedor(Long id) {
+        return proveedores.findById(id).orElseThrow(() -> new NoEncontradoException("Proveedor no encontrado"));
+    }
+
+    private Producto buscarProducto(Long id) {
+        return productos.findById(id).orElseThrow(() -> new NoEncontradoException("Producto no encontrado"));
     }
 
     /** El proveedor ajustó la factura a lo recibido; se desbloquea el pago por el valor recibido. */
