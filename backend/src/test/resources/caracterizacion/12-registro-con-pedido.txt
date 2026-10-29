@@ -1,0 +1,20 @@
+== Ingreso
+proveedor=Distribuidora El Nogal factura=null pedido={PEDIDO}
+verificacion=APROBADO (Aprobado) totalFacturado=64400 totalRecibido=64400 totalAPagar=64400 estadoPago=PENDIENTE pagable=true
+- Aceite 1 L: facturada=6 recibida=6 diferencia=0 costo=7800 subtotalFacturado=46800
+- Arroz 500 g: facturada=8 recibida=8 diferencia=0 costo=2200 subtotalFacturado=17600
+
+== Productos (stock y costo del catálogo después del ingreso)
+- Aceite 1 L: stock=8 costo=7800
+- Arroz 500 g: stock=11 costo=2200
+- Leche 1 L: stock=4 costo=3500
+
+== Movimientos de inventario (del más reciente al más antiguo)
+- Aceite 1 L: ENTRADA INGRESO_PROVEEDOR cantidad=6 stock=8 documento={INGRESO} referencia=Distribuidora El Nogal
+- Aceite 1 L: ENTRADA INVENTARIO_INICIAL cantidad=2 stock=2 documento=null referencia=null
+- Arroz 500 g: ENTRADA INGRESO_PROVEEDOR cantidad=8 stock=11 documento={INGRESO} referencia=Distribuidora El Nogal
+- Arroz 500 g: ENTRADA INVENTARIO_INICIAL cantidad=3 stock=3 documento=null referencia=null
+- Leche 1 L: ENTRADA INVENTARIO_INICIAL cantidad=4 stock=4 documento=null referencia=null
+
+== Pedido
+estado=ENTREGADO puedeRecibirse=false ultimaNota=Recibido con el ingreso #{INGRESO}

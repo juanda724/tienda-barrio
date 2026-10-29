@@ -1,0 +1,26 @@
+H-03 - Caracterizacion ANTES de refactorizar IngresoService.registrar() (codigo de produccion sin cambios)
+Commit base: da4e419 (main) + RegistroIngresoCaracterizacionTest sin commit
+Fecha: 2026-10-28 20:49
+
+1) Referencias generadas con: backend\mvnw.cmd test -Dtest=RegistroIngresoCaracterizacionTest -Dcaracterizacion.generar=true
+   Huella SHA-256 (16 primeros caracteres):
+   C702AD5F70345D57  10-registro-sin-pedido-con-diferencia.txt
+   BB351401055A684F  11-registro-lineas-repetidas-y-vacias.txt
+   8573B39F265A0D9E  12-registro-con-pedido.txt
+   AE480301AB8A7A56  13-registro-errores-de-validacion.txt
+
+2) Suite completa: backend\mvnw.cmd test
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.AlertasReposicionTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DevolucionesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DocumentosPagoCaracterizacionTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.EntregaFaltantesTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.FiadosTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.MovimientosInventarioTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.PedidosProveedorTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ProveedoresIngresoTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.RegistroIngresoCaracterizacionTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ReportesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VentasFacturacionTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VerificacionPagoTest
+
+Total: 84 pruebas, 0 fallos o errores

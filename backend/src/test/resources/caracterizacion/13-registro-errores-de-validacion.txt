@@ -1,0 +1,7 @@
+proveedor inexistente -> NoEncontradoException: Proveedor no encontrado
+todas las cantidades en cero -> NegocioException: Indique lo recibido o lo facturado de al menos un producto
+producto inexistente -> NoEncontradoException: Producto no encontrado
+producto que el proveedor no suministra -> NegocioException: Leche 1 L no está asociado al proveedor Distribuidora El Nogal
+pedido inexistente -> NoEncontradoException: Pedido a proveedor no encontrado
+pedido de otro proveedor -> NegocioException: El pedido #{PEDIDO} es de Distribuidora El Nogal, no de Lácteos La Pradera
+pedido cancelado -> NegocioException: El pedido #{PEDIDO_CANCELADO} está cancelado y no puede recibirse
