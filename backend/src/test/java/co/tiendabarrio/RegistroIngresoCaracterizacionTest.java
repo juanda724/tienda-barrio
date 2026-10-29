@@ -104,6 +104,16 @@ class RegistroIngresoCaracterizacionTest {
     }
 
     @Test
+    void lineaSinCantidadesNoSeValidaNiSeRegistra() throws IOException {
+        // La leche no es de este proveedor: si la línea vacía se procesara, el ingreso se rechazaría
+        IngresoResponse ingreso = ingresos.registrar(new IngresoRequest(nogal.id(), null, "FV-214", List.of(
+                linea(aceite, 3, 3, 7800L),
+                linea(leche, 0, 0, 3500L))));
+
+        comparar("14-registro-linea-vacia-de-producto-ajeno", ingreso, null);
+    }
+
+    @Test
     void ingresoDeUnPedidoLoMarcaEntregado() throws IOException {
         Long pedido = pedidos.crear(new PedidoProveedorRequest(nogal.id(), List.of(
                 new LineaProductoRequest(aceite.id(), 6), new LineaProductoRequest(arroz.id(), 8)), null, null)).id();

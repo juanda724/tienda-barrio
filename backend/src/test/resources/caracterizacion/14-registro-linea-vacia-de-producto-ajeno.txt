@@ -1,0 +1,15 @@
+== Ingreso
+proveedor=Distribuidora El Nogal factura=FV-214 pedido=null
+verificacion=APROBADO (Aprobado) totalFacturado=23400 totalRecibido=23400 totalAPagar=23400 estadoPago=PENDIENTE pagable=true
+- Aceite 1 L: facturada=3 recibida=3 diferencia=0 costo=7800 subtotalFacturado=23400
+
+== Productos (stock y costo del catálogo después del ingreso)
+- Aceite 1 L: stock=5 costo=7800
+- Arroz 500 g: stock=3 costo=2200
+- Leche 1 L: stock=4 costo=3500
+
+== Movimientos de inventario (del más reciente al más antiguo)
+- Aceite 1 L: ENTRADA INGRESO_PROVEEDOR cantidad=3 stock=5 documento={INGRESO} referencia=Distribuidora El Nogal · Factura FV-214
+- Aceite 1 L: ENTRADA INVENTARIO_INICIAL cantidad=2 stock=2 documento=null referencia=null
+- Arroz 500 g: ENTRADA INVENTARIO_INICIAL cantidad=3 stock=3 documento=null referencia=null
+- Leche 1 L: ENTRADA INVENTARIO_INICIAL cantidad=4 stock=4 documento=null referencia=null
