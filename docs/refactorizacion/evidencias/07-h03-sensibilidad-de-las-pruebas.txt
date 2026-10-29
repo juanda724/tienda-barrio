@@ -1,0 +1,39 @@
+H-03 · Sensibilidad de las pruebas (mutaciones temporales sobre el código refactorizado)
+Fecha: 2026-10-28
+Comando: backend\mvnw.cmd test -Dtest=RegistroIngresoCaracterizacionTest,PedidosProveedorTest,VerificacionPagoTest,ProveedoresIngresoTest
+
+Cada mutación se aplicó sobre el código ya refactorizado, se ejecutaron las pruebas y se revirtió.
+
+Mutación 1 · No descartar las líneas sin cantidades
+  IngresoService.lineasConCantidades(): filtro reemplazado por "aceptar todas"
+  Detectada por:
+    RegistroIngresoCaracterizacionTest.lineaSinCantidadesNoSeValidaNiSeRegistra   (la línea vacía de un producto
+                                                                                   ajeno ya no se ignora: NegocioException)
+    RegistroIngresoCaracterizacionTest.erroresDeValidacionConservanSuMensaje       (ya no se rechaza "todas en cero")
+    VerificacionPagoTest.ingresoSinCantidadesSeRechaza
+  Nota: el escenario 14 (línea vacía de un producto ajeno) se agregó durante esta comprobación, porque en el
+  escenario 11 la línea 0/0 se une con otra del mismo producto y no probaba el descarte por sí sola. Su
+  referencia se generó con el código ANTERIOR a la refactorización (git stash del código de producción,
+  mvnw clean test -Dcaracterizacion.generar=true, git stash pop).
+
+Mutación 2 · Actualizar el costo del catálogo aunque no llegue mercancía
+  IngresoService.recibirLinea(): actualizarCostoDelCatalogo() fuera del "if (cantidadRecibida > 0)"
+  Detectada por:
+    RegistroIngresoCaracterizacionTest.lineasRepetidasSeUnenYLasVaciasSeIgnoran   (el arroz solo facturado cambia
+                                                                                    de costo 2200 a 2400)
+
+Mutación 3 · Cambiar el mensaje de la validación movida al dominio
+  Proveedor.validarQueSuministra(): "no está asociado al proveedor" -> "no pertenece al proveedor"
+  Detectada por:
+    RegistroIngresoCaracterizacionTest.erroresDeValidacionConservanSuMensaje
+    PedidosProveedorTest.pedidoConProductoNoAsociadoSeRechaza
+    ProveedoresIngresoTest.ingresoConProductoNoAsociadoSeRechaza
+  Conclusión: el mensaje ahora vive en un solo lugar y protege a los dos servicios que lo usan.
+
+Código restaurado: las 4 clases pasan sin fallos y no quedan restos de las mutaciones.
+
+Incidencia del entorno: algunas ejecuciones fallaron antes de correr las pruebas con
+NoClassDefFoundError (org/hibernate/sql/ast/tree/predicate/Predicate, DefaultPropertyMapper) al iniciar el
+contexto de Spring. Es un error intermitente de carga de las librerías en este equipo, independiente del código:
+repetir la ejecución (o "mvnw clean test") lo resuelve. Solo se tomaron como resultado las ejecuciones en las que
+el contexto inició correctamente.

@@ -1,0 +1,30 @@
+H-03 - Caracterizacion DESPUES de refactorizar IngresoService.registrar()
+Commit: af57415 (main) - refactor: separar responsabilidades del registro de ingresos
+Fecha: 2026-10-28 21:14
+
+1) Referencias de H-03: no se regeneraron. Las 10 a 13 son del commit 64ba17b y la 14 del 51934cd,
+   todas generadas con el codigo anterior a la refactorizacion. Huella SHA-256 (16 primeros caracteres):
+   C702AD5F70345D57  10-registro-sin-pedido-con-diferencia.txt
+   BB351401055A684F  11-registro-lineas-repetidas-y-vacias.txt
+   8573B39F265A0D9E  12-registro-con-pedido.txt
+   AE480301AB8A7A56  13-registro-errores-de-validacion.txt
+   3F58B9FC50ECD0F2  14-registro-linea-vacia-de-producto-ajeno.txt
+   (10 a 13 identicas a 05-h03-caracterizacion-antes.txt)
+   Cambios en las referencias desde 51934cd: ninguno
+
+2) Suite completa: backend\mvnw.cmd clean test
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.AlertasReposicionTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DevolucionesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.DocumentosPagoCaracterizacionTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.EntregaFaltantesTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.FiadosTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.MovimientosInventarioTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.PedidosProveedorTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ProveedoresIngresoTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.RegistroIngresoCaracterizacionTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.ReportesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VentasFacturacionTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0 -- co.tiendabarrio.VerificacionPagoTest
+
+Resumen de Maven: [INFO] Tests run: 85, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
