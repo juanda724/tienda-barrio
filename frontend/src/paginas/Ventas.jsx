@@ -3,6 +3,7 @@ import { api, formatearFecha, formatearPesos } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
 import BuscadorProducto from '../componentes/BuscadorProducto.jsx'
 import Comprobante from '../componentes/Comprobante.jsx'
+import DatosFacturaElectronica from '../componentes/DatosFacturaElectronica.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
 
@@ -12,6 +13,11 @@ const FORMAS_PAGO = [
   { id: 'TARJETA', nombre: 'Tarjeta / datáfono' },
   { id: 'CREDITO', nombre: 'Crédito (fiado)' },
 ]
+
+// Formulario vacío de factura electrónica (datos del cliente que la pide)
+const FACTURA_VACIA = {
+  tipoDocumento: 'CC', numeroDocumento: '', nombre: '', correo: '', telefono: '', direccion: '', ciudad: '',
+}
 
 const unidadesDe = (lineas) => lineas.reduce((total, l) => total + (Number(l.cantidad) || 0), 0)
 const plural = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`
@@ -26,6 +32,8 @@ export default function Ventas({ productos, clientes, recargar }) {
   // Venta a crédito: cliente elegido y formulario para registrar uno nuevo sin salir de Ventas
   const [clienteId, setClienteId] = useState('')
   const [clienteNuevo, setClienteNuevo] = useState(null)
+  // Datos del cliente si pide factura electrónica; null si no la pide
+  const [factura, setFactura] = useState(null)
   // Venta cuyo comprobante se está mostrando
   const [comprobante, setComprobante] = useState(null)
   const buscador = useRef(null)
@@ -67,6 +75,7 @@ export default function Ventas({ productos, clientes, recargar }) {
     setRecibido('')
     setClienteId('')
     setClienteNuevo(null)
+    setFactura(null)
   }
 
   const crearCliente = () =>
@@ -105,11 +114,13 @@ export default function Ventas({ productos, clientes, recargar }) {
           formaPago,
           montoRecibido: efectivo && recibido !== '' ? Number(recibido) : null,
           clienteId: credito ? Number(clienteId) : null,
+          facturaElectronica: factura,
         })
         vaciar()
-        avisos.exito(venta.clienteNombre
+        avisos.exito((venta.clienteNombre
           ? `Venta #${venta.id} fiada a ${venta.clienteNombre} por ${formatearPesos(venta.total)}`
           : `Venta #${venta.id} registrada por ${formatearPesos(venta.total)}`)
+          + (venta.numeroFacturaElectronica ? ` · Factura electrónica ${venta.numeroFacturaElectronica}` : ''))
         setComprobante(venta)
         setVersion((v) => v + 1)
         recargar()
@@ -273,6 +284,14 @@ export default function Ventas({ productos, clientes, recargar }) {
                 </div>
               )}
             </div>
+            <div className="acciones izquierda">
+              <button type="button" className={factura ? 'activo' : ''} aria-pressed={Boolean(factura)}
+                onClick={() => setFactura(factura ? null : { ...FACTURA_VACIA })}>
+                {factura ? 'Quitar factura electrónica' : 'Factura electrónica'}
+              </button>
+              {!factura && <span className="pequeno tenue"></span>}
+            </div>
+            {factura && <DatosFacturaElectronica datos={factura} onCambiar={setFactura} />}
           </div>
         )}
 
@@ -323,6 +342,7 @@ export default function Ventas({ productos, clientes, recargar }) {
                   <td className="tenue">
                     {v.formaPagoNombre ?? '—'}
                     {v.clienteNombre && <div className="pequeno">{v.clienteNombre}</div>}
+                    {v.numeroFacturaElectronica && <div className="pequeno">Factura {v.numeroFacturaElectronica}</div>}
                   </td>
                   <td className="num"><button className="enlace" onClick={() => setComprobante(v)}>Comprobante</button></td>
                 </tr>

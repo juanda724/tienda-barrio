@@ -31,14 +31,16 @@ public class VentaService {
     private final InventarioService inventario;
     private final ComprobanteService comprobantes;
     private final ClienteService clientes;
+    private final AdquirienteService adquirientes;
 
     public VentaService(VentaRepository ventas, ProductoRepository productos, InventarioService inventario,
-                        ComprobanteService comprobantes, ClienteService clientes) {
+                        ComprobanteService comprobantes, ClienteService clientes, AdquirienteService adquirientes) {
         this.ventas = ventas;
         this.productos = productos;
         this.inventario = inventario;
         this.comprobantes = comprobantes;
         this.clientes = clientes;
+        this.adquirientes = adquirientes;
     }
 
     @Transactional(readOnly = true)
@@ -85,7 +87,11 @@ public class VentaService {
             cliente = clientes.buscar(datos.clienteId());
         }
 
-        Venta venta = ventas.save(new Venta(datos.formaPago(), recibido, cliente));
+        Venta venta = new Venta(datos.formaPago(), recibido, cliente);
+        if (datos.facturaElectronica() != null) {
+            venta.solicitarFacturaElectronica(adquirientes.guardar(datos.facturaElectronica()));
+        }
+        venta = ventas.save(venta);
         for (LineaProducto linea : lineas) {
             inventario.registrarSalida(linea.getProducto(), linea.getCantidad(), OrigenMovimiento.VENTA,
                     venta.getId(), null);
