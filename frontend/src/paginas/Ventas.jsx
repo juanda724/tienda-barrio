@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { api, formatearFecha, formatearPesos } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
 import BuscadorProducto from '../componentes/BuscadorProducto.jsx'
-import Comprobante from '../componentes/Comprobante.jsx'
 import DatosFacturaElectronica from '../componentes/DatosFacturaElectronica.jsx'
+import DocumentoVenta from '../componentes/DocumentoVenta.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
 
@@ -344,7 +344,11 @@ export default function Ventas({ productos, clientes, recargar }) {
                     {v.clienteNombre && <div className="pequeno">{v.clienteNombre}</div>}
                     {v.numeroFacturaElectronica && <div className="pequeno">Factura {v.numeroFacturaElectronica}</div>}
                   </td>
-                  <td className="num"><button className="enlace" onClick={() => setComprobante(v)}>Comprobante</button></td>
+                  <td className="num">
+                    <button className="enlace" onClick={() => setComprobante(v)}>
+                      {v.numeroFacturaElectronica ? 'Factura' : 'Comprobante'}
+                    </button>
+                  </td>
                 </tr>
               ))}
               {ventas.length === 0 && (
@@ -355,7 +359,7 @@ export default function Ventas({ productos, clientes, recargar }) {
         </div>
       </div>
 
-      {comprobante && <Comprobante venta={comprobante} onCerrar={cerrarComprobante} />}
+      {comprobante && <DocumentoVenta venta={comprobante} onCerrar={cerrarComprobante} />}
     </section>
   )
 }

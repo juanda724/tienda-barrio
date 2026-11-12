@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import { api, formatearFecha } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
-import Comprobante from '../componentes/Comprobante.jsx'
 import ComprobantePago from '../componentes/ComprobantePago.jsx'
+import DocumentoVenta from '../componentes/DocumentoVenta.jsx'
 import FacturaPedido from '../componentes/FacturaPedido.jsx'
 import NotaDevolucion from '../componentes/NotaDevolucion.jsx'
 
@@ -36,7 +36,7 @@ export default function Movimientos({ productos }) {
   const [aviso, setAviso] = useState(null)
   const cerrarDocumento = useCallback(() => setDocumento(null), [])
 
-  // Venta → su comprobante. Ingreso pagado → la factura del pedido o, si llegó sin pedido, el comprobante
+  // Venta → su comprobante o su factura electrónica. Ingreso pagado → la factura del pedido o, si llegó sin pedido, el comprobante
   // de pago (sin pagar todavía no tiene). Devolución o reemplazo → la nota de devolución.
   const abrirDocumento = async (m) => {
     setAviso(null)
@@ -146,7 +146,7 @@ export default function Movimientos({ productos }) {
         </div>
       </div>
 
-      {documento?.tipo === 'venta' && <Comprobante venta={documento.datos} onCerrar={cerrarDocumento} />}
+      {documento?.tipo === 'venta' && <DocumentoVenta venta={documento.datos} onCerrar={cerrarDocumento} />}
       {documento?.tipo === 'factura' && <FacturaPedido pedidoId={documento.datos.pedidoId} onCerrar={cerrarDocumento} />}
       {documento?.tipo === 'pago' && <ComprobantePago ingreso={documento.datos} onCerrar={cerrarDocumento} />}
       {documento?.tipo === 'devolucion' && <NotaDevolucion devolucion={documento.datos} onCerrar={cerrarDocumento} />}

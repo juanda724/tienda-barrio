@@ -49,9 +49,20 @@ public class Venta {
     @JoinColumn(name = "venta_id")
     private List<LineaProducto> lineas = new ArrayList<>();
 
-    /** Cliente que pidió factura electrónica; vacío si solo se le dio el comprobante. */
+    /** Cliente a cuyo nombre va la factura electrónica; vacío si no se pidió o si va a "Consumidor final". */
     @ManyToOne
     private Adquiriente adquiriente;
+
+    /** Posición de la factura en la numeración autorizada; vacío si la venta no tiene factura electrónica. */
+    private Long consecutivoFactura;
+
+    /** Número con que se expidió la factura (FE-12); no se repite. */
+    @Column(unique = true)
+    private String numeroFactura;
+
+    /** Código único de la factura, calculado al expedirla (SWR-32). */
+    @Column(length = 96)
+    private String cufe;
 
     protected Venta() {
     }
@@ -68,17 +79,35 @@ public class Venta {
         total = lineas.stream().mapToLong(LineaProducto::getSubtotal).sum();
     }
 
-    public void solicitarFacturaElectronica(Adquiriente adquiriente) {
+    /**
+     * Expide la factura electrónica de la venta con el número que le corresponde en la resolución.
+     * adquiriente es null si se factura a "Consumidor final".
+     */
+    public void expedirFacturaElectronica(Adquiriente adquiriente, long consecutivo, String numero, String cufe) {
         this.adquiriente = adquiriente;
+        this.consecutivoFactura = consecutivo;
+        this.numeroFactura = numero;
+        this.cufe = cufe;
     }
 
-    /** Número de la factura electrónica (FE-000012 para la venta 12); null si no se pidió. */
+    /**
+     * Número de la factura electrónica; null si no se pidió. Las facturas anteriores a la numeración por
+     * resolución no lo tienen guardado y conservan el que mostraban: FE-000012 para la venta 12.
+     */
     public String getNumeroFacturaElectronica() {
+        if (numeroFactura != null) {
+            return numeroFactura;
+        }
         return adquiriente == null || id == null ? null : String.format("FE-%06d", id);
     }
 
     public Adquiriente getAdquiriente() {
         return adquiriente;
+    }
+
+    /** CUFE de la factura; null si la venta no tiene factura o es anterior a la numeración por resolución. */
+    public String getCufe() {
+        return cufe;
     }
 
     /** Cambio a devolver al cliente; null si no pagó en efectivo o no se indicó lo recibido. */

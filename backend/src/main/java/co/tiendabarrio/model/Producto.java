@@ -66,6 +66,11 @@ public class Producto {
         return id;
     }
 
+    /** Código con que el producto se identifica en la factura electrónica: P-0012 para el producto 12. */
+    public String getCodigo() {
+        return String.format("P-%04d", id);
+    }
+
     public String getNombre() {
         return nombre;
     }

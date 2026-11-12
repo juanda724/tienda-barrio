@@ -31,16 +31,16 @@ public class VentaService {
     private final InventarioService inventario;
     private final ComprobanteService comprobantes;
     private final ClienteService clientes;
-    private final AdquirienteService adquirientes;
+    private final FacturaElectronicaService facturas;
 
     public VentaService(VentaRepository ventas, ProductoRepository productos, InventarioService inventario,
-                        ComprobanteService comprobantes, ClienteService clientes, AdquirienteService adquirientes) {
+                        ComprobanteService comprobantes, ClienteService clientes, FacturaElectronicaService facturas) {
         this.ventas = ventas;
         this.productos = productos;
         this.inventario = inventario;
         this.comprobantes = comprobantes;
         this.clientes = clientes;
-        this.adquirientes = adquirientes;
+        this.facturas = facturas;
     }
 
     @Transactional(readOnly = true)
@@ -56,8 +56,9 @@ public class VentaService {
     /**
      * Registra la venta con fecha, hora, productos y total (SWR-11), calcula el total con el precio
      * de venta de cada producto (SWR-12) y descarga el inventario (SWR-02). Una venta a crédito queda
-     * a nombre del cliente y suma a su deuda (SWR-21). Primero valida todo (precios, efectivo recibido
-     * y cliente) para no tocar el stock si la venta no puede hacerse.
+     * a nombre del cliente y suma a su deuda (SWR-21). Si el cliente pide factura electrónica, la expide
+     * (SWR-32). Primero valida todo (precios, efectivo recibido, cliente y numeración de la factura) para no
+     * tocar el stock si la venta no puede hacerse.
      */
     @Transactional
     public VentaResponse registrar(VentaRequest datos) {
@@ -88,14 +89,14 @@ public class VentaService {
         }
 
         Venta venta = new Venta(datos.formaPago(), recibido, cliente);
+        lineas.forEach(venta::agregarLinea);
         if (datos.facturaElectronica() != null) {
-            venta.solicitarFacturaElectronica(adquirientes.guardar(datos.facturaElectronica()));
+            facturas.expedir(venta, datos.facturaElectronica());
         }
         venta = ventas.save(venta);
         for (LineaProducto linea : lineas) {
             inventario.registrarSalida(linea.getProducto(), linea.getCantidad(), OrigenMovimiento.VENTA,
                     venta.getId(), null);
-            venta.agregarLinea(linea);
         }
         return VentaResponse.de(venta);
     }

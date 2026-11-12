@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.tiendabarrio.dto.request.VentaRequest;
 import co.tiendabarrio.dto.response.ComprobanteResponse;
+import co.tiendabarrio.dto.response.FacturaElectronicaResponse;
 import co.tiendabarrio.dto.response.VentaResponse;
+import co.tiendabarrio.service.FacturaElectronicaService;
 import co.tiendabarrio.service.VentaService;
 import jakarta.validation.Valid;
 
@@ -23,9 +25,11 @@ import jakarta.validation.Valid;
 public class VentaController {
 
     private final VentaService ventas;
+    private final FacturaElectronicaService facturas;
 
-    public VentaController(VentaService ventas) {
+    public VentaController(VentaService ventas, FacturaElectronicaService facturas) {
         this.ventas = ventas;
+        this.facturas = facturas;
     }
 
     @GetMapping
@@ -42,6 +46,12 @@ public class VentaController {
     @GetMapping("/{id}/comprobante")
     public ComprobanteResponse comprobante(@PathVariable Long id, @RequestParam(required = false) String telefono) {
         return ventas.comprobante(id, telefono);
+    }
+
+    /** Factura electrónica de la venta; error si el cliente no la pidió. */
+    @GetMapping("/{id}/factura-electronica")
+    public FacturaElectronicaResponse facturaElectronica(@PathVariable Long id) {
+        return facturas.generar(id);
     }
 
     @PostMapping

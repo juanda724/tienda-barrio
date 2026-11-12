@@ -19,6 +19,10 @@ public interface VentaRepository extends JpaRepository<Venta, Long> {
     List<Venta> findByFechaHoraGreaterThanEqualAndFechaHoraLessThanOrderByFechaHoraAsc(LocalDateTime desde,
                                                                                        LocalDateTime hasta);
 
+    /** Último consecutivo usado en una factura electrónica; null si aún no se ha expedido ninguna. */
+    @Query("select max(v.consecutivoFactura) from Venta v")
+    Long ultimoConsecutivoFactura();
+
     /** Suma de las ventas a crédito de un cliente: lo que se le ha fiado en total. */
     @Query("select coalesce(sum(v.total), 0) from Venta v "
             + "where v.cliente.id = :clienteId and v.formaPago = co.tiendabarrio.model.FormaPago.CREDITO")

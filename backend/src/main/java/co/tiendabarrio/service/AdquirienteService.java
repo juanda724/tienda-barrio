@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.tiendabarrio.dto.request.FacturaElectronicaRequest;
 import co.tiendabarrio.dto.response.AdquirienteResponse;
+import co.tiendabarrio.exception.NegocioException;
 import co.tiendabarrio.model.Adquiriente;
 import co.tiendabarrio.model.TipoDocumento;
 import co.tiendabarrio.repository.AdquirienteRepository;
@@ -27,15 +28,27 @@ public class AdquirienteService {
         return adquirientes.findByTipoDocumentoAndNumeroDocumento(tipo, normalizar(numero)).map(AdquirienteResponse::de);
     }
 
-    /** Busca al cliente por su documento (o lo crea) y guarda los datos que trae la venta. */
+    /**
+     * Busca al cliente por su documento (o lo crea) y guarda los datos que trae la venta. No aplica a un
+     * consumidor final, del que no se guardan datos.
+     */
     @Transactional
     public Adquiriente guardar(FacturaElectronicaRequest datos) {
+        exigir(datos.numeroDocumento(), "Indique el número de documento del cliente");
+        exigir(datos.nombre(), "Indique el nombre o razón social del cliente");
+        exigir(datos.correo(), "Indique el correo al que se enviará la factura electrónica");
         String numero = normalizar(datos.numeroDocumento());
         Adquiriente adquiriente = adquirientes.findByTipoDocumentoAndNumeroDocumento(datos.tipoDocumento(), numero)
                 .orElseGet(() -> new Adquiriente(datos.tipoDocumento(), numero));
         adquiriente.actualizar(datos.nombre().trim(), datos.correo().trim(), limpiar(datos.telefono()),
                 limpiar(datos.direccion()), limpiar(datos.ciudad()));
         return adquirientes.save(adquiriente);
+    }
+
+    private static void exigir(String dato, String mensaje) {
+        if (dato == null || dato.isBlank()) {
+            throw new NegocioException(mensaje);
+        }
     }
 
     /** "1.023.456.789" y "1023456789" son el mismo documento. */

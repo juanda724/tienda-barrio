@@ -1,20 +1,28 @@
 import { useState } from 'react'
 import { api } from '../servicios/api.js'
 
+const CONSUMIDOR_FINAL = 'CONSUMIDOR_FINAL'
+
 const TIPOS_DOCUMENTO = [
   { id: 'CC', nombre: 'Cédula de ciudadanía' },
   { id: 'NIT', nombre: 'NIT' },
   { id: 'CE', nombre: 'Cédula de extranjería' },
   { id: 'PASAPORTE', nombre: 'Pasaporte' },
+  { id: CONSUMIDOR_FINAL, nombre: 'Consumidor final (sin identificar)' },
 ]
 
 /**
  * Datos del cliente que pide factura electrónica. Al escribir el documento se buscan los datos de una
- * compra anterior para no volver a escribirlos.
+ * compra anterior para no volver a escribirlos. Un consumidor final no se identifica.
  */
 export default function DatosFacturaElectronica({ datos, onCambiar }) {
   const [encontrado, setEncontrado] = useState(false)
   const campo = (nombre) => (e) => onCambiar({ ...datos, [nombre]: e.target.value })
+
+  // Al pasar a consumidor final se borra lo escrito: de él no se envía ningún dato personal
+  const cambiarTipo = (e) => onCambiar(e.target.value === CONSUMIDOR_FINAL
+    ? { tipoDocumento: CONSUMIDOR_FINAL, numeroDocumento: '', nombre: '', correo: '', telefono: '', direccion: '', ciudad: '' }
+    : { ...datos, tipoDocumento: e.target.value })
 
   const buscar = async () => {
     if (datos.numeroDocumento.trim().length < 3) return
@@ -38,6 +46,7 @@ export default function DatosFacturaElectronica({ datos, onCambiar }) {
   }
 
   const esEmpresa = datos.tipoDocumento === 'NIT'
+  const consumidorFinal = datos.tipoDocumento === CONSUMIDOR_FINAL
 
   return (
     <fieldset className="factura-electronica">
@@ -45,38 +54,47 @@ export default function DatosFacturaElectronica({ datos, onCambiar }) {
       <div className="campos">
         <label>
           Tipo de documento
-          <select value={datos.tipoDocumento} onChange={campo('tipoDocumento')}>
+          <select value={datos.tipoDocumento} onChange={cambiarTipo}>
             {TIPOS_DOCUMENTO.map((t) => <option key={t.id} value={t.id}>{t.nombre}</option>)}
           </select>
         </label>
-        <label>
-          Número de documento
-          <input value={datos.numeroDocumento} required autoFocus inputMode={esEmpresa ? 'text' : 'numeric'}
-            placeholder={esEmpresa ? '900123456-7' : '1023456789'}
-            onChange={campo('numeroDocumento')} onBlur={buscar} />
-        </label>
-        <label>
-          {esEmpresa ? 'Razón social' : 'Nombre completo'}
-          <input value={datos.nombre} required onChange={campo('nombre')} />
-        </label>
-        <label>
-          Correo (allí se envía la factura)
-          <input type="email" value={datos.correo} required placeholder="cliente@correo.com" onChange={campo('correo')} />
-        </label>
-        <label>
-          Celular (opcional)
-          <input type="tel" value={datos.telefono} onChange={campo('telefono')} />
-        </label>
-        <label>
-          Dirección (opcional)
-          <input value={datos.direccion} onChange={campo('direccion')} />
-        </label>
-        <label>
-          Ciudad (opcional)
-          <input value={datos.ciudad} onChange={campo('ciudad')} />
-        </label>
+        {!consumidorFinal && (
+          <>
+            <label>
+              Número de documento
+              <input value={datos.numeroDocumento} required autoFocus inputMode={esEmpresa ? 'text' : 'numeric'}
+                placeholder={esEmpresa ? '900123456-7' : '1023456789'}
+                onChange={campo('numeroDocumento')} onBlur={buscar} />
+            </label>
+            <label>
+              {esEmpresa ? 'Razón social' : 'Nombre completo'}
+              <input value={datos.nombre} required onChange={campo('nombre')} />
+            </label>
+            <label>
+              Correo (allí se envía la factura)
+              <input type="email" value={datos.correo} required placeholder="cliente@correo.com" onChange={campo('correo')} />
+            </label>
+            <label>
+              Celular (opcional)
+              <input type="tel" value={datos.telefono} onChange={campo('telefono')} />
+            </label>
+            <label>
+              Dirección (opcional)
+              <input value={datos.direccion} onChange={campo('direccion')} />
+            </label>
+            <label>
+              Ciudad (opcional)
+              <input value={datos.ciudad} onChange={campo('ciudad')} />
+            </label>
+          </>
+        )}
       </div>
-      {encontrado && <p className="pequeno tenue">Datos de una compra anterior de este cliente. Revíselos.</p>}
+      {consumidorFinal && (
+        <p className="pequeno tenue">La factura sale a nombre de «Consumidor final» con el NIT 222222222222.</p>
+      )}
+      {!consumidorFinal && encontrado && (
+        <p className="pequeno tenue">Datos de una compra anterior de este cliente. Revíselos.</p>
+      )}
     </fieldset>
   )
 }
