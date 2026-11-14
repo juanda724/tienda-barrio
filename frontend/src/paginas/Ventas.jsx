@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { api, formatearFecha, formatearPesos } from '../servicios/api.js'
+import { useCallback, useRef, useState } from 'react'
+import { api, formatearPesos } from '../servicios/api.js'
 import Aviso from '../componentes/Aviso.jsx'
 import BuscadorProducto from '../componentes/BuscadorProducto.jsx'
 import DatosFacturaElectronica from '../componentes/DatosFacturaElectronica.jsx'
@@ -22,9 +22,8 @@ const FACTURA_VACIA = {
 const unidadesDe = (lineas) => lineas.reduce((total, l) => total + (Number(l.cantidad) || 0), 0)
 const plural = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`
 
-export default function Ventas({ productos, clientes, recargar }) {
-  const [ventas, setVentas] = useState([])
-  const [version, setVersion] = useState(0)
+/** Registro de ventas, como una caja. Las ventas ya hechas están en la pestaña Historial (onVerHistorial). */
+export default function Ventas({ productos, clientes, recargar, onVerHistorial }) {
   // Productos agregados a la venta en curso: [{ productoId, cantidad }]
   const [carrito, setCarrito] = useState([])
   const [formaPago, setFormaPago] = useState('EFECTIVO')
@@ -38,12 +37,7 @@ export default function Ventas({ productos, clientes, recargar }) {
   const [comprobante, setComprobante] = useState(null)
   const buscador = useRef(null)
   const avisos = useAviso()
-  const { error } = avisos
   const [enviando, ejecutar] = useEnvio()
-
-  useEffect(() => {
-    api.ventas().then(setVentas).catch((e) => error(e.message))
-  }, [version, error])
 
   const productoDe = (id) => productos.find((p) => p.id === id)
   const cantidadEnCarrito = (id) => carrito.find((l) => l.productoId === id)?.cantidad ?? 0
@@ -122,7 +116,6 @@ export default function Ventas({ productos, clientes, recargar }) {
           : `Venta #${venta.id} registrada por ${formatearPesos(venta.total)}`)
           + (venta.numeroFacturaElectronica ? ` · Factura electrónica ${venta.numeroFacturaElectronica}` : ''))
         setComprobante(venta)
-        setVersion((v) => v + 1)
         recargar()
       } catch (err) {
         avisos.error(err.message)
@@ -141,10 +134,11 @@ export default function Ventas({ productos, clientes, recargar }) {
         <div>
           <h2>Ventas</h2>
           <p className="ayuda">
-            Cada venta descarga los productos del inventario. El detalle de cada entrada y salida está en la
-            pestaña Movimientos.
+            Cada venta descarga los productos del inventario. Las ventas ya registradas y cada entrada y salida de
+            producto están en la pestaña Historial.
           </p>
         </div>
+        <button onClick={onVerHistorial}>Ver historial de ventas</button>
       </div>
 
       <Aviso aviso={avisos.aviso} onCerrar={avisos.limpiar} />
@@ -303,70 +297,7 @@ export default function Ventas({ productos, clientes, recargar }) {
         </div>
       </form>
 
-      <div className="tarjeta">
-        <h3>Historial de ventas</h3>
-        <div className="tabla-contenedor">
-          <table>
-            <thead>
-              <tr>
-                <th>Venta</th>
-                <th>Fecha y hora</th>
-                <th>Productos</th>
-                <th className="num">Unidades</th>
-                <th className="num">Total</th>
-                <th>Pago</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {ventas.map((v) => (
-                <tr key={v.id}>
-                  <td className="fuerte nowrap">#{v.id}</td>
-                  <td className="tenue nowrap">{formatearFecha(v.fechaHora)}</td>
-                  <td>
-                    {v.lineas.length === 1 ? (
-                      <>{v.lineas[0].productoNombre} <span className="tenue">× {v.lineas[0].cantidad}</span></>
-                    ) : (
-                      <details className="detalle-venta">
-                        <summary>{resumen(v.lineas)}</summary>
-                        <ul>
-                          {v.lineas.map((l) => (
-                            <li key={l.productoId}>{l.productoNombre} <span className="tenue">× {l.cantidad}</span></li>
-                          ))}
-                        </ul>
-                      </details>
-                    )}
-                  </td>
-                  <td className="num">{unidadesDe(v.lineas)}</td>
-                  <td className="num fuerte nowrap">{formatearPesos(v.total)}</td>
-                  <td className="tenue">
-                    {v.formaPagoNombre ?? '—'}
-                    {v.clienteNombre && <div className="pequeno">{v.clienteNombre}</div>}
-                    {v.numeroFacturaElectronica && <div className="pequeno">Factura {v.numeroFacturaElectronica}</div>}
-                  </td>
-                  <td className="num">
-                    <button className="enlace" onClick={() => setComprobante(v)}>
-                      {v.numeroFacturaElectronica ? 'Factura' : 'Comprobante'}
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {ventas.length === 0 && (
-                <tr><td colSpan="7" className="vacio">Aún no hay ventas registradas</td></tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
       {comprobante && <DocumentoVenta venta={comprobante} onCerrar={cerrarComprobante} />}
     </section>
   )
-}
-
-/** "Arroz 500 g, Leche entera 1 L y 2 más": los dos primeros productos y cuántos quedan. */
-function resumen(lineas) {
-  const nombres = lineas.map((l) => l.productoNombre)
-  if (nombres.length <= 2) return nombres.join(' y ')
-  return `${nombres.slice(0, 2).join(', ')} y ${nombres.length - 2} más`
 }

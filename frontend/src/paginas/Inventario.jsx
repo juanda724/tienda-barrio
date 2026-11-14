@@ -75,7 +75,7 @@ export default function Inventario({ productos, recargar }) {
       <div className="titulo-seccion">
         <div>
           <h2>Inventario actual</h2>
-          <p className="ayuda">El stock cambia solo con ventas e ingresos de mercancía, y todo queda en la pestaña Movimientos.</p>
+          <p className="ayuda">El stock cambia solo con ventas e ingresos de mercancía, y todo queda en la pestaña Historial.</p>
         </div>
         <button className="primario" onClick={() => setForm({ ...VACIO })}>+ Nuevo producto</button>
       </div>

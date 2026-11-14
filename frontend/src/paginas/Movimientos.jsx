@@ -25,6 +25,7 @@ const FILTROS = [
 /**
  * Cada entrada y salida de producto con fecha, hora y cantidad (SWR-01, SWR-04),
  * indicando si vino de una venta o de una compra (ingreso de mercancía) y su número.
+ * Es una de las dos vistas de la pestaña Historial.
  */
 export default function Movimientos({ productos }) {
   const [historial, setHistorial] = useState([])
@@ -73,17 +74,7 @@ export default function Movimientos({ productos }) {
   const visibles = historial.filter(FILTROS.find((f) => f.id === filtroOperacion).incluye)
 
   return (
-    <section>
-      <div className="titulo-seccion">
-        <div>
-          <h2>Movimientos de inventario</h2>
-          <p className="ayuda">
-            Cada entrada y salida de producto con su fecha, hora y stock resultante. Las ventas descargan el
-            inventario y las compras (ingresos de mercancía) lo suman.
-          </p>
-        </div>
-      </div>
-
+    <>
       {error && <div className="aviso error">{error}</div>}
       <Aviso aviso={aviso && { tipo: 'info', texto: aviso }} onCerrar={() => setAviso(null)} />
 
@@ -150,6 +141,6 @@ export default function Movimientos({ productos }) {
       {documento?.tipo === 'factura' && <FacturaPedido pedidoId={documento.datos.pedidoId} onCerrar={cerrarDocumento} />}
       {documento?.tipo === 'pago' && <ComprobantePago ingreso={documento.datos} onCerrar={cerrarDocumento} />}
       {documento?.tipo === 'devolucion' && <NotaDevolucion devolucion={documento.datos} onCerrar={cerrarDocumento} />}
-    </section>
+    </>
   )
 }

@@ -6,8 +6,8 @@ Plan Vivo de Requisitos:
 
 | Funcionalidad | Requisitos | Dónde se ve en la app |
 |---|---|---|
-| **F-01** Controlar movimientos de inventario | SWR-01, SWR-02, SWR-04 | Pestañas *Ventas* (buscador y ventas agrupadas), *Inventario* y *Movimientos* (cada entrada y salida, con su venta o compra) |
-| **F-05** Gestionar ventas y facturación | SWR-11, SWR-12, SWR-13, SWR-14, SWR-26, SWR-32, SWR-33 | *Ventas* (total, forma de pago, cambio, comprobante y factura electrónica) e *Inventario* (precio, costo e IVA) |
+| **F-01** Controlar movimientos de inventario | SWR-01, SWR-02, SWR-04 | Pestañas *Ventas* (buscador y ventas agrupadas), *Inventario* e *Historial* → *Movimientos de inventario* (cada entrada y salida, con su venta o compra) |
+| **F-05** Gestionar ventas y facturación | SWR-11, SWR-12, SWR-13, SWR-14, SWR-26, SWR-32, SWR-33 | *Ventas* (total, forma de pago, cambio, comprobante y factura electrónica), *Historial* → *Ventas* (ventas registradas y sus documentos) e *Inventario* (precio, costo e IVA) |
 | **F-08** Administrar ventas a crédito (fiado) | SWR-21, SWR-22, SWR-23 | *Ventas* (forma de pago "Crédito (fiado)") y *Fiados* (saldo, libreta y abonos) |
 | **F-03** Notificar reposición de stock | SWR-07, SWR-08 y regla RN-02 | Campana 🔔 del encabezado y *Pedidos* (lista de pedido sugerida) |
 | **F-06** Validar pedidos recibidos del proveedor | SWR-15, SWR-16, SWR-17 y regla RN-01 | *Ingresos* (facturado vs. recibido, facturas y pagos) |
@@ -77,7 +77,7 @@ backend/   API REST (Spring Boot)
     util/           Formato de pesos, enlaces de WhatsApp y Gmail, CUFE y código QR
 frontend/  Interfaz web (React)
   src/
-    paginas/        Una página por pestaña (Inventario, Ventas, Proveedores, PedidosProveedor, Ingresos)
+    paginas/        Una página por pestaña (Ventas, Inventario, Historial, Proveedores, PedidosProveedor, Ingresos...)
     componentes/    Componentes reutilizables (avisos de éxito/error, etiqueta de estado)
     hooks/          Lógica reutilizable de React (avisos, evitar doble envío)
     servicios/      Cliente de la API REST del backend
@@ -88,7 +88,11 @@ frontend/  Interfaz web (React)
 - El stock **solo cambia con movimientos**: las ventas lo descargan y los ingresos de mercancía lo suman. Cada
   movimiento guarda la fecha, la hora, la cantidad y el stock resultante (SWR-01, SWR-04). El stock inicial de un
   producto también queda registrado como movimiento.
-- En *Movimientos*, cada movimiento abre su documento: el **comprobante** de la venta, la **factura del pedido** o
+- La pestaña **Historial** reúne lo que ya pasó en la tienda en dos vistas, y recuerda la última que se eligió:
+  - **Ventas:** una fila por venta con fecha, productos, unidades, total y pago, y el botón para volver a abrir su
+    **comprobante** o su **factura electrónica**. Desde *Ventas* se llega con "Ver historial de ventas".
+  - **Movimientos de inventario:** una fila por producto que entra o sale, con filtros por operación y por producto.
+- En *Historial* → *Movimientos de inventario*, cada movimiento abre su documento: el **comprobante** de la venta, la **factura del pedido** o
   el comprobante de pago del ingreso (si ya está pagado; si no, avisa que estará disponible al pagarlo) y la **nota
   de devolución** de las devoluciones y reemplazos.
 - Una **venta** descarga automáticamente sus productos del inventario (SWR-02). Si algún producto no tiene stock
@@ -106,7 +110,7 @@ frontend/  Interfaz web (React)
 - Forma de pago: efectivo, transferencia o tarjeta. En efectivo se puede indicar lo recibido y el sistema calcula el
   **cambio**; si lo recibido no alcanza, la venta se rechaza.
 - Al registrar la venta se abre el **comprobante digital** (SWR-14), que se puede **imprimir** o **enviar por
-  WhatsApp** al cliente (con o sin su número). También se puede abrir después desde el historial de ventas.
+  WhatsApp** al cliente (con o sin su número). También se puede abrir después desde *Historial* → *Ventas*.
 - **Factura electrónica (SWR-32):** si el cliente la pide, el botón **Factura electrónica** de la ventana de cobro pide
   sus datos: tipo y número de documento (cédula, NIT, cédula de extranjería o pasaporte), nombre o razón social, correo
   y, opcionales, celular, dirección y ciudad. Los datos quedan guardados por documento: la próxima vez basta con

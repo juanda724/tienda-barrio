@@ -4,18 +4,28 @@ import CampanaAlertas from './componentes/CampanaAlertas.jsx'
 import Ventas from './paginas/Ventas.jsx'
 import Fiados from './paginas/Fiados.jsx'
 import Inventario from './paginas/Inventario.jsx'
-import Movimientos from './paginas/Movimientos.jsx'
+import Historial from './paginas/Historial.jsx'
 import Reportes from './paginas/Reportes.jsx'
 import Proveedores from './paginas/Proveedores.jsx'
 import PedidosProveedor from './paginas/PedidosProveedor.jsx'
 import Ingresos from './paginas/Ingresos.jsx'
 import Devoluciones from './paginas/Devoluciones.jsx'
 
+// Vista de Historial que se ve al entrar: la última que eligió el usuario en este navegador
+const CLAVE_VISTA_HISTORIAL = 'tienda-barrio.vista-historial'
+const vistaGuardada = () => {
+  try {
+    return localStorage.getItem(CLAVE_VISTA_HISTORIAL) ?? 'ventas'
+  } catch {
+    return 'ventas'
+  }
+}
+
 const SECCIONES = [
   { id: 'ventas', titulo: 'Ventas', funcionalidad: 'F-01' },
   { id: 'fiados', titulo: 'Fiados', funcionalidad: 'F-08' },
   { id: 'inventario', titulo: 'Inventario', funcionalidad: 'F-01' },
-  { id: 'movimientos', titulo: 'Movimientos', funcionalidad: 'F-01' },
+  { id: 'historial', titulo: 'Historial', funcionalidad: 'F-01' },
   { id: 'reportes', titulo: 'Reportes', funcionalidad: 'F-04' },
   { id: 'proveedores', titulo: 'Proveedores', funcionalidad: 'F-02' },
   { id: 'pedidos', titulo: 'Pedidos', funcionalidad: 'F-02' },
@@ -33,6 +43,8 @@ export default function App() {
   const [pedidoARecibir, setPedidoARecibir] = useState(null)
   // Ingreso elegido con "Registrar devolución"; Devoluciones arranca con él seleccionado
   const [ingresoADevolver, setIngresoADevolver] = useState(null)
+  // Historial: 'ventas' o 'movimientos'
+  const [vistaHistorial, setVistaHistorial] = useState(vistaGuardada)
 
   const [version, setVersion] = useState(0)
 
@@ -75,6 +87,20 @@ export default function App() {
     setSeccion('ingresos')
   }
 
+  const cambiarVistaHistorial = (vista) => {
+    setVistaHistorial(vista)
+    try {
+      localStorage.setItem(CLAVE_VISTA_HISTORIAL, vista)
+    } catch {
+      // Sin almacenamiento del navegador la vista simplemente no se recuerda
+    }
+  }
+
+  const verHistorialDeVentas = () => {
+    cambiarVistaHistorial('ventas')
+    irA('historial')
+  }
+
   const devolverIngreso = (ingreso) => {
     setIngresoADevolver(ingreso)
     setSeccion('devoluciones')
@@ -111,10 +137,12 @@ export default function App() {
             <button onClick={() => window.location.reload()}>Reintentar</button>
           </div>
         )}
-        {seccion === 'ventas' && <Ventas {...props} />}
+        {seccion === 'ventas' && <Ventas {...props} onVerHistorial={verHistorialDeVentas} />}
         {seccion === 'fiados' && <Fiados {...props} />}
         {seccion === 'inventario' && <Inventario {...props} />}
-        {seccion === 'movimientos' && <Movimientos {...props} />}
+        {seccion === 'historial' && (
+          <Historial {...props} vista={vistaHistorial} onCambiarVista={cambiarVistaHistorial} />
+        )}
         {seccion === 'reportes' && <Reportes {...props} />}
         {seccion === 'proveedores' && <Proveedores {...props} />}
         {seccion === 'pedidos' && <PedidosProveedor {...props} onRecibir={recibirPedido} />}
