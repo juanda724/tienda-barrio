@@ -7,7 +7,7 @@ Plan Vivo de Requisitos:
 | Funcionalidad | Requisitos | Dónde se ve en la app |
 |---|---|---|
 | **F-01** Controlar movimientos de inventario | SWR-01, SWR-02, SWR-04 | Pestañas *Ventas* (buscador y ventas agrupadas), *Inventario* y *Movimientos* (cada entrada y salida, con su venta o compra) |
-| **F-05** Gestionar ventas y facturación | SWR-11, SWR-12, SWR-13, SWR-14 | *Ventas* (total, forma de pago, cambio y comprobante) e *Inventario* (precio y costo) |
+| **F-05** Gestionar ventas y facturación | SWR-11, SWR-12, SWR-13, SWR-14, SWR-26, SWR-32, SWR-33 | *Ventas* (total, forma de pago, cambio, comprobante y factura electrónica) e *Inventario* (precio, costo e IVA) |
 | **F-08** Administrar ventas a crédito (fiado) | SWR-21, SWR-22, SWR-23 | *Ventas* (forma de pago "Crédito (fiado)") y *Fiados* (saldo, libreta y abonos) |
 | **F-03** Notificar reposición de stock | SWR-07, SWR-08 y regla RN-02 | Campana 🔔 del encabezado y *Pedidos* (lista de pedido sugerida) |
 | **F-06** Validar pedidos recibidos del proveedor | SWR-15, SWR-16, SWR-17 y regla RN-01 | *Ingresos* (facturado vs. recibido, facturas y pagos) |
@@ -73,7 +73,8 @@ backend/   API REST (Spring Boot)
     dto/request/    Datos que recibe la API (con sus validaciones)
     dto/response/   Datos que devuelve la API (nunca se exponen las entidades directamente)
     exception/      Excepciones de negocio y manejador global de errores
-    config/         Datos de ejemplo al arrancar
+    config/         Datos de ejemplo al arrancar, datos del emisor y resolución de facturación
+    util/           Formato de pesos, enlaces de WhatsApp y Gmail, CUFE y código QR
 frontend/  Interfaz web (React)
   src/
     paginas/        Una página por pestaña (Inventario, Ventas, Proveedores, PedidosProveedor, Ingresos)
@@ -109,10 +110,43 @@ frontend/  Interfaz web (React)
 - **Factura electrónica (SWR-32):** si el cliente la pide, el botón **Factura electrónica** de la ventana de cobro pide
   sus datos: tipo y número de documento (cédula, NIT, cédula de extranjería o pasaporte), nombre o razón social, correo
   y, opcionales, celular, dirección y ciudad. Los datos quedan guardados por documento: la próxima vez basta con
-  escribir el número para que se llenen solos. La venta recibe un número de factura (FE-000012 para la venta 12) y el
-  comprobante se convierte en la factura, con los datos del cliente y el botón **Enviar por Gmail** a su correo.
-  *Es un prototipo:* la factura no se transmite a la DIAN (eso exige habilitarse como facturador electrónico y un
-  proveedor tecnológico que la firme y le asigne el CUFE).
+  escribir el número para que se llenen solos. Si el cliente no se identifica se elige **Consumidor final**: la
+  factura sale a ese nombre con el NIT 222222222222 y no se guarda ningún dato.
+- La factura lleva lo que exige la DIAN:
+  - **Emisor:** nombre, razón social, NIT, régimen frente al IVA, dirección y teléfono de la tienda.
+  - **Numeración autorizada:** un consecutivo propio y sin saltos (FE-1, FE-2…) dentro del rango de la resolución
+    de facturación. Si el rango se agota o la resolución vence, la venta con factura se rechaza sin tocar el stock;
+    sin factura se puede seguir vendiendo.
+  - **Detalle:** código (P-0001), descripción, cantidad, unidad y valor de cada producto; subtotal, descuentos, IVA
+    y total.
+  - **Pago:** forma (contado o crédito) y medio (efectivo, transferencia o tarjeta).
+  - **CUFE**, calculado con la fórmula SHA-384 del anexo técnico de la DIAN, y un **código QR** con los datos de la
+    factura.
+- La factura tiene su propia ventana para **imprimir** (sale en una hoja de tiquete de 80 mm), **copiar** o enviar por
+  **Gmail** al correo del cliente o por **WhatsApp**. Se abre al registrar la venta y desde el historial ("Factura").
+- **IVA (SWR-33):** cada producto se clasifica en Inventario como **Excluido**, **Exento (0 %)**, **5 %** o **19 %**
+  (tarifa general, la de los productos sin clasificar). El precio de venta ya incluye el IVA, así que el total no
+  cambia: la factura separa la **base** y el **impuesto** por tarifa. La tarifa se guarda en cada venta, así que
+  reclasificar un producto no altera las facturas ya expedidas. El IVA se redondea por tarifa, no por producto, para
+  que base más IVA dé exactamente lo cobrado. Si la tienda **no es responsable de IVA**, las facturas lo dicen y no
+  discriminan el impuesto.
+- *Es un prototipo:* la resolución es simulada y la factura dice "Documento de prueba sin validez fiscal". No se firma
+  digitalmente ni se envía a la DIAN para su validación previa (eso exige habilitarse como facturador electrónico y un
+  certificado de firma). Tampoco se manejan el INC, los impuestos saludables ni el IVA de las compras.
+
+#### Configuración de la factura
+
+Los datos del emisor y de la resolución están en `backend/src/main/resources/application.properties`. Los que trae son
+de ejemplo:
+
+| Propiedad | Para qué sirve |
+|---|---|
+| `tienda.nombre`, `tienda.razon-social`, `tienda.nit`, `tienda.direccion`, `tienda.telefono` | Datos del emisor |
+| `tienda.responsable-iva` | `true`: las facturas discriminan el IVA. `false`: dicen "No responsable de IVA". Aplica a las ventas nuevas |
+| `tienda.factura.resolucion`, `tienda.factura.resolucion-fecha` | Número y fecha de la resolución de facturación |
+| `tienda.factura.prefijo`, `tienda.factura.desde`, `tienda.factura.hasta` | Prefijo y rango autorizado de la numeración |
+| `tienda.factura.vigente-hasta` | Último día en que se puede facturar con la resolución |
+| `tienda.factura.clave-tecnica` | Clave de la resolución que entra en el cálculo del CUFE |
 
 ### Ventas a crédito (F-08)
 
@@ -219,12 +253,13 @@ frontend/  Interfaz web (React)
 
 | Método | Ruta | Descripción |
 |---|---|---|
-| GET | `/api/productos` | Lista de productos con su stock |
-| POST / PUT | `/api/productos`, `/api/productos/{id}` | Crear o editar un producto (el stock no se edita directamente) |
+| GET | `/api/productos` | Lista de productos con su stock y su tratamiento de IVA |
+| POST / PUT | `/api/productos`, `/api/productos/{id}` | Crear o editar un producto (el stock no se edita directamente; `tratamientoIva`: `EXCLUIDO`, `EXENTO`, `TARIFA_5` o `TARIFA_19`) |
 | GET | `/api/movimientos?productoId=` | Historial de movimientos, opcionalmente de un solo producto |
 | GET | `/api/ingresos/{id}` | Un ingreso de mercancía con su verificación y su pago |
-| GET / POST | `/api/ventas`, `/api/ventas/{id}` | Listar, consultar o registrar ventas (`{"lineas": [...], "formaPago": "EFECTIVO", "montoRecibido": 20000, "clienteId": null}`) |
-| GET | `/api/ventas/{id}/comprobante?telefono=` | Comprobante en texto y enlace de WhatsApp para el cliente (y de Gmail si tiene factura electrónica) |
+| GET / POST | `/api/ventas`, `/api/ventas/{id}` | Listar, consultar o registrar ventas (`{"lineas": [...], "formaPago": "EFECTIVO", "montoRecibido": 20000, "clienteId": null, "facturaElectronica": {"tipoDocumento": "CC", "numeroDocumento": "...", "nombre": "...", "correo": "..."}}`; para consumidor final, `{"tipoDocumento": "CONSUMIDOR_FINAL"}`) |
+| GET | `/api/ventas/{id}/comprobante?telefono=` | Comprobante en texto y enlace de WhatsApp para el cliente |
+| GET | `/api/ventas/{id}/factura-electronica` | Factura electrónica de la venta: emisor, cliente, detalle, IVA por tarifa, CUFE, QR y enlaces de Gmail y WhatsApp |
 | GET | `/api/adquirientes/buscar?tipo=CC&numero=` | Datos guardados de un cliente de factura electrónica (204 si no existe) |
 | GET / POST / PUT | `/api/proveedores`, `/api/proveedores/{id}` | Proveedores y sus productos |
 | GET / POST / PUT | `/api/clientes`, `/api/clientes/{id}` | Clientes con lo fiado, lo abonado y el saldo pendiente |
