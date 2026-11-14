@@ -263,6 +263,9 @@ button.whatsapp-boton { background: var(--whatsapp); border-color: var(--whatsap
   html:has(.imprimible:not(.reporte)) { font-size: 12px; }
   .imprimible, .imprimible * { color: #000 !important; }
   .imprimible { width: 80mm; }
+  .imprimible.comprobante { gap: 4px; }
+  .imprimible.comprobante td { padding-top: 3px; padding-bottom: 3px; }
+  .imprimible .cufe img { width: 90px; height: 90px; }
   /* Si el documento pasa a otra hoja, no se parte una fila ni el bloque del CUFE */
   .imprimible tr, .imprimible .cufe, .imprimible .aviso-prueba { break-inside: avoid; }
 }
@@ -280,7 +283,10 @@ button.activo { background: var(--primario-suave); color: var(--primario); borde
 .factura-electronica p { margin: 0; }
 .datos-adquiriente { margin: 4px 0 8px; }
 
-/* Factura electrónica de venta: CUFE junto a su código QR y aviso de documento de prueba */
+/* Factura electrónica de venta: IVA por tarifa, CUFE junto a su código QR y aviso de documento de prueba */
+.factura-venta .impuestos { font-size: 0.82rem; }
+.factura-venta .impuestos th { padding: 4px; font-size: 0.72rem; }
+.factura-venta .impuestos td { padding: 3px 4px; border-bottom: none; }
 .factura-venta .cufe { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
 .factura-venta .cufe img { flex: none; width: 110px; height: 110px; }
 .factura-venta .cufe p { margin: 0; font-size: 0.7rem; word-break: break-all; }

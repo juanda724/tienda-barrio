@@ -43,8 +43,10 @@ public class ProductoService {
         if (productos.existsByNombreIgnoreCase(nombre)) {
             throw new NegocioException("Ya existe un producto llamado " + nombre);
         }
-        Producto producto = productos.save(new Producto(nombre, limpiar(datos.categoria()), datos.stockMinimo(),
-                datos.precioVenta(), datos.costo()));
+        Producto producto = new Producto(nombre, limpiar(datos.categoria()), datos.stockMinimo(),
+                datos.precioVenta(), datos.costo());
+        producto.setTratamientoIva(datos.tratamientoIva());
+        producto = productos.save(producto);
         if (datos.stockInicial() != null && datos.stockInicial() > 0) {
             inventario.registrarEntrada(producto, datos.stockInicial(), OrigenMovimiento.INVENTARIO_INICIAL,
                     null, null);
@@ -66,6 +68,9 @@ public class ProductoService {
         producto.setStockMinimo(datos.stockMinimo());
         producto.setPrecioVenta(datos.precioVenta());
         producto.setCosto(datos.costo());
+        if (datos.tratamientoIva() != null) {
+            producto.setTratamientoIva(datos.tratamientoIva());
+        }
         alertas.revisar(producto); // cambiar el mínimo puede abrir o cerrar una alerta
         return ProductoResponse.de(productos.save(producto));
     }

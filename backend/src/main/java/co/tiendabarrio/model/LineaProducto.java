@@ -2,6 +2,8 @@ package co.tiendabarrio.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,6 +42,13 @@ public class LineaProducto {
      */
     private Integer cantidadEntregadaDespues;
 
+    /**
+     * Solo en ventas de una tienda responsable de IVA: tratamiento del producto al venderlo, copiado para que
+     * reclasificarlo después no altere ventas ya hechas (SWR-33). Vacío si la venta no discriminó IVA.
+     */
+    @Enumerated(EnumType.STRING)
+    private TratamientoIva tratamientoIva;
+
     protected LineaProducto() {
     }
 
@@ -51,6 +60,16 @@ public class LineaProducto {
         this.producto = producto;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
+    }
+
+    /**
+     * Línea de una venta: cobra el precio de venta actual del producto. Con discriminaIva (tienda responsable
+     * de IVA) guarda además su tratamiento, para separar base e impuesto en la factura.
+     */
+    public static LineaProducto deVenta(Producto producto, int cantidad, boolean discriminaIva) {
+        LineaProducto linea = new LineaProducto(producto, cantidad, producto.getPrecioVenta());
+        linea.tratamientoIva = discriminaIva ? producto.getTratamientoIva() : null;
+        return linea;
     }
 
     /** Línea de un ingreso: lo recibido, lo facturado y el costo unitario de la factura. */
@@ -70,6 +89,11 @@ public class LineaProducto {
 
     public Long getPrecioUnitario() {
         return precioUnitario;
+    }
+
+    /** Tratamiento de IVA con que se vendió; null si la venta no discriminó IVA. */
+    public TratamientoIva getTratamientoIva() {
+        return tratamientoIva;
     }
 
     /** cantidad × precio unitario; 0 si la línea no tiene precio (pedidos a proveedor). */

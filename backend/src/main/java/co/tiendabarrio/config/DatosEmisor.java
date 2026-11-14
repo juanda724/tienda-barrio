@@ -60,12 +60,11 @@ public class DatosEmisor {
         return telefono;
     }
 
+    /**
+     * true si la tienda es responsable de IVA: sus ventas guardan el tratamiento de cada producto y sus
+     * facturas discriminan el impuesto (SWR-33). Con false, las facturas dicen "No responsable de IVA".
+     */
     public boolean responsableIva() {
         return responsableIva;
-    }
-
-    /** Calidad tributaria frente al IVA, como se escribe en la factura. */
-    public String regimen() {
-        return responsableIva ? "Responsable de IVA" : "No responsable de IVA";
     }
 }

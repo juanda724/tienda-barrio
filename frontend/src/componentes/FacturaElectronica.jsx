@@ -4,7 +4,8 @@ import BotonCopiar from './BotonCopiar.jsx'
 
 /**
  * Factura electrónica de una venta (SWR-32): emisor, cliente, numeración autorizada, detalle, pago, CUFE y
- * código QR. Se puede imprimir (o guardar en PDF) y enviar al cliente por Gmail o WhatsApp.
+ * código QR. Si la tienda es responsable de IVA, separa base e impuesto por tarifa (SWR-33). Se puede imprimir
+ * (o guardar en PDF) y enviar al cliente por Gmail o WhatsApp.
  */
 export default function FacturaElectronica({ ventaId, onCerrar }) {
   const [factura, setFactura] = useState(null)
@@ -58,6 +59,7 @@ export default function FacturaElectronica({ ventaId, onCerrar }) {
                       {l.descripcion}
                       <div className="tenue pequeno">
                         {l.codigo} · {l.cantidad}{l.precioUnitario != null && ` × ${formatearPesos(l.precioUnitario)}`} · {l.unidad}
+                        {l.tarifaIva && <> · <span className="nowrap">{l.tarifaIva}</span></>}
                       </div>
                     </td>
                     <td className="num">{l.precioUnitario != null ? formatearPesos(l.subtotal) : ''}</td>
@@ -67,6 +69,7 @@ export default function FacturaElectronica({ ventaId, onCerrar }) {
               <tfoot>
                 <tr><td>Subtotal</td><td className="num">{formatearPesos(f.subtotal)}</td></tr>
                 <tr><td>Descuentos</td><td className="num">{formatearPesos(f.descuentos)}</td></tr>
+                {f.impuestos.length > 0 && <tr><td>IVA</td><td className="num">{formatearPesos(f.iva)}</td></tr>}
                 <tr className="total"><td>Total</td><td className="num">{formatearPesos(f.total)}</td></tr>
                 <tr><td>Forma de pago</td><td className="num">{f.formaPago}</td></tr>
                 {f.medioPago && <tr><td>Medio de pago</td><td className="num">{f.medioPago}</td></tr>}
@@ -79,6 +82,22 @@ export default function FacturaElectronica({ ventaId, onCerrar }) {
                 {f.clienteFiado && <tr><td>Fiado a</td><td className="num">{f.clienteFiado}</td></tr>}
               </tfoot>
             </table>
+            {f.impuestos.length > 0 && (
+              <table className="impuestos">
+                <thead>
+                  <tr><th>IVA por tarifa</th><th className="num">Base</th><th className="num">Impuesto</th></tr>
+                </thead>
+                <tbody>
+                  {f.impuestos.map((i) => (
+                    <tr key={i.tarifa}>
+                      <td>{i.tarifa}</td>
+                      <td className="num">{formatearPesos(i.base)}</td>
+                      <td className="num">{formatearPesos(i.iva)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
             {f.cufe && (
               <div className="cufe">
                 <img src={f.qr} alt="Código QR con los datos de la factura" />

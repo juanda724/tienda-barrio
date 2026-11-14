@@ -2,6 +2,8 @@ package co.tiendabarrio.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,6 +37,10 @@ public class Producto {
 
     /** Lo que le cuesta a la tienda comprarlo (SWR-13). */
     private Long costo;
+
+    /** Tratamiento frente al IVA (SWR-33). Falta en los productos creados antes de manejar IVA. */
+    @Enumerated(EnumType.STRING)
+    private TratamientoIva tratamientoIva;
 
     @Version
     private Long version;
@@ -113,5 +119,14 @@ public class Producto {
 
     public void setCosto(Long costo) {
         this.costo = costo;
+    }
+
+    /** Tratamiento de IVA del producto; si no se ha clasificado, la tarifa general. */
+    public TratamientoIva getTratamientoIva() {
+        return tratamientoIva == null ? TratamientoIva.TARIFA_19 : tratamientoIva;
+    }
+
+    public void setTratamientoIva(TratamientoIva tratamientoIva) {
+        this.tratamientoIva = tratamientoIva;
     }
 }

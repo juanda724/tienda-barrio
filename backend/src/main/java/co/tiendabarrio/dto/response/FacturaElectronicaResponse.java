@@ -16,9 +16,13 @@ public record FacturaElectronicaResponse(
         String resolucion,
         Adquiriente adquiriente,
         List<Linea> lineas,
+        /** Valor antes de IVA; igual al total si la factura no lo discrimina. */
         long subtotal,
         long descuentos,
+        long iva,
         long total,
+        /** Base e IVA por tarifa (SWR-33); vacío si la tienda no era responsable de IVA al vender. */
+        List<Impuesto> impuestos,
         /** "Contado" o "Crédito". */
         String formaPago,
         /** Efectivo, transferencia o tarjeta; null en las ventas a crédito. */
@@ -40,8 +44,8 @@ public record FacturaElectronicaResponse(
     /** La misma factura con el texto para enviarla y sus enlaces de WhatsApp y Gmail. */
     public FacturaElectronicaResponse conEnvio(String texto, String whatsappUrl, String correoUrl) {
         return new FacturaElectronicaResponse(ventaId, numero, fechaHora, emisor, resolucion, adquiriente, lineas,
-                subtotal, descuentos, total, formaPago, medioPago, montoRecibido, cambio, clienteFiado, saldoCliente,
-                cufe, qr, aviso, texto, whatsappUrl, correoUrl);
+                subtotal, descuentos, iva, total, impuestos, formaPago, medioPago, montoRecibido, cambio, clienteFiado,
+                saldoCliente, cufe, qr, aviso, texto, whatsappUrl, correoUrl);
     }
 
     /** direccion y telefono son null si no se configuraron. */
@@ -54,7 +58,12 @@ public record FacturaElectronicaResponse(
                               String telefono, String direccion) {
     }
 
+    /** tarifaIva es el tratamiento con que se vendió ("IVA 19 %", "Exento"); null si la factura no discrimina IVA. */
     public record Linea(String codigo, String descripcion, int cantidad, String unidad, Long precioUnitario,
-                        long subtotal) {
+                        long subtotal, String tarifaIva) {
+    }
+
+    /** Lo vendido a una misma tarifa: base + iva es lo cobrado por esos productos. */
+    public record Impuesto(String tarifa, long base, long iva) {
     }
 }

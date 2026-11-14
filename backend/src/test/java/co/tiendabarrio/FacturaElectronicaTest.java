@@ -86,6 +86,7 @@ class FacturaElectronicaTest {
         assertThat(factura.numero()).isEqualTo(venta.numeroFacturaElectronica());
         assertThat(factura.emisor().nit()).isEqualTo("123456789-6");
         assertThat(factura.emisor().regimen()).isEqualTo("No responsable de IVA");
+        assertThat(factura.impuestos()).as("no discrimina IVA").isEmpty();
         assertThat(factura.resolucion()).startsWith("Resolución DIAN 18760000001").contains("FE-1 a FE-5000");
         assertThat(factura.adquiriente().tipoDocumento()).isEqualTo("Cédula de ciudadanía");
         assertThat(factura.adquiriente().direccion()).isEqualTo("Calle 10 # 5-20, Bogotá");
@@ -272,7 +273,7 @@ class FacturaElectronicaTest {
     /** Servicio de ventas igual al de la aplicación, pero facturando con otra resolución. */
     private VentaService ventasCon(ResolucionFacturacion resolucion) {
         return new VentaService(ventaRepository, productoRepository, inventario, comprobantes, clientes,
-                new FacturaElectronicaService(ventaRepository, adquirientes, clientes, emisor, resolucion));
+                new FacturaElectronicaService(ventaRepository, adquirientes, clientes, emisor, resolucion), emisor);
     }
 
     private ProductoResponse arroz() {

@@ -20,6 +20,7 @@ import co.tiendabarrio.dto.response.ClienteResponse;
 import co.tiendabarrio.dto.response.ProductoResponse;
 import co.tiendabarrio.dto.response.ProveedorResponse;
 import co.tiendabarrio.model.FormaPago;
+import co.tiendabarrio.model.TratamientoIva;
 import co.tiendabarrio.repository.ProductoRepository;
 import co.tiendabarrio.service.ClienteService;
 import co.tiendabarrio.service.IngresoService;
@@ -59,12 +60,13 @@ public class DatosDemo implements CommandLineRunner {
         if (productoRepository.count() > 0) {
             return;
         }
-        ProductoResponse arroz = crear("Arroz 500 g", "Granos", 10, 24, 2800, 2200);
-        ProductoResponse azucar = crear("Azúcar 1 kg", "Granos", 8, 6, 4800, 3900);
-        ProductoResponse aceite = crear("Aceite 1 L", "Aceites", 10, 15, 9500, 7800);
-        ProductoResponse leche = crear("Leche entera 1 L", "Lácteos", 12, 20, 4200, 3500);
-        ProductoResponse huevos = crear("Huevos x 30", "Lácteos", 3, 4, 18000, 15000);
-        ProductoResponse pan = crear("Pan tajado", "Panadería", 5, 9, 6500, 5000);
+        // El tratamiento de IVA de cada uno es ilustrativo: el definitivo lo fija el Estatuto Tributario
+        ProductoResponse arroz = crear("Arroz 500 g", "Granos", 10, 24, 2800, 2200, TratamientoIva.EXENTO);
+        ProductoResponse azucar = crear("Azúcar 1 kg", "Granos", 8, 6, 4800, 3900, TratamientoIva.TARIFA_5);
+        ProductoResponse aceite = crear("Aceite 1 L", "Aceites", 10, 15, 9500, 7800, TratamientoIva.TARIFA_19);
+        ProductoResponse leche = crear("Leche entera 1 L", "Lácteos", 12, 20, 4200, 3500, TratamientoIva.EXENTO);
+        ProductoResponse huevos = crear("Huevos x 30", "Lácteos", 3, 4, 18000, 15000, TratamientoIva.EXENTO);
+        ProductoResponse pan = crear("Pan tajado", "Panadería", 5, 9, 6500, 5000, TratamientoIva.EXCLUIDO);
 
         ProveedorResponse distribuidora = proveedores.crear(new ProveedorRequest("Distribuidora El Nogal",
                 "Luis Pérez", "300 123 4567", "pedidos@distrinogal.example",
@@ -92,7 +94,8 @@ public class DatosDemo implements CommandLineRunner {
     }
 
     private ProductoResponse crear(String nombre, String categoria, int stockMinimo, int stockInicial,
-                                   long precioVenta, long costo) {
-        return productos.crear(new ProductoRequest(nombre, categoria, stockMinimo, stockInicial, precioVenta, costo));
+                                   long precioVenta, long costo, TratamientoIva iva) {
+        return productos.crear(new ProductoRequest(nombre, categoria, stockMinimo, stockInicial, precioVenta, costo,
+                iva));
     }
 }

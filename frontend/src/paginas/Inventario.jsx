@@ -4,7 +4,17 @@ import Aviso from '../componentes/Aviso.jsx'
 import { useAviso } from '../hooks/useAviso.js'
 import { useEnvio } from '../hooks/useEnvio.js'
 
-const VACIO = { nombre: '', categoria: '', stockMinimo: '', stockInicial: '', precioVenta: '', costo: '' }
+// Tratamiento de cada producto frente al IVA (SWR-33): lo define la ley, la tienda solo lo clasifica
+const TRATAMIENTOS_IVA = [
+  { id: 'EXCLUIDO', nombre: 'Excluido (no causa IVA)' },
+  { id: 'EXENTO', nombre: 'Exento (0 %)' },
+  { id: 'TARIFA_5', nombre: '5 %' },
+  { id: 'TARIFA_19', nombre: '19 % (tarifa general)' },
+]
+
+const VACIO = {
+  nombre: '', categoria: '', stockMinimo: '', stockInicial: '', precioVenta: '', costo: '', tratamientoIva: 'TARIFA_19',
+}
 
 /** Ganancia sobre el precio de venta, en porcentaje; null si falta algún valor. */
 const margen = (p) => (p.precioVenta && p.costo != null ? Math.round(((p.precioVenta - p.costo) / p.precioVenta) * 100) : null)
@@ -24,6 +34,7 @@ export default function Inventario({ productos, recargar }) {
       stockInicial: '',
       precioVenta: p.precioVenta ?? '',
       costo: p.costo ?? '',
+      tratamientoIva: p.tratamientoIva,
     })
 
   const guardar = (e) => {
@@ -36,6 +47,7 @@ export default function Inventario({ productos, recargar }) {
         stockInicial: form.stockInicial === '' ? 0 : Number(form.stockInicial),
         precioVenta: form.precioVenta === '' ? null : Number(form.precioVenta),
         costo: form.costo === '' ? null : Number(form.costo),
+        tratamientoIva: form.tratamientoIva,
       }
       try {
         if (form.id) {
@@ -97,6 +109,12 @@ export default function Inventario({ productos, recargar }) {
               <input type="number" min="0" value={form.costo} required placeholder="Lo que le cuesta a la tienda"
                 onChange={(e) => setForm({ ...form, costo: e.target.value })} />
             </label>
+            <label>
+              IVA (ya incluido en el precio)
+              <select value={form.tratamientoIva} onChange={(e) => setForm({ ...form, tratamientoIva: e.target.value })}>
+                {TRATAMIENTOS_IVA.map((t) => <option key={t.id} value={t.id}>{t.nombre}</option>)}
+              </select>
+            </label>
             {!form.id && (
               <label>
                 Stock inicial
@@ -126,6 +144,7 @@ export default function Inventario({ productos, recargar }) {
                 <th className="num">Precio</th>
                 <th className="num">Costo</th>
                 <th className="num">Margen</th>
+                <th>IVA</th>
                 <th>Estado</th>
                 <th></th>
               </tr>
@@ -142,6 +161,7 @@ export default function Inventario({ productos, recargar }) {
                   </td>
                   <td className="num tenue nowrap">{formatearPesos(p.costo)}</td>
                   <td className={margen(p) < 0 ? 'num peligro-texto' : 'num tenue'}>{margen(p) == null ? '—' : `${margen(p)} %`}</td>
+                  <td className="tenue nowrap">{p.tratamientoIvaNombre}</td>
                   <td>
                     {p.bajoMinimo
                       ? <span className="insignia peligro">Reabastecer</span>
@@ -151,7 +171,7 @@ export default function Inventario({ productos, recargar }) {
                 </tr>
               ))}
               {visibles.length === 0 && (
-                <tr><td colSpan="9" className="vacio">No hay productos para mostrar</td></tr>
+                <tr><td colSpan="10" className="vacio">No hay productos para mostrar</td></tr>
               )}
             </tbody>
           </table>

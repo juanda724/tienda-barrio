@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.tiendabarrio.config.DatosEmisor;
 import co.tiendabarrio.dto.request.LineaProductoRequest;
 import co.tiendabarrio.dto.request.VentaRequest;
 import co.tiendabarrio.dto.response.ComprobanteResponse;
@@ -32,15 +33,18 @@ public class VentaService {
     private final ComprobanteService comprobantes;
     private final ClienteService clientes;
     private final FacturaElectronicaService facturas;
+    private final DatosEmisor emisor;
 
     public VentaService(VentaRepository ventas, ProductoRepository productos, InventarioService inventario,
-                        ComprobanteService comprobantes, ClienteService clientes, FacturaElectronicaService facturas) {
+                        ComprobanteService comprobantes, ClienteService clientes, FacturaElectronicaService facturas,
+                        DatosEmisor emisor) {
         this.ventas = ventas;
         this.productos = productos;
         this.inventario = inventario;
         this.comprobantes = comprobantes;
         this.clientes = clientes;
         this.facturas = facturas;
+        this.emisor = emisor;
     }
 
     @Transactional(readOnly = true)
@@ -56,8 +60,9 @@ public class VentaService {
     /**
      * Registra la venta con fecha, hora, productos y total (SWR-11), calcula el total con el precio
      * de venta de cada producto (SWR-12) y descarga el inventario (SWR-02). Una venta a crédito queda
-     * a nombre del cliente y suma a su deuda (SWR-21). Si el cliente pide factura electrónica, la expide
-     * (SWR-32). Primero valida todo (precios, efectivo recibido, cliente y numeración de la factura) para no
+     * a nombre del cliente y suma a su deuda (SWR-21). Si la tienda es responsable de IVA, cada línea guarda
+     * el tratamiento de su producto (SWR-33). Si el cliente pide factura electrónica, la expide (SWR-32).
+     * Primero valida todo (precios, efectivo recibido, cliente y numeración de la factura) para no
      * tocar el stock si la venta no puede hacerse.
      */
     @Transactional
@@ -70,7 +75,7 @@ public class VentaService {
                 throw new NegocioException(producto.getNombre()
                         + " no tiene precio de venta. Defínalo en la pestaña Inventario");
             }
-            lineas.add(new LineaProducto(producto, linea.getValue(), producto.getPrecioVenta()));
+            lineas.add(LineaProducto.deVenta(producto, linea.getValue(), emisor.responsableIva()));
         }
 
         long total = lineas.stream().mapToLong(LineaProducto::getSubtotal).sum();

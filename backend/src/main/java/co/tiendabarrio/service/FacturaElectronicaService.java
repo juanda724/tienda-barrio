@@ -16,6 +16,7 @@ import co.tiendabarrio.exception.NegocioException;
 import co.tiendabarrio.exception.NoEncontradoException;
 import co.tiendabarrio.model.Adquiriente;
 import co.tiendabarrio.model.Cliente;
+import co.tiendabarrio.model.DesgloseIva;
 import co.tiendabarrio.model.FormaPago;
 import co.tiendabarrio.model.TipoDocumento;
 import co.tiendabarrio.model.Venta;
@@ -71,7 +72,8 @@ public class FacturaElectronicaService {
         resolucion.validarQueAutoriza(consecutivo, venta.getFechaHora().toLocalDate());
         Adquiriente adquiriente = datos.esConsumidorFinal() ? null : adquirientes.guardar(datos);
         String numero = resolucion.numero(consecutivo);
-        String cufe = Cufe.calcular(sinSeparador(numero), venta.getFechaHora(), venta.getTotal(), 0,
+        long iva = DesgloseIva.de(venta.getLineas()).totalIva();
+        String cufe = Cufe.calcular(sinSeparador(numero), venta.getFechaHora(), venta.getTotal() - iva, iva,
                 emisor.nitSinDigito(), documentoDe(adquiriente), resolucion.claveTecnica(), Cufe.AMBIENTE_PRUEBAS);
         venta.expedirFacturaElectronica(adquiriente, consecutivo, numero, cufe);
     }
@@ -88,7 +90,15 @@ public class FacturaElectronicaService {
         FacturaElectronicaResponse.Adquiriente adquiriente = adquiriente(venta.getAdquiriente());
         List<FacturaElectronicaResponse.Linea> lineas = venta.getLineas().stream()
                 .map(l -> new FacturaElectronicaResponse.Linea(l.getProducto().getCodigo(), l.getProducto().getNombre(),
-                        l.getCantidad(), UNIDAD, l.getPrecioUnitario(), l.getSubtotal()))
+                        l.getCantidad(), UNIDAD, l.getPrecioUnitario(), l.getSubtotal(),
+                        l.getTratamientoIva() == null ? null : l.getTratamientoIva().getEtiqueta()))
+                .toList();
+        // La factura discrimina IVA si la tienda era responsable al vender: sus líneas guardan el tratamiento
+        DesgloseIva desglose = DesgloseIva.de(venta.getLineas());
+        long iva = desglose.totalIva();
+        long subtotal = venta.getTotal() - iva;
+        List<FacturaElectronicaResponse.Impuesto> impuestos = desglose.grupos().stream()
+                .map(g -> new FacturaElectronicaResponse.Impuesto(g.tratamiento().getNombre(), g.base(), g.iva()))
                 .toList();
         boolean credito = venta.getFormaPago() == FormaPago.CREDITO;
         Cliente cliente = venta.getCliente();
@@ -98,16 +108,17 @@ public class FacturaElectronicaService {
         FacturaElectronicaResponse factura = new FacturaElectronicaResponse(
                 ventaId, numero, venta.getFechaHora(),
                 new FacturaElectronicaResponse.Emisor(emisor.nombre(), emisor.razonSocial(), emisor.nit(),
-                        emisor.regimen(), emisor.direccion(), emisor.telefono()),
+                        desglose.vacio() ? "No responsable de IVA" : "Responsable de IVA",
+                        emisor.direccion(), emisor.telefono()),
                 conResolucion ? resolucion.descripcion() : null,
-                adquiriente, lineas, venta.getTotal(), 0, venta.getTotal(),
+                adquiriente, lineas, subtotal, 0, iva, venta.getTotal(), impuestos,
                 credito ? "Crédito" : "Contado",
                 credito || venta.getFormaPago() == null ? null : venta.getFormaPago().getNombre(),
                 venta.getMontoRecibido(), venta.getCambio(),
                 cliente == null ? null : cliente.getNombre(),
                 cliente == null ? null : clientes.saldo(cliente.getId()),
                 venta.getCufe(),
-                conResolucion ? CodigoQr.imagen(contenidoQr(venta, adquiriente.numeroDocumento())) : null,
+                conResolucion ? CodigoQr.imagen(contenidoQr(venta, adquiriente.numeroDocumento(), iva)) : null,
                 AVISO_PROTOTIPO, null, null, null);
 
         String texto = texto(factura);
@@ -140,15 +151,15 @@ public class FacturaElectronicaService {
     }
 
     /** Datos que lleva el QR de una factura electrónica; en vez del enlace de consulta de la DIAN, el aviso. */
-    private String contenidoQr(Venta venta, String documentoAdquiriente) {
+    private String contenidoQr(Venta venta, String documentoAdquiriente, long iva) {
         return String.join("\n",
                 "NumFac: " + sinSeparador(venta.getNumeroFacturaElectronica()),
                 "FecFac: " + Cufe.fecha(venta.getFechaHora()),
                 "HorFac: " + Cufe.hora(venta.getFechaHora()),
                 "NitFac: " + emisor.nitSinDigito(),
                 "DocAdq: " + documentoAdquiriente,
-                "ValFac: " + Cufe.valor(venta.getTotal()),
-                "ValIva: " + Cufe.valor(0),
+                "ValFac: " + Cufe.valor(venta.getTotal() - iva),
+                "ValIva: " + Cufe.valor(iva),
                 "ValOtroIm: " + Cufe.valor(0),
                 "ValTolFac: " + Cufe.valor(venta.getTotal()),
                 "CUFE: " + venta.getCufe(),
@@ -196,12 +207,22 @@ public class FacturaElectronicaService {
                 t.append(" (").append(Dinero.formatear(l.precioUnitario())).append(" c/u): ")
                         .append(Dinero.formatear(l.subtotal()));
             }
+            if (l.tarifaIva() != null) {
+                t.append(" · ").append(l.tarifaIva());
+            }
             t.append('\n');
         }
         t.append("\nSubtotal: ").append(Dinero.formatear(f.subtotal())).append('\n')
-                .append("Descuentos: ").append(Dinero.formatear(f.descuentos())).append('\n')
-                .append("TOTAL: ").append(Dinero.formatear(f.total())).append('\n')
-                .append("Forma de pago: ").append(f.formaPago()).append('\n');
+                .append("Descuentos: ").append(Dinero.formatear(f.descuentos())).append('\n');
+        if (!f.impuestos().isEmpty()) {
+            t.append("IVA: ").append(Dinero.formatear(f.iva())).append('\n');
+        }
+        t.append("TOTAL: ").append(Dinero.formatear(f.total())).append('\n');
+        for (FacturaElectronicaResponse.Impuesto i : f.impuestos()) {
+            t.append("  IVA ").append(i.tarifa()).append(": base ").append(Dinero.formatear(i.base()))
+                    .append(", impuesto ").append(Dinero.formatear(i.iva())).append('\n');
+        }
+        t.append("Forma de pago: ").append(f.formaPago()).append('\n');
         if (f.medioPago() != null) {
             t.append("Medio de pago: ").append(f.medioPago()).append('\n');
         }
