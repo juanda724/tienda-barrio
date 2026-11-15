@@ -7,6 +7,13 @@ import { useEnvio } from '../hooks/useEnvio.js'
 const CLIENTE_VACIO = { nombre: '', telefono: '', direccion: '' }
 const ABONO_VACIO = { monto: '', formaPago: 'EFECTIVO', nota: '', entregado: '' }
 
+// Cómo se muestra cada movimiento de la libreta
+const INSIGNIAS = {
+  VENTA: { clase: 'salida' },
+  ABONO: { nombre: 'Abono', clase: 'ok' },
+  ANULACION: { nombre: 'Anulación abono', clase: 'peligro' },
+}
+
 /** Normaliza para buscar sin importar tildes ni mayúsculas. */
 const normalizar = (texto) => (texto ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
 
@@ -21,6 +28,8 @@ export default function Fiados({ clientes, recargar }) {
   const [formCliente, setFormCliente] = useState(null) // null = oculto; { id?, ...campos }
   const [abono, setAbono] = useState(ABONO_VACIO)
   const [busqueda, setBusqueda] = useState('')
+  // Abono que se está anulando: { numero, monto, motivo }; null si no se está anulando ninguno
+  const [anulacion, setAnulacion] = useState(null)
   const avisos = useAviso()
   const { error } = avisos
   const [enviando, ejecutar] = useEnvio()
@@ -39,6 +48,7 @@ export default function Fiados({ clientes, recargar }) {
   const elegir = (id) => {
     setSeleccionadoId(id)
     setAbono(ABONO_VACIO)
+    setAnulacion(null)
     setFormCliente(null)
     avisos.limpiar()
   }
@@ -81,6 +91,22 @@ export default function Fiados({ clientes, recargar }) {
         avisos.exito((nueva.cliente.saldoPendiente === 0
           ? `Abono registrado. ${nueva.cliente.nombre} quedó al día.`
           : `Abono registrado. Saldo pendiente: ${formatearPesos(nueva.cliente.saldoPendiente)}.`) + cambio)
+        recargar()
+      } catch (err) {
+        avisos.error(err.message)
+      }
+    })
+  }
+
+  // Corrige un abono registrado por error (SWR-34): queda en la libreta como anulado y su valor vuelve a la deuda
+  const anularAbono = (e) => {
+    e.preventDefault()
+    ejecutar(async () => {
+      try {
+        const nueva = await api.anularAbono(seleccionadoId, anulacion.numero, anulacion.motivo)
+        setCuenta(nueva)
+        setAnulacion(null)
+        avisos.exito(`Abono #${anulacion.numero} anulado. Saldo pendiente: ${formatearPesos(nueva.cliente.saldoPendiente)}.`)
         recargar()
       } catch (err) {
         avisos.error(err.message)
@@ -241,6 +267,25 @@ export default function Fiados({ clientes, recargar }) {
 
               <div className="tarjeta">
                 <h3>Libreta</h3>
+                {anulacion && (
+                  <form className="anular-abono" onSubmit={anularAbono}>
+                    <p>
+                      Anular el abono #{anulacion.numero} por <strong>{formatearPesos(anulacion.monto)}</strong>. Su valor
+                      vuelve a la deuda del cliente y el abono queda en la libreta marcado como anulado.
+                    </p>
+                    <label>
+                      Motivo
+                      <input value={anulacion.motivo} required autoFocus placeholder="Ej. se registró dos veces"
+                        onChange={(e) => setAnulacion({ ...anulacion, motivo: e.target.value })} />
+                    </label>
+                    <div className="acciones">
+                      <button type="button" onClick={() => setAnulacion(null)}>Cancelar</button>
+                      <button type="submit" className="peligro" disabled={enviando || !anulacion.motivo.trim()}>
+                        Anular abono
+                      </button>
+                    </div>
+                  </form>
+                )}
                 <div className="tabla-contenedor">
                   <table>
                     <thead>
@@ -251,25 +296,34 @@ export default function Fiados({ clientes, recargar }) {
                         <th className="num">Fiado</th>
                         <th className="num">Abono</th>
                         <th className="num">Saldo</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       {cuenta.movimientos.map((m) => (
-                        <tr key={`${m.tipo}-${m.numero}`}>
+                        <tr key={`${m.tipo}-${m.numero}`} className={m.anulado ? 'anulado' : undefined}>
                           <td className="tenue nowrap">{formatearFecha(m.fechaHora)}</td>
                           <td className="nowrap">
-                            <span className={m.tipo === 'VENTA' ? 'insignia salida' : 'insignia ok'}>
-                              {m.tipo === 'VENTA' ? `Venta #${m.numero}` : 'Abono'}
+                            <span className={`insignia ${INSIGNIAS[m.tipo]?.clase ?? 'neutra'}`}>
+                              {m.tipo === 'VENTA' ? `Venta #${m.numero}` : `${INSIGNIAS[m.tipo]?.nombre ?? m.tipo} #${m.numero}`}
                             </span>
+                            {m.anulado && <span className="insignia neutra">Anulado</span>}
                           </td>
                           <td className="tenue">{m.descripcion}</td>
                           <td className="num">{m.cargo ? formatearPesos(m.cargo) : ''}</td>
-                          <td className="num">{m.abono ? formatearPesos(m.abono) : ''}</td>
+                          <td className="num monto-abono">{m.abono ? formatearPesos(m.abono) : ''}</td>
                           <td className="num fuerte">{formatearPesos(m.saldo)}</td>
+                          <td className="num">
+                            {m.tipo === 'ABONO' && !m.anulado && (
+                              <button className="enlace" onClick={() => setAnulacion({ numero: m.numero, monto: m.abono, motivo: '' })}>
+                                Anular
+                              </button>
+                            )}
+                          </td>
                         </tr>
                       ))}
                       {cuenta.movimientos.length === 0 && (
-                        <tr><td colSpan="6" className="vacio">Este cliente aún no tiene fiados</td></tr>
+                        <tr><td colSpan="7" className="vacio">Este cliente aún no tiene fiados</td></tr>
                       )}
                     </tbody>
                   </table>

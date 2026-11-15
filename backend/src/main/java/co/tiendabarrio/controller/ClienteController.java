@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.tiendabarrio.dto.request.AbonoRequest;
+import co.tiendabarrio.dto.request.AnulacionAbonoRequest;
 import co.tiendabarrio.dto.request.ClienteRequest;
 import co.tiendabarrio.dto.response.ClienteResponse;
 import co.tiendabarrio.dto.response.EstadoCuentaResponse;
@@ -59,5 +60,12 @@ public class ClienteController {
     @ResponseStatus(HttpStatus.CREATED)
     public EstadoCuentaResponse registrarAbono(@PathVariable Long id, @Valid @RequestBody AbonoRequest datos) {
         return clientes.registrarAbono(id, datos);
+    }
+
+    /** Anula un abono registrado por error; su valor vuelve a la deuda (`{"motivo": "..."}`). */
+    @PostMapping("/{id}/abonos/{abonoId}/anular")
+    public EstadoCuentaResponse anularAbono(@PathVariable Long id, @PathVariable Long abonoId,
+                                            @Valid @RequestBody AnulacionAbonoRequest datos) {
+        return clientes.anularAbono(id, abonoId, datos);
     }
 }

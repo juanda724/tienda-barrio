@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.tiendabarrio.dto.request.AbonoRequest;
+import co.tiendabarrio.dto.request.AnulacionAbonoRequest;
 import co.tiendabarrio.dto.request.ClienteRequest;
 import co.tiendabarrio.dto.response.ClienteResponse;
 import co.tiendabarrio.dto.response.EstadoCuentaResponse;
@@ -96,14 +97,21 @@ public class ClienteService {
         Cliente cliente = buscar(id);
         List<Movimiento> sinSaldo = new ArrayList<>();
         for (Venta v : ventas.findByClienteIdAndFormaPagoOrderByFechaHoraAscIdAsc(id, FormaPago.CREDITO)) {
-            sinSaldo.add(new Movimiento("VENTA", v.getId(), v.getFechaHora(), describir(v), v.getTotal(), 0, 0));
+            sinSaldo.add(new Movimiento("VENTA", v.getId(), v.getFechaHora(), describir(v), v.getTotal(), 0, 0, false));
         }
         for (Abono a : abonos.findByClienteIdOrderByFechaHoraAscIdAsc(id)) {
             String descripcion = "Abono en " + a.getFormaPago().getNombre().toLowerCase()
                     + (a.getMontoEntregado() == null ? "" : " · entregó " + Dinero.formatear(a.getMontoEntregado())
                             + ", cambio " + Dinero.formatear(a.getCambio()))
                     + (a.getNota() == null ? "" : " · " + a.getNota());
-            sinSaldo.add(new Movimiento("ABONO", a.getId(), a.getFechaHora(), descripcion, 0, a.getMonto(), 0));
+            sinSaldo.add(new Movimiento("ABONO", a.getId(), a.getFechaHora(), descripcion, 0, a.getMonto(), 0,
+                    a.isAnulado()));
+            // La anulación es un movimiento aparte, en su fecha: el abono redujo la deuda hasta ese momento
+            if (a.isAnulado()) {
+                sinSaldo.add(new Movimiento("ANULACION", a.getId(), a.getFechaAnulacion(),
+                        "Anulación del abono #" + a.getId() + " · " + a.getMotivoAnulacion(), a.getMonto(), 0, 0,
+                        false));
+            }
         }
         sinSaldo.sort(Comparator.comparing(Movimiento::fechaHora));
 
@@ -112,7 +120,7 @@ public class ClienteService {
         for (Movimiento m : sinSaldo) {
             saldo += m.cargo() - m.abono();
             movimientos.add(new Movimiento(m.tipo(), m.numero(), m.fechaHora(), m.descripcion(), m.cargo(),
-                    m.abono(), saldo));
+                    m.abono(), saldo, m.anulado()));
         }
 
         ClienteResponse resumen = resumen(cliente);
@@ -146,6 +154,20 @@ public class ClienteService {
         return estadoCuenta(id);
     }
 
+    /**
+     * Corrige un abono registrado por error (SWR-34): lo anula con su motivo y su valor vuelve a la deuda del
+     * cliente. No se borra, para que la libreta conserve qué se registró y qué se corrigió.
+     */
+    @Transactional
+    public EstadoCuentaResponse anularAbono(Long clienteId, Long abonoId, AnulacionAbonoRequest datos) {
+        buscar(clienteId);
+        Abono abono = abonos.findById(abonoId)
+                .filter(a -> a.getCliente().getId().equals(clienteId))
+                .orElseThrow(() -> new NoEncontradoException("Abono no encontrado"));
+        abono.anular(datos.motivo());
+        return estadoCuenta(clienteId);
+    }
+
     Cliente buscar(Long id) {
         return clientes.findById(id).orElseThrow(() -> new NoEncontradoException("Cliente no encontrado"));
     }
@@ -169,7 +191,7 @@ public class ClienteService {
             return texto.append("Su cuenta está al día. ¡Gracias por su compra!").toString();
         }
         texto.append("Le recordamos que su saldo pendiente es de ").append(Dinero.formatear(saldo)).append(".\n");
-        movimientos.stream().filter(m -> m.tipo().equals("ABONO")).reduce((a, b) -> b).ifPresent(ultimo ->
+        movimientos.stream().filter(m -> m.tipo().equals("ABONO") && !m.anulado()).reduce((a, b) -> b).ifPresent(ultimo ->
                 texto.append("Su último abono fue el ").append(ultimo.fechaHora().format(FECHA)).append(" por ")
                         .append(Dinero.formatear(ultimo.abono())).append(".\n"));
         return texto.append("\nPuede abonar en la tienda cuando le quede fácil. ¡Gracias!").toString();

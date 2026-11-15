@@ -1,6 +1,9 @@
 package co.tiendabarrio.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import co.tiendabarrio.exception.NegocioException;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,7 +40,40 @@ public class Abono {
     /** Efectivo que entregó el cliente; con él se calcula el cambio que le devuelve el dueño. */
     private Long montoEntregado;
 
+    /**
+     * Cuándo se anuló el abono por haberse registrado por error; vacío si sigue vigente. Un abono anulado no
+     * se borra: queda en la libreta para que se vea qué se corrigió, pero ya no descuenta de la deuda (SWR-34).
+     */
+    private LocalDateTime fechaAnulacion;
+
+    private String motivoAnulacion;
+
     protected Abono() {
+    }
+
+    /** Anula el abono: deja de descontarse del saldo del cliente. Un abono solo se anula una vez. */
+    public void anular(String motivo) {
+        if (isAnulado()) {
+            throw new NegocioException("El abono #" + id + " ya fue anulado el "
+                    + fechaAnulacion.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        }
+        if (motivo == null || motivo.isBlank()) {
+            throw new NegocioException("Indique por qué se anula el abono");
+        }
+        this.fechaAnulacion = LocalDateTime.now();
+        this.motivoAnulacion = motivo.trim();
+    }
+
+    public boolean isAnulado() {
+        return fechaAnulacion != null;
+    }
+
+    public LocalDateTime getFechaAnulacion() {
+        return fechaAnulacion;
+    }
+
+    public String getMotivoAnulacion() {
+        return motivoAnulacion;
     }
 
     public Abono(Cliente cliente, long monto, FormaPago formaPago, String nota, Long montoEntregado) {

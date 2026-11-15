@@ -13,7 +13,11 @@ public record EstadoCuentaResponse(
         String recordatorio,
         String whatsappUrl) {
 
-    /** tipo es VENTA (aumenta la deuda) o ABONO (la reduce); numero es el de la venta o el abono. */
+    /**
+     * tipo es VENTA (aumenta la deuda), ABONO (la reduce) o ANULACION (devuelve a la deuda un abono registrado
+     * por error). numero es el de la venta o el del abono. anulado marca el ABONO que después se anuló: sigue
+     * en la libreta con su fecha, pero su valor vuelve a la deuda en la fila ANULACION.
+     */
     public record Movimiento(
             String tipo,
             Long numero,
@@ -21,6 +25,7 @@ public record EstadoCuentaResponse(
             String descripcion,
             long cargo,
             long abono,
-            long saldo) {
+            long saldo,
+            boolean anulado) {
     }
 }

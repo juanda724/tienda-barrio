@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.tiendabarrio.dto.request.AbonoRequest;
+import co.tiendabarrio.dto.request.AnulacionAbonoRequest;
 import co.tiendabarrio.dto.request.ClienteRequest;
 import co.tiendabarrio.dto.request.LineaProductoRequest;
 import co.tiendabarrio.dto.request.ProductoRequest;
@@ -22,6 +23,7 @@ import co.tiendabarrio.dto.response.EstadoCuentaResponse.Movimiento;
 import co.tiendabarrio.dto.response.ProductoResponse;
 import co.tiendabarrio.dto.response.VentaResponse;
 import co.tiendabarrio.exception.NegocioException;
+import co.tiendabarrio.exception.NoEncontradoException;
 import co.tiendabarrio.model.FormaPago;
 import co.tiendabarrio.repository.ProductoRepository;
 import co.tiendabarrio.service.ClienteService;
@@ -93,6 +95,74 @@ class FiadosTest {
         assertThatThrownBy(() -> clientes.registrarAbono(maria.id(), new AbonoRequest(100L, FormaPago.EFECTIVO, null, null)))
                 .isInstanceOf(NegocioException.class)
                 .hasMessageContaining("no tiene saldo pendiente");
+    }
+
+    @Test
+    void anularUnAbonoEquivocadoDevuelveSuValorALaDeuda() {
+        fiar(3);
+        clientes.registrarAbono(maria.id(), new AbonoRequest(5000L, FormaPago.EFECTIVO, null, null));
+        EstadoCuentaResponse conError = clientes.registrarAbono(maria.id(),
+                new AbonoRequest(5000L, FormaPago.EFECTIVO, null, null));
+        Long repetido = ultimoAbono(conError);
+        assertThat(conError.cliente().saldoPendiente()).isEqualTo(2600L);
+
+        EstadoCuentaResponse cuenta = clientes.anularAbono(maria.id(), repetido,
+                new AnulacionAbonoRequest("Se registró dos veces"));
+
+        assertThat(cuenta.cliente().totalAbonado()).isEqualTo(5000L);
+        assertThat(cuenta.cliente().saldoPendiente()).isEqualTo(7600L);
+        assertThat(cuenta.movimientos()).extracting(Movimiento::tipo)
+                .containsExactly("VENTA", "ABONO", "ABONO", "ANULACION");
+        assertThat(cuenta.movimientos()).extracting(Movimiento::saldo)
+                .as("el abono anulado sigue en la libreta y la anulación lo devuelve a la deuda")
+                .containsExactly(12600L, 7600L, 2600L, 7600L);
+        assertThat(cuenta.movimientos()).extracting(Movimiento::anulado).containsExactly(false, false, true, false);
+        assertThat(cuenta.movimientos().get(3).descripcion()).contains("Se registró dos veces");
+    }
+
+    @Test
+    void unAbonoSoloSeAnulaUnaVezYConMotivo() {
+        fiar(1);
+        Long abono = ultimoAbono(clientes.registrarAbono(maria.id(), new AbonoRequest(2000L, FormaPago.EFECTIVO, null, null)));
+
+        assertThatThrownBy(() -> clientes.anularAbono(maria.id(), abono, new AnulacionAbonoRequest(" ")))
+                .isInstanceOf(NegocioException.class)
+                .hasMessageContaining("por qué se anula");
+
+        clientes.anularAbono(maria.id(), abono, new AnulacionAbonoRequest("Era de otro cliente"));
+        assertThatThrownBy(() -> clientes.anularAbono(maria.id(), abono, new AnulacionAbonoRequest("Otra vez")))
+                .isInstanceOf(NegocioException.class)
+                .hasMessageContaining("ya fue anulado");
+        assertThat(clientes.obtener(maria.id()).saldoPendiente()).isEqualTo(4200L);
+    }
+
+    @Test
+    void noSeAnulaUnAbonoDeOtroCliente() {
+        fiar(1);
+        Long abono = ultimoAbono(clientes.registrarAbono(maria.id(), new AbonoRequest(2000L, FormaPago.EFECTIVO, null, null)));
+        ClienteResponse pedro = clientes.crear(new ClienteRequest("Pedro", null, null));
+
+        assertThatThrownBy(() -> clientes.anularAbono(pedro.id(), abono, new AnulacionAbonoRequest("Error")))
+                .isInstanceOf(NoEncontradoException.class);
+        assertThat(clientes.obtener(maria.id()).saldoPendiente()).isEqualTo(2200L);
+    }
+
+    @Test
+    void trasAnularUnAbonoSePuedeRegistrarElCorrecto() {
+        fiar(1);
+        Long equivocado = ultimoAbono(clientes.registrarAbono(maria.id(),
+                new AbonoRequest(4200L, FormaPago.EFECTIVO, "Se anotó todo", null)));
+        clientes.anularAbono(maria.id(), equivocado, new AnulacionAbonoRequest("Solo pagó la mitad"));
+
+        EstadoCuentaResponse cuenta = clientes.registrarAbono(maria.id(), new AbonoRequest(2100L, FormaPago.EFECTIVO, null, null));
+
+        assertThat(cuenta.cliente().saldoPendiente()).isEqualTo(2100L);
+        assertThat(cuenta.recordatorio()).as("el último abono vigente").contains("$ 2.100").doesNotContain("$ 4.200");
+    }
+
+    private static Long ultimoAbono(EstadoCuentaResponse cuenta) {
+        return cuenta.movimientos().stream().filter(m -> m.tipo().equals("ABONO")).reduce((a, b) -> b)
+                .orElseThrow().numero();
     }
 
     @Test

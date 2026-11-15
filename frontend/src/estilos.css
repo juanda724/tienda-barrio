@@ -314,6 +314,15 @@ button.cliente.activo { background: var(--primario-suave); border-color: var(--p
 .cifras strong { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
 .cifras .saldo { padding: 6px 10px; border-radius: 8px; background: var(--ok-suave); color: var(--ok); }
 .cifras .saldo.deuda { background: var(--peligro-suave); color: var(--peligro); }
+/* Libreta: un abono anulado sigue a la vista, tachado; su anulación lo devuelve a la deuda */
+tr.anulado .monto-abono { text-decoration: line-through; color: var(--tenue); }
+tr.anulado .insignia + .insignia { margin-left: 4px; }
+.anular-abono {
+  display: flex; flex-direction: column; gap: 8px; margin: 8px 0 12px; padding: 10px 12px;
+  border: 1px solid var(--peligro); border-radius: 8px; background: var(--peligro-suave);
+}
+.anular-abono p { margin: 0; }
+.anular-abono label { display: flex; flex-direction: column; gap: 4px; }
 
 /* Campana de alertas de stock mínimo */
 .campana { position: relative; }

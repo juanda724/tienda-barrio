@@ -11,6 +11,7 @@ public interface AbonoRepository extends JpaRepository<Abono, Long> {
 
     List<Abono> findByClienteIdOrderByFechaHoraAscIdAsc(Long clienteId);
 
-    @Query("select coalesce(sum(a.monto), 0) from Abono a where a.cliente.id = :clienteId")
+    /** Suma de los abonos vigentes del cliente; los anulados no cuentan. */
+    @Query("select coalesce(sum(a.monto), 0) from Abono a where a.cliente.id = :clienteId and a.fechaAnulacion is null")
     long totalAbonado(Long clienteId);
 }

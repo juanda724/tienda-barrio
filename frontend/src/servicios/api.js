@@ -51,6 +51,7 @@ export const api = {
   actualizarCliente: (id, datos) => put(`/clientes/${id}`, datos),
   estadoCuenta: (id) => pedir(`/clientes/${id}/estado-cuenta`),
   registrarAbono: (id, datos) => post(`/clientes/${id}/abonos`, datos),
+  anularAbono: (id, abonoId, motivo) => post(`/clientes/${id}/abonos/${abonoId}/anular`, { motivo }),
 
   alertas: () => pedir('/alertas'),
   marcarAlertasVistas: () => post('/alertas/vistas'),

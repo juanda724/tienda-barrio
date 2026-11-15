@@ -8,7 +8,7 @@ Plan Vivo de Requisitos:
 |---|---|---|
 | **F-01** Controlar movimientos de inventario | SWR-01, SWR-02, SWR-04 | Pestañas *Ventas* (buscador y ventas agrupadas), *Inventario* e *Historial* → *Movimientos de inventario* (cada entrada y salida, con su venta o compra) |
 | **F-05** Gestionar ventas y facturación | SWR-11, SWR-12, SWR-13, SWR-14, SWR-26, SWR-32, SWR-33 | *Ventas* (total, forma de pago, cambio, comprobante y factura electrónica), *Historial* → *Ventas* (ventas registradas y sus documentos) e *Inventario* (precio, costo e IVA) |
-| **F-08** Administrar ventas a crédito (fiado) | SWR-21, SWR-22, SWR-23 | *Ventas* (forma de pago "Crédito (fiado)") y *Fiados* (saldo, libreta y abonos) |
+| **F-08** Administrar ventas a crédito (fiado) | SWR-21, SWR-22, SWR-23, SWR-30, SWR-31, SWR-34 | *Ventas* (forma de pago "Crédito (fiado)") y *Fiados* (saldo, libreta y abonos) |
 | **F-03** Notificar reposición de stock | SWR-07, SWR-08 y regla RN-02 | Campana 🔔 del encabezado y *Pedidos* (lista de pedido sugerida) |
 | **F-06** Validar pedidos recibidos del proveedor | SWR-15, SWR-16, SWR-17 y regla RN-01 | *Ingresos* (facturado vs. recibido, facturas y pagos) |
 | **F-07** Gestionar devoluciones de productos | SWR-18, SWR-19, SWR-20 | *Devoluciones* (evidencia, nota y seguimiento) e *Ingresos* (bloqueo del pago y nota crédito) |
@@ -161,6 +161,10 @@ de ejemplo:
 - **Abonos** en efectivo, transferencia o tarjeta, parciales o con "Pagar todo", hasta saldar la deuda (SWR-23). Un
   abono no puede superar el saldo. En efectivo se puede anotar lo que entregó el cliente y la app calcula su cambio,
   que queda registrado en la libreta.
+- **Corregir un abono equivocado (SWR-34):** en la libreta, cada abono vigente tiene el botón **Anular**, que pide el
+  motivo. El abono no se borra: queda tachado y marcado "Anulado", y en la fecha de la anulación aparece una fila
+  "Anulación abono" que devuelve su valor a la deuda, así se ve qué se registró y qué se corrigió. Un abono solo se
+  anula una vez y solo desde la cuenta de su cliente. Después se puede registrar el abono correcto.
 - Si el cliente tiene celular, se le puede enviar un **recordatorio de saldo por WhatsApp**. El comprobante de una venta
   fiada incluye el nombre del cliente y su saldo, y por defecto va a su celular.
 
@@ -269,6 +273,7 @@ de ejemplo:
 | GET / POST / PUT | `/api/clientes`, `/api/clientes/{id}` | Clientes con lo fiado, lo abonado y el saldo pendiente |
 | GET | `/api/clientes/{id}/estado-cuenta` | Libreta del cliente y recordatorio de saldo por WhatsApp |
 | POST | `/api/clientes/{id}/abonos` | Registrar un abono (`{"monto": 5000, "formaPago": "EFECTIVO", "montoEntregado": 10000, "nota": "..."}`) |
+| POST | `/api/clientes/{id}/abonos/{abonoId}/anular` | Anular un abono registrado por error; su valor vuelve a la deuda (`{"motivo": "..."}`) |
 | GET | `/api/alertas` | Alertas de stock mínimo activas |
 | POST | `/api/alertas/vistas` | Marcar las alertas activas como vistas |
 | GET | `/api/reposicion` | Lista de pedido sugerida, agrupada por proveedor |
