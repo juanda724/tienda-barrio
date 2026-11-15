@@ -6,18 +6,18 @@ Plan Vivo de Requisitos:
 
 | Funcionalidad | Requisitos | Dónde se ve en la app |
 |---|---|---|
-| **F-01** Controlar movimientos de inventario | SWR-01, SWR-02, SWR-04 | Pestañas *Ventas* (buscador y ventas agrupadas), *Inventario* e *Historial* → *Movimientos de inventario* (cada entrada y salida, con su venta o compra) |
-| **F-05** Gestionar ventas y facturación | SWR-11, SWR-12, SWR-13, SWR-14, SWR-26, SWR-32, SWR-33 | *Ventas* (total, forma de pago, cambio, comprobante y factura electrónica), *Historial* → *Ventas* (ventas registradas y sus documentos) e *Inventario* (precio, costo e IVA) |
-| **F-08** Administrar ventas a crédito (fiado) | SWR-21, SWR-22, SWR-23, SWR-30, SWR-31, SWR-34 | *Ventas* (forma de pago "Crédito (fiado)") y *Fiados* (saldo, libreta y abonos) |
-| **F-03** Notificar reposición de stock | SWR-07, SWR-08 y regla RN-02 | Campana 🔔 del encabezado y *Pedidos* (lista de pedido sugerida) |
-| **F-06** Validar pedidos recibidos del proveedor | SWR-15, SWR-16, SWR-17 y regla RN-01 | *Ingresos* (facturado vs. recibido, facturas y pagos) |
-| **F-07** Gestionar devoluciones de productos | SWR-18, SWR-19, SWR-20 | *Devoluciones* (evidencia, nota y seguimiento) e *Ingresos* (bloqueo del pago y nota crédito) |
+| **F-01** Controlar movimientos de inventario | SWR-01, SWR-02, SWR-03, SWR-04 y reglas RN-03, RN-04 | Pestañas *Ventas* (buscador y ventas agrupadas), *Inventario* e *Historial* → *Movimientos de inventario* (cada entrada y salida, con su venta o compra) |
+| **F-05** Gestionar ventas y facturación | SWR-11, SWR-12, SWR-13, SWR-14, SWR-26, SWR-32, SWR-33 y reglas RN-03, RN-04, RN-07 | *Ventas* (total, forma de pago, cambio, comprobante y factura electrónica), *Historial* → *Ventas* (ventas registradas y sus documentos) e *Inventario* (precio, costo e IVA) |
+| **F-08** Administrar ventas a crédito (fiado) | SWR-21, SWR-22, SWR-23, SWR-30, SWR-31, SWR-34 y reglas RN-08, RN-09 | *Ventas* (forma de pago "Crédito (fiado)") y *Fiados* (saldo, libreta y abonos) |
+| **F-03** Notificar reposición de stock | SWR-07, SWR-08 y reglas RN-02, RN-05, RN-06 | Campana 🔔 del encabezado y *Pedidos* (lista de pedido sugerida) |
+| **F-06** Validar pedidos recibidos del proveedor | SWR-15, SWR-16, SWR-17, SWR-27, SWR-28, SWR-29 y reglas RN-01, RN-10 | *Ingresos* (facturado vs. recibido, facturas y pagos) |
+| **F-07** Gestionar devoluciones de productos | SWR-18, SWR-19, SWR-20 y regla RN-01 | *Devoluciones* (evidencia, nota y seguimiento) e *Ingresos* (bloqueo del pago y nota crédito) |
 | **F-04** Consultar reportes de inventario | SWR-09, SWR-10 | *Reportes* (inventario y ventas por producto, Excel y PDF) y uso desde el celular |
-| **F-02** Gestionar proveedores y reabastecimiento | SWR-03, SWR-05, SWR-06 y pedidos a proveedor* | Pestañas *Proveedores*, *Pedidos* e *Ingresos* |
+| **F-02** Gestionar proveedores y reabastecimiento | SWR-05, SWR-06, SWR-24, SWR-25 y regla RN-02 | Pestañas *Proveedores*, *Pedidos* e *Ingresos* |
 
-* El envío de pedidos al proveedor y su seguimiento por estados todavía no tiene un SWR en el Plan de Requisitos
-(propuestos: SWR-24 a SWR-26). SWR-03, "agregar el producto al stock cuando sea comprado", ahora se cumple con el
-ingreso de mercancía, que es la única entrada de stock.
+Los requisitos (SWR), las reglas de negocio (RN) y la verificación de cada funcionalidad están en la matriz de
+trazabilidad del Plan Vivo de Requisitos y en las historias de Jira (PS2-10 a PS2-17). Cada regla de negocio está
+escrita en la descripción de la funcionalidad que la usa.
 
 ## Tecnologías
 
