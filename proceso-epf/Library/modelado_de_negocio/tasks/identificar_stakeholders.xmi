@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-vS7peU2AogYKlxx-MIOUfA" name=",_8rVAUN-3EfGmVvN-KvBeSQ" guid="-vS7peU2AogYKlxx-MIOUfA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T18:36:19.436-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista identifica a las partes interesadas, su interés en la solución y su nivel de influencia, y las registra en la&#xD;
+plantilla de stakeholders.</mainDescription>
+  <keyConsiderations>Incluir actores que no usan el sistema pero lo condicionan, como la DIAN por la facturación electrónica.</keyConsiderations>
+  <purpose>Conocer a todos los que se ven afectados por el sistema para tener en cuenta sus necesidades.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

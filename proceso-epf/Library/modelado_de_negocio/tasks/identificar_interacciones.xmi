@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-VXVQ97Z4yPdHhd9xJq_olA" name="identificar_interacciones,_TVxJMN--EfGmVvN-KvBeSQ" guid="-VXVQ97Z4yPdHhd9xJq_olA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:01:43.152-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista diagrama el orden de los intercambios entre la tienda y sus actores en cada caso de uso de negocio, incluyendo&#xD;
+los documentos que viajan en cada uno.</mainDescription>
+  <keyConsiderations>Incluir los casos con problemas, como mercancía faltante, averiada o una devolución rechazada.</keyConsiderations>
+  <purpose>Conocer qué información se intercambia con proveedores y clientes, porque eso es lo que el sistema debe registrar.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

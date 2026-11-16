@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-U27PsX42AMSi6yKVGqYooQ" name="identificar_estados_de_entidades,_wL2sQN_VEfGJA9pc4FnC4g" guid="-U27PsX42AMSi6yKVGqYooQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:30.722-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista define los estados del Pedido (En espera, Aceptado, En proceso, En camino, Entregado, Rechazado, Cancelado), de&#xD;
+la Devolución (Pendiente, Enviada, Reemplazada, Con nota crédito, Rechazada) y del Pago (Pendiente, Crédito, Pagado), y las&#xD;
+transiciones permitidas entre ellos.</mainDescription>
+  <keyConsiderations>Indicar qué transiciones son manuales y cuáles automáticas; por ejemplo, el pedido pasa a Entregado solo al registrar el&#xD;
+ingreso de la mercancía.</keyConsiderations>
+  <purpose>Definir el ciclo de vida de las entidades que cambian de estado para que el sistema solo permita transiciones válidas.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

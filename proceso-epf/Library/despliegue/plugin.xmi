@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_oUXUMN8oEfGr3LKRlrp3Ew" guid="_oUXUMN8oEfGr3LKRlrp3Ew"/>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_oUU38N8oEfGr3LKRlrp3Ew" name="despliegue" guid="_oUU38N8oEfGr3LKRlrp3Ew" presentationName="Despliegue" briefDescription="En esta disciplina se instala y se pone en funcionamiento la aplicación para el dueño de la tienda, con acceso desde el computador y desde el celular." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:35.670-0500" changeDescription="Ajuste del nombre" version="1.0">
+    <methodElementProperty xmi:id="_1HC8gN8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU38d8oEfGr3LKRlrp3Ew" name="Content" guid="_oUU38d8oEfGr3LKRlrp3Ew">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU38t8oEfGr3LKRlrp3Ew" name="Categories" guid="_oUU38t8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3898oEfGr3LKRlrp3Ew" name="Domains" guid="_oUU3898oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU39N8oEfGr3LKRlrp3Ew" name="Disciplines" guid="_oUU39N8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU39d8oEfGr3LKRlrp3Ew" name="RoleSets" guid="_oUU39d8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU39t8oEfGr3LKRlrp3Ew" name="WP Types" guid="_oUU39t8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3998oEfGr3LKRlrp3Ew" name="Tools" guid="_oUU3998oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3-N8oEfGr3LKRlrp3Ew" name="StandardCategories" guid="_oUU3-N8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3-d8oEfGr3LKRlrp3Ew" name="CustomCategories" guid="_oUU3-d8oEfGr3LKRlrp3Ew">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3-t8oEfGr3LKRlrp3Ew" name="Hidden" guid="_oUU3-t8oEfGr3LKRlrp3Ew">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_oUU3-98oEfGr3LKRlrp3Ew" name="Custom Categories" guid="_oUU3-98oEfGr3LKRlrp3Ew"/>
+          </childPackages>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3_N8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_oUU3_N8oEfGr3LKRlrp3Ew"/>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_oUU3_d8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_oUU3_d8oEfGr3LKRlrp3Ew"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_oUU3_t8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_oUU3_t8oEfGr3LKRlrp3Ew"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_oUU3_98oEfGr3LKRlrp3Ew" name="ProcessContributions" guid="_oUU3_98oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_hWoGAN8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_k9s6YN8oEfGr3LKRlrp3Ew#_k9s6YN8oEfGr3LKRlrp3Ew"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>

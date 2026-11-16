@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_JUWYwN8oEfGr3LKRlrp3Ew" guid="_JUWYwN8oEfGr3LKRlrp3Ew">
+    <resourceDescriptors xmi:id="_Zd49QN8qEfGr3LKRlrp3Ew" id="-SrTEonL1gQ6nuoq7m8FPrQ" uri="roles/analista_de_negocio.xmi"/>
+    <resourceDescriptors xmi:id="_56Qh8N8qEfGr3LKRlrp3Ew" id="-lF7qDV6fw1aLgcCLBv42DA" uri="workproducts/canvas.xmi"/>
+    <resourceDescriptors xmi:id="_VR_IEN8rEfGr3LKRlrp3Ew" id="-BknhE35EHubt65P7C3NWrg" uri="workproducts/framework_zachman.xmi"/>
+    <resourceDescriptors xmi:id="_mTaBsN8rEfGr3LKRlrp3Ew" id="-zDw4j8lSr27Js_lQ1rDUuQ" uri="workproducts/plantilla_de_stakeholders.xmi"/>
+    <resourceDescriptors xmi:id="_0QF_AN8rEfGr3LKRlrp3Ew" id="-D09PJuItvtY5j4mCY4x3gw" uri="workproducts/roadmap.xmi"/>
+    <resourceDescriptors xmi:id="_CpQc8N8sEfGr3LKRlrp3Ew" id="-fxgXVDqQgqpg4mGAtjaEJw" uri="workproducts/diagrama_de_casos_de_uso_de_negocio.xmi"/>
+    <resourceDescriptors xmi:id="_YheGYN8sEfGr3LKRlrp3Ew" id="-gpamhiHsMOuIZCpO4naRdg" uri="workproducts/diagrama_de_interaccion.xmi"/>
+    <resourceDescriptors xmi:id="_moMJcN8sEfGr3LKRlrp3Ew" id="-iz6lkb-XXyKelD7j59INXg" uri="workproducts/workflow.xmi"/>
+    <resourceDescriptors xmi:id="_x05ScN8sEfGr3LKRlrp3Ew" id="-gOakTgOJg2o97Sox9nlIKg" uri="workproducts/modelo_de_dominio.xmi"/>
+    <resourceDescriptors xmi:id="_8HarIN8sEfGr3LKRlrp3Ew" id="-RLS6mUPWmT6pKLAslcqJBA" uri="workproducts/diagrama_de_clases_del_dominio.xmi"/>
+    <resourceDescriptors xmi:id="_btzEwN-2EfGmVvN-KvBeSQ" id="-A6M21Wp2UVcTvSYjYLMlxQ" uri="tasks/entrevistar_al_dueno.xmi"/>
+    <resourceDescriptors xmi:id="_5xilMN-2EfGmVvN-KvBeSQ" id="-GBUHg2ud_IQkPRGSruv5SA" uri="tasks/definir_modelo_de_negocio.xmi"/>
+    <resourceDescriptors xmi:id="_yHOvcN-3EfGmVvN-KvBeSQ" id="-vRQFxDcaQpKbI40JwRhmMQ" uri="tasks/estructurar_enunciado_zachman.xmi"/>
+    <resourceDescriptors xmi:id="_J-2Z8N-6EfGmVvN-KvBeSQ" id="-f9wdQwgEpR9OGVI8jyB5Xw" uri="tasks/completar_reglas_de_negocio.xmi"/>
+    <resourceDescriptors xmi:id="_ANOyEN--EfGmVvN-KvBeSQ" id="-vS7peU2AogYKlxx-MIOUfA" uri="tasks/identificar_stakeholders.xmi"/>
+    <resourceDescriptors xmi:id="_NvbWUN-_EfGmVvN-KvBeSQ" id="-saNiqgOYEe1xlEEeA4MUJA" uri="tasks/identificar_involucrados.xmi"/>
+    <resourceDescriptors xmi:id="_NviEAN-_EfGmVvN-KvBeSQ" id="-1SJmm4iNLEFuIpx32pf69Q" uri="tasks/identificar_casos_de_uso_de_negocio.xmi"/>
+    <resourceDescriptors xmi:id="_NvkgQN-_EfGmVvN-KvBeSQ" id="-VXVQ97Z4yPdHhd9xJq_olA" uri="tasks/identificar_interacciones.xmi"/>
+    <resourceDescriptors xmi:id="_Nvp_0N-_EfGmVvN-KvBeSQ" id="-gY6wsdimTNXRuZnFWAb__g" uri="tasks/modelar_flujo_de_reabastecimiento.xmi"/>
+    <resourceDescriptors xmi:id="_I3Pp8N_AEfGmVvN-KvBeSQ" id="-MOlEC9zRKh-QSSC8NlNc7g" uri="tasks/validar_procesos.xmi"/>
+    <resourceDescriptors xmi:id="_I3VJgN_AEfGmVvN-KvBeSQ" id="-NUFjMoJNN10oFF0ibMj_zA" uri="tasks/identificar_entidades.xmi"/>
+    <resourceDescriptors xmi:id="_I3YM0N_AEfGmVvN-KvBeSQ" id="-NyxcbNy_hX9wustGhPR0iw" uri="tasks/identificar_persistencia.xmi"/>
+    <resourceDescriptors xmi:id="_rorokN_AEfGmVvN-KvBeSQ" id="-M5DUDH9sQI04xM4v48gU2g" uri="tasks/realizar_diagrama_de_clases.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_JUQ5MN8oEfGr3LKRlrp3Ew" name="modelado_de_negocio" guid="_JUQ5MN8oEfGr3LKRlrp3Ew" presentationName="Modelado de negocio" briefDescription="En esta disciplina se configuran los procesos que permiten entender cómo funciona la tienda de barrio: sus procesos, sus actores, sus reglas de negocio y la información que maneja, antes de definir la solución tecnológica." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:22.409-0500" changeDescription="Ajuste del nombre" version="1.0">
+    <methodElementProperty xmi:id="_t6ZIkN8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5Md8oEfGr3LKRlrp3Ew" name="Content" guid="_JUQ5Md8oEfGr3LKRlrp3Ew">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5Mt8oEfGr3LKRlrp3Ew" name="Categories" guid="_JUQ5Mt8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5M98oEfGr3LKRlrp3Ew" name="Domains" guid="_JUQ5M98oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5NN8oEfGr3LKRlrp3Ew" name="Disciplines" guid="_JUQ5NN8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5Nd8oEfGr3LKRlrp3Ew" name="RoleSets" guid="_JUQ5Nd8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5Nt8oEfGr3LKRlrp3Ew" name="WP Types" guid="_JUQ5Nt8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5N98oEfGr3LKRlrp3Ew" name="Tools" guid="_JUQ5N98oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5ON8oEfGr3LKRlrp3Ew" name="StandardCategories" guid="_JUQ5ON8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5Od8oEfGr3LKRlrp3Ew" name="CustomCategories" guid="_JUQ5Od8oEfGr3LKRlrp3Ew">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5Ot8oEfGr3LKRlrp3Ew" name="Hidden" guid="_JUQ5Ot8oEfGr3LKRlrp3Ew">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_JUQ5O98oEfGr3LKRlrp3Ew" name="Custom Categories" guid="_JUQ5O98oEfGr3LKRlrp3Ew"/>
+          </childPackages>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_JUQ5PN8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_JUQ5PN8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="__zkUIN8pEfGr3LKRlrp3Ew" name="modelado_de_negocio" guid="__zkUIN8pEfGr3LKRlrp3Ew" presentationName="Modelado de negocio" briefDescription="Este paquete contiene todos los elementos del método relacionados con el modelado del negocio de la tienda de barrio: roles, tareas y productos de trabajo.">
+          <methodElementProperty xmi:id="__zkUId8pEfGr3LKRlrp3Ew" name="pkg_loadCheck" value="true"/>
+          <methodElementProperty xmi:id="_EE60kN8qEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_KHqaIN8qEfGr3LKRlrp3Ew" name="analista_de_negocio" guid="_KHqaIN8qEfGr3LKRlrp3Ew" presentationName="Analista de negocio" briefDescription="Entiende cómo funciona la tienda, modela sus procesos y su dominio.">
+            <methodElementProperty xmi:id="_Zd3IEN8qEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-SrTEonL1gQ6nuoq7m8FPrQ" href="uma://-SrTEonL1gQ6nuoq7m8FPrQ#-SrTEonL1gQ6nuoq7m8FPrQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_pLoBcN8qEfGr3LKRlrp3Ew" name="canvas" guid="_pLoBcN8qEfGr3LKRlrp3Ew" presentationName="Canvas" briefDescription="Modelo de negocio de la tienda de barrio en 9 bloques.">
+            <methodElementProperty xmi:id="_56OswN8qEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-lF7qDV6fw1aLgcCLBv42DA" href="uma://-lF7qDV6fw1aLgcCLBv42DA#-lF7qDV6fw1aLgcCLBv42DA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_7LYLkN8qEfGr3LKRlrp3Ew" name="framework_zachman" guid="_7LYLkN8qEfGr3LKRlrp3Ew" presentationName="Framework Zachman" briefDescription="Enunciado del negocio estructurado en qué, quién, cómo, dónde, cuándo y por qué.">
+            <methodElementProperty xmi:id="_VR958N8rEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-BknhE35EHubt65P7C3NWrg" href="uma://-BknhE35EHubt65P7C3NWrg#-BknhE35EHubt65P7C3NWrg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_WK_MoN8rEfGr3LKRlrp3Ew" name="plantilla_de_stakeholders" guid="_WK_MoN8rEfGr3LKRlrp3Ew" presentationName="Plantilla de stakeholders" briefDescription="Partes interesadas en la solución y su interés en ella.">
+            <methodElementProperty xmi:id="_mTYMgN8rEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-zDw4j8lSr27Js_lQ1rDUuQ" href="uma://-zDw4j8lSr27Js_lQ1rDUuQ#-zDw4j8lSr27Js_lQ1rDUuQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_nGfEcN8rEfGr3LKRlrp3Ew" name="roadmap" guid="_nGfEcN8rEfGr3LKRlrp3Ew" presentationName="RoadMap" briefDescription="Involucrados, procesos y documentos de cada proceso del negocio.">
+            <methodElementProperty xmi:id="_0QEJ0N8rEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-D09PJuItvtY5j4mCY4x3gw" href="uma://-D09PJuItvtY5j4mCY4x3gw#-D09PJuItvtY5j4mCY4x3gw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_1bwg4N8rEfGr3LKRlrp3Ew" name="diagrama_de_casos_de_uso_de_negocio" guid="_1bwg4N8rEfGr3LKRlrp3Ew" presentationName="Diagrama de casos de uso de negocio" briefDescription="Procesos de la tienda vistos desde los actores del negocio.">
+            <methodElementProperty xmi:id="_CpOAsN8sEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-fxgXVDqQgqpg4mGAtjaEJw" href="uma://-fxgXVDqQgqpg4mGAtjaEJw#-fxgXVDqQgqpg4mGAtjaEJw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_DGJNQN8sEfGr3LKRlrp3Ew" name="diagrama_de_interaccion" guid="_DGJNQN8sEfGr3LKRlrp3Ew" presentationName="Diagrama de interacción" briefDescription="Intercambios entre la tienda, el proveedor y el cliente.">
+            <methodElementProperty xmi:id="_YhcRMN8sEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-gpamhiHsMOuIZCpO4naRdg" href="uma://-gpamhiHsMOuIZCpO4naRdg#-gpamhiHsMOuIZCpO4naRdg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_ZJGHEN8sEfGr3LKRlrp3Ew" name="workflow" guid="_ZJGHEN8sEfGr3LKRlrp3Ew" presentationName="Workflow" briefDescription="Flujo de actividades del reabastecimiento, desde la alerta hasta el pago.">
+            <methodElementProperty xmi:id="_moKUQN8sEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-iz6lkb-XXyKelD7j59INXg" href="uma://-iz6lkb-XXyKelD7j59INXg#-iz6lkb-XXyKelD7j59INXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_nZcAMN8sEfGr3LKRlrp3Ew" name="modelo_de_dominio" guid="_nZcAMN8sEfGr3LKRlrp3Ew" presentationName="Modelo de dominio" briefDescription="Entidades del negocio y la información que se guarda de cada una.">
+            <methodElementProperty xmi:id="_x02PIN8sEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-gOakTgOJg2o97Sox9nlIKg" href="uma://-gOakTgOJg2o97Sox9nlIKg#-gOakTgOJg2o97Sox9nlIKg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_ysJDgN8sEfGr3LKRlrp3Ew" name="diagrama_de_clases_del_dominio" guid="_ysJDgN8sEfGr3LKRlrp3Ew" presentationName="Diagrama de clases del dominio" briefDescription="Clases del dominio con atributos, relaciones y multiplicidades.">
+            <methodElementProperty xmi:id="_8HYO4N8sEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+            <presentation xmi:id="-RLS6mUPWmT6pKLAslcqJBA" href="uma://-RLS6mUPWmT6pKLAslcqJBA#-RLS6mUPWmT6pKLAslcqJBA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_s_cBIN-1EfGmVvN-KvBeSQ" name="entrevistar_al_dueno" guid="_s_cBIN-1EfGmVvN-KvBeSQ" presentationName="Entrevistar al dueño de la tienda" briefDescription="Entrevistar al dueño de la tienda de barrio sobre cómo controla hoy el inventario, las ventas, los fiados y los pedidos a proveedores." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" optionalInput="_pLoBcN8qEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_btimEN-2EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-A6M21Wp2UVcTvSYjYLMlxQ" href="uma://-A6M21Wp2UVcTvSYjYLMlxQ#-A6M21Wp2UVcTvSYjYLMlxQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_euG0EN-2EfGmVvN-KvBeSQ" name="definir_modelo_de_negocio" guid="_euG0EN-2EfGmVvN-KvBeSQ" presentationName="Definir clientes, propuesta de valor y socios" briefDescription="Definir el segmento de clientes (vecinos del barrio), la propuesta de valor del sistema y los socios clave (proveedores)." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_pLoBcN8qEfGr3LKRlrp3Ew" output="_pLoBcN8qEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_5xeTwN-2EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-GBUHg2ud_IQkPRGSruv5SA" href="uma://-GBUHg2ud_IQkPRGSruv5SA#-GBUHg2ud_IQkPRGSruv5SA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_mred0N-3EfGmVvN-KvBeSQ" name="estructurar_enunciado_zachman" guid="_mred0N-3EfGmVvN-KvBeSQ" presentationName="Estructurar el enunciado según Zachman" briefDescription="Estructurar el enunciado del negocio: qué (productos, stock), quién (dueño, vendedor, proveedor, cliente), cómo, dónde, cuándo y por qué." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_pLoBcN8qEfGr3LKRlrp3Ew" output="_7LYLkN8qEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_yHLFEN-3EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-vRQFxDcaQpKbI40JwRhmMQ" href="uma://-vRQFxDcaQpKbI40JwRhmMQ#-vRQFxDcaQpKbI40JwRhmMQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_6Qv0QN-3EfGmVvN-KvBeSQ" name="completar_reglas_de_negocio" guid="_6Qv0QN-3EfGmVvN-KvBeSQ" presentationName="Agregar las reglas de negocio faltantes" briefDescription="Reestructurar el enunciado y agregar las reglas de negocio faltantes: RN-01 (pago bloqueado por devolución en curso) y RN-02 (stock mínimo)." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_7LYLkN8qEfGr3LKRlrp3Ew" output="_7LYLkN8qEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_J-yIgN-6EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-f9wdQwgEpR9OGVI8jyB5Xw" href="uma://-f9wdQwgEpR9OGVI8jyB5Xw#-f9wdQwgEpR9OGVI8jyB5Xw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_8rVAUN-3EfGmVvN-KvBeSQ" name="identificar_stakeholders" guid="_8rVAUN-3EfGmVvN-KvBeSQ" presentationName="Identificar las partes interesadas" briefDescription="Identificar las partes interesadas en la solución: dueño, vendedor, proveedores, clientes con fiado y DIAN (facturación electrónica)." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_pLoBcN8qEfGr3LKRlrp3Ew _7LYLkN8qEfGr3LKRlrp3Ew" output="_WK_MoN8rEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_ANJ5kN--EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-vS7peU2AogYKlxx-MIOUfA" href="uma://-vS7peU2AogYKlxx-MIOUfA#-vS7peU2AogYKlxx-MIOUfA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_C5nf0N--EfGmVvN-KvBeSQ" name="identificar_involucrados" guid="_C5nf0N--EfGmVvN-KvBeSQ" presentationName="Identificar los involucrados" briefDescription="Identificar los involucrados en cada proceso: dueño, vendedor, proveedor y cliente." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_WK_MoN8rEfGr3LKRlrp3Ew" output="_nGfEcN8rEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_NvXr8N-_EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-saNiqgOYEe1xlEEeA4MUJA" href="uma://-saNiqgOYEe1xlEEeA4MUJA#-saNiqgOYEe1xlEEeA4MUJA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_H4xhcN--EfGmVvN-KvBeSQ" name="identificar_casos_de_uso_de_negocio" guid="_H4xhcN--EfGmVvN-KvBeSQ" presentationName="Identificar los casos de uso de negocio" briefDescription="Identificar los casos de uso de negocio: vender, fiar y abonar, pedir al proveedor, recibir mercancía, devolver productos y consultar reportes." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_nGfEcN8rEfGr3LKRlrp3Ew" output="_1bwg4N8rEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_WaUp4N-_EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-1SJmm4iNLEFuIpx32pf69Q" href="uma://-1SJmm4iNLEFuIpx32pf69Q#-1SJmm4iNLEFuIpx32pf69Q"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_TVxJMN--EfGmVvN-KvBeSQ" name="identificar_interacciones" guid="_TVxJMN--EfGmVvN-KvBeSQ" presentationName="Identificar las interacciones" briefDescription="Identificar las interacciones tienda-proveedor (pedido, factura, entrega, devolución) y tienda-cliente (venta, fiado, abono)." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_1bwg4N8rEfGr3LKRlrp3Ew _nGfEcN8rEfGr3LKRlrp3Ew" output="_DGJNQN8sEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_m8SnYN-_EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-VXVQ97Z4yPdHhd9xJq_olA" href="uma://-VXVQ97Z4yPdHhd9xJq_olA#-VXVQ97Z4yPdHhd9xJq_olA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_UCY-oN--EfGmVvN-KvBeSQ" name="modelar_flujo_de_reabastecimiento" guid="_UCY-oN--EfGmVvN-KvBeSQ" presentationName="Modelar el flujo de reabastecimiento" briefDescription="Identificar el flujo de reabastecimiento: alerta de stock bajo, pedido sugerido, ingreso de mercancía, verificación facturado vs. recibido y pago al proveedor." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_DGJNQN8sEfGr3LKRlrp3Ew" output="_ZJGHEN8sEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_wTNTcN-_EfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-gY6wsdimTNXRuZnFWAb__g" href="uma://-gY6wsdimTNXRuZnFWAb__g#-gY6wsdimTNXRuZnFWAb__g"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_yhfv8N-_EfGmVvN-KvBeSQ" name="validar_procesos" guid="_yhfv8N-_EfGmVvN-KvBeSQ" presentationName="Validar los procesos con el dueño" briefDescription="Validar con el dueño los procesos modelados y las partes interesadas en la solución tecnológica." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_nGfEcN8rEfGr3LKRlrp3Ew _ZJGHEN8sEfGr3LKRlrp3Ew" output="_WK_MoN8rEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_I3L_kN_AEfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-MOlEC9zRKh-QSSC8NlNc7g" href="uma://-MOlEC9zRKh-QSSC8NlNc7g#-MOlEC9zRKh-QSSC8NlNc7g"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_zJOeUN-_EfGmVvN-KvBeSQ" name="identificar_entidades" guid="_zJOeUN-_EfGmVvN-KvBeSQ" presentationName="Identificar las entidades del negocio" briefDescription="Identificar las entidades del negocio: Producto, Venta, Cliente, Abono, Proveedor, PedidoProveedor, IngresoMercancia, Devolucion y MovimientoInventario." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_7LYLkN8qEfGr3LKRlrp3Ew _nGfEcN8rEfGr3LKRlrp3Ew" output="_nZcAMN8sEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_VWgnAN_AEfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-NUFjMoJNN10oFF0ibMj_zA" href="uma://-NUFjMoJNN10oFF0ibMj_zA#-NUFjMoJNN10oFF0ibMj_zA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_zpRQUN-_EfGmVvN-KvBeSQ" name="identificar_persistencia" guid="_zpRQUN-_EfGmVvN-KvBeSQ" presentationName="Identificar la información que se guarda" briefDescription="Identificar qué información se guarda de cada entidad y su historial (cambios de estado de pedidos y devoluciones, movimientos de inventario)." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_nZcAMN8sEfGr3LKRlrp3Ew" output="_nZcAMN8sEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_eJUgcN_AEfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-NyxcbNy_hX9wustGhPR0iw" href="uma://-NyxcbNy_hX9wustGhPR0iw#-NyxcbNy_hX9wustGhPR0iw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_e7EtgN_AEfGmVvN-KvBeSQ" name="realizar_diagrama_de_clases" guid="_e7EtgN_AEfGmVvN-KvBeSQ" presentationName="Realizar el diagrama de clases del dominio" briefDescription="Realizar el diagrama de clases del dominio con atributos, relaciones y multiplicidades." performedBy="_KHqaIN8qEfGr3LKRlrp3Ew" mandatoryInput="_nZcAMN8sEfGr3LKRlrp3Ew" output="_ysJDgN8sEfGr3LKRlrp3Ew">
+            <methodElementProperty xmi:id="_ropMUN_AEfGmVvN-KvBeSQ" name="me_edited" value="true"/>
+            <presentation xmi:id="-M5DUDH9sQI04xM4v48gU2g" href="uma://-M5DUDH9sQI04xM4v48gU2g#-M5DUDH9sQI04xM4v48gU2g"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_JUQ5Pd8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_JUQ5Pd8oEfGr3LKRlrp3Ew"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_JUQ5Pt8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_JUQ5Pt8oEfGr3LKRlrp3Ew"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_JUQ5P98oEfGr3LKRlrp3Ew" name="ProcessContributions" guid="_JUQ5P98oEfGr3LKRlrp3Ew"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-GcSFiyxMdwluWpK93n7Cog" name="prototipo_de_interfaz,_Qj3sgN_CEfG8tbaZ8P9cgg" guid="-GcSFiyxMdwluWpK93n7Cog" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:28:56.167-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Mockups de cada pestaña con sus componentes reutilizables identificados: buscador de producto, insignia de estado, avisos,&#xD;
+campana de alertas y comprobantes.</mainDescription>
+  <keyConsiderations>Validar el prototipo con el dueño y marcar qué componentes se repiten en varias pantallas.</keyConsiderations>
+  <purpose>Validar con el usuario cómo se verá y se usará la aplicación antes de programarla.</purpose>
+  <impactOfNotHaving>Los cambios de interfaz se descubrirían ya programados, cuando son más costosos.</impactOfNotHaving>
+  <reasonsForNotNeeding>Si los wireframes ya fueron validados y la interfaz es muy simple.</reasonsForNotNeeding>
+  <representationOptions>Figma, Penpot o un prototipo navegable en HTML.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-A6M21Wp2UVcTvSYjYLMlxQ" name=",_s_cBIN-1EfGmVvN-KvBeSQ" guid="-A6M21Wp2UVcTvSYjYLMlxQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T17:59:16.726-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista prepara una guía de preguntas y se reúne con el dueño para conocer cómo vende, cómo lleva el inventario, cómo&#xD;
+registra los fiados, cómo hace los pedidos a los proveedores y qué problemas tiene hoy (faltantes de mercancía, cobros&#xD;
+olvidados, pagos por mercancía que no llegó). Con las respuestas arma un primer borrador del Canvas.</mainDescription>
+  <keyConsiderations>Usar el lenguaje del tendero y evitar términos técnicos. Pedir ejemplos reales, como una página de la libreta de fiados o&#xD;
+una factura de proveedor. Tomar notas y confirmar lo entendido al final de la entrevista.</keyConsiderations>
+  <purpose>Conocer de primera mano cómo funciona el negocio y cuáles son sus problemas actuales, para que la solución responda a&#xD;
+necesidades reales.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

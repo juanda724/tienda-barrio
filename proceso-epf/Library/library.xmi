@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="__zyBcd8nEfGr3LKRlrp3Ew" guid="__zyBcd8nEfGr3LKRlrp3Ew">
+    <subManagers xmi:id="_JUWYwN8oEfGr3LKRlrp3Ew" href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_JUWYwN8oEfGr3LKRlrp3Ew"/>
+    <subManagers xmi:id="_W5YrEN8oEfGr3LKRlrp3Ew" href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_W5YrEN8oEfGr3LKRlrp3Ew"/>
+    <subManagers xmi:id="_cWvroN8oEfGr3LKRlrp3Ew" href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_cWvroN8oEfGr3LKRlrp3Ew"/>
+    <subManagers xmi:id="_hWqiQN8oEfGr3LKRlrp3Ew" href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_hWqiQN8oEfGr3LKRlrp3Ew"/>
+    <subManagers xmi:id="_k9uvkN8oEfGr3LKRlrp3Ew" href="uma://_k9s6YN8oEfGr3LKRlrp3Ew#_k9uvkN8oEfGr3LKRlrp3Ew"/>
+    <subManagers xmi:id="_oUXUMN8oEfGr3LKRlrp3Ew" href="uma://_oUU38N8oEfGr3LKRlrp3Ew#_oUXUMN8oEfGr3LKRlrp3Ew"/>
+    <subManagers xmi:id="_sUjMIN8oEfGr3LKRlrp3Ew" href="uma://_sUgI0N8oEfGr3LKRlrp3Ew#_sUjMIN8oEfGr3LKRlrp3Ew"/>
+    <resourceDescriptors xmi:id="__zyBct8nEfGr3LKRlrp3Ew" id="__zyBcN8nEfGr3LKRlrp3Ew" uri=""/>
+    <resourceDescriptors xmi:id="_JUWYwd8oEfGr3LKRlrp3Ew" id="_JUQ5MN8oEfGr3LKRlrp3Ew" uri="modelado_de_negocio/plugin.xmi"/>
+    <resourceDescriptors xmi:id="_W5YrEd8oEfGr3LKRlrp3Ew" id="_W5WO0N8oEfGr3LKRlrp3Ew" uri="requerimientos/plugin.xmi"/>
+    <resourceDescriptors xmi:id="_cWvrod8oEfGr3LKRlrp3Ew" id="_cWsoUN8oEfGr3LKRlrp3Ew" uri="analisis_y_diseno/plugin.xmi"/>
+    <resourceDescriptors xmi:id="_hWqiQd8oEfGr3LKRlrp3Ew" id="_hWoGAN8oEfGr3LKRlrp3Ew" uri="implementacion/plugin.xmi"/>
+    <resourceDescriptors xmi:id="_k9uvkd8oEfGr3LKRlrp3Ew" id="_k9s6YN8oEfGr3LKRlrp3Ew" uri="pruebas/plugin.xmi"/>
+    <resourceDescriptors xmi:id="_oUXUMd8oEfGr3LKRlrp3Ew" id="_oUU38N8oEfGr3LKRlrp3Ew" uri="despliegue/plugin.xmi"/>
+    <resourceDescriptors xmi:id="_sUjMId8oEfGr3LKRlrp3Ew" id="_sUgI0N8oEfGr3LKRlrp3Ew" uri="tienda_de_barrio/plugin.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
+  <org.eclipse.epf.uma:MethodLibrary xmi:id="__zyBcN8nEfGr3LKRlrp3Ew" name="Library" guid="__zyBcN8nEfGr3LKRlrp3Ew" briefDescription="Librería de métodos del proceso de desarrollo del Sistema de Gestión de Inventarios para una tienda de barrio, basado en RUP.">
+    <methodElementProperty xmi:id="__0o9EN8nEfGr3LKRlrp3Ew" name="library_synFree" value="false"/>
+    <methodPlugins xmi:id="_JUQ5MN8oEfGr3LKRlrp3Ew" href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_JUQ5MN8oEfGr3LKRlrp3Ew"/>
+    <methodPlugins xmi:id="_W5WO0N8oEfGr3LKRlrp3Ew" href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_W5WO0N8oEfGr3LKRlrp3Ew"/>
+    <methodPlugins xmi:id="_cWsoUN8oEfGr3LKRlrp3Ew" href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_cWsoUN8oEfGr3LKRlrp3Ew"/>
+    <methodPlugins xmi:id="_hWoGAN8oEfGr3LKRlrp3Ew" href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_hWoGAN8oEfGr3LKRlrp3Ew"/>
+    <methodPlugins xmi:id="_k9s6YN8oEfGr3LKRlrp3Ew" href="uma://_k9s6YN8oEfGr3LKRlrp3Ew#_k9s6YN8oEfGr3LKRlrp3Ew"/>
+    <methodPlugins xmi:id="_oUU38N8oEfGr3LKRlrp3Ew" href="uma://_oUU38N8oEfGr3LKRlrp3Ew#_oUU38N8oEfGr3LKRlrp3Ew"/>
+    <methodPlugins xmi:id="_sUgI0N8oEfGr3LKRlrp3Ew" href="uma://_sUgI0N8oEfGr3LKRlrp3Ew#_sUgI0N8oEfGr3LKRlrp3Ew"/>
+  </org.eclipse.epf.uma:MethodLibrary>
+</xmi:XMI>

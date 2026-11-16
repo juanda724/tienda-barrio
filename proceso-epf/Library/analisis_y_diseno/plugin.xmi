@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_cWvroN8oEfGr3LKRlrp3Ew" guid="_cWvroN8oEfGr3LKRlrp3Ew">
+    <resourceDescriptors xmi:id="_AFOTIeIPEfGoE8by5lIpXg" id="-PQIYXQOCzlVxJLhDllS5Cw" uri="roles/arquitecto_de_software.xmi"/>
+    <resourceDescriptors xmi:id="_TsAsgeIPEfGoE8by5lIpXg" id="-9IX1apizwvB0jkHBsbrtZQ" uri="workproducts/diagrama_de_arquitectura_por_capas.xmi"/>
+    <resourceDescriptors xmi:id="_cUSJ4OIPEfGoE8by5lIpXg" id="-gl5wGJt20GrrkrRHTiZEPg" uri="workproducts/modelo_de_datos.xmi"/>
+    <resourceDescriptors xmi:id="_i8HZgOIPEfGoE8by5lIpXg" id="-Dtam-tml-9T5iqIKBDhGfg" uri="workproducts/contrato_de_la_api_rest.xmi"/>
+    <resourceDescriptors xmi:id="_AKCsQuIQEfGoE8by5lIpXg" id="-9SSlLTYAJLsKp_jKfr42Ow" uri="workproducts/diagrama_de_secuencia.xmi"/>
+    <resourceDescriptors xmi:id="_b7-iIOIQEfGoE8by5lIpXg" id="-EmJyzIp_UW33yGN6VU_T0g" uri="tasks/definir_la_arquitectura_por_capas.xmi"/>
+    <resourceDescriptors xmi:id="_DSagguISEfGoE8by5lIpXg" id="-0NqKE8M4wp5xB459wPrwyg" uri="tasks/definir_el_contrato_de_la_api_rest.xmi"/>
+    <resourceDescriptors xmi:id="_oD0LwuISEfGoE8by5lIpXg" id="-oe704dCKtf94_ao5l7eTbQ" uri="tasks/modelar_la_secuencia_de_los_flujos_clave.xmi"/>
+    <resourceDescriptors xmi:id="_AigvQuITEfGoE8by5lIpXg" id="-eE4aSdN6B2c0RizRFiw1Vw" uri="tasks/asignar_las_reglas_de_negocio_a_los_servicios.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_cWsoUN8oEfGr3LKRlrp3Ew" name="analisis_y_diseno" guid="_cWsoUN8oEfGr3LKRlrp3Ew" presentationName="Análisis y diseño" briefDescription="En esta disciplina se define cómo se construye el sistema: la arquitectura por capas, el modelo de datos, la API REST y los flujos de información entre las capas." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:27.762-0500" changeDescription="Ajuste del nombre" version="1.0">
+    <methodElementProperty xmi:id="_we9XEN8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoUd8oEfGr3LKRlrp3Ew" name="Content" guid="_cWsoUd8oEfGr3LKRlrp3Ew">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoUt8oEfGr3LKRlrp3Ew" name="Categories" guid="_cWsoUt8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoU98oEfGr3LKRlrp3Ew" name="Domains" guid="_cWsoU98oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoVN8oEfGr3LKRlrp3Ew" name="Disciplines" guid="_cWsoVN8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoVd8oEfGr3LKRlrp3Ew" name="RoleSets" guid="_cWsoVd8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoVt8oEfGr3LKRlrp3Ew" name="WP Types" guid="_cWsoVt8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoV98oEfGr3LKRlrp3Ew" name="Tools" guid="_cWsoV98oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoWN8oEfGr3LKRlrp3Ew" name="StandardCategories" guid="_cWsoWN8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoWd8oEfGr3LKRlrp3Ew" name="CustomCategories" guid="_cWsoWd8oEfGr3LKRlrp3Ew">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoWt8oEfGr3LKRlrp3Ew" name="Hidden" guid="_cWsoWt8oEfGr3LKRlrp3Ew">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_cWsoW98oEfGr3LKRlrp3Ew" name="Custom Categories" guid="_cWsoW98oEfGr3LKRlrp3Ew"/>
+          </childPackages>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_cWsoXN8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_cWsoXN8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_w0iCMOIMEfGoE8by5lIpXg" name="analisis_y_diseno" guid="_w0iCMOIMEfGoE8by5lIpXg" presentationName="Análisis y diseño">
+          <methodElementProperty xmi:id="_w0ipQOIMEfGoE8by5lIpXg" name="pkg_loadCheck" value="true"/>
+          <methodElementProperty xmi:id="_SNDGEOINEfGoE8by5lIpXg" name="me_edited" value="true"/>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_UXoHQOINEfGoE8by5lIpXg" name="arquitecto_de_software" guid="_UXoHQOINEfGoE8by5lIpXg" presentationName="Arquitecto de software" briefDescription="Define la arquitectura por capas, el modelo de datos, la API REST y los flujos de información del sistema." responsibleFor="_C6WtMOIPEfGoE8by5lIpXg _TEgAkOIPEfGoE8by5lIpXg _c4GooOIPEfGoE8by5lIpXg _keNeYOIPEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_cVC0UOIOEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-PQIYXQOCzlVxJLhDllS5Cw" href="uma://-PQIYXQOCzlVxJLhDllS5Cw#-PQIYXQOCzlVxJLhDllS5Cw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_C6WtMOIPEfGoE8by5lIpXg" name="diagrama_de_arquitectura_por_capas" guid="_C6WtMOIPEfGoE8by5lIpXg" presentationName="Diagrama de arquitectura por capas" briefDescription="Muestra cómo se organiza el sistema en capas y cómo se comunican entre sí.">
+            <methodElementProperty xmi:id="_Tr4wsOIPEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-9IX1apizwvB0jkHBsbrtZQ" href="uma://-9IX1apizwvB0jkHBsbrtZQ#-9IX1apizwvB0jkHBsbrtZQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="__cb_YOIPEfGoE8by5lIpXg" name="definir_la_arquitectura_por_capas" guid="__cb_YOIPEfGoE8by5lIpXg" presentationName="Definir la arquitectura por capas" briefDescription="Decidir cómo se organiza técnicamente el sistema." performedBy="_UXoHQOINEfGoE8by5lIpXg" optionalInput="_TEgAkOIPEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_b71YMOIQEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-EmJyzIp_UW33yGN6VU_T0g" href="uma://-EmJyzIp_UW33yGN6VU_T0g#-EmJyzIp_UW33yGN6VU_T0g"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_nZcAMN8sEfGr3LKRlrp3Ew"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_8K0LsOIREfGoE8by5lIpXg" name="definir_el_contrato_de_la_api_rest" guid="_8K0LsOIREfGoE8by5lIpXg" presentationName="Definir el contrato de la API REST" briefDescription="cordar cómo se comunican el frontend y el backend." performedBy="_UXoHQOINEfGoE8by5lIpXg" optionalInput="_c4GooOIPEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_DSaggOISEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-0NqKE8M4wp5xB459wPrwyg" href="uma://-0NqKE8M4wp5xB459wPrwyg#-0NqKE8M4wp5xB459wPrwyg"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_JLyrsN_CEfG8tbaZ8P9cgg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_UlubYOISEfGoE8by5lIpXg" name="modelar_la_secuencia_de_los_flujos_clave" guid="_UlubYOISEfGoE8by5lIpXg" presentationName="Modelar la secuencia de los flujos clave" briefDescription="Diagramar cómo colaboran las capas en los procesos críticos." performedBy="_UXoHQOINEfGoE8by5lIpXg" optionalInput="_keNeYOIPEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_oD0LwOISEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-oe704dCKtf94_ao5l7eTbQ" href="uma://-oe704dCKtf94_ao5l7eTbQ#-oe704dCKtf94_ao5l7eTbQ"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_KtHUgN_CEfG8tbaZ8P9cgg"/>
+            <mandatoryInput href="#_c4GooOIPEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_36iz4OISEfGoE8by5lIpXg" name="asignar_las_reglas_de_negocio_a_los_servicios" guid="_36iz4OISEfGoE8by5lIpXg" presentationName="Asignar las reglas de negocio a los servicios" briefDescription="Decidir en qué servicio vive cada regla de negocio." performedBy="_UXoHQOINEfGoE8by5lIpXg" optionalInput="_C6WtMOIPEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_AigvQOITEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-eE4aSdN6B2c0RizRFiw1Vw" href="uma://-eE4aSdN6B2c0RizRFiw1Vw#-eE4aSdN6B2c0RizRFiw1Vw"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_Gms4wN_CEfG8tbaZ8P9cgg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_keNeYOIPEfGoE8by5lIpXg" name="diagrama_de_secuencia" guid="_keNeYOIPEfGoE8by5lIpXg" presentationName="Diagrama de secuencia" briefDescription="Muestra paso a paso cómo colaboran las capas en los flujos críticos.">
+            <methodElementProperty xmi:id="_AKCsQOIQEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-9SSlLTYAJLsKp_jKfr42Ow" href="uma://-9SSlLTYAJLsKp_jKfr42Ow#-9SSlLTYAJLsKp_jKfr42Ow"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_c4GooOIPEfGoE8by5lIpXg" name="contrato_de_la_api_rest" guid="_c4GooOIPEfGoE8by5lIpXg" presentationName="Contrato de la API REST" briefDescription="Lista los endpoints del backend con sus datos de entrada y de respuesta.">
+            <methodElementProperty xmi:id="_i8FkUOIPEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-Dtam-tml-9T5iqIKBDhGfg" href="uma://-Dtam-tml-9T5iqIKBDhGfg#-Dtam-tml-9T5iqIKBDhGfg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_TEgAkOIPEfGoE8by5lIpXg" name="modelo_de_datos" guid="_TEgAkOIPEfGoE8by5lIpXg" presentationName="Modelo de datos" briefDescription="Describe la información que guarda el sistema y cómo se relaciona.">
+            <methodElementProperty xmi:id="_cUMqUOIPEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-gl5wGJt20GrrkrRHTiZEPg" href="uma://-gl5wGJt20GrrkrRHTiZEPg#-gl5wGJt20GrrkrRHTiZEPg"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_cWsoXd8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_cWsoXd8oEfGr3LKRlrp3Ew"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_cWsoXt8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_cWsoXt8oEfGr3LKRlrp3Ew"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_cWsoX98oEfGr3LKRlrp3Ew" name="ProcessContributions" guid="_cWsoX98oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_JUQ5MN8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_W5WO0N8oEfGr3LKRlrp3Ew"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>

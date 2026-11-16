@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-AWnr1RbHqirMUMoLBY1AXA" name="detallar_formularios,_yzgrAN_VEfGJA9pc4FnC4g" guid="-AWnr1RbHqirMUMoLBY1AXA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:39.324-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El diseñador identifica los campos de cada formulario, cuáles son obligatorios y cuáles se calculan; por ejemplo, el saldo&#xD;
+del fiado o el cambio de una venta.</mainDescription>
+  <keyConsiderations>Marcar los campos que el sistema puede calcular solo, para no pedírselos al usuario.</keyConsiderations>
+  <purpose>Saber exactamente qué datos maneja el tendero en cada documento.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

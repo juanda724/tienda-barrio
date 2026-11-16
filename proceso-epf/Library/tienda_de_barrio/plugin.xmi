@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_sUjMIN8oEfGr3LKRlrp3Ew" guid="_sUjMIN8oEfGr3LKRlrp3Ew"/>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_sUgI0N8oEfGr3LKRlrp3Ew" name="tienda_de_barrio" guid="_sUgI0N8oEfGr3LKRlrp3Ew" presentationName="Tienda de Barrio" briefDescription="Proceso de desarrollo del Sistema de Gestión de Inventarios para una tienda de barrio, basado en RUP. Reúne las disciplinas de Modelado de negocio, Requerimientos, Análisis y diseño, Implementación, Pruebas y Despliegue." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:10:56.859-0500" changeDescription="Ajuste del nombre" version="1.0">
+    <methodElementProperty xmi:id="_5blT0N8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI0d8oEfGr3LKRlrp3Ew" name="Content" guid="_sUgI0d8oEfGr3LKRlrp3Ew">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI0t8oEfGr3LKRlrp3Ew" name="Categories" guid="_sUgI0t8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI098oEfGr3LKRlrp3Ew" name="Domains" guid="_sUgI098oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI1N8oEfGr3LKRlrp3Ew" name="Disciplines" guid="_sUgI1N8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI1d8oEfGr3LKRlrp3Ew" name="RoleSets" guid="_sUgI1d8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI1t8oEfGr3LKRlrp3Ew" name="WP Types" guid="_sUgI1t8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI198oEfGr3LKRlrp3Ew" name="Tools" guid="_sUgI198oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI2N8oEfGr3LKRlrp3Ew" name="StandardCategories" guid="_sUgI2N8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI2d8oEfGr3LKRlrp3Ew" name="CustomCategories" guid="_sUgI2d8oEfGr3LKRlrp3Ew">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI2t8oEfGr3LKRlrp3Ew" name="Hidden" guid="_sUgI2t8oEfGr3LKRlrp3Ew">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_sUgI298oEfGr3LKRlrp3Ew" name="Custom Categories" guid="_sUgI298oEfGr3LKRlrp3Ew"/>
+          </childPackages>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_sUgI3N8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_sUgI3N8oEfGr3LKRlrp3Ew"/>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_sUgI3d8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_sUgI3d8oEfGr3LKRlrp3Ew"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_sUgI3t8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_sUgI3t8oEfGr3LKRlrp3Ew"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_sUgI398oEfGr3LKRlrp3Ew" name="ProcessContributions" guid="_sUgI398oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_cWsoUN8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_oUU38N8oEfGr3LKRlrp3Ew#_oUU38N8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_hWoGAN8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_JUQ5MN8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_k9s6YN8oEfGr3LKRlrp3Ew#_k9s6YN8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_W5WO0N8oEfGr3LKRlrp3Ew"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>

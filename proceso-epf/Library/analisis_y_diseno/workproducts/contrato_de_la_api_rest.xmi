@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-Dtam-tml-9T5iqIKBDhGfg" name="new_artifact,_c4GooOIPEfGoE8by5lIpXg" guid="-Dtam-tml-9T5iqIKBDhGfg" changeDate="2026-11-16T17:46:10.898-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Lista los endpoints que expone el backend, agrupados por recurso (productos, ventas, clientes y fiados, proveedores,&#xD;
+    pedidos, ingresos, devoluciones, alertas y reportes), con el método HTTP, los datos de entrada, la respuesta y los&#xD;
+    errores posibles.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Permitir que el frontend y el backend se desarrollen en paralelo con un acuerdo claro de cómo se comunican.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

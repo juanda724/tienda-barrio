@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-iz6lkb-XXyKelD7j59INXg" name="new_artifact,_ZJGHEN8sEfGr3LKRlrp3Ew" guid="-iz6lkb-XXyKelD7j59INXg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:35:42.320-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Diagrama de flujo del reabastecimiento: alerta de stock bajo, pedido sugerido, envío del pedido al proveedor, ingreso de&#xD;
+mercancía, verificación de lo facturado contra lo recibido, devolución si hay diferencias y pago al proveedor.</mainDescription>
+  <keyConsiderations>Debe incluir las decisiones (¿llegó completo?, ¿hay averías?) y los caminos alternos, no solo el caso ideal.</keyConsiderations>
+  <purpose>Describir paso a paso el proceso de reabastecimiento, que es el proceso core más complejo de la tienda.</purpose>
+  <impactOfNotHaving>Las reglas del reabastecimiento quedarían implícitas y el sistema podría permitir pagos por mercancía que no llegó.</impactOfNotHaving>
+  <reasonsForNotNeeding>Ninguna para este proyecto: es el proceso con más reglas de negocio.</reasonsForNotNeeding>
+  <representationOptions>Diagrama de actividad UML o BPMN.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

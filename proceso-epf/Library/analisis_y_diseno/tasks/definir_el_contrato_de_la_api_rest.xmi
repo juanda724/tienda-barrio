@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-0NqKE8M4wp5xB459wPrwyg" name=",_8K0LsOIREfGoE8by5lIpXg" guid="-0NqKE8M4wp5xB459wPrwyg" changeDate="2026-11-16T18:03:56.741-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    El arquitecto define cómo se comunican el frontend y el backend: qué endpoints existen, con qué método HTTP, qué datos&#xD;
+    reciben y qué responden, incluyendo los mensajes de error.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Debe haber un endpoint por cada caso de uso del sistema. Los errores de negocio deben devolver mensajes comprensibles&#xD;
+    para el tendero.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_EN54YOISEfGoE8by5lIpXg" name="1.  Listar los recursos a partir de los casos de uso del sistema." guid="_EN54YOISEfGoE8by5lIpXg"/>
+  <sections xmi:id="_GBadYOISEfGoE8by5lIpXg" name="2.  Definir el endpoint y el método HTTP de cada operación." guid="_GBadYOISEfGoE8by5lIpXg"/>
+  <sections xmi:id="_IVpw4OISEfGoE8by5lIpXg" name="3.  Definir los datos de entrada, la respuesta y los errores." guid="_IVpw4OISEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Acordar la comunicación entre el frontend y el backend antes de programarlos.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

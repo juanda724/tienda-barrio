@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-eE4aSdN6B2c0RizRFiw1Vw" name=",_36iz4OISEfGoE8by5lIpXg" guid="-eE4aSdN6B2c0RizRFiw1Vw" changeDate="2026-11-16T18:10:41.559-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    El arquitecto toma las reglas de negocio (RN-01 a RN-10) y decide en qué servicio del backend se implementa cada una,&#xD;
+    verificando que ninguna quede repartida ni en el frontend.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Las reglas viven en la capa de servicio y nunca en la pantalla, para que se cumplan sin importar desde dónde se use el&#xD;
+    sistema.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_BXIqIOITEfGoE8by5lIpXg" name="1.  Tomar la lista de reglas de negocio del plan de requisitos." guid="_BXIqIOITEfGoE8by5lIpXg"/>
+  <sections xmi:id="_Cf-hgOITEfGoE8by5lIpXg" name="2.  Asignar cada regla a un servicio." guid="_Cf-hgOITEfGoE8by5lIpXg"/>
+  <sections xmi:id="_D7yYMOITEfGoE8by5lIpXg" name="3.  Verificar que ninguna regla quede en el frontend ni duplicada." guid="_D7yYMOITEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Garantizar que cada regla de negocio tenga un responsable claro en el diseño.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-bI-h_Pt_oPpNsG8944U0VQ" name="wireframes,_PykycN_CEfG8tbaZ8P9cgg" guid="-bI-h_Pt_oPpNsG8944U0VQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:28:47.536-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Bocetos de baja fidelidad de cada pestaña (Ventas, Inventario, Movimientos, Fiados, Proveedores, Pedidos, Ingresos,&#xD;
+Devoluciones y Reportes) en versión para computador y para celular.</mainDescription>
+  <keyConsiderations>Priorizar las acciones más frecuentes, como registrar una venta, y verificar que todo quepa en la pantalla del celular.</keyConsiderations>
+  <purpose>Definir la estructura de cada pantalla antes de ocuparse de los colores y los estilos.</purpose>
+  <impactOfNotHaving>El prototipo se haría sin una estructura acordada y habría más cambios después.</impactOfNotHaving>
+  <reasonsForNotNeeding>Si se pasa directamente a un prototipo de baja fidelidad.</reasonsForNotNeeding>
+  <representationOptions>Bocetos a mano, Figma, Balsamiq o draw.io.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

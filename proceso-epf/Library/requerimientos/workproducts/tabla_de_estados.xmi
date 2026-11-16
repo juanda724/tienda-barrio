@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-Lx9NzvKNAHtplNBXyRxAxw" name="tabla_de_estados,_Lf-U0N_CEfG8tbaZ8P9cgg" guid="-Lx9NzvKNAHtplNBXyRxAxw" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:28:34.499-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Tabla o diagrama de estados para el Pedido (En espera, Aceptado, En proceso, En camino, Entregado, Rechazado, Cancelado),&#xD;
+la Devolución (Pendiente, Enviada, Reemplazada, Con nota crédito, Rechazada) y el Pago (Pendiente, Crédito, Pagado),&#xD;
+indicando qué transiciones hace el usuario y cuáles el sistema.</mainDescription>
+  <keyConsiderations>Debe quedar claro qué transiciones son automáticas; por ejemplo, el pedido pasa a Entregado solo al registrar el ingreso de&#xD;
+mercancía.</keyConsiderations>
+  <purpose>Definir el ciclo de vida de las entidades controlables y qué cambios de estado están permitidos.</purpose>
+  <impactOfNotHaving>El sistema podría permitir cambios de estado inválidos, como entregar un pedido cancelado.</impactOfNotHaving>
+  <reasonsForNotNeeding>Si ninguna entidad del sistema tiene ciclo de vida.</reasonsForNotNeeding>
+  <representationOptions>Tabla de transiciones o diagrama de estados UML.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-LEUZO7qYtZIcdYUTc5hwkw" name="disenar_prototipo,_k1bfMN_YEfGJA9pc4FnC4g" guid="-LEUZO7qYtZIcdYUTc5hwkw" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T22:08:29.473-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El diseñador convierte los wireframes en mockups con los datos reales del dominio (productos, clientes, proveedores) y los&#xD;
+valida con el dueño.</mainDescription>
+  <keyConsiderations>Usar datos realistas de la tienda para que el dueño pueda evaluar el prototipo como si fuera la aplicación real.</keyConsiderations>
+  <purpose>Tener una versión visual de la aplicación para validarla con el dueño antes de programar.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

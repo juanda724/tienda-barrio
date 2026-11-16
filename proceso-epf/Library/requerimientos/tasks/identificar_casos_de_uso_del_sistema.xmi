@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-Q8JZGqTgyNyrS0soyyVznQ" name="identificar_casos_de_uso_del_sistema,_u1gkYN_VEfGJA9pc4FnC4g" guid="-Q8JZGqTgyNyrS0soyyVznQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:23.575-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>A partir de los casos de uso de negocio, el analista define los casos de uso del sistema para cada funcionalidad: registrar&#xD;
+ventas, gestionar fiados y abonos, recibir alertas de stock, hacer pedidos, registrar ingresos, gestionar devoluciones y&#xD;
+consultar reportes. Los representa en un diagrama UML con sus actores.</mainDescription>
+  <keyConsiderations>Cada funcionalidad debe quedar cubierta por al menos un caso de uso, y cada caso de uso debe tener un actor que lo inicie.</keyConsiderations>
+  <purpose>Definir qué puede hacer cada actor con el sistema, cubriendo todas las funcionalidades.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

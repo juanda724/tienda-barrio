@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-gl5wGJt20GrrkrRHTiZEPg" name="new_artifact,_TEgAkOIPEfGoE8by5lIpXg" guid="-gl5wGJt20GrrkrRHTiZEPg" changeDate="2026-11-16T17:45:22.528-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Describe las entidades que el sistema guarda (Producto, Venta, Cliente, Abono, Proveedor, Pedido a proveedor, Ingreso&#xD;
+    de mercancía, Devolución, Movimiento de inventario, entre otras), con sus atributos, tipos de dato, claves y&#xD;
+    relaciones. Se obtiene a partir del modelo de dominio del negocio.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Definir qué información se guarda y cómo se relaciona antes de implementar las entidades.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-NyxcbNy_hX9wustGhPR0iw" name="identificar_persistencia,_zpRQUN-_EfGmVvN-KvBeSQ" guid="-NyxcbNy_hX9wustGhPR0iw" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:12:09.838-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista define los datos de cada entidad y qué información histórica se conserva: los cambios de estado de pedidos y&#xD;
+devoluciones, los movimientos de inventario y los abonos de cada cliente.</mainDescription>
+  <keyConsiderations>El historial es necesario para los reportes y para auditar el inventario; no se debe borrar información de movimientos.</keyConsiderations>
+  <purpose>Saber qué datos debe conservar el sistema y por cuánto tiempo, incluyendo el historial.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

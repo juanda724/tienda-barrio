@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-UTg9H5totjeq21uhRDH-9g" name="formulario_en_papel,_MQAqoN_CEfG8tbaZ8P9cgg" guid="-UTg9H5totjeq21uhRDH-9g" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:28:38.670-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Bocetos en papel de los documentos que usa el tendero (libreta de fiados, lista de pedido, factura del proveedor y&#xD;
+comprobante de venta) con sus campos: producto, cantidad, precio, forma de pago, saldo y fecha.</mainDescription>
+  <keyConsiderations>Copiar los documentos reales sin &quot;mejorarlos&quot; todavía. Validarlos con el tendero.</keyConsiderations>
+  <purpose>Capturar cómo organiza el tendero la información hoy, para que el sistema respete su modelo mental.</purpose>
+  <impactOfNotHaving>La interfaz se diseñaría desde la visión del equipo y no desde la del usuario.</impactOfNotHaving>
+  <reasonsForNotNeeding>Si el usuario no maneja ningún documento previo.</reasonsForNotNeeding>
+  <representationOptions>Bocetos en papel escaneados o fotografiados.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

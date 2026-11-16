@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-MOlEC9zRKh-QSSC8NlNc7g" name=",_yhfv8N-_EfGmVvN-KvBeSQ" guid="-MOlEC9zRKh-QSSC8NlNc7g" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:11:44.198-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista presenta al dueño el RoadMap y el workflow, recoge sus correcciones y actualiza la plantilla de stakeholders&#xD;
+con lo que haya cambiado.</mainDescription>
+  <keyConsiderations>Explicar los diagramas con ejemplos de la tienda y no con notación técnica. Registrar los cambios acordados.</keyConsiderations>
+  <purpose>Confirmar que los modelos reflejan cómo trabaja realmente la tienda antes de pasar a los requisitos.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

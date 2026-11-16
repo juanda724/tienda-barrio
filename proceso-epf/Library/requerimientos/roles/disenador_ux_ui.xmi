@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-FIoZwmbtD1Z7bjLE7RqZ2g" name="disenador_ux_ui,_uS6kwN_BEfG8tbaZ8P9cgg" guid="-FIoZwmbtD1Z7bjLE7RqZ2g" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:25:10.262-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Captura el modelo mental del tendero para que la aplicación se sienta natural en su trabajo diario. Parte de los documentos&#xD;
+que el tendero ya usa, como la libreta de fiados, la lista de pedido y la factura del proveedor, y los convierte en&#xD;
+formularios en papel, diálogos, wireframes y prototipos. Organiza la aplicación en una pestaña por proceso y cuida que se&#xD;
+pueda usar tanto desde el&amp;nbsp;computador como desde el celular.</mainDescription>
+  <keyConsiderations>El usuario atiende clientes mientras usa la aplicación, así que cada tarea debe completarse en pocos pasos. La interfaz&#xD;
+debe parecerse a los documentos que el tendero ya conoce y dar retroalimentación clara al terminar cada acción. Debe&#xD;
+funcionar bien en pantallas pequeñas, porque el dueño consulta reportes desde el celular.</keyConsiderations>
+  <skills>Formularios en papel, diagramas de diálogo, wireframes, prototipado, diseño responsive, usabilidad.</skills>
+  <assignmentApproaches>Puede asumirlo el Desarrollador frontend, ya que conoce las posibilidades de la interfaz. Se recomienda que los prototipos&#xD;
+se validen con el dueño de la tienda antes de pasar a implementarlos.</assignmentApproaches>
+  <synonyms>UX/UI Designer, Diseñador de experiencia de usuario, Diseñador de interfaces, Diseñador de producto</synonyms>
+</org.eclipse.epf.uma:RoleDescription>

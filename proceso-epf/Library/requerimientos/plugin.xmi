@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_W5YrEN8oEfGr3LKRlrp3Ew" guid="_W5YrEN8oEfGr3LKRlrp3Ew">
+    <resourceDescriptors xmi:id="_qIqx4N_BEfG8tbaZ8P9cgg" id="-K3zVJTOInbC5mEYkUFpdwg" uri="roles/analista_de_requisitos.xmi"/>
+    <resourceDescriptors xmi:id="_CBY6gN_CEfG8tbaZ8P9cgg" id="-FIoZwmbtD1Z7bjLE7RqZ2g" uri="roles/disenador_ux_ui.xmi"/>
+    <resourceDescriptors xmi:id="_ilXtoN_DEfG8tbaZ8P9cgg" id="-Qh0zuSZQOU8myX2qIfyChg" uri="workproducts/plan_de_requisitos.xmi"/>
+    <resourceDescriptors xmi:id="_ilheoN_DEfG8tbaZ8P9cgg" id="-cR_L_okY7QQ1lgDD6hrR0Q" uri="workproducts/casos_de_uso_de_sistema.xmi"/>
+    <resourceDescriptors xmi:id="_illwEN_DEfG8tbaZ8P9cgg" id="-qPhq7tPLYszgy0M03JNY7g" uri="workproducts/especificacion_de_casos_de_uso.xmi"/>
+    <resourceDescriptors xmi:id="_ilpacN_DEfG8tbaZ8P9cgg" id="-Lx9NzvKNAHtplNBXyRxAxw" uri="workproducts/tabla_de_estados.xmi"/>
+    <resourceDescriptors xmi:id="_iltr4N_DEfG8tbaZ8P9cgg" id="-UTg9H5totjeq21uhRDH-9g" uri="workproducts/formulario_en_papel.xmi"/>
+    <resourceDescriptors xmi:id="_ilwvMN_DEfG8tbaZ8P9cgg" id="-3990WyUWJ8KXf3yD3ow6zg" uri="workproducts/dialogo.xmi"/>
+    <resourceDescriptors xmi:id="_il0ZkN_DEfG8tbaZ8P9cgg" id="-bI-h_Pt_oPpNsG8944U0VQ" uri="workproducts/wireframes.xmi"/>
+    <resourceDescriptors xmi:id="_il3c4N_DEfG8tbaZ8P9cgg" id="-GcSFiyxMdwluWpK93n7Cog" uri="workproducts/prototipo_de_interfaz.xmi"/>
+    <resourceDescriptors xmi:id="_fP3PwN_WEfGJA9pc4FnC4g" id="-clv0uHiu7j0r3nPky9Zbdg" uri="tasks/identificar_procesos_y_metas.xmi"/>
+    <resourceDescriptors xmi:id="_fQCO4N_WEfGJA9pc4FnC4g" id="-aOyQUyOBoh6mUddXeWjsYQ" uri="tasks/identificar_actores_del_sistema.xmi"/>
+    <resourceDescriptors xmi:id="_fQF5QN_WEfGJA9pc4FnC4g" id="-Q8JZGqTgyNyrS0soyyVznQ" uri="tasks/identificar_casos_de_uso_del_sistema.xmi"/>
+    <resourceDescriptors xmi:id="_fQJjoN_WEfGJA9pc4FnC4g" id="-sVMZXltgZ6z3hyxaWCg4jQ" uri="tasks/especificar_casos_de_uso.xmi"/>
+    <resourceDescriptors xmi:id="_fQOcIN_WEfGJA9pc4FnC4g" id="-U27PsX42AMSi6yKVGqYooQ" uri="tasks/identificar_estados_de_entidades.xmi"/>
+    <resourceDescriptors xmi:id="_fQStkN_WEfGJA9pc4FnC4g" id="-5hMh_KvYYdW7_E3bbSkvgg" uri="tasks/redactar_requisitos.xmi"/>
+    <resourceDescriptors xmi:id="_fQYNIN_WEfGJA9pc4FnC4g" id="-V2odzCCX8Hfs_27USsd-GQ" uri="tasks/identificar_formularios.xmi"/>
+    <resourceDescriptors xmi:id="_fQdssN_WEfGJA9pc4FnC4g" id="-AWnr1RbHqirMUMoLBY1AXA" uri="tasks/detallar_formularios.xmi"/>
+    <resourceDescriptors xmi:id="_fQjMQN_WEfGJA9pc4FnC4g" id="-EwkUA2OBVdJWlynLUkj_cw" uri="tasks/identificar_dialogo_de_venta.xmi"/>
+    <resourceDescriptors xmi:id="__KSTEN_YEfGJA9pc4FnC4g" id="-Le4MQ-hJwhH5zA8GzRwqdg" uri="tasks/detallar_dialogos.xmi"/>
+    <resourceDescriptors xmi:id="__KXLkN_YEfGJA9pc4FnC4g" id="-mdTnsmbOz7VzkLSs5Npwuw" uri="tasks/organizar_pestanas.xmi"/>
+    <resourceDescriptors xmi:id="__KcEEN_YEfGJA9pc4FnC4g" id="-7_c-h_98eACW6aGjCXTgcA" uri="tasks/disenar_formulario_de_pestanas.xmi"/>
+    <resourceDescriptors xmi:id="__KfucN_YEfGJA9pc4FnC4g" id="-LEUZO7qYtZIcdYUTc5hwkw" uri="tasks/disenar_prototipo.xmi"/>
+    <resourceDescriptors xmi:id="__KjY0N_YEfGJA9pc4FnC4g" id="-fRpCiCRf-zuJ7YVN5Tyh4A" uri="tasks/identificar_componentes_reutilizables.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_W5WO0N8oEfGr3LKRlrp3Ew" name="requerimientos" guid="_W5WO0N8oEfGr3LKRlrp3Ew" presentationName="Requerimientos" briefDescription="En esta disciplina se definen qué debe hacer el sistema: los casos de uso, los requisitos verificables, el modelo mental del usuario y el prototipo de la interfaz, siguiendo la norma ISO/IEC/IEEE 29148." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:25.025-0500" changeDescription="Ajuste del nombre" version="1.0">
+    <methodElementProperty xmi:id="_uUqpwN8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO0d8oEfGr3LKRlrp3Ew" name="Content" guid="_W5WO0d8oEfGr3LKRlrp3Ew">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO0t8oEfGr3LKRlrp3Ew" name="Categories" guid="_W5WO0t8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO098oEfGr3LKRlrp3Ew" name="Domains" guid="_W5WO098oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO1N8oEfGr3LKRlrp3Ew" name="Disciplines" guid="_W5WO1N8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO1d8oEfGr3LKRlrp3Ew" name="RoleSets" guid="_W5WO1d8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO1t8oEfGr3LKRlrp3Ew" name="WP Types" guid="_W5WO1t8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO198oEfGr3LKRlrp3Ew" name="Tools" guid="_W5WO198oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO2N8oEfGr3LKRlrp3Ew" name="StandardCategories" guid="_W5WO2N8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO2d8oEfGr3LKRlrp3Ew" name="CustomCategories" guid="_W5WO2d8oEfGr3LKRlrp3Ew">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO2t8oEfGr3LKRlrp3Ew" name="Hidden" guid="_W5WO2t8oEfGr3LKRlrp3Ew">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_W5WO298oEfGr3LKRlrp3Ew" name="Custom Categories" guid="_W5WO298oEfGr3LKRlrp3Ew"/>
+          </childPackages>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_W5WO3N8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_W5WO3N8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_XEJ_IN_BEfG8tbaZ8P9cgg" name="requerimientos" guid="_XEJ_IN_BEfG8tbaZ8P9cgg" presentationName="Requerimientos" briefDescription="Este paquete contiene todos los elementos del método relacionados con el levantamiento y la especificación de los requisitos del sistema y con el diseño de la experiencia del usuario: roles, tareas y productos de trabajo.">
+          <methodElementProperty xmi:id="_XEL0UN_BEfG8tbaZ8P9cgg" name="pkg_loadCheck" value="true"/>
+          <methodElementProperty xmi:id="_cP5EMN_BEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_eB-F0N_BEfG8tbaZ8P9cgg" name="analista_de_requisitos" guid="_eB-F0N_BEfG8tbaZ8P9cgg" presentationName="Analista de requisitos" briefDescription="Traduce las necesidades de la tienda en requisitos claros y verificables." responsibleFor="_JLyrsN_CEfG8tbaZ8P9cgg _KtHUgN_CEfG8tbaZ8P9cgg _Gms4wN_CEfG8tbaZ8P9cgg _Lf-U0N_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_qIo8sN_BEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-K3zVJTOInbC5mEYkUFpdwg" href="uma://-K3zVJTOInbC5mEYkUFpdwg#-K3zVJTOInbC5mEYkUFpdwg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_uS6kwN_BEfG8tbaZ8P9cgg" name="disenador_ux_ui" guid="_uS6kwN_BEfG8tbaZ8P9cgg" presentationName="Diseñador UX/UI" briefDescription="Captura el modelo mental del tendero y diseña formularios, diálogos y prototipos." responsibleFor="_OaWbQN_CEfG8tbaZ8P9cgg _MQAqoN_CEfG8tbaZ8P9cgg _Qj3sgN_CEfG8tbaZ8P9cgg _PykycN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_CBWeQN_CEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-FIoZwmbtD1Z7bjLE7RqZ2g" href="uma://-FIoZwmbtD1Z7bjLE7RqZ2g#-FIoZwmbtD1Z7bjLE7RqZ2g"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_Gms4wN_CEfG8tbaZ8P9cgg" name="plan_de_requisitos" guid="_Gms4wN_CEfG8tbaZ8P9cgg" presentationName="Plan de requisitos" briefDescription="Requisitos SWR del sistema con su criterio de verificación.">
+            <methodElementProperty xmi:id="_ilSOEN_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-Qh0zuSZQOU8myX2qIfyChg" href="uma://-Qh0zuSZQOU8myX2qIfyChg#-Qh0zuSZQOU8myX2qIfyChg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_JLyrsN_CEfG8tbaZ8P9cgg" name="casos_de_uso_de_sistema" guid="_JLyrsN_CEfG8tbaZ8P9cgg" presentationName="Casos de uso de sistema" briefDescription="Funcionalidades del sistema organizadas por actor.">
+            <methodElementProperty xmi:id="_i-FIkN_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-cR_L_okY7QQ1lgDD6hrR0Q" href="uma://-cR_L_okY7QQ1lgDD6hrR0Q#-cR_L_okY7QQ1lgDD6hrR0Q"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_KtHUgN_CEfG8tbaZ8P9cgg" name="especificacion_de_casos_de_uso" guid="_KtHUgN_CEfG8tbaZ8P9cgg" presentationName="Especificación de casos de uso de sistema" briefDescription="Flujo básico y flujos alternos de cada caso de uso.">
+            <methodElementProperty xmi:id="_jbT3IN_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-qPhq7tPLYszgy0M03JNY7g" href="uma://-qPhq7tPLYszgy0M03JNY7g#-qPhq7tPLYszgy0M03JNY7g"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_Lf-U0N_CEfG8tbaZ8P9cgg" name="tabla_de_estados" guid="_Lf-U0N_CEfG8tbaZ8P9cgg" presentationName="Tabla de estados" briefDescription="Estados y transiciones de pedidos, devoluciones y pagos.">
+            <methodElementProperty xmi:id="_j6REAN_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-Lx9NzvKNAHtplNBXyRxAxw" href="uma://-Lx9NzvKNAHtplNBXyRxAxw#-Lx9NzvKNAHtplNBXyRxAxw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_MQAqoN_CEfG8tbaZ8P9cgg" name="formulario_en_papel" guid="_MQAqoN_CEfG8tbaZ8P9cgg" presentationName="Formulario en papel" briefDescription="Formularios que usa el tendero: libreta de fiados, lista de pedido, factura y comprobante.">
+            <methodElementProperty xmi:id="_kS934N_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-UTg9H5totjeq21uhRDH-9g" href="uma://-UTg9H5totjeq21uhRDH-9g#-UTg9H5totjeq21uhRDH-9g"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_OaWbQN_CEfG8tbaZ8P9cgg" name="dialogo" guid="_OaWbQN_CEfG8tbaZ8P9cgg" presentationName="Diálogo" briefDescription="Secuencia de pasos que sigue el usuario en cada proceso.">
+            <methodElementProperty xmi:id="_kp0RoN_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-3990WyUWJ8KXf3yD3ow6zg" href="uma://-3990WyUWJ8KXf3yD3ow6zg#-3990WyUWJ8KXf3yD3ow6zg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_PykycN_CEfG8tbaZ8P9cgg" name="wireframes" guid="_PykycN_CEfG8tbaZ8P9cgg" presentationName="Wireframes" briefDescription="Bocetos de la estructura de cada pestaña de la aplicación.">
+            <methodElementProperty xmi:id="_lA4t0N_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-bI-h_Pt_oPpNsG8944U0VQ" href="uma://-bI-h_Pt_oPpNsG8944U0VQ#-bI-h_Pt_oPpNsG8944U0VQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_Qj3sgN_CEfG8tbaZ8P9cgg" name="prototipo_de_interfaz" guid="_Qj3sgN_CEfG8tbaZ8P9cgg" presentationName="Prototipo de interfaz" briefDescription="Mockups de las pantallas y de sus componentes reutilizables.">
+            <methodElementProperty xmi:id="_lbFWgN_DEfG8tbaZ8P9cgg" name="me_edited" value="true"/>
+            <presentation xmi:id="-GcSFiyxMdwluWpK93n7Cog" href="uma://-GcSFiyxMdwluWpK93n7Cog#-GcSFiyxMdwluWpK93n7Cog"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_jPI-MN_VEfGJA9pc4FnC4g" name="identificar_procesos_y_metas" guid="_jPI-MN_VEfGJA9pc4FnC4g" presentationName="Identificar los procesos core y sus metas" briefDescription="Identificar los procesos core y sus metas: evitar faltantes de stock, vender con comprobante, cobrar fiados y pagar al proveedor solo lo recibido." performedBy="_eB-F0N_BEfG8tbaZ8P9cgg" output="_Gms4wN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_fPxwMN_WEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-clv0uHiu7j0r3nPky9Zbdg" href="uma://-clv0uHiu7j0r3nPky9Zbdg#-clv0uHiu7j0r3nPky9Zbdg"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_7LYLkN8qEfGr3LKRlrp3Ew"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_ZJGHEN8sEfGr3LKRlrp3Ew"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_uGYNgN_VEfGJA9pc4FnC4g" name="identificar_actores_del_sistema" guid="_uGYNgN_VEfGJA9pc4FnC4g" presentationName="Identificar los actores del sistema" briefDescription="Identificar los actores que usan la aplicación: administrador (dueño) y vendedor." performedBy="_eB-F0N_BEfG8tbaZ8P9cgg" output="_JLyrsN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_8JY_0N_WEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-aOyQUyOBoh6mUddXeWjsYQ" href="uma://-aOyQUyOBoh6mUddXeWjsYQ#-aOyQUyOBoh6mUddXeWjsYQ"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_WK_MoN8rEfGr3LKRlrp3Ew"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_1bwg4N8rEfGr3LKRlrp3Ew"/>
+            <additionallyPerformedBy href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_KHqaIN8qEfGr3LKRlrp3Ew"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_u1gkYN_VEfGJA9pc4FnC4g" name="identificar_casos_de_uso_del_sistema" guid="_u1gkYN_VEfGJA9pc4FnC4g" presentationName="Identificar los casos de uso del sistema" briefDescription="Identificar los casos de uso del sistema para las 8 funcionalidades (F-01 a F-08)." performedBy="_eB-F0N_BEfG8tbaZ8P9cgg" output="_JLyrsN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_RFaGwN_XEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-Q8JZGqTgyNyrS0soyyVznQ" href="uma://-Q8JZGqTgyNyrS0soyyVznQ#-Q8JZGqTgyNyrS0soyyVznQ"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_1bwg4N8rEfGr3LKRlrp3Ew"/>
+            <mandatoryInput href="#_Gms4wN_CEfG8tbaZ8P9cgg"/>
+            <additionallyPerformedBy href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_KHqaIN8qEfGr3LKRlrp3Ew"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_vfJXQN_VEfGJA9pc4FnC4g" name="especificar_casos_de_uso" guid="_vfJXQN_VEfGJA9pc4FnC4g" presentationName="Especificar los casos de uso" briefDescription="Especificar el flujo básico y los flujos alternos de cada caso de uso." performedBy="_eB-F0N_BEfG8tbaZ8P9cgg" mandatoryInput="_JLyrsN_CEfG8tbaZ8P9cgg" output="_KtHUgN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_d0Gm8N_XEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-sVMZXltgZ6z3hyxaWCg4jQ" href="uma://-sVMZXltgZ6z3hyxaWCg4jQ#-sVMZXltgZ6z3hyxaWCg4jQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_wL2sQN_VEfGJA9pc4FnC4g" name="identificar_estados_de_entidades" guid="_wL2sQN_VEfGJA9pc4FnC4g" presentationName="Identificar los estados de las entidades" briefDescription="Identificar los estados de las entidades controlables: Pedido, Devolución y Pago, con sus transiciones." performedBy="_eB-F0N_BEfG8tbaZ8P9cgg" output="_Lf-U0N_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_xAN2gN_XEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-U27PsX42AMSi6yKVGqYooQ" href="uma://-U27PsX42AMSi6yKVGqYooQ#-U27PsX42AMSi6yKVGqYooQ"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_nZcAMN8sEfGr3LKRlrp3Ew"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_ZJGHEN8sEfGr3LKRlrp3Ew"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_xCn8MN_VEfGJA9pc4FnC4g" name="redactar_requisitos" guid="_xCn8MN_VEfGJA9pc4FnC4g" presentationName="Redactar los requisitos" briefDescription="Redactar los requisitos SWR-01 a SWR-23 con su criterio de verificación y relacionarlos con las funcionalidades." performedBy="_eB-F0N_BEfG8tbaZ8P9cgg" mandatoryInput="_Gms4wN_CEfG8tbaZ8P9cgg _KtHUgN_CEfG8tbaZ8P9cgg _Lf-U0N_CEfG8tbaZ8P9cgg" output="_Gms4wN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_C5lEwN_YEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-5hMh_KvYYdW7_E3bbSkvgg" href="uma://-5hMh_KvYYdW7_E3bbSkvgg#-5hMh_KvYYdW7_E3bbSkvgg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_x8rJoN_VEfGJA9pc4FnC4g" name="identificar_formularios" guid="_x8rJoN_VEfGJA9pc4FnC4g" presentationName="Identificar los formularios del tendero" briefDescription="Identificar los formularios que usa el tendero: libreta de fiados, lista de pedido, factura del proveedor y comprobante de venta." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" output="_MQAqoN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_O3lH0N_YEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-V2odzCCX8Hfs_27USsd-GQ" href="uma://-V2odzCCX8Hfs_27USsd-GQ#-V2odzCCX8Hfs_27USsd-GQ"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_nGfEcN8rEfGr3LKRlrp3Ew"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_yzgrAN_VEfGJA9pc4FnC4g" name="detallar_formularios" guid="_yzgrAN_VEfGJA9pc4FnC4g" presentationName="Detallar los formularios" briefDescription="Detallar los campos de cada formulario: producto, cantidad, precio, forma de pago, saldo y fecha." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" mandatoryInput="_MQAqoN_CEfG8tbaZ8P9cgg" output="_MQAqoN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_bNFr8N_YEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-AWnr1RbHqirMUMoLBY1AXA" href="uma://-AWnr1RbHqirMUMoLBY1AXA#-AWnr1RbHqirMUMoLBY1AXA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_zmdx8N_VEfGJA9pc4FnC4g" name="identificar_dialogo_de_venta" guid="_zmdx8N_VEfGJA9pc4FnC4g" presentationName="Identificar el diálogo de una venta" briefDescription="Identificar el diálogo de una venta: buscar producto, cantidad, forma de pago, cambio y comprobante." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" mandatoryInput="_MQAqoN_CEfG8tbaZ8P9cgg _KtHUgN_CEfG8tbaZ8P9cgg" output="_OaWbQN_CEfG8tbaZ8P9cgg" additionallyPerformedBy="_eB-F0N_BEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="__KMMcN_YEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-EwkUA2OBVdJWlynLUkj_cw" href="uma://-EwkUA2OBVdJWlynLUkj_cw#-EwkUA2OBVdJWlynLUkj_cw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_c1OucN_YEfGJA9pc4FnC4g" name="detallar_dialogos" guid="_c1OucN_YEfGJA9pc4FnC4g" presentationName="Detallar los diálogos de fiado e ingreso" briefDescription="Detallar los diálogos de fiado y abono y de ingreso de mercancía con diferencias (faltantes, sobrantes, averiados)." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" mandatoryInput="_OaWbQN_CEfG8tbaZ8P9cgg _KtHUgN_CEfG8tbaZ8P9cgg" output="_OaWbQN_CEfG8tbaZ8P9cgg" additionallyPerformedBy="_eB-F0N_BEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_OLQX4N_ZEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-Le4MQ-hJwhH5zA8GzRwqdg" href="uma://-Le4MQ-hJwhH5zA8GzRwqdg#-Le4MQ-hJwhH5zA8GzRwqdg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_hD68cN_YEfGJA9pc4FnC4g" name="organizar_pestanas" guid="_hD68cN_YEfGJA9pc4FnC4g" presentationName="Organizar la aplicación por pestañas" briefDescription="Organizar la aplicación en una pestaña por proceso: Ventas, Inventario, Movimientos, Fiados, Proveedores, Pedidos, Ingresos, Devoluciones y Reportes." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" mandatoryInput="_JLyrsN_CEfG8tbaZ8P9cgg _OaWbQN_CEfG8tbaZ8P9cgg" output="_PykycN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_dyi10N_ZEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-mdTnsmbOz7VzkLSs5Npwuw" href="uma://-mdTnsmbOz7VzkLSs5Npwuw#-mdTnsmbOz7VzkLSs5Npwuw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_j54c8N_YEfGJA9pc4FnC4g" name="disenar_formulario_de_pestanas" guid="_j54c8N_YEfGJA9pc4FnC4g" presentationName="Diseñar el formulario de cada pestaña" briefDescription="Diseñar el formulario de cada pestaña, usable desde el computador y desde el celular." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" mandatoryInput="_PykycN_CEfG8tbaZ8P9cgg _MQAqoN_CEfG8tbaZ8P9cgg" output="_PykycN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_nOLp0N_ZEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-7_c-h_98eACW6aGjCXTgcA" href="uma://-7_c-h_98eACW6aGjCXTgcA#-7_c-h_98eACW6aGjCXTgcA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_k1bfMN_YEfGJA9pc4FnC4g" name="disenar_prototipo" guid="_k1bfMN_YEfGJA9pc4FnC4g" presentationName="Diseñar el prototipo de las pestañas" briefDescription="Diseñar el prototipo de cada pestaña a partir de los wireframes y el modelo de dominio." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" output="_Qj3sgN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_w5G3AN_ZEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-LEUZO7qYtZIcdYUTc5hwkw" href="uma://-LEUZO7qYtZIcdYUTc5hwkw#-LEUZO7qYtZIcdYUTc5hwkw"/>
+            <mandatoryInput href="#_PykycN_CEfG8tbaZ8P9cgg"/>
+            <mandatoryInput href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_nZcAMN8sEfGr3LKRlrp3Ew"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_l04xEN_YEfGJA9pc4FnC4g" name="identificar_componentes_reutilizables" guid="_l04xEN_YEfGJA9pc4FnC4g" presentationName="Identificar los componentes reutilizables" briefDescription="Identificar los componentes reutilizables: buscador de producto, insignia de estado, avisos, campana de alertas y comprobantes." performedBy="_uS6kwN_BEfG8tbaZ8P9cgg" mandatoryInput="_Qj3sgN_CEfG8tbaZ8P9cgg" output="_Qj3sgN_CEfG8tbaZ8P9cgg">
+            <methodElementProperty xmi:id="_5ldjIN_ZEfGJA9pc4FnC4g" name="me_edited" value="true"/>
+            <presentation xmi:id="-fRpCiCRf-zuJ7YVN5Tyh4A" href="uma://-fRpCiCRf-zuJ7YVN5Tyh4A#-fRpCiCRf-zuJ7YVN5Tyh4A"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_W5WO3d8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_W5WO3d8oEfGr3LKRlrp3Ew"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_W5WO3t8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_W5WO3t8oEfGr3LKRlrp3Ew"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_W5WO398oEfGr3LKRlrp3Ew" name="ProcessContributions" guid="_W5WO398oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_JUQ5MN8oEfGr3LKRlrp3Ew#_JUQ5MN8oEfGr3LKRlrp3Ew"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>

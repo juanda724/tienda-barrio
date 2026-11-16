@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-gOakTgOJg2o97Sox9nlIKg" name="new_artifact,_nZcAMN8sEfGr3LKRlrp3Ew" guid="-gOakTgOJg2o97Sox9nlIKg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:37:14.895-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Descripción de las entidades del negocio (Producto, Venta, Cliente, Abono, Proveedor, PedidoProveedor, IngresoMercancia,&#xD;
+Devolucion y MovimientoInventario), de sus datos principales y de la información histórica que se conserva, como los&#xD;
+cambios de estado de pedidos y devoluciones.</mainDescription>
+  <keyConsiderations>Las entidades salen de los formularios y documentos del negocio. Hay que usar el vocabulario del dominio, no términos&#xD;
+técnicos de base de datos.</keyConsiderations>
+  <purpose>Identificar los conceptos del negocio que el sistema debe manejar y qué información necesita guardar de cada uno.</purpose>
+  <impactOfNotHaving>El diseño de la base de datos y de las clases no tendría una base acordada con el negocio.</impactOfNotHaving>
+  <reasonsForNotNeeding>Ninguna: es la base del diseño del sistema.</reasonsForNotNeeding>
+  <representationOptions>Lista de entidades con atributos o diagrama de clases conceptual.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-fxgXVDqQgqpg4mGAtjaEJw" name="new_artifact,_1bwg4N8rEfGr3LKRlrp3Ew" guid="-fxgXVDqQgqpg4mGAtjaEJw" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:31:43.553-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Diagrama UML con los actores del negocio (cliente, proveedor) y los casos de uso de negocio: vender, fiar y abonar, pedir&#xD;
+al proveedor, recibir mercancía, devolver productos y consultar reportes.</mainDescription>
+  <keyConsiderations>Los casos de uso de negocio describen el negocio, no el software. Cada uno debe empezar con un verbo y producir un&#xD;
+resultado de valor para un actor.</keyConsiderations>
+  <purpose>Representar qué servicios ofrece la tienda a sus actores externos, sin pensar todavía en el sistema.</purpose>
+  <impactOfNotHaving>Sería difícil pasar de los procesos del negocio a los casos de uso del sistema.</impactOfNotHaving>
+  <reasonsForNotNeeding>Si el RoadMap ya describe con suficiente detalle cada proceso.</reasonsForNotNeeding>
+  <representationOptions>Diagrama UML en StarUML, draw.io o Rational Rose.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

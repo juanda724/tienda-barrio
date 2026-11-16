@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-V2odzCCX8Hfs_27USsd-GQ" name="identificar_formularios,_x8rJoN_VEfGJA9pc4FnC4g" guid="-V2odzCCX8Hfs_27USsd-GQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:36.465-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El diseñador revisa con el tendero los documentos que usa en cada proceso y los dibuja como formularios en papel.</mainDescription>
+  <keyConsiderations>Pedir los documentos reales y copiarlos tal como están, sin cambiarlos todavía.</keyConsiderations>
+  <purpose>Conocer los documentos con los que el tendero trabaja hoy, porque reflejan su forma de pensar el negocio.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-K3zVJTOInbC5mEYkUFpdwg" name="new_role,_eB-F0N_BEfG8tbaZ8P9cgg" guid="-K3zVJTOInbC5mEYkUFpdwg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:22:51.641-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Se encarga de traducir las necesidades de la tienda en requisitos claros y verificables. Identifica los procesos core y sus&#xD;
+metas, como evitar que se agote el stock, vender con comprobante, cobrar los fiados y pagar al proveedor solo lo que&#xD;
+realmente llegó. Define los actores y los casos de uso del sistema, especifica sus flujos, identifica los estados de las&#xD;
+entidades controlables (pedidos, devoluciones y pagos) y redacta los requisitos SWR con su criterio de verificación.</mainDescription>
+  <keyConsiderations>Cada requisito debe poder verificarse; si no se puede probar, no está bien definido. Las reglas de negocio (RN-01 y RN-02)&#xD;
+deben quedar escritas explícitamente porque afectan varios procesos a la vez. Los estados de pedidos, devoluciones y pagos&#xD;
+deben tener transiciones claras, indicando cuáles hace el usuario a mano y cuáles ocurren automáticamente.</keyConsiderations>
+  <skills>Casos de uso, diagramas de estados, especificación de requisitos según ISO/IEC/IEEE 29148, trazabilidad de requisitos, UML.</skills>
+  <assignmentApproaches>Normalmente lo asume la misma persona que el Analista de negocio, porque ambos roles trabajan sobre la misma información&#xD;
+del negocio. Debe trabajar de cerca con el Ingeniero de QA para que cada requisito tenga un criterio de verificación claro.</assignmentApproaches>
+  <synonyms>Requirements Analyst, Ingeniero de requisitos, Analista de sistemas</synonyms>
+</org.eclipse.epf.uma:RoleDescription>

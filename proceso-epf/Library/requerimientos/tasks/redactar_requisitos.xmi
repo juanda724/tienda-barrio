@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-5hMh_KvYYdW7_E3bbSkvgg" name="redactar_requisitos,_xCn8MN_VEfGJA9pc4FnC4g" guid="-5hMh_KvYYdW7_E3bbSkvgg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:33.540-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista redacta cada requisito con su identificador, descripción, funcionalidad asociada, prioridad y criterio de&#xD;
+verificación, siguiendo la norma ISO/IEC/IEEE 29148, y revisa que todos los casos de uso y estados queden cubiertos.</mainDescription>
+  <keyConsiderations>Evitar palabras ambiguas como &quot;rápido&quot; o &quot;fácil&quot;. El criterio de verificación debe permitir decidir sin discusión si el&#xD;
+requisito se cumple.</keyConsiderations>
+  <purpose>Dejar documentados los requisitos del sistema de forma verificable, como base para el diseño y las pruebas.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

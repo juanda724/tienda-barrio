@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-clv0uHiu7j0r3nPky9Zbdg" name="identificar_procesos_y_metas,_jPI-MN_VEfGJA9pc4FnC4g" guid="-clv0uHiu7j0r3nPky9Zbdg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:18.006-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista revisa el Framework Zachman y el workflow del negocio, identifica los procesos core de la tienda y define una&#xD;
+meta medible para cada uno. Estos procesos y metas son el punto de partida del plan de requisitos.</mainDescription>
+  <keyConsiderations>Las metas deben venir del dueño y poder comprobarse; por ejemplo, &quot;ningún producto se agota sin una alerta previa&quot;.</keyConsiderations>
+  <purpose>Definir qué procesos del negocio debe soportar el sistema y qué resultado se espera de cada uno.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

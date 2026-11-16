@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-EmJyzIp_UW33yGN6VU_T0g" name=",__cb_YOIPEfGoE8by5lIpXg" guid="-EmJyzIp_UW33yGN6VU_T0g" changeDate="2026-11-16T17:50:31.324-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    El arquitecto revisa los requisitos y decide cómo se organiza el sistema: qué capas tendrá, qué tecnología usa cada una&#xD;
+    y cómo se comunican. El resultado se documenta en el diagrama de arquitectura por capas.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Mantener cada responsabilidad en una sola capa: la pantalla muestra, el controlador recibe, el servicio decide y el&#xD;
+    repositorio guarda.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_UzGa8OIQEfGoE8by5lIpXg" name="1.  Revisar los requisitos y las restricciones técnicas (uso desde computador y celular, base de datos local)." guid="_UzGa8OIQEfGoE8by5lIpXg"/>
+  <sections xmi:id="_VpIEAOIQEfGoE8by5lIpXg" name="2.  Elegir las capas y la tecnología de cada una." guid="_VpIEAOIQEfGoE8by5lIpXg"/>
+  <sections xmi:id="_XR4xkOIQEfGoE8by5lIpXg" name="3.  Dibujar el diagrama y validarlo con el equipo." guid="_XR4xkOIQEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Establecer la estructura técnica sobre la que se construirá todo el sistema.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>
