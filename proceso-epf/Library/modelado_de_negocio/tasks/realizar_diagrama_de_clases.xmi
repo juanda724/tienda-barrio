@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-M5DUDH9sQI04xM4v48gU2g" name=",_e7EtgN_AEfGmVvN-KvBeSQ" guid="-M5DUDH9sQI04xM4v48gU2g" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:15:49.723-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista representa las entidades del dominio en un diagrama de clases UML con sus atributos, relaciones y&#xD;
+multiplicidades, y modela los estados de las entidades controlables como enumeraciones.</mainDescription>
+  <keyConsiderations>Cada relación y multiplicidad debe corresponder a una regla real del negocio. Revisar el diagrama con el arquitecto de&#xD;
+software antes de cerrarlo.</keyConsiderations>
+  <purpose>Formalizar el modelo de dominio para que sirva de base al diseño del sistema.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

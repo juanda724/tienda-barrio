@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-zDw4j8lSr27Js_lQ1rDUuQ" name="new_artifact,_WK_MoN8rEfGr3LKRlrp3Ew" guid="-zDw4j8lSr27Js_lQ1rDUuQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:28:15.293-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Lista de las partes interesadas con su rol, su interés y su nivel de influencia: el dueño de la tienda, el vendedor, los&#xD;
+proveedores, los clientes con fiado y la DIAN (por la facturación electrónica).</mainDescription>
+  <keyConsiderations>Incluir también a quienes no usan el sistema pero lo afectan, como la DIAN. Validar la lista con el dueño.</keyConsiderations>
+  <purpose>Identificar a todas las personas y entidades que se ven afectadas por el sistema o que tienen algo que decir sobre él.</purpose>
+  <impactOfNotHaving>Se podrían ignorar necesidades de actores importantes, como los requisitos de facturación de la DIAN.</impactOfNotHaving>
+  <reasonsForNotNeeding>Ninguna: siempre hay partes interesadas que identificar.</reasonsForNotNeeding>
+  <representationOptions>Tabla de stakeholders o matriz de poder e interés.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

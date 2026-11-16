@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-aOyQUyOBoh6mUddXeWjsYQ" name="identificar_actores_del_sistema,_uGYNgN_VEfGJA9pc4FnC4g" guid="-aOyQUyOBoh6mUddXeWjsYQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:20.934-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista toma las partes interesadas y los actores del negocio y determina cuáles usan directamente la aplicación. Para&#xD;
+la tienda son el administrador (dueño), que tiene acceso a todo, y el vendedor, que registra ventas y fiados.</mainDescription>
+  <keyConsiderations>No todos los actores del negocio son actores del sistema: el proveedor y el cliente participan en los procesos, pero no&#xD;
+usan la aplicación.</keyConsiderations>
+  <purpose>Definir quién va a usar el sistema y con qué permisos.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

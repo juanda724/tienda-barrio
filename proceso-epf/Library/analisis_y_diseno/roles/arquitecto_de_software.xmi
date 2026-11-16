@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-PQIYXQOCzlVxJLhDllS5Cw" name="new_role,_UXoHQOINEfGoE8by5lIpXg" guid="-PQIYXQOCzlVxJLhDllS5Cw" changeDate="2026-11-16T17:41:40.894-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Es el responsable de decidir cómo se construye el sistema. Define la arquitectura por capas (frontend React, API REST&#xD;
+    con Spring Boot y base de datos), el modelo de datos con sus entidades, el contrato de la API y los flujos de&#xD;
+    información entre las capas, a partir de los requisitos ya aprobados.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    El diseño debe poder implementarse por el equipo y mantenerse en el tiempo. Cada decisión se justifica con un requisito&#xD;
+    (SWR) o una regla de negocio (RN) y se valida con los desarrolladores antes de construir.&#xD;
+&lt;/p></keyConsiderations>
+  <skills>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    UML, arquitectura por capas, diseño de APIs REST, modelado de datos relacional, Spring Boot, JPA.&#xD;
+&lt;/p></skills>
+  <assignmentApproaches>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    En equipos pequeños puede combinarse con el rol de Desarrollador backend. Se recomienda que quien lo asuma haya&#xD;
+    participado en el levantamiento de requisitos.&#xD;
+&lt;/p></assignmentApproaches>
+  <synonyms>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Software Architect, Diseñador de software.&#xD;
+&lt;/p></synonyms>
+</org.eclipse.epf.uma:RoleDescription>

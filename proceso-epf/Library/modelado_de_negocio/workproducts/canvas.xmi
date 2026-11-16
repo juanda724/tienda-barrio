@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-lF7qDV6fw1aLgcCLBv42DA" name="new_artifact,_pLoBcN8qEfGr3LKRlrp3Ew" guid="-lF7qDV6fw1aLgcCLBv42DA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:23:27.149-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Lienzo de modelo de negocio con sus 9 bloques: segmento de clientes (vecinos del barrio), propuesta de valor, canales,&#xD;
+relación con los clientes (ventas de contado y fiado), fuentes de ingreso, recursos clave (inventario), actividades clave&#xD;
+(vender, reabastecer, cobrar), socios clave (proveedores) y estructura de costos.</mainDescription>
+  <keyConsiderations>Debe construirse con la información que da el dueño en la entrevista, no con suposiciones del equipo. Cada bloque debe ser&#xD;
+concreto para la tienda (por ejemplo, nombrar el fiado como parte de la relación con los clientes).</keyConsiderations>
+  <purpose>Tener en una sola vista cómo funciona el negocio de la tienda: a quién le vende, qué ofrece, con quién trabaja y de dónde&#xD;
+salen sus ingresos y costos.</purpose>
+  <impactOfNotHaving>El equipo no tendría una visión compartida del negocio y podría construir funciones que no le aportan valor a la tienda.</impactOfNotHaving>
+  <reasonsForNotNeeding>Si el negocio ya tiene un modelo de negocio documentado y vigente, puede usarse en su lugar.</reasonsForNotNeeding>
+  <representationOptions>Plantilla de Business Model Canvas en papel, Canva, Miro o una hoja de cálculo.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

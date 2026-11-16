@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-gpamhiHsMOuIZCpO4naRdg" name="diagrama_de_interaccion,_DGJNQN8sEfGr3LKRlrp3Ew" guid="-gpamhiHsMOuIZCpO4naRdg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:33:22.684-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Diagrama que muestra las interacciones tienda-proveedor (pedido, factura, entrega, devolución, pago) y tienda-cliente&#xD;
+(venta, fiado, abono), con el orden en que ocurren.</mainDescription>
+  <keyConsiderations>Incluir los casos con diferencias, como mercancía faltante o averiada, porque generan devoluciones y afectan el pago.</keyConsiderations>
+  <purpose>Mostrar qué información y documentos intercambian la tienda, sus proveedores y sus clientes en cada proceso.</purpose>
+  <impactOfNotHaving>Se pasarían por alto intercambios que el sistema debe registrar, como las notas crédito del proveedor.</impactOfNotHaving>
+  <reasonsForNotNeeding>Si el workflow ya muestra todos los intercambios entre actores.</reasonsForNotNeeding>
+  <representationOptions>Diagrama de secuencia de negocio o diagrama de colaboración.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

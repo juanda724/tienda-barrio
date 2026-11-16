@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-3990WyUWJ8KXf3yD3ow6zg" name="dialogo,_OaWbQN_CEfG8tbaZ8P9cgg" guid="-3990WyUWJ8KXf3yD3ow6zg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:28:42.423-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Diagramas del diálogo de cada proceso; por ejemplo, la venta: buscar producto, indicar cantidad, elegir forma de pago,&#xD;
+calcular el cambio y generar el comprobante. Incluye los diálogos de fiado y abono y de ingreso de mercancía con&#xD;
+diferencias.</mainDescription>
+  <keyConsiderations>Cada diálogo debe terminar con un cierre claro para el usuario, como un comprobante o un mensaje de confirmación.</keyConsiderations>
+  <purpose>Definir el orden en que el usuario realiza cada tarea y cómo responde el sistema en cada paso.</purpose>
+  <impactOfNotHaving>Las pantallas podrían obligar al usuario a pasos innecesarios o en un orden que no le resulta natural.</impactOfNotHaving>
+  <reasonsForNotNeeding>En formularios de un solo paso.</reasonsForNotNeeding>
+  <representationOptions>Diagrama de estados del diálogo o storyboard.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-sVMZXltgZ6z3hyxaWCg4jQ" name="especificar_casos_de_uso,_vfJXQN_VEfGJA9pc4FnC4g" guid="-sVMZXltgZ6z3hyxaWCg4jQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T21:48:26.066-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Para cada caso de uso, el analista documenta las precondiciones, el flujo básico, los flujos alternos, las postcondiciones&#xD;
+y las reglas de negocio que aplican.</mainDescription>
+  <keyConsiderations>Prestar especial atención a los flujos alternos de los procesos con dinero y stock, como un ingreso con faltantes o un&#xD;
+abono mayor que el saldo.</keyConsiderations>
+  <purpose>Describir con detalle el comportamiento esperado del sistema, incluyendo los errores y las excepciones.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

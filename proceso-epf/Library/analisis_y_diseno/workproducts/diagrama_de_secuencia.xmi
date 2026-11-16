@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-9SSlLTYAJLsKp_jKfr42Ow" name="new_artifact,_keNeYOIPEfGoE8by5lIpXg" guid="-9SSlLTYAJLsKp_jKfr42Ow" changeDate="2026-11-16T17:46:54.242-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Diagrama que muestra, en orden, los mensajes entre el frontend, el controlador, el servicio, el repositorio y la base&#xD;
+    de datos en los flujos críticos: registrar una venta que descuenta stock y registrar un ingreso de mercancía que&#xD;
+    verifica las diferencias contra la factura.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Entender y validar cómo colaboran las capas en los procesos más importantes y detectar errores de diseño antes de&#xD;
+    programar.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

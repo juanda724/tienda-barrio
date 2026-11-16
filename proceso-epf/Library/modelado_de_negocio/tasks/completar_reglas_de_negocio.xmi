@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-f9wdQwgEpR9OGVI8jyB5Xw" name=",_6Qv0QN-3EfGmVvN-KvBeSQ" guid="-f9wdQwgEpR9OGVI8jyB5Xw" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T18:28:54.282-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista revisa el Framework Zachman, completa las celdas vacías con el dueño y redacta las reglas de negocio: RN-01, no&#xD;
+se paga al proveedor mientras haya una devolución en curso, y RN-02, cada producto tiene un stock mínimo que dispara una&#xD;
+alerta de reposición.</mainDescription>
+  <keyConsiderations>Cada regla debe tener un identificador, una redacción clara y la confirmación del dueño.</keyConsiderations>
+  <purpose>Dejar explícitas las reglas que gobiernan el negocio para que no se pierdan al construir el sistema.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

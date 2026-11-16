@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-RLS6mUPWmT6pKLAslcqJBA" name="new_artifact,_ysJDgN8sEfGr3LKRlrp3Ew" guid="-RLS6mUPWmT6pKLAslcqJBA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:38:34.092-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Diagrama de clases UML con las entidades del dominio, sus atributos y sus relaciones con multiplicidades. Por ejemplo: un&#xD;
+Proveedor tiene muchos PedidoProveedor, una Venta tiene muchas líneas de producto y un Cliente tiene muchos Abonos.</mainDescription>
+  <keyConsiderations>Verificar que cada relación y multiplicidad corresponda a una regla real del negocio. Los estados de las entidades&#xD;
+controlables se modelan como enumeraciones.</keyConsiderations>
+  <purpose>Representar formalmente el modelo de dominio para que sirva de base al diseño del modelo de datos y de las entidades del&#xD;
+sistema.</purpose>
+  <impactOfNotHaving>El arquitecto y los desarrolladores tendrían que deducir las relaciones, con riesgo de errores en el modelo de datos.</impactOfNotHaving>
+  <reasonsForNotNeeding>Ninguna: es la entrada principal del diseño.</reasonsForNotNeeding>
+  <representationOptions>Diagrama UML en StarUML, draw.io o Rational Rose.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

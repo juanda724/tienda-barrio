@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-D09PJuItvtY5j4mCY4x3gw" name="new_artifact,_nGfEcN8rEfGr3LKRlrp3Ew" guid="-D09PJuItvtY5j4mCY4x3gw" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:30:04.701-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Diagrama que relaciona a los involucrados (dueño, vendedor, proveedor, cliente) con los procesos del negocio (venta, fiado&#xD;
+y abono, pedido al proveedor, ingreso de mercancía, devolución) y con los documentos que circulan en ellos (comprobante,&#xD;
+libreta de fiados, factura, nota de devolución).</mainDescription>
+  <keyConsiderations>Debe reflejar los procesos reales de la tienda y usar los nombres que usa el dueño para sus documentos.</keyConsiderations>
+  <purpose>Mostrar quién participa en cada proceso de la tienda, qué documentos se usan y en qué orden ocurren las actividades.</purpose>
+  <impactOfNotHaving>No quedaría claro quién hace qué en cada proceso ni qué documentos se deben sistematizar.</impactOfNotHaving>
+  <reasonsForNotNeeding>Puede reemplazarse por diagramas de actividad detallados por proceso.</reasonsForNotNeeding>
+  <representationOptions>Diagrama en draw.io, Lucidchart o papel.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

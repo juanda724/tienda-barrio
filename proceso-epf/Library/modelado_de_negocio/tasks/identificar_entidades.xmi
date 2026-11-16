@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-NUFjMoJNN10oFF0ibMj_zA" name="identificar_entidades,_zJOeUN-_EfGmVvN-KvBeSQ" guid="-NUFjMoJNN10oFF0ibMj_zA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:12:07.304-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista revisa los procesos y documentos del negocio y extrae las entidades que aparecen en ellos, con una breve&#xD;
+definición de cada una.</mainDescription>
+  <keyConsiderations>Las entidades salen de los documentos reales del negocio (comprobante, factura, libreta de fiados). Usar los nombres del&#xD;
+dominio.</keyConsiderations>
+  <purpose>Definir los conceptos del negocio que el sistema debe manejar.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-mdTnsmbOz7VzkLSs5Npwuw" name="organizar_pestanas,_hD68cN_YEfGJA9pc4FnC4g" guid="-mdTnsmbOz7VzkLSs5Npwuw" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T22:08:24.275-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El diseñador agrupa los casos de uso por proceso y define una pestaña para cada uno, con el orden y los nombres que usa el&#xD;
+tendero.</mainDescription>
+  <keyConsiderations>Poner primero las pestañas de uso diario, como Ventas e Inventario.</keyConsiderations>
+  <purpose>Definir la navegación de la aplicación de acuerdo con los procesos del negocio.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

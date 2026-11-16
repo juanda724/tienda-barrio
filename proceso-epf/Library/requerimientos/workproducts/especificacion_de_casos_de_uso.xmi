@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-qPhq7tPLYszgy0M03JNY7g" name="especificacion_de_casos_de_uso,_KtHUgN_CEfG8tbaZ8P9cgg" guid="-qPhq7tPLYszgy0M03JNY7g" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:28:30.589-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Para cada caso de uso: actor, precondiciones, flujo básico, flujos alternos, postcondiciones y reglas de negocio aplicadas.&#xD;
+Por ejemplo, en &quot;Registrar ingreso de mercancía&quot; el flujo alterno cubre los productos faltantes, sobrantes o averiados.</mainDescription>
+  <keyConsiderations>Los flujos alternos son tan importantes como el básico. Cada paso debe ser una acción del usuario o una respuesta del&#xD;
+sistema.</keyConsiderations>
+  <purpose>Describir paso a paso cómo interactúa el usuario con el sistema en cada caso de uso, incluyendo los errores.</purpose>
+  <impactOfNotHaving>Los desarrolladores tendrían que suponer el comportamiento del sistema en los casos con errores.</impactOfNotHaving>
+  <reasonsForNotNeeding>En casos de uso muy simples puede bastar con la descripción breve.</reasonsForNotNeeding>
+  <representationOptions>Plantilla de especificación en un documento.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

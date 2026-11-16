@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-9IX1apizwvB0jkHBsbrtZQ" name="new_artifact,_C6WtMOIPEfGoE8by5lIpXg" guid="-9IX1apizwvB0jkHBsbrtZQ" changeDate="2026-11-16T17:44:17.951-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Diagrama que representa la estructura técnica del sistema Tienda de Barrio: el frontend en React que consume una API&#xD;
+    REST, los controladores que reciben las peticiones, los servicios donde viven las reglas de negocio, los repositorios&#xD;
+    que acceden a los datos y la base de datos H2.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Dar al equipo una visión común de cómo se construye el sistema y dónde va cada responsabilidad.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

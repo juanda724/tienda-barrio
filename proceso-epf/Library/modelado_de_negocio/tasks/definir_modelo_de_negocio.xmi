@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-GBUHg2ud_IQkPRGSruv5SA" name=",_euG0EN-2EfGmVvN-KvBeSQ" guid="-GBUHg2ud_IQkPRGSruv5SA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T18:04:58.334-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>A partir de la entrevista, el analista completa los 9 bloques del Canvas: segmento de clientes, propuesta de valor,&#xD;
+canales, relación con los clientes, fuentes de ingreso, recursos clave, actividades clave, socios clave y estructura de&#xD;
+costos.</mainDescription>
+  <keyConsiderations>Cada bloque debe ser concreto para la tienda. Si falta información para algún bloque, se anota como pregunta pendiente para&#xD;
+el dueño.</keyConsiderations>
+  <purpose>Completar el modelo de negocio de la tienda para tener una visión compartida de a quién sirve y qué valor entrega.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

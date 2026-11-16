@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-BknhE35EHubt65P7C3NWrg" name="new_artifact,_7LYLkN8qEfGr3LKRlrp3Ew" guid="-BknhE35EHubt65P7C3NWrg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:25:14.510-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Matriz que estructura el enunciado del negocio en sus preguntas clave: qué (productos, stock, ventas), quién (dueño,&#xD;
+vendedor, proveedor, cliente), cómo (procesos de venta, fiado y reabastecimiento), dónde (la tienda y el celular del&#xD;
+dueño), cuándo (al vender, al recibir mercancía, al pagar) y por qué (las metas del negocio). Incluye las reglas de negocio&#xD;
+RN-01 y RN-02 y su relación con las funcionalidades F-01 a F-08.</mainDescription>
+  <keyConsiderations>Cada celda debe llenarse con información verificada con el dueño. Las celdas vacías indican información que falta y deben&#xD;
+completarse antes de pasar a los requisitos.</keyConsiderations>
+  <purpose>Organizar la información del negocio desde distintas perspectivas para no dejar por fuera elementos importantes, como&#xD;
+reglas de negocio o actores.</purpose>
+  <impactOfNotHaving>Podrían quedar reglas de negocio sin identificar, como el bloqueo del pago por devoluciones, y aparecer tarde en el&#xD;
+desarrollo.</impactOfNotHaving>
+  <reasonsForNotNeeding>En negocios muy pequeños puede reemplazarse por un enunciado del negocio bien estructurado.</reasonsForNotNeeding>
+  <representationOptions>Tabla en una hoja de cálculo o en un documento.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

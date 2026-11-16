@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-Le4MQ-hJwhH5zA8GzRwqdg" name="detallar_dialogos,_c1OucN_YEfGJA9pc4FnC4g" guid="-Le4MQ-hJwhH5zA8GzRwqdg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T22:08:18.366-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El diseñador define los diálogos del fiado (registrar la venta a crédito, consultar el saldo, registrar un abono) y del&#xD;
+ingreso de mercancía cuando lo recibido no coincide con lo facturado.</mainDescription>
+  <keyConsiderations>Cada diálogo debe terminar con un cierre claro: el nuevo saldo del cliente o el resumen de las diferencias del ingreso.</keyConsiderations>
+  <purpose>Definir cómo maneja el usuario los procesos con más casos especiales.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

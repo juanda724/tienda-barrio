@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-7_c-h_98eACW6aGjCXTgcA" name="disenar_formulario_de_pestanas,_j54c8N_YEfGJA9pc4FnC4g" guid="-7_c-h_98eACW6aGjCXTgcA" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T22:08:26.859-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El diseñador hace un wireframe de cada pestaña ubicando los campos de los formularios en papel y las acciones principales,&#xD;
+en versión de escritorio y de celular.</mainDescription>
+  <keyConsiderations>Verificar que en el celular se puedan hacer las acciones principales sin desplazarse demasiado.</keyConsiderations>
+  <purpose>Definir la estructura de cada pantalla en computador y en celular.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

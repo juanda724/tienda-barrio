@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-1SJmm4iNLEFuIpx32pf69Q" name="identificar_casos_de_uso_de_negocio,_H4xhcN--EfGmVvN-KvBeSQ" guid="-1SJmm4iNLEFuIpx32pf69Q" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:01:40.692-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista identifica los casos de uso de negocio a partir del RoadMap y los representa en un diagrama UML con sus actores&#xD;
+de negocio.</mainDescription>
+  <keyConsiderations>Cada caso de uso debe producir un resultado de valor para un actor y nombrarse con un verbo.</keyConsiderations>
+  <purpose>Definir los servicios que la tienda presta a sus actores externos como base para los casos de uso del sistema.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

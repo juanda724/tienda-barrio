@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-fRpCiCRf-zuJ7YVN5Tyh4A" name="identificar_componentes_reutilizables,_l04xEN_YEfGJA9pc4FnC4g" guid="-fRpCiCRf-zuJ7YVN5Tyh4A" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T22:08:31.941-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El diseñador revisa el prototipo, identifica los elementos que se repiten en varias pantallas y los documenta como&#xD;
+componentes reutilizables para el desarrollador frontend.</mainDescription>
+  <keyConsiderations>Un componente reutilizable debe verse y comportarse igual en todas las pantallas donde aparece.</keyConsiderations>
+  <purpose>Evitar que el mismo elemento se diseñe y se programe varias veces.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

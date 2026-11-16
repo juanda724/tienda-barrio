@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-oe704dCKtf94_ao5l7eTbQ" name=",_UlubYOISEfGoE8by5lIpXg" guid="-oe704dCKtf94_ao5l7eTbQ" changeDate="2026-11-16T18:08:09.832-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    El arquitecto elige los flujos más importantes (registrar una venta y registrar un ingreso de mercancía) y diagrama,&#xD;
+    paso a paso, los mensajes entre el frontend, el controlador, el servicio, el repositorio y la base de datos.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Incluir los caminos de excepción, como stock insuficiente en una venta o diferencias entre lo facturado y lo recibido.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_pXxG8OISEfGoE8by5lIpXg" name="1.  Elegir los flujos a modelar: la venta y el ingreso de mercancía." guid="_pXxG8OISEfGoE8by5lIpXg"/>
+  <sections xmi:id="_pyy2EOISEfGoE8by5lIpXg" name="2.  Diagramar los mensajes entre las capas, paso a paso." guid="_pyy2EOISEfGoE8by5lIpXg"/>
+  <sections xmi:id="_rbt7sOISEfGoE8by5lIpXg" name="3.  Agregar los caminos de excepción y revisar con el equipo." guid="_rbt7sOISEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;a4105447-7a52-44b8-b827-a9f3d1859f54&quot;>&#xD;
+    Entender cómo colaboran las capas en los procesos críticos y detectar errores de diseño antes de programar.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

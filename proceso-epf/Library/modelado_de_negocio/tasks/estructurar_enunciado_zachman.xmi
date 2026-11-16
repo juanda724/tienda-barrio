@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-vRQFxDcaQpKbI40JwRhmMQ" name=",_mred0N-3EfGmVvN-KvBeSQ" guid="-vRQFxDcaQpKbI40JwRhmMQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T18:12:33.931-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista toma el enunciado del negocio y lo ubica en las preguntas del Framework Zachman: qué datos maneja la tienda,&#xD;
+quiénes participan, cómo se hacen los procesos, dónde ocurren, cuándo y por qué.</mainDescription>
+  <keyConsiderations>Las celdas que no se puedan llenar indican información que falta; se deben anotar para completarlas en la siguiente tarea.</keyConsiderations>
+  <purpose>Organizar la información del negocio desde varias perspectivas para detectar lo que falta antes de definir requisitos.</purpose>
+</org.eclipse.epf.uma:TaskDescription>

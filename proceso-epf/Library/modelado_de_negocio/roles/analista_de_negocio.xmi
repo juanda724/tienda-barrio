@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-SrTEonL1gQ6nuoq7m8FPrQ" name="new_role,_KHqaIN8qEfGr3LKRlrp3Ew" guid="-SrTEonL1gQ6nuoq7m8FPrQ" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:20:04.476-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Es el responsable de entender cómo funciona la tienda de barrio antes de construir cualquier solución. Se reúne con el&#xD;
+dueño para conocer cómo controla hoy el inventario, las ventas, los fiados y los pedidos a proveedores. A partir de esa&#xD;
+información elabora el Canvas, el Framework Zachman y el RoadMap, identifica a los involucrados (dueño, vendedor,&#xD;
+proveedores y clientes) y modela el dominio del negocio con sus entidades principales: Producto, Venta, Cliente, Proveedor,&#xD;
+Pedido, Ingreso de mercancía y Devolución.</mainDescription>
+  <keyConsiderations>El tendero no habla en términos técnicos: hay que escucharlo en su propio lenguaje (fiado, libreta, surtido) y validar con&#xD;
+él cada modelo antes de avanzar. El modelado debe reflejar cómo trabaja realmente la tienda, no cómo creemos que debería&#xD;
+trabajar. Cualquier proceso que se omita aquí, como las devoluciones o los abonos parciales, se convierte después en un&#xD;
+cambio costoso.</keyConsiderations>
+  <skills>Entrevistas con el cliente, Canvas, Framework Zachman, modelado de procesos de negocio, diagramas de casos de uso de&#xD;
+negocio, UML.</skills>
+  <assignmentApproaches>Puede asumirlo un integrante del equipo con buena comunicación, ya que requiere entrevistar al dueño de la tienda. En&#xD;
+equipos pequeños suele combinarse con el rol de Analista de requisitos. Se recomienda que todo el equipo participe en la&#xD;
+primera entrevista para que todos entiendan el negocio.</assignmentApproaches>
+  <synonyms>Business Analyst, Analista funcional, Consultor de negocio</synonyms>
+</org.eclipse.epf.uma:RoleDescription>

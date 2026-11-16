@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_hWqiQN8oEfGr3LKRlrp3Ew" guid="_hWqiQN8oEfGr3LKRlrp3Ew"/>
+  <org.eclipse.epf.uma:MethodPlugin xmi:id="_hWoGAN8oEfGr3LKRlrp3Ew" name="implementacion" guid="_hWoGAN8oEfGr3LKRlrp3Ew" presentationName="Implementación" briefDescription="En esta disciplina se construye el frontend en React y el backend en Spring Boot, y se integran en el repositorio del proyecto." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:30.344-0500" changeDescription="Ajuste del nombre" version="1.0">
+    <methodElementProperty xmi:id="_yuZqIN8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGAd8oEfGr3LKRlrp3Ew" name="Content" guid="_hWoGAd8oEfGr3LKRlrp3Ew">
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGAt8oEfGr3LKRlrp3Ew" name="Categories" guid="_hWoGAt8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGA98oEfGr3LKRlrp3Ew" name="Domains" guid="_hWoGA98oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGBN8oEfGr3LKRlrp3Ew" name="Disciplines" guid="_hWoGBN8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGBd8oEfGr3LKRlrp3Ew" name="RoleSets" guid="_hWoGBd8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGBt8oEfGr3LKRlrp3Ew" name="WP Types" guid="_hWoGBt8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGB98oEfGr3LKRlrp3Ew" name="Tools" guid="_hWoGB98oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGCN8oEfGr3LKRlrp3Ew" name="StandardCategories" guid="_hWoGCN8oEfGr3LKRlrp3Ew"/>
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGCd8oEfGr3LKRlrp3Ew" name="CustomCategories" guid="_hWoGCd8oEfGr3LKRlrp3Ew">
+          <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGCt8oEfGr3LKRlrp3Ew" name="Hidden" guid="_hWoGCt8oEfGr3LKRlrp3Ew">
+            <contentElements xsi:type="org.eclipse.epf.uma:CustomCategory" xmi:id="_hWoGC98oEfGr3LKRlrp3Ew" name="Custom Categories" guid="_hWoGC98oEfGr3LKRlrp3Ew"/>
+          </childPackages>
+        </childPackages>
+      </childPackages>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGDN8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_hWoGDN8oEfGr3LKRlrp3Ew"/>
+      <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_hWoGDd8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_hWoGDd8oEfGr3LKRlrp3Ew"/>
+    </methodPackages>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_hWoGDt8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_hWoGDt8oEfGr3LKRlrp3Ew"/>
+    <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_hWoGD98oEfGr3LKRlrp3Ew" name="ProcessContributions" guid="_hWoGD98oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_cWsoUN8oEfGr3LKRlrp3Ew"/>
+    <bases href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_W5WO0N8oEfGr3LKRlrp3Ew"/>
+  </org.eclipse.epf.uma:MethodPlugin>
+</xmi:XMI>

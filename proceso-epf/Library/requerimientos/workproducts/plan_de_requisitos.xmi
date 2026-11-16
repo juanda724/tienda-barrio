@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-Qh0zuSZQOU8myX2qIfyChg" name="plan_de_requisitos,_Gms4wN_CEfG8tbaZ8P9cgg" guid="-Qh0zuSZQOU8myX2qIfyChg" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:28:22.572-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>Documento con los procesos core y sus metas, las funcionalidades F-01 a F-08 y los requisitos SWR-01 a SWR-23. Cada&#xD;
+requisito tiene su identificador, su descripción, la funcionalidad a la que pertenece, su prioridad y su criterio de&#xD;
+verificación.</mainDescription>
+  <keyConsiderations>Cada requisito debe ser claro, verificable y no ambiguo. Los cambios en los requisitos deben registrarse con su versión.</keyConsiderations>
+  <purpose>Documentar qué debe hacer el sistema de forma verificable y relacionar cada requisito con una funcionalidad y una necesidad&#xD;
+del negocio.</purpose>
+  <impactOfNotHaving>No habría una base acordada para construir ni para probar el sistema.</impactOfNotHaving>
+  <reasonsForNotNeeding>Ninguna: es el artefacto central de la disciplina.</reasonsForNotNeeding>
+  <representationOptions>Documento de especificación de requisitos o tabla en una hoja de cálculo.</representationOptions>
+</org.eclipse.epf.uma:ArtifactDescription>

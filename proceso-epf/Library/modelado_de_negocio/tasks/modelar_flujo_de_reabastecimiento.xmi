@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-gY6wsdimTNXRuZnFWAb__g" name="modelar_flujo_de_reabastecimiento,_UCY-oN--EfGmVvN-KvBeSQ" guid="-gY6wsdimTNXRuZnFWAb__g" authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T19:01:45.458-0500" changeDescription="Versión inicial" version="1.0">
+  <mainDescription>El analista modela paso a paso el reabastecimiento, desde la alerta de stock bajo hasta el pago al proveedor, con las&#xD;
+decisiones de verificación y la devolución cuando hay diferencias.</mainDescription>
+  <keyConsiderations>Aplicar las reglas RN-01 y RN-02 en el flujo: la alerta nace del stock mínimo y el pago se bloquea si hay una devolución en&#xD;
+curso.</keyConsiderations>
+  <purpose>Detallar el proceso core más complejo de la tienda con todas sus decisiones y caminos alternos.</purpose>
+</org.eclipse.epf.uma:TaskDescription>
