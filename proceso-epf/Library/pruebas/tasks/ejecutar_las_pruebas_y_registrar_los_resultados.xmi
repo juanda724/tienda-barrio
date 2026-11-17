@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-aJZU5w4XXopyARA6cyEg9Q" name=",_i1SZ8OIpEfGoE8by5lIpXg" guid="-aJZU5w4XXopyARA6cyEg9Q" changeDate="2026-11-16T20:52:55.862-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    El ingeniero de QA ejecuta todas las pruebas automáticas del backend con Maven, revisa cuáles pasan y cuáles fallan,&#xD;
+    reporta los fallos al desarrollador y guarda la salida de la ejecución como evidencia.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    La salida de cada ejecución se guarda completa y con su fecha. Un fallo se reporta con el caso que lo detectó y la&#xD;
+    causa probable, nunca solo con la frase &quot;no funciona&quot;.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_sQSUwOIpEfGoE8by5lIpXg" name="1.  Ejecutar todas las pruebas con el Maven Wrapper del proyecto." guid="_sQSUwOIpEfGoE8by5lIpXg"/>
+  <sections xmi:id="_sm1MgOIpEfGoE8by5lIpXg" name="2.  Revisar los fallos y reportarlos al desarrollador responsable." guid="_sm1MgOIpEfGoE8by5lIpXg"/>
+  <sections xmi:id="_t8ILgOIpEfGoE8by5lIpXg" name="3.  Guardar la salida completa de la ejecución como evidencia." guid="_t8ILgOIpEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Demostrar con evidencia el estado real de la calidad del sistema.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

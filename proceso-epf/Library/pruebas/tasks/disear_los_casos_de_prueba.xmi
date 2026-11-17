@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-KGw6OMJCXYlTWJXyZw0idA" name=",_c9RTIOIoEfGoE8by5lIpXg" guid="-KGw6OMJCXYlTWJXyZw0idA" changeDate="2026-11-16T20:45:39.272-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    El ingeniero de QA toma los requisitos (SWR) y las reglas de negocio (RN) y define, para cada uno, los casos de prueba:&#xD;
+    los datos de entrada, la acción y el resultado esperado, incluyendo los casos que deben ser rechazados.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Cada regla de negocio necesita al menos un caso que la cumple y uno que la viola, como el pago bloqueado por una&#xD;
+    devolución en curso o el stock por debajo del mínimo.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_qidWcOIoEfGoE8by5lIpXg" name="1.  Tomar un requisito o una regla de negocio del plan de requisitos." guid="_qidWcOIoEfGoE8by5lIpXg"/>
+  <sections xmi:id="_q7Yz0OIoEfGoE8by5lIpXg" name="2.  Definir los datos de entrada, la acción y el resultado esperado.&#xA;2.  " guid="_q7Yz0OIoEfGoE8by5lIpXg"/>
+  <sections xmi:id="_sds7IOIoEfGoE8by5lIpXg" name="3.  Agregar los casos de error y los casos límite." guid="_sds7IOIoEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Definir qué se va a probar y cómo se sabrá que algo funciona o falla.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

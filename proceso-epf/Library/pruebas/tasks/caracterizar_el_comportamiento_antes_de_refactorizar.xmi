@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-55xyyG5Qbg1SaZC1huD4iw" name=",_QOoA0OIpEfGoE8by5lIpXg" guid="-55xyyG5Qbg1SaZC1huD4iw" changeDate="2026-11-16T20:50:46.056-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Antes de reorganizar el código de una funcionalidad, el ingeniero de QA escribe pruebas que registran cómo se comporta&#xD;
+    hoy. Después del cambio las vuelve a ejecutar para comprobar que el resultado no se alteró.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Estas pruebas describen lo que el sistema hace hoy, no lo que debería hacer. Se ejecutan antes y después del cambio, y&#xD;
+    se guarda la salida de ambas como evidencia.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_Y0ki8OIpEfGoE8by5lIpXg" name="1.  Elegir la parte del código que se va a reorganizar." guid="_Y0ki8OIpEfGoE8by5lIpXg"/>
+  <sections xmi:id="_ZMM_0OIpEfGoE8by5lIpXg" name="2.  Escribir pruebas que registren su comportamiento actual y ejecutarlas antes del cambio." guid="_ZMM_0OIpEfGoE8by5lIpXg"/>
+  <sections xmi:id="_an0CMOIpEfGoE8by5lIpXg" name="3.  Repetirlas después del cambio y comparar los resultados." guid="_an0CMOIpEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Reorganizar el código sin romper lo que ya funciona.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

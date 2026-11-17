@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-DtRt996MNmjxR8vW91f09Q" name="new_artifact,_TXUskOIoEfGoE8by5lIpXg" guid="-DtRt996MNmjxR8vW91f09Q" changeDate="2026-11-16T20:44:00.593-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Documento que registra, para cada requisito del sistema (SWR), su criterio de verificación, la evidencia que lo&#xD;
+    respalda (una prueba automática o la salida de una ejecución guardada) y el resultado: cumple o no cumple.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Demostrar con evidencia que el sistema cumple lo que se prometió al cliente.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>
