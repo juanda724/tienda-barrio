@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-3cRkZW7giI9buf_Goz9fQQ" name=",_VDFzMOIaEfGoE8by5lIpXg" guid="-3cRkZW7giI9buf_Goz9fQQ" changeDate="2026-11-16T19:08:01.028-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador programa en React los componentes que se repiten en toda la aplicación, como el buscador de producto,&#xD;
+    la insignia de estado, los avisos y la campana de alertas, a partir de los prototipos aprobados.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Cada componente debe hacer una sola cosa y recibir sus datos por parámetros, para poder usarlo en cualquier página.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_BaniUOIbEfGoE8by5lIpXg" name="1.  Identificar en los prototipos los elementos que se repiten." guid="_BaniUOIbEfGoE8by5lIpXg"/>
+  <sections xmi:id="_B0O8MOIbEfGoE8by5lIpXg" name="2.  Programar cada elemento como un componente independiente." guid="_B0O8MOIbEfGoE8by5lIpXg"/>
+  <sections xmi:id="_DsqdcOIbEfGoE8by5lIpXg" name="3.  Probarlo en una página sencilla antes de usarlo en las demás." guid="_DsqdcOIbEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Evitar código repetido y mantener una interfaz coherente.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

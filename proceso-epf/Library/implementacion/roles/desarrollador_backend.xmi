@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-CVDVwfGUNEqW7B9AdENXBw" name="new_role,_9LJjIOIYEfGoE8by5lIpXg" guid="-CVDVwfGUNEqW7B9AdENXBw" changeDate="2026-11-16T18:54:08.529-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Es el responsable de construir el servidor con Spring Boot: las entidades y repositorios que guardan los datos, los&#xD;
+    servicios que aplican las reglas de negocio (stock, ventas, fiados, pedidos, ingresos, devoluciones), los controladores&#xD;
+    REST con sus validaciones y la integración del proyecto en el repositorio Git con datos de demostración.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Las reglas de negocio viven en la capa de servicio y se prueban con pruebas automáticas. Todo error de negocio debe&#xD;
+    devolver un mensaje comprensible para el tendero, y cada cambio se sube al repositorio con commits pequeños y&#xD;
+    descriptivos.&#xD;
+&lt;/p></keyConsiderations>
+  <skills>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Java, Spring Boot, Spring Data JPA, bases de datos relacionales, diseño de APIs REST, Maven, Git.&#xD;
+&lt;/p></skills>
+  <assignmentApproaches>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    En equipos pequeños puede combinarse con el rol de Desarrollador frontend. Quien lo asuma debe conocer a fondo las&#xD;
+    reglas de negocio del plan de requisitos.&#xD;
+&lt;/p></assignmentApproaches>
+  <synonyms>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Backend Developer, Desarrollador de servidor, Programador Java.&#xD;
+&lt;/p></synonyms>
+</org.eclipse.epf.uma:RoleDescription>

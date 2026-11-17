@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
-  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_hWqiQN8oEfGr3LKRlrp3Ew" guid="_hWqiQN8oEfGr3LKRlrp3Ew"/>
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_hWqiQN8oEfGr3LKRlrp3Ew" guid="_hWqiQN8oEfGr3LKRlrp3Ew">
+    <resourceDescriptors xmi:id="_71HkUuIYEfGoE8by5lIpXg" id="-lt4RyJ2RdUYTBnrH_0xcVw" uri="roles/desarrollador_frontend.xmi"/>
+    <resourceDescriptors xmi:id="_FZfdkuIZEfGoE8by5lIpXg" id="-CVDVwfGUNEqW7B9AdENXBw" uri="roles/desarrollador_backend.xmi"/>
+    <resourceDescriptors xmi:id="_TZZuAuIZEfGoE8by5lIpXg" id="-Hgn6uQwdpjfjTfaxUH8SmA" uri="workproducts/componentes_react.xmi"/>
+    <resourceDescriptors xmi:id="_cpJbEuIZEfGoE8by5lIpXg" id="--ZtQHD1uXgrqTh8YEpRgzg" uri="workproducts/pginas_por_pestana.xmi"/>
+    <resourceDescriptors xmi:id="_minakuIZEfGoE8by5lIpXg" id="-dmXQTM9ZA0nmtyjRA3dd1A" uri="workproducts/servicio_de_api.xmi"/>
+    <resourceDescriptors xmi:id="_r3UOYuIZEfGoE8by5lIpXg" id="-mpS8EI45Un4nwsiLp_AepA" uri="workproducts/documentos_imprimibles.xmi"/>
+    <resourceDescriptors xmi:id="_yJkPkuIZEfGoE8by5lIpXg" id="-2y4RNWu__fA3yvPDtpjFAA" uri="workproducts/entidades_jpa_y_repositorios.xmi"/>
+    <resourceDescriptors xmi:id="_45S28OIZEfGoE8by5lIpXg" id="-PKbOMfWc3-Lzq4PSQlRttQ" uri="workproducts/servicios_con_reglas_de_negocio.xmi"/>
+    <resourceDescriptors xmi:id="_KxdLUuIaEfGoE8by5lIpXg" id="-ESZWs081-fcr0BLH7MIpyg" uri="workproducts/controladores_rest_y_dtos.xmi"/>
+    <resourceDescriptors xmi:id="_KxdLU-IaEfGoE8by5lIpXg" id="-77DHcYBb5MnfzGI-woOBuQ" uri="workproducts/repositorio_git_github.xmi"/>
+    <resourceDescriptors xmi:id="_TclIYOIaEfGoE8by5lIpXg" id="-12Pm7gLDUSQuYt624YNfJA" uri="workproducts/datos_de_demostracin.xmi"/>
+    <resourceDescriptors xmi:id="_F3TJAeIbEfGoE8by5lIpXg" id="-3cRkZW7giI9buf_Goz9fQQ" uri="tasks/implementar_los_componentes_reutilizables.xmi"/>
+    <resourceDescriptors xmi:id="_kOvokOIbEfGoE8by5lIpXg" id="-j-fQ6SvwuDyh5CXpu6C8rA" uri="tasks/implementar_una_pgina_por_pestaa.xmi"/>
+    <resourceDescriptors xmi:id="_9XaWIOIbEfGoE8by5lIpXg" id="-Oz1meGOAUsnuqML5PfCg3g" uri="tasks/conectar_las_pginas_con_la_api_rest.xmi"/>
+    <resourceDescriptors xmi:id="_e5-t4uIcEfGoE8by5lIpXg" id="-2yhCeRHwRRK_sVDidVIk2w" uri="tasks/generar_los_documentos_imprimibles.xmi"/>
+    <resourceDescriptors xmi:id="_2VGUguIcEfGoE8by5lIpXg" id="-p36Anon3IdmnTD2cZc3sYw" uri="tasks/implementar_las_entidades_y_los_repositorios.xmi"/>
+    <resourceDescriptors xmi:id="_mxwtAOIdEfGoE8by5lIpXg" id="--7vpHPS_C-9IcW52HLHhNw" uri="tasks/implementar_las_reglas_de_negocio.xmi"/>
+    <resourceDescriptors xmi:id="_HDjZYuIeEfGoE8by5lIpXg" id="-KMa9BJLJEiCdfp2hLau1nw" uri="tasks/exponer_los_endpoints_rest.xmi"/>
+    <resourceDescriptors xmi:id="_kfUeYuIfEfGoE8by5lIpXg" id="-vBtV5XnBBnIQSL4aeOwPhg" uri="tasks/integrar_el_frontend_y_el_backend_en_el_repositorio.xmi"/>
+    <resourceDescriptors xmi:id="_21TXMuIfEfGoE8by5lIpXg" id="-yd6LX-kkm8T2LNWC0s7-Zg" uri="tasks/cargar_los_datos_de_demostracin.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
   <org.eclipse.epf.uma:MethodPlugin xmi:id="_hWoGAN8oEfGr3LKRlrp3Ew" name="implementacion" guid="_hWoGAN8oEfGr3LKRlrp3Ew" presentationName="Implementación" briefDescription="En esta disciplina se construye el frontend en React y el backend en Spring Boot, y se integran en el repositorio del proyecto." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:30.344-0500" changeDescription="Ajuste del nombre" version="1.0">
     <methodElementProperty xmi:id="_yuZqIN8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
     <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGAd8oEfGr3LKRlrp3Ew" name="Content" guid="_hWoGAd8oEfGr3LKRlrp3Ew">
@@ -17,7 +38,104 @@
           </childPackages>
         </childPackages>
       </childPackages>
-      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGDN8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_hWoGDN8oEfGr3LKRlrp3Ew"/>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_hWoGDN8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_hWoGDN8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_nQ5SUOIYEfGoE8by5lIpXg" name="implementacin" guid="_nQ5SUOIYEfGoE8by5lIpXg" presentationName="Implementación" briefDescription="Disciplina donde se construye el sistema: el frontend en React, el backend en Spring Boot y su integración en el repositorio.">
+          <methodElementProperty xmi:id="_nQ5SUeIYEfGoE8by5lIpXg" name="pkg_loadCheck" value="true"/>
+          <methodElementProperty xmi:id="_rkRMAOIYEfGoE8by5lIpXg" name="me_edited" value="true"/>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_uJfh0OIYEfGoE8by5lIpXg" name="desarrollador_frontend" guid="_uJfh0OIYEfGoE8by5lIpXg" presentationName="Desarrollador frontend" briefDescription="Construye la interfaz web que usan el tendero y el vendedor." responsibleFor="_HJMgoOIZEfGoE8by5lIpXg _oN5QoOIZEfGoE8by5lIpXg _UE7-UOIZEfGoE8by5lIpXg _dl0esOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_71HkUOIYEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-lt4RyJ2RdUYTBnrH_0xcVw" href="uma://-lt4RyJ2RdUYTBnrH_0xcVw#-lt4RyJ2RdUYTBnrH_0xcVw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_9LJjIOIYEfGoE8by5lIpXg" name="desarrollador_backend" guid="_9LJjIOIYEfGoE8by5lIpXg" presentationName="Desarrollador backend" briefDescription="Construye la API, las reglas de negocio y el acceso a los datos." responsibleFor="_5hm0IOIZEfGoE8by5lIpXg _L9zCoOIaEfGoE8by5lIpXg _tFX88OIZEfGoE8by5lIpXg _E0vVQOIaEfGoE8by5lIpXg _y0uscOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_FZfdkOIZEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-CVDVwfGUNEqW7B9AdENXBw" href="uma://-CVDVwfGUNEqW7B9AdENXBw#-CVDVwfGUNEqW7B9AdENXBw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_HJMgoOIZEfGoE8by5lIpXg" name="componentes_react" guid="_HJMgoOIZEfGoE8by5lIpXg" presentationName="Componentes React" briefDescription="Piezas de interfaz reutilizables en todas las páginas.">
+            <methodElementProperty xmi:id="_TZZuAOIZEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-Hgn6uQwdpjfjTfaxUH8SmA" href="uma://-Hgn6uQwdpjfjTfaxUH8SmA#-Hgn6uQwdpjfjTfaxUH8SmA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_UE7-UOIZEfGoE8by5lIpXg" name="pginas_por_pestana" guid="_UE7-UOIZEfGoE8by5lIpXg" presentationName="Páginas por pestaña" briefDescription="Una página de la aplicación por cada proceso del negocio.">
+            <methodElementProperty xmi:id="_cpJbEOIZEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="--ZtQHD1uXgrqTh8YEpRgzg" href="uma://--ZtQHD1uXgrqTh8YEpRgzg#--ZtQHD1uXgrqTh8YEpRgzg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_dl0esOIZEfGoE8by5lIpXg" name="servicio_de_api" guid="_dl0esOIZEfGoE8by5lIpXg" presentationName="Servicio de API" briefDescription="Módulo del frontend que llama al backend.">
+            <methodElementProperty xmi:id="_minakOIZEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-dmXQTM9ZA0nmtyjRA3dd1A" href="uma://-dmXQTM9ZA0nmtyjRA3dd1A#-dmXQTM9ZA0nmtyjRA3dd1A"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_oN5QoOIZEfGoE8by5lIpXg" name="documentos_imprimibles" guid="_oN5QoOIZEfGoE8by5lIpXg" presentationName="Documentos imprimibles" briefDescription="Comprobantes y facturas que se imprimen o se comparten.">
+            <methodElementProperty xmi:id="_r3UOYOIZEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-mpS8EI45Un4nwsiLp_AepA" href="uma://-mpS8EI45Un4nwsiLp_AepA#-mpS8EI45Un4nwsiLp_AepA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_tFX88OIZEfGoE8by5lIpXg" name="entidades_jpa_y_repositorios" guid="_tFX88OIZEfGoE8by5lIpXg" presentationName="Entidades JPA y repositorios" briefDescription="Clases que representan los datos y acceden a la base de datos.">
+            <methodElementProperty xmi:id="_yJkPkOIZEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-2y4RNWu__fA3yvPDtpjFAA" href="uma://-2y4RNWu__fA3yvPDtpjFAA#-2y4RNWu__fA3yvPDtpjFAA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_y0uscOIZEfGoE8by5lIpXg" name="servicios_con_reglas_de_negocio" guid="_y0uscOIZEfGoE8by5lIpXg" presentationName="Servicios con reglas de negocio" briefDescription="Clases donde se aplican las reglas del negocio.">
+            <methodElementProperty xmi:id="_45JF8OIZEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-PKbOMfWc3-Lzq4PSQlRttQ" href="uma://-PKbOMfWc3-Lzq4PSQlRttQ#-PKbOMfWc3-Lzq4PSQlRttQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_5hm0IOIZEfGoE8by5lIpXg" name="controladores_rest_y_dtos" guid="_5hm0IOIZEfGoE8by5lIpXg" presentationName="Controladores REST y DTOs" briefDescription="Endpoints de la API y objetos con los datos que viajan por ella.">
+            <methodElementProperty xmi:id="_v7vo8OIgEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-ESZWs081-fcr0BLH7MIpyg" href="uma://-ESZWs081-fcr0BLH7MIpyg#-ESZWs081-fcr0BLH7MIpyg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_E0vVQOIaEfGoE8by5lIpXg" name="repositorio_git_github" guid="_E0vVQOIaEfGoE8by5lIpXg" presentationName="Repositorio Git (GitHub)" briefDescription="Repositorio que reune el frontend y el backend del proyecto.">
+            <methodElementProperty xmi:id="_KxdLUOIaEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-77DHcYBb5MnfzGI-woOBuQ" href="uma://-77DHcYBb5MnfzGI-woOBuQ#-77DHcYBb5MnfzGI-woOBuQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_L9zCoOIaEfGoE8by5lIpXg" name="datos_de_demostracin" guid="_L9zCoOIaEfGoE8by5lIpXg" presentationName="Datos de demostración" briefDescription="Datos de ejemplo cargados al iniciar la aplicación.">
+            <methodElementProperty xmi:id="_TcjTMOIaEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-12Pm7gLDUSQuYt624YNfJA" href="uma://-12Pm7gLDUSQuYt624YNfJA#-12Pm7gLDUSQuYt624YNfJA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_VDFzMOIaEfGoE8by5lIpXg" name="implementar_los_componentes_reutilizables" guid="_VDFzMOIaEfGoE8by5lIpXg" presentationName="Implementar los componentes reutilizables" briefDescription="Programar las piezas de interfaz que usan todas las páginas." performedBy="_uJfh0OIYEfGoE8by5lIpXg" output="_HJMgoOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_F3LNMOIbEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-3cRkZW7giI9buf_Goz9fQQ" href="uma://-3cRkZW7giI9buf_Goz9fQQ#-3cRkZW7giI9buf_Goz9fQQ"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_Qj3sgN_CEfG8tbaZ8P9cgg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_WN5kAOIbEfGoE8by5lIpXg" name="implementar_una_pgina_por_pestaa" guid="_WN5kAOIbEfGoE8by5lIpXg" presentationName="Implementar una página por pestaña" briefDescription="Programar la pantalla de cada proceso del negocio." performedBy="_uJfh0OIYEfGoE8by5lIpXg" output="_UE7-UOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_kOl3kOIbEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-j-fQ6SvwuDyh5CXpu6C8rA" href="uma://-j-fQ6SvwuDyh5CXpu6C8rA#-j-fQ6SvwuDyh5CXpu6C8rA"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_Qj3sgN_CEfG8tbaZ8P9cgg"/>
+            <mandatoryInput href="#_HJMgoOIZEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_yBQWMOIbEfGoE8by5lIpXg" name="conectar_las_pginas_con_la_api_rest" guid="_yBQWMOIbEfGoE8by5lIpXg" presentationName="Conectar las páginas con la API REST" briefDescription="Hacer que las pantallas lean y guarden datos en el backend." performedBy="_uJfh0OIYEfGoE8by5lIpXg" output="_dl0esOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_9XQlIOIbEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-Oz1meGOAUsnuqML5PfCg3g" href="uma://-Oz1meGOAUsnuqML5PfCg3g#-Oz1meGOAUsnuqML5PfCg3g"/>
+            <mandatoryInput href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_c4GooOIPEfGoE8by5lIpXg"/>
+            <mandatoryInput href="#_UE7-UOIZEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_YRk2gOIcEfGoE8by5lIpXg" name="generar_los_documentos_imprimibles" guid="_YRk2gOIcEfGoE8by5lIpXg" presentationName="Generar los documentos imprimibles" briefDescription="Producir comprobantes, facturas y notas desde la aplicación." performedBy="_uJfh0OIYEfGoE8by5lIpXg" output="_oN5QoOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_e5-t4OIcEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-2yhCeRHwRRK_sVDidVIk2w" href="uma://-2yhCeRHwRRK_sVDidVIk2w#-2yhCeRHwRRK_sVDidVIk2w"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_MQAqoN_CEfG8tbaZ8P9cgg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_v6u5IOIcEfGoE8by5lIpXg" name="implementar_las_entidades_y_los_repositorios" guid="_v6u5IOIcEfGoE8by5lIpXg" presentationName="Implementar las entidades y los repositorios" briefDescription="Programar el modelo de datos y el acceso a la base de datos." performedBy="_9LJjIOIYEfGoE8by5lIpXg" output="_tFX88OIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_2VGUgOIcEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-p36Anon3IdmnTD2cZc3sYw" href="uma://-p36Anon3IdmnTD2cZc3sYw#-p36Anon3IdmnTD2cZc3sYw"/>
+            <mandatoryInput href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_TEgAkOIPEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_dKZxMOIdEfGoE8by5lIpXg" name="implementar_las_reglas_de_negocio" guid="_dKZxMOIdEfGoE8by5lIpXg" presentationName="Implementar las reglas de negocio" briefDescription="Programar en los servicios lo que el negocio exige." performedBy="_9LJjIOIYEfGoE8by5lIpXg" output="_y0uscOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_mxuQwOIdEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="--7vpHPS_C-9IcW52HLHhNw" href="uma://--7vpHPS_C-9IcW52HLHhNw#--7vpHPS_C-9IcW52HLHhNw"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_Gms4wN_CEfG8tbaZ8P9cgg"/>
+            <mandatoryInput href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_C6WtMOIPEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_57qWEOIdEfGoE8by5lIpXg" name="exponer_los_endpoints_rest" guid="_57qWEOIdEfGoE8by5lIpXg" presentationName="Exponer los endpoints REST" briefDescription="Programar los controladores y los objetos de datos de la API." performedBy="_9LJjIOIYEfGoE8by5lIpXg" output="_5hm0IOIZEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_HDjZYOIeEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-KMa9BJLJEiCdfp2hLau1nw" href="uma://-KMa9BJLJEiCdfp2hLau1nw#-KMa9BJLJEiCdfp2hLau1nw"/>
+            <mandatoryInput href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_c4GooOIPEfGoE8by5lIpXg"/>
+            <mandatoryInput href="#_y0uscOIZEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_MieqwOIfEfGoE8by5lIpXg" name="integrar_el_frontend_y_el_backend_en_el_repositorio" guid="_MieqwOIfEfGoE8by5lIpXg" presentationName="Integrar el frontend y el backend en el repositorio" briefDescription="Reunir todo el código del proyecto en GitHub." performedBy="_9LJjIOIYEfGoE8by5lIpXg" mandatoryInput="_5hm0IOIZEfGoE8by5lIpXg _UE7-UOIZEfGoE8by5lIpXg" output="_E0vVQOIaEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_kfUeYOIfEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-vBtV5XnBBnIQSL4aeOwPhg" href="uma://-vBtV5XnBBnIQSL4aeOwPhg#-vBtV5XnBBnIQSL4aeOwPhg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_lCAUsOIfEfGoE8by5lIpXg" name="cargar_los_datos_de_demostracin" guid="_lCAUsOIfEfGoE8by5lIpXg" presentationName="Cargar los datos de demostración" briefDescription="Preparar datos de ejemplo para probar y mostrar el sistema." performedBy="_9LJjIOIYEfGoE8by5lIpXg" output="_L9zCoOIaEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_21TXMOIfEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-yd6LX-kkm8T2LNWC0s7-Zg" href="uma://-yd6LX-kkm8T2LNWC0s7-Zg#-yd6LX-kkm8T2LNWC0s7-Zg"/>
+            <mandatoryInput href="uma://_cWsoUN8oEfGr3LKRlrp3Ew#_TEgAkOIPEfGoE8by5lIpXg"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
       <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_hWoGDd8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_hWoGDd8oEfGr3LKRlrp3Ew"/>
     </methodPackages>
     <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_hWoGDt8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_hWoGDt8oEfGr3LKRlrp3Ew"/>

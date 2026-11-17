@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-yd6LX-kkm8T2LNWC0s7-Zg" name=",_lCAUsOIfEfGoE8by5lIpXg" guid="-yd6LX-kkm8T2LNWC0s7-Zg" changeDate="2026-11-16T19:41:32.963-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador programa la carga automática de datos de ejemplo al iniciar la aplicación: productos, proveedores, un&#xD;
+    pedido, una factura con diferencias y clientes con fiado.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Los datos deben cubrir los casos importantes del negocio, como stock bajo, diferencias en una factura y un cliente con&#xD;
+    saldo pendiente.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_r86RUOIfEfGoE8by5lIpXg" name="1.  Definir los casos de negocio que los datos deben mostrar." guid="_r86RUOIfEfGoE8by5lIpXg"/>
+  <sections xmi:id="_vZj-YOIfEfGoE8by5lIpXg" name="1.  Programar la carga de datos al arrancar la aplicación." guid="_vZj-YOIfEfGoE8by5lIpXg"/>
+  <sections xmi:id="_wYJGgOIfEfGoE8by5lIpXg" name="1.  Verificar que los casos aparecen en las pantallas." guid="_wYJGgOIfEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Poder probar y mostrar el sistema funcionando sin ingresar datos a mano.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

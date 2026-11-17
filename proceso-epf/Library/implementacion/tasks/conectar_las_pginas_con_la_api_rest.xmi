@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-Oz1meGOAUsnuqML5PfCg3g" name=",_yBQWMOIbEfGoE8by5lIpXg" guid="-Oz1meGOAUsnuqML5PfCg3g" changeDate="2026-11-16T19:14:19.929-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador crea el módulo de servicio de API y conecta cada página con los endpoints del backend, mostrando al&#xD;
+    usuario los mensajes de error que devuelve el servidor.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Todas las llamadas al backend pasan por un solo módulo, para que un cambio en la API se corrija en un solo lugar.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_454a4OIbEfGoE8by5lIpXg" name="1.  Crear una función por cada endpoint del contrato de la API." guid="_454a4OIbEfGoE8by5lIpXg"/>
+  <sections xmi:id="_5TtQIOIbEfGoE8by5lIpXg" name="2.  Llamar esas funciones desde cada página." guid="_5TtQIOIbEfGoE8by5lIpXg"/>
+  <sections xmi:id="_7kLd8OIbEfGoE8by5lIpXg" name="3.  Mostrar los errores del servidor con un aviso comprensible." guid="_7kLd8OIbEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Hacer que las pantallas trabajen con los datos reales del sistema.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

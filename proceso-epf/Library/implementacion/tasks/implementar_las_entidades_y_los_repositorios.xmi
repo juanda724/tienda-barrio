@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-p36Anon3IdmnTD2cZc3sYw" name=",_v6u5IOIcEfGoE8by5lIpXg" guid="-p36Anon3IdmnTD2cZc3sYw" changeDate="2026-11-16T19:21:18.746-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador programa las entidades JPA a partir del modelo de datos y los repositorios de Spring Data JPA que&#xD;
+    permiten guardarlas y consultarlas.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Cada relación del modelo de datos debe quedar con la misma multiplicidad en el código, y el historial de cambios de&#xD;
+    estado debe guardarse.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_4GdkcOIcEfGoE8by5lIpXg" name="1.  Crear una clase por cada entidad del modelo de datos." guid="_4GdkcOIcEfGoE8by5lIpXg"/>
+  <sections xmi:id="_4jmMYOIcEfGoE8by5lIpXg" name="2.  Declarar atributos, claves y relaciones." guid="_4jmMYOIcEfGoE8by5lIpXg"/>
+  <sections xmi:id="_6RDMsOIcEfGoE8by5lIpXg" name="3.  Crear un repositorio por entidad y comprobar que guarda y consulta." guid="_6RDMsOIcEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Implementar el modelo de datos diseñado y darle acceso a la capa de servicios.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="--ZtQHD1uXgrqTh8YEpRgzg" name="new_artifact,_UE7-UOIZEfGoE8by5lIpXg" guid="--ZtQHD1uXgrqTh8YEpRgzg" changeDate="2026-11-16T18:57:03.551-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Las páginas de la aplicación, una por cada proceso: Ventas, Inventario, Movimientos, Fiados, Proveedores, Pedidos,&#xD;
+    Ingresos, Devoluciones, Historial y Reportes.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Entregar al usuario una pantalla clara y separada para cada proceso que realiza en la tienda.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

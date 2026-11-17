@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="--7vpHPS_C-9IcW52HLHhNw" name=",_dKZxMOIdEfGoE8by5lIpXg" guid="--7vpHPS_C-9IcW52HLHhNw" changeDate="2026-11-16T19:26:31.602-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador programa en la capa de servicio las reglas de negocio de stock, ventas, fiados, pedidos, ingresos de&#xD;
+    mercancía y devoluciones, incluidas las reglas RN-01 y RN-02, siguiendo la asignación hecha en el diseño.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Cada regla se acompaña de una prueba automática que demuestre que se cumple y que se rechaza lo que no cumple la regla.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_om3NcOIdEfGoE8by5lIpXg" name="1.  Tomar la regla de negocio y el servicio que le corresponde." guid="_om3NcOIdEfGoE8by5lIpXg"/>
+  <sections xmi:id="_pBCoAOIdEfGoE8by5lIpXg" name="2.  Programar la regla con sus validaciones y mensajes de error." guid="_pBCoAOIdEfGoE8by5lIpXg"/>
+  <sections xmi:id="_rF-7QOIdEfGoE8by5lIpXg" name="3.  Escribir la prueba automática de esa regla." guid="_rF-7QOIdEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Garantizar que el sistema cumpla las reglas del negocio sin importar desde dónde se use.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-j-fQ6SvwuDyh5CXpu6C8rA" name=",_WN5kAOIbEfGoE8by5lIpXg" guid="-j-fQ6SvwuDyh5CXpu6C8rA" changeDate="2026-11-16T19:11:14.730-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador programa una página para cada pestaña de la aplicación (Ventas, Inventario, Movimientos, Fiados,&#xD;
+    Proveedores, Pedidos, Ingresos, Devoluciones, Historial y Reportes), usando los componentes reutilizables y siguiendo&#xD;
+    los prototipos.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    La pantalla debe verse bien en el celular y en el computador, y no debe decidir reglas de negocio: solo captura datos y&#xD;
+    muestra resultados.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_e9E6oOIbEfGoE8by5lIpXg" name="1.  Tomar el prototipo de la pestaña y armar su estructura con los componentes." guid="_e9E6oOIbEfGoE8by5lIpXg"/>
+  <sections xmi:id="_fZaRUOIbEfGoE8by5lIpXg" name="2.  Programar los formularios, las tablas y los botones de la pestaña." guid="_fZaRUOIbEfGoE8by5lIpXg"/>
+  <sections xmi:id="_h2v2cOIbEfGoE8by5lIpXg" name="3.  Revisar la pantalla en tamaño de computador y de celular." guid="_h2v2cOIbEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Entregar al usuario una pantalla funcional para cada proceso que realiza en la tienda.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

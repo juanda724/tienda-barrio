@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-PKbOMfWc3-Lzq4PSQlRttQ" name="new_artifact,_y0uscOIZEfGoE8by5lIpXg" guid="-PKbOMfWc3-Lzq4PSQlRttQ" changeDate="2026-11-16T19:00:12.804-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Las clases de la capa de servicio donde se implementan las reglas de negocio: control de stock, ventas y facturación,&#xD;
+    fiados y abonos, pedidos a proveedor, ingreso de mercancía, devoluciones y alertas.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Garantizar que las reglas del negocio se cumplan siempre, sin importar desde dónde se use el sistema.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>
