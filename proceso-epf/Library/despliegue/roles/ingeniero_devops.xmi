@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="--GCxdRn5X0C97GravZ1ULg" name="new_role,_SsV4EOI3EfGoE8by5lIpXg" guid="--GCxdRn5X0C97GravZ1ULg" changeDate="2026-11-16T22:31:33.960-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Es el responsable de llevar el sistema a un entorno donde se pueda usar. Prepara el entorno de ejecución (Java y&#xD;
+    Node.js), pone en marcha el backend y el frontend, habilita el acceso desde el celular dentro de la red local,&#xD;
+    documenta los pasos de instalación y verifica que la aplicación funcione con sus datos de ejemplo.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    La instalación debe poder repetirla cualquier persona siguiendo la guía, sin conocimientos técnicos avanzados. Cada&#xD;
+    despliegue se verifica con una lista de comprobación antes de darlo por terminado.&#xD;
+&lt;/p></keyConsiderations>
+  <skills>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Java, Node.js, Maven y npm, redes locales y firewall, Git, documentación técnica, verificación de sistemas.&#xD;
+&lt;/p></skills>
+  <assignmentApproaches>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    En equipos pequeños puede asumirlo quien programó el backend, ya que conoce cómo arranca la aplicación. Se recomienda&#xD;
+    que la instalación también la pruebe otro integrante.&#xD;
+&lt;/p></assignmentApproaches>
+  <synonyms>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    DevOps Engineer, Ingeniero de despliegue, Administrador de sistemas.&#xD;
+&lt;/p></synonyms>
+</org.eclipse.epf.uma:RoleDescription>

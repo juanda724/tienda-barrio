@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-XSUjIvi2v9qZNvc_JpnFtw" name="new_artifact,_klQaYOI3EfGoE8by5lIpXg" guid="-XSUjIvi2v9qZNvc_JpnFtw" changeDate="2026-11-16T22:33:12.718-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    La aplicación ejecutándose: el backend atendiendo en el puerto 8080, el frontend abierto en el puerto 5173 y accesible&#xD;
+    desde el computador y desde el celular dentro de la misma red WiFi, con los datos de ejemplo cargados.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Entregar al dueño de la tienda un sistema que ya se puede usar.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

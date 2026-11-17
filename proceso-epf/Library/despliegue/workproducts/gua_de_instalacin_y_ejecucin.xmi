@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-twWWf06ZnxLaL2r-SRj-zQ" name="new_artifact,_eRmD8OI3EfGoE8by5lIpXg" guid="-twWWf06ZnxLaL2r-SRj-zQ" changeDate="2026-11-16T22:32:37.357-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Documento que explica cómo instalar y arrancar la aplicación: los requisitos (JDK 21 y Node.js 20 o superior), los&#xD;
+    comandos para iniciar el backend y el frontend, la dirección para abrir la aplicación y la forma de volver a empezar&#xD;
+    con los datos de ejemplo.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Permitir que cualquier persona instale y use el sistema sin ayuda del equipo.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

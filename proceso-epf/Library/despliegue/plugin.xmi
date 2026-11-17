@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
-  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_oUXUMN8oEfGr3LKRlrp3Ew" guid="_oUXUMN8oEfGr3LKRlrp3Ew"/>
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_oUXUMN8oEfGr3LKRlrp3Ew" guid="_oUXUMN8oEfGr3LKRlrp3Ew">
+    <resourceDescriptors xmi:id="_c7GLEuI3EfGoE8by5lIpXg" id="--GCxdRn5X0C97GravZ1ULg" uri="roles/ingeniero_devops.xmi"/>
+    <resourceDescriptors xmi:id="_kDJy4uI3EfGoE8by5lIpXg" id="-twWWf06ZnxLaL2r-SRj-zQ" uri="workproducts/gua_de_instalacin_y_ejecucin.xmi"/>
+    <resourceDescriptors xmi:id="_o0s2UuI3EfGoE8by5lIpXg" id="-XSUjIvi2v9qZNvc_JpnFtw" uri="workproducts/aplicacin_en_funcionamiento.xmi"/>
+    <resourceDescriptors xmi:id="_6n5LIuI3EfGoE8by5lIpXg" id="-qzfVhb5YZOvMPsj-fPm_pA" uri="workproducts/lista_de_verificacin_del_despliegue.xmi"/>
+    <resourceDescriptors xmi:id="_6oExUOI3EfGoE8by5lIpXg" id="-hHKVNr0x94MyRgUNkwrtsg" uri="tasks/preparar_el_entorno_de_ejecucin.xmi"/>
+    <resourceDescriptors xmi:id="_blGMAuI4EfGoE8by5lIpXg" id="-Diq6uiEy-ETzO77j9OrwTA" uri="tasks/poner_en_marcha_el_backend_y_el_frontend.xmi"/>
+    <resourceDescriptors xmi:id="_ssjcMuI4EfGoE8by5lIpXg" id="-vF2Z6HtZOtuDLEjUE-o8jw" uri="tasks/habilitar_el_acceso_desde_el_celular.xmi"/>
+    <resourceDescriptors xmi:id="_IGm9keI5EfGoE8by5lIpXg" id="-6VF0nww5lL0ICDLXplceSw" uri="tasks/verificar_el_despliegue.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
   <org.eclipse.epf.uma:MethodPlugin xmi:id="_oUU38N8oEfGr3LKRlrp3Ew" name="despliegue" guid="_oUU38N8oEfGr3LKRlrp3Ew" presentationName="Despliegue" briefDescription="En esta disciplina se instala y se pone en funcionamiento la aplicación para el dueño de la tienda, con acceso desde el computador y desde el celular." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:35.670-0500" changeDescription="Ajuste del nombre" version="1.0">
     <methodElementProperty xmi:id="_1HC8gN8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
     <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU38d8oEfGr3LKRlrp3Ew" name="Content" guid="_oUU38d8oEfGr3LKRlrp3Ew">
@@ -17,7 +26,48 @@
           </childPackages>
         </childPackages>
       </childPackages>
-      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3_N8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_oUU3_N8oEfGr3LKRlrp3Ew"/>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_oUU3_N8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_oUU3_N8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_OLSuwOI3EfGoE8by5lIpXg" name="despliegue" guid="_OLSuwOI3EfGoE8by5lIpXg" presentationName="Despliegue" briefDescription="Disciplina donde se instala y se pone en funcionamiento la aplicación, de modo que se pueda usar desde el computador y desde el celular del dueño de la tienda.">
+          <methodElementProperty xmi:id="_OLSuweI3EfGoE8by5lIpXg" name="pkg_loadCheck" value="true"/>
+          <methodElementProperty xmi:id="_RFICoOI3EfGoE8by5lIpXg" name="me_edited" value="true"/>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_SsV4EOI3EfGoE8by5lIpXg" name="ingeniero_devops" guid="_SsV4EOI3EfGoE8by5lIpXg" presentationName="Ingeniero DevOps" briefDescription="Instala y pone en funcionamiento la aplicación y comprueba que se pueda usar." responsibleFor="_klQaYOI3EfGoE8by5lIpXg _eRmD8OI3EfGoE8by5lIpXg _pTPzgOI3EfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_c7GLEOI3EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="--GCxdRn5X0C97GravZ1ULg" href="uma://--GCxdRn5X0C97GravZ1ULg#--GCxdRn5X0C97GravZ1ULg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_eRmD8OI3EfGoE8by5lIpXg" name="gua_de_instalacin_y_ejecucin" guid="_eRmD8OI3EfGoE8by5lIpXg" presentationName="Guía de instalación y ejecución" briefDescription="Pasos para instalar y arrancar la aplicación.">
+            <methodElementProperty xmi:id="_kDJy4OI3EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-twWWf06ZnxLaL2r-SRj-zQ" href="uma://-twWWf06ZnxLaL2r-SRj-zQ#-twWWf06ZnxLaL2r-SRj-zQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_klQaYOI3EfGoE8by5lIpXg" name="aplicacin_en_funcionamiento" guid="_klQaYOI3EfGoE8by5lIpXg" presentationName="Aplicación en funcionamiento" briefDescription="Sistema ejecutándose y accesible desde computador y celular.">
+            <methodElementProperty xmi:id="_o0s2UOI3EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-XSUjIvi2v9qZNvc_JpnFtw" href="uma://-XSUjIvi2v9qZNvc_JpnFtw#-XSUjIvi2v9qZNvc_JpnFtw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_pTPzgOI3EfGoE8by5lIpXg" name="lista_de_verificacin_del_despliegue" guid="_pTPzgOI3EfGoE8by5lIpXg" presentationName="Lista de verificación del despliegue" briefDescription="Comprobaciones que confirman que el despliegue quedó bien.">
+            <methodElementProperty xmi:id="_Zg0KoOI5EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-qzfVhb5YZOvMPsj-fPm_pA" href="uma://-qzfVhb5YZOvMPsj-fPm_pA#-qzfVhb5YZOvMPsj-fPm_pA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_u0RzIOI3EfGoE8by5lIpXg" name="preparar_el_entorno_de_ejecucin" guid="_u0RzIOI3EfGoE8by5lIpXg" presentationName="Preparar el entorno de ejecución" briefDescription="Instalar lo que la aplicación necesita para correr." performedBy="_SsV4EOI3EfGoE8by5lIpXg" mandatoryInput="_eRmD8OI3EfGoE8by5lIpXg" output="_eRmD8OI3EfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_6n5LIOI3EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-hHKVNr0x94MyRgUNkwrtsg" href="uma://-hHKVNr0x94MyRgUNkwrtsg#-hHKVNr0x94MyRgUNkwrtsg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_I_39UOI4EfGoE8by5lIpXg" name="poner_en_marcha_el_backend_y_el_frontend" guid="_I_39UOI4EfGoE8by5lIpXg" presentationName="Poner en marcha el backend y el frontend" briefDescription="Arrancar el servidor y la interfaz web." performedBy="_SsV4EOI3EfGoE8by5lIpXg" output="_klQaYOI3EfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_blGMAOI4EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-Diq6uiEy-ETzO77j9OrwTA" href="uma://-Diq6uiEy-ETzO77j9OrwTA#-Diq6uiEy-ETzO77j9OrwTA"/>
+            <mandatoryInput href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_E0vVQOIaEfGoE8by5lIpXg"/>
+            <mandatoryInput href="#_eRmD8OI3EfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_cbwHMOI4EfGoE8by5lIpXg" name="habilitar_el_acceso_desde_el_celular" guid="_cbwHMOI4EfGoE8by5lIpXg" presentationName="Habilitar el acceso desde el celular" briefDescription="Permitir abrir la aplicación desde el celular en la misma red." performedBy="_SsV4EOI3EfGoE8by5lIpXg" mandatoryInput="_klQaYOI3EfGoE8by5lIpXg" output="_klQaYOI3EfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_ssjcMOI4EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-vF2Z6HtZOtuDLEjUE-o8jw" href="uma://-vF2Z6HtZOtuDLEjUE-o8jw#-vF2Z6HtZOtuDLEjUE-o8jw"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_w7qg8OI4EfGoE8by5lIpXg" name="verificar_el_despliegue" guid="_w7qg8OI4EfGoE8by5lIpXg" presentationName="Verificar el despliegue" briefDescription="Comprobar que todo quedó funcionando antes de entregar." performedBy="_SsV4EOI3EfGoE8by5lIpXg" output="_pTPzgOI3EfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_ZgsO0OI5EfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-6VF0nww5lL0ICDLXplceSw" href="uma://-6VF0nww5lL0ICDLXplceSw#-6VF0nww5lL0ICDLXplceSw"/>
+            <mandatoryInput href="#_klQaYOI3EfGoE8by5lIpXg"/>
+            <mandatoryInput href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_L9zCoOIaEfGoE8by5lIpXg"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
       <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_oUU3_d8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_oUU3_d8oEfGr3LKRlrp3Ew"/>
     </methodPackages>
     <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_oUU3_t8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_oUU3_t8oEfGr3LKRlrp3Ew"/>

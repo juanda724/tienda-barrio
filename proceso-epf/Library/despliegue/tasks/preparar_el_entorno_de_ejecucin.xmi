@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-hHKVNr0x94MyRgUNkwrtsg" name=",_u0RzIOI3EfGoE8by5lIpXg" guid="-hHKVNr0x94MyRgUNkwrtsg" changeDate="2026-11-16T22:34:28.532-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    El ingeniero DevOps prepara el equipo donde se ejecutará la aplicación: instala el JDK 21 y Node.js 20 o superior,&#xD;
+    verifica sus versiones y obtiene el código del repositorio. Los requisitos y los pasos quedan escritos en la guía de&#xD;
+    instalación.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    No hace falta instalar Maven ni una base de datos: el proyecto trae su propio Maven Wrapper y usa una base de datos H2&#xD;
+    en archivo.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_2hogYOI3EfGoE8by5lIpXg" name="1.  Instalar el JDK 21 y Node.js 20 o superior." guid="_2hogYOI3EfGoE8by5lIpXg"/>
+  <sections xmi:id="_21OKwOI3EfGoE8by5lIpXg" name="2.  Verificar las versiones con java -version y node -v." guid="_21OKwOI3EfGoE8by5lIpXg"/>
+  <sections xmi:id="_4UOfYOI3EfGoE8by5lIpXg" name="3.  Descargar el código del repositorio y anotar los requisitos en la guía." guid="_4UOfYOI3EfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Tener un entorno listo y documentado para ejecutar el sistema.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

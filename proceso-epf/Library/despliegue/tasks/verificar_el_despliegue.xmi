@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-6VF0nww5lL0ICDLXplceSw" name=",_w7qg8OI4EfGoE8by5lIpXg" guid="-6VF0nww5lL0ICDLXplceSw" changeDate="2026-11-16T22:41:52.057-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    El ingeniero DevOps recorre una lista de comprobación para confirmar que el despliegue quedó bien: el backend responde,&#xD;
+    el frontend abre, los datos de ejemplo están cargados, el celular accede a la aplicación y las operaciones principales&#xD;
+    (una venta, un ingreso de mercancía, un fiado) funcionan.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Cada comprobación se marca como cumplida o no cumplida. Si alguna falla, el despliegue no se da por terminado hasta&#xD;
+    corregirla.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_5kFIQOI4EfGoE8by5lIpXg" name="1.  Recorrer cada punto de la lista de comprobación." guid="_5kFIQOI4EfGoE8by5lIpXg"/>
+  <sections xmi:id="_6Gf40OI4EfGoE8by5lIpXg" name="2.  Probar una venta, un ingreso de mercancía y un fiado, desde el computador y desde el celular." guid="_6Gf40OI4EfGoE8by5lIpXg"/>
+  <sections xmi:id="_7fEOQOI4EfGoE8by5lIpXg" name="3.  Registrar el resultado de cada punto en la lista." guid="_7fEOQOI4EfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Confirmar con evidencia que el sistema quedó listo para usarse.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>
