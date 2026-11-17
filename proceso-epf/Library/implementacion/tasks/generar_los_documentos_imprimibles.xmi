@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-2yhCeRHwRRK_sVDidVIk2w" name=",_YRk2gOIcEfGoE8by5lIpXg" guid="-2yhCeRHwRRK_sVDidVIk2w" changeDate="2026-11-16T19:18:35.993-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador programa los documentos que la aplicación entrega al usuario: comprobante de venta, factura&#xD;
+    electrónica, factura de pedido, nota de devolución y comprobante de pago, a partir de los formularios en papel&#xD;
+    diseñados.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Los documentos deben incluir los datos legales que exige el negocio y poder imprimirse sin recortes.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_hJBYUOIcEfGoE8by5lIpXg" name="1.  Tomar los campos de cada formulario en papel." guid="_hJBYUOIcEfGoE8by5lIpXg"/>
+  <sections xmi:id="_hi7GEOIcEfGoE8by5lIpXg" name="2.  Programar el documento como un componente." guid="_hi7GEOIcEfGoE8by5lIpXg"/>
+  <sections xmi:id="_jTJtkOIcEfGoE8by5lIpXg" name="3.  Probar la impresión y el envío del documento." guid="_jTJtkOIcEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Dejar constancia de cada operación en un documento que se pueda imprimir o compartir.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

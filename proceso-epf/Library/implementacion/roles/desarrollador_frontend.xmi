@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-lt4RyJ2RdUYTBnrH_0xcVw" name="new_role,_uJfh0OIYEfGoE8by5lIpXg" guid="-lt4RyJ2RdUYTBnrH_0xcVw" changeDate="2026-11-16T18:52:55.115-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Es el responsable de construir la interfaz de usuario en React: los componentes reutilizables, una página por cada&#xD;
+    proceso del negocio (ventas, inventario, fiados, proveedores, pedidos, ingresos, devoluciones y reportes), la conexión&#xD;
+    con la API REST y los documentos que se imprimen o se comparten, como el comprobante de venta y la factura.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    La interfaz debe funcionar igual desde el computador y desde el celular, porque el tendero la usa en el mostrador. Las&#xD;
+    reglas de negocio no se programan en la pantalla: la interfaz solo muestra lo que decide el backend y presenta sus&#xD;
+    mensajes de error de forma clara.&#xD;
+&lt;/p></keyConsiderations>
+  <skills>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    React, JavaScript, HTML y CSS, consumo de APIs REST, diseño responsive, Vite.&#xD;
+&lt;/p></skills>
+  <assignmentApproaches>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    En equipos pequeños el mismo integrante puede asumir este rol y el de Desarrollador backend. Conviene que quien lo&#xD;
+    asuma haya participado en el diseño de los prototipos.&#xD;
+&lt;/p></assignmentApproaches>
+  <synonyms>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Frontend Developer, Desarrollador de interfaces, Desarrollador web.&#xD;
+&lt;/p></synonyms>
+</org.eclipse.epf.uma:RoleDescription>

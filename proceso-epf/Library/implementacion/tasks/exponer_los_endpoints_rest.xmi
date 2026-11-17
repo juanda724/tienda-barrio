@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-KMa9BJLJEiCdfp2hLau1nw" name=",_57qWEOIdEfGoE8by5lIpXg" guid="-KMa9BJLJEiCdfp2hLau1nw" changeDate="2026-11-16T19:29:46.927-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador programa los controladores que exponen la API REST según el contrato definido, con sus objetos de&#xD;
+    petición y respuesta, la validación de los datos de entrada y un manejo global de errores.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Los controladores solo reciben y responden: no contienen reglas de negocio, que viven en los servicios.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_Ck0kQOIeEfGoE8by5lIpXg" name="1.  Crear un controlador por recurso del contrato." guid="_Ck0kQOIeEfGoE8by5lIpXg"/>
+  <sections xmi:id="_D0mKEOIeEfGoE8by5lIpXg" name="2.  Definir los objetos de petición y respuesta con sus validaciones." guid="_D0mKEOIeEfGoE8by5lIpXg"/>
+  <sections xmi:id="_FYHyUOIeEfGoE8by5lIpXg" name="3.  Centralizar el manejo de errores en un solo lugar." guid="_FYHyUOIeEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Permitir que el frontend use el backend con datos validados y errores claros.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

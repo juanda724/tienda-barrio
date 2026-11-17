@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-dmXQTM9ZA0nmtyjRA3dd1A" name="new_artifact,_dl0esOIZEfGoE8by5lIpXg" guid="-dmXQTM9ZA0nmtyjRA3dd1A" changeDate="2026-11-16T18:57:52.923-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Módulo del frontend (&lt;code spellcheck=&quot;false&quot; autocapitalize=&quot;off&quot; autocorrect=&quot;off&quot;>api.js&lt;/code>) que concentra todas&#xD;
+    las llamadas a la API REST del backend, de modo que las páginas no escriben direcciones ni manejan detalles de la&#xD;
+    comunicación.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Tener un solo lugar donde cambia la comunicación con el backend.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

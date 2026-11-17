@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-vBtV5XnBBnIQSL4aeOwPhg" name=",_MieqwOIfEfGoE8by5lIpXg" guid="-vBtV5XnBBnIQSL4aeOwPhg" changeDate="2026-11-16T19:39:20.170-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    El desarrollador integra el código del frontend y del backend en un mismo repositorio de GitHub, con su documentación y&#xD;
+    las instrucciones para ejecutarlo.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Los cambios se suben con commits pequeños y mensajes claros, y los archivos generados (como las carpetas &lt;code&#xD;
+    spellcheck=&quot;false&quot; autocapitalize=&quot;off&quot; autocorrect=&quot;off&quot;>target&lt;/code>) no se suben.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_ZGVz8OIfEfGoE8by5lIpXg" name="1.  Organizar las carpetas del backend, el frontend y la documentación." guid="_ZGVz8OIfEfGoE8by5lIpXg"/>
+  <sections xmi:id="_ZtiW0OIfEfGoE8by5lIpXg" name="2.  Configurar qué archivos no se suben al repositorio." guid="_ZtiW0OIfEfGoE8by5lIpXg"/>
+  <sections xmi:id="_bf-k0OIfEfGoE8by5lIpXg" name="3.  Subir los cambios y verificar el repositorio en GitHub." guid="_bf-k0OIfEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Trabajar en equipo sin perder cambios y dejar un historial de cómo se construyó el sistema.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

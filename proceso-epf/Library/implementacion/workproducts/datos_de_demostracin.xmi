@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-12Pm7gLDUSQuYt624YNfJA" name="new_artifact,_L9zCoOIaEfGoE8by5lIpXg" guid="-12Pm7gLDUSQuYt624YNfJA" changeDate="2026-11-16T19:03:07.283-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Conjunto de datos de ejemplo que se cargan al arrancar la aplicación: productos, proveedores, un pedido, una factura&#xD;
+    con diferencias y clientes con fiado.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;0ed17888-7550-4ff3-ba73-22e13a93b12a&quot;>&#xD;
+    Poder probar y mostrar el sistema funcionando sin tener que ingresar los datos a mano.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>
