@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-wPTOoBteps64T4quuZ51CQ" name="new_artifact,_IFS-sOIoEfGoE8by5lIpXg" guid="-wPTOoBteps64T4quuZ51CQ" changeDate="2026-11-16T20:42:45.414-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Lista de los casos que se van a probar. Cada caso indica el requisito o la regla de negocio que comprueba, los datos de&#xD;
+    entrada, la acción que se realiza y el resultado esperado, e incluye tanto los casos que deben funcionar como los que&#xD;
+    deben ser rechazados.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Definir qué se va a probar y cómo se sabrá que algo funciona o falla.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:org.eclipse.epf.uma.resourcemanager="http:///org/eclipse/epf/uma/resourcemanager.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1">
-  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_k9uvkN8oEfGr3LKRlrp3Ew" guid="_k9uvkN8oEfGr3LKRlrp3Ew"/>
+  <org.eclipse.epf.uma.resourcemanager:ResourceManager xmi:id="_k9uvkN8oEfGr3LKRlrp3Ew" guid="_k9uvkN8oEfGr3LKRlrp3Ew">
+    <resourceDescriptors xmi:id="_Gd9NcuIoEfGoE8by5lIpXg" id="-85nLWYX9LGknecjNZXprpg" uri="roles/ingeniero_de_qa.xmi"/>
+    <resourceDescriptors xmi:id="_NWd9YuIoEfGoE8by5lIpXg" id="-wPTOoBteps64T4quuZ51CQ" uri="workproducts/casos_de_prueba.xmi"/>
+    <resourceDescriptors xmi:id="_S0oPMuIoEfGoE8by5lIpXg" id="-cZQF70-FxnG3avC5LJ-bbA" uri="workproducts/pruebas_automatizadas_junit.xmi"/>
+    <resourceDescriptors xmi:id="_7wyqsuIoEfGoE8by5lIpXg" id="-DtRt996MNmjxR8vW91f09Q" uri="workproducts/informe_de_verificacin_de_requisitos.xmi"/>
+    <resourceDescriptors xmi:id="_7wyqs-IoEfGoE8by5lIpXg" id="-KGw6OMJCXYlTWJXyZw0idA" uri="tasks/disear_los_casos_de_prueba.xmi"/>
+    <resourceDescriptors xmi:id="_PpFDwOIpEfGoE8by5lIpXg" id="--5Jy7W9R9_UPwjPSk6xuNQ" uri="tasks/implementar_las_pruebas_automatizadas.xmi"/>
+    <resourceDescriptors xmi:id="_hpptQuIpEfGoE8by5lIpXg" id="-55xyyG5Qbg1SaZC1huD4iw" uri="tasks/caracterizar_el_comportamiento_antes_de_refactorizar.xmi"/>
+    <resourceDescriptors xmi:id="_v7YtguIpEfGoE8by5lIpXg" id="-aJZU5w4XXopyARA6cyEg9Q" uri="tasks/ejecutar_las_pruebas_y_registrar_los_resultados.xmi"/>
+    <resourceDescriptors xmi:id="__f3IAOIpEfGoE8by5lIpXg" id="-p-zDNIi322x9cCfeINRxlA" uri="tasks/verificar_cada_requisito_contra_su_criterio.xmi"/>
+  </org.eclipse.epf.uma.resourcemanager:ResourceManager>
   <org.eclipse.epf.uma:MethodPlugin xmi:id="_k9s6YN8oEfGr3LKRlrp3Ew" name="pruebas" guid="_k9s6YN8oEfGr3LKRlrp3Ew" presentationName="Pruebas" briefDescription="En esta disciplina se comprueba que el sistema cumple los requisitos mediante casos de prueba, pruebas automatizadas con JUnit y la verificación de cada requisito." authors="Juan David Castañeda, Catalina Clavijo, Ivan Dario Guerrero" changeDate="2026-11-13T01:11:32.922-0500" changeDescription="Ajuste del nombre" version="1.0">
     <methodElementProperty xmi:id="_zfyq0N8oEfGr3LKRlrp3Ew" name="me_edited" value="true"/>
     <methodPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_k9s6Yd8oEfGr3LKRlrp3Ew" name="Content" guid="_k9s6Yd8oEfGr3LKRlrp3Ew">
@@ -17,7 +27,54 @@
           </childPackages>
         </childPackages>
       </childPackages>
-      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_k9s6bN8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_k9s6bN8oEfGr3LKRlrp3Ew"/>
+      <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_k9s6bN8oEfGr3LKRlrp3Ew" name="CoreContent" guid="_k9s6bN8oEfGr3LKRlrp3Ew">
+        <childPackages xsi:type="org.eclipse.epf.uma:ContentPackage" xmi:id="_zHr8UOInEfGoE8by5lIpXg" name="pruebas" guid="_zHr8UOInEfGoE8by5lIpXg" presentationName="pruebas" briefDescription="Disciplina donde se comprueba que el sistema cumple los requisitos y las reglas de negocio: casos de prueba, pruebas automatizadas con JUnit y verificación de cada requisito.">
+          <methodElementProperty xmi:id="_zHr8UeInEfGoE8by5lIpXg" name="pkg_loadCheck" value="true"/>
+          <methodElementProperty xmi:id="_6CfLQOInEfGoE8by5lIpXg" name="me_edited" value="true"/>
+          <contentElements xsi:type="org.eclipse.epf.uma:Role" xmi:id="_8PP9wOInEfGoE8by5lIpXg" name="ingeniero_de_qa" guid="_8PP9wOInEfGoE8by5lIpXg" presentationName="Ingeniero de QA" briefDescription="Comprueba que el sistema hace lo que se prometió y deja evidencia de ello." responsibleFor="_IFS-sOIoEfGoE8by5lIpXg _TXUskOIoEfGoE8by5lIpXg _N5l4kOIoEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_Gd9NcOIoEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-85nLWYX9LGknecjNZXprpg" href="uma://-85nLWYX9LGknecjNZXprpg#-85nLWYX9LGknecjNZXprpg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_IFS-sOIoEfGoE8by5lIpXg" name="casos_de_prueba" guid="_IFS-sOIoEfGoE8by5lIpXg" presentationName="Casos de prueba" briefDescription="Lista de situaciones a probar con su resultado esperado.">
+            <methodElementProperty xmi:id="_NWd9YOIoEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-wPTOoBteps64T4quuZ51CQ" href="uma://-wPTOoBteps64T4quuZ51CQ#-wPTOoBteps64T4quuZ51CQ"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_N5l4kOIoEfGoE8by5lIpXg" name="pruebas_automatizadas_junit" guid="_N5l4kOIoEfGoE8by5lIpXg" presentationName="Pruebas automatizadas (JUnit)" briefDescription="Pruebas del backend que se ejecutan solas y se pueden repetir.">
+            <methodElementProperty xmi:id="_S0oPMOIoEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-cZQF70-FxnG3avC5LJ-bbA" href="uma://-cZQF70-FxnG3avC5LJ-bbA#-cZQF70-FxnG3avC5LJ-bbA"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Artifact" xmi:id="_TXUskOIoEfGoE8by5lIpXg" name="informe_de_verificacin_de_requisitos" guid="_TXUskOIoEfGoE8by5lIpXg" presentationName="Informe de verificación de requisitos" briefDescription="Registro de si cada requisito se cumple y con qué evidencia.">
+            <methodElementProperty xmi:id="_iRmBkOIqEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-DtRt996MNmjxR8vW91f09Q" href="uma://-DtRt996MNmjxR8vW91f09Q#-DtRt996MNmjxR8vW91f09Q"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_c9RTIOIoEfGoE8by5lIpXg" name="disear_los_casos_de_prueba" guid="_c9RTIOIoEfGoE8by5lIpXg" presentationName="Diseñar los casos de prueba" briefDescription="Definir qué se va a probar y qué resultado se espera." performedBy="_8PP9wOInEfGoE8by5lIpXg" output="_IFS-sOIoEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_7wyqsOIoEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-KGw6OMJCXYlTWJXyZw0idA" href="uma://-KGw6OMJCXYlTWJXyZw0idA#-KGw6OMJCXYlTWJXyZw0idA"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_Gms4wN_CEfG8tbaZ8P9cgg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_8ujTcOIoEfGoE8by5lIpXg" name="implementar_las_pruebas_automatizadas" guid="_8ujTcOIoEfGoE8by5lIpXg" presentationName="Implementar las pruebas automatizadas" briefDescription="Programar las pruebas del backend por funcionalidad." performedBy="_8PP9wOInEfGoE8by5lIpXg" output="_N5l4kOIoEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_Po8g4OIpEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="--5Jy7W9R9_UPwjPSk6xuNQ" href="uma://--5Jy7W9R9_UPwjPSk6xuNQ#--5Jy7W9R9_UPwjPSk6xuNQ"/>
+            <mandatoryInput href="#_IFS-sOIoEfGoE8by5lIpXg"/>
+            <mandatoryInput href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_y0uscOIZEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_QOoA0OIpEfGoE8by5lIpXg" name="caracterizar_el_comportamiento_antes_de_refactorizar" guid="_QOoA0OIpEfGoE8by5lIpXg" presentationName="Caracterizar el comportamiento antes de refactorizar" briefDescription="Proteger lo que ya funciona antes de cambiar el código." performedBy="_8PP9wOInEfGoE8by5lIpXg" output="_N5l4kOIoEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_hpptQOIpEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-55xyyG5Qbg1SaZC1huD4iw" href="uma://-55xyyG5Qbg1SaZC1huD4iw#-55xyyG5Qbg1SaZC1huD4iw"/>
+            <mandatoryInput href="uma://_hWoGAN8oEfGr3LKRlrp3Ew#_y0uscOIZEfGoE8by5lIpXg"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_i1SZ8OIpEfGoE8by5lIpXg" name="ejecutar_las_pruebas_y_registrar_los_resultados" guid="_i1SZ8OIpEfGoE8by5lIpXg" presentationName="Ejecutar las pruebas y registrar los resultados" briefDescription="Correr todas las pruebas y guardar la evidencia." performedBy="_8PP9wOInEfGoE8by5lIpXg" mandatoryInput="_N5l4kOIoEfGoE8by5lIpXg" output="_TXUskOIoEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="_v7YtgOIpEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-aJZU5w4XXopyARA6cyEg9Q" href="uma://-aJZU5w4XXopyARA6cyEg9Q#-aJZU5w4XXopyARA6cyEg9Q"/>
+          </contentElements>
+          <contentElements xsi:type="org.eclipse.epf.uma:Task" xmi:id="_3Mm4YOIpEfGoE8by5lIpXg" name="verificar_cada_requisito_contra_su_criterio" guid="_3Mm4YOIpEfGoE8by5lIpXg" presentationName="Verificar cada requisito contra su criterio" briefDescription="Confirmar que cada requisito del sistema se cumple." performedBy="_8PP9wOInEfGoE8by5lIpXg" output="_TXUskOIoEfGoE8by5lIpXg">
+            <methodElementProperty xmi:id="__ftXAOIpEfGoE8by5lIpXg" name="me_edited" value="true"/>
+            <presentation xmi:id="-p-zDNIi322x9cCfeINRxlA" href="uma://-p-zDNIi322x9cCfeINRxlA#-p-zDNIi322x9cCfeINRxlA"/>
+            <mandatoryInput href="uma://_W5WO0N8oEfGr3LKRlrp3Ew#_Gms4wN_CEfG8tbaZ8P9cgg"/>
+            <mandatoryInput href="#_N5l4kOIoEfGoE8by5lIpXg"/>
+          </contentElements>
+        </childPackages>
+      </childPackages>
       <childPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_k9s6bd8oEfGr3LKRlrp3Ew" name="CapabilityPatterns" guid="_k9s6bd8oEfGr3LKRlrp3Ew"/>
     </methodPackages>
     <methodPackages xsi:type="org.eclipse.epf.uma:ProcessPackage" xmi:id="_k9s6bt8oEfGr3LKRlrp3Ew" name="DeliveryProcesses" guid="_k9s6bt8oEfGr3LKRlrp3Ew"/>

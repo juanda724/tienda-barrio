@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:RoleDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-85nLWYX9LGknecjNZXprpg" name="new_role,_8PP9wOInEfGoE8by5lIpXg" guid="-85nLWYX9LGknecjNZXprpg" changeDate="2026-11-16T20:41:29.126-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Es el responsable de comprobar que el sistema cumple los requisitos y las reglas de negocio. Diseña los casos de&#xD;
+    prueba, escribe y ejecuta las pruebas automáticas del backend, protege el comportamiento existente antes de cada&#xD;
+    refactorización y verifica cada requisito contra su criterio, dejando evidencia de los resultados.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Un requisito sin evidencia no se da por cumplido. Las pruebas deben poder repetirse en cualquier momento, y cada fallo&#xD;
+    se reporta con el caso que lo detectó y la causa probable, para que el desarrollador pueda corregirlo.&#xD;
+&lt;/p></keyConsiderations>
+  <skills>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Diseño de casos de prueba, JUnit, Maven, pruebas de caracterización, lectura de requisitos, reporte de defectos.&#xD;
+&lt;/p></skills>
+  <assignmentApproaches>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Idealmente lo asume un integrante distinto de quien programó la funcionalidad, porque una segunda mirada encuentra&#xD;
+    errores que el autor no ve. En equipos pequeños, los integrantes pueden probar el código de sus compañeros.&#xD;
+&lt;/p></assignmentApproaches>
+  <synonyms>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    QA Engineer, Tester, Analista de pruebas.&#xD;
+&lt;/p></synonyms>
+</org.eclipse.epf.uma:RoleDescription>

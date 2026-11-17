@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="--5Jy7W9R9_UPwjPSk6xuNQ" name=",_8ujTcOIoEfGoE8by5lIpXg" guid="--5Jy7W9R9_UPwjPSk6xuNQ" changeDate="2026-11-16T20:48:39.311-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    El ingeniero de QA escribe, con JUnit, las pruebas del backend para cada funcionalidad (ventas y facturación, fiados,&#xD;
+    pedidos, ingresos, devoluciones, alertas y reportes). Cada prueba ejecuta el sistema y comprueba que el resultado sea&#xD;
+    el esperado en el caso de prueba.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Cada prueba debe ser independiente de las demás y preparar sus propios datos, para que el orden de ejecución no cambie&#xD;
+    el resultado.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_EwiM4OIpEfGoE8by5lIpXg" name="1.  Elegir un caso de prueba del diseño." guid="_EwiM4OIpEfGoE8by5lIpXg"/>
+  <sections xmi:id="_FVjlgOIpEfGoE8by5lIpXg" name="2.  Programar la prueba con su preparación de datos y su comprobación del resultado." guid="_FVjlgOIpEfGoE8by5lIpXg"/>
+  <sections xmi:id="_H56_sOIpEfGoE8by5lIpXg" name="3.  Ejecutarla y confirmar que falla cuando la regla se rompe a propósito." guid="_H56_sOIpEfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Poder repetir las pruebas en segundos cada vez que cambia el código.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

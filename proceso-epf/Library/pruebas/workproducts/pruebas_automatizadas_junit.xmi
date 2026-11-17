@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-cZQF70-FxnG3avC5LJ-bbA" name="new_artifact,_N5l4kOIoEfGoE8by5lIpXg" guid="-cZQF70-FxnG3avC5LJ-bbA" changeDate="2026-11-16T20:43:19.948-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Clases de prueba escritas con JUnit, organizadas por funcionalidad: ventas y facturación, fiados, pedidos a proveedor,&#xD;
+    ingresos de mercancía, devoluciones, alertas de reposición, movimientos de inventario y reportes. Incluyen las pruebas&#xD;
+    de caracterización que protegen el comportamiento existente antes de refactorizar.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;1339dc23-893e-4198-8279-6321418ae438&quot;>&#xD;
+    Repetir todas las pruebas en segundos cada vez que cambia el código, para detectar errores a tiempo.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>
