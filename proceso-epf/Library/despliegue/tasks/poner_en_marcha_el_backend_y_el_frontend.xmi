@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-Diq6uiEy-ETzO77j9OrwTA" name=",_I_39UOI4EfGoE8by5lIpXg" guid="-Diq6uiEy-ETzO77j9OrwTA" changeDate="2026-11-16T22:37:18.872-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    El ingeniero DevOps arranca el backend con el Maven Wrapper (queda en el puerto 8080) y el frontend con npm (queda en&#xD;
+    el puerto 5173), y comprueba que la aplicación abre en el navegador con los datos de ejemplo cargados.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    El backend se inicia primero y en una terminal aparte. Los datos se guardan en la carpeta &lt;code spellcheck=&quot;false&quot;&#xD;
+    autocapitalize=&quot;off&quot; autocorrect=&quot;off&quot;>backend/data&lt;/code>; para empezar desde cero se detiene el backend y se borra&#xD;
+    esa carpeta.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_PkbPcOI4EfGoE8by5lIpXg" name="1.  Iniciar el backend con mvnw.cmd spring-boot:run desde la carpeta backend." guid="_PkbPcOI4EfGoE8by5lIpXg"/>
+  <sections xmi:id="_P9wVcOI4EfGoE8by5lIpXg" name="2.  En otra terminal, ejecutar npm install y npm run dev desde la carpeta frontend." guid="_P9wVcOI4EfGoE8by5lIpXg"/>
+  <sections xmi:id="_RlRF0OI4EfGoE8by5lIpXg" name="3.  Abrir http://localhost:5173 y comprobar que aparecen los datos de ejemplo." guid="_RlRF0OI4EfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Tener el sistema funcionando para poder usarlo y probarlo.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>

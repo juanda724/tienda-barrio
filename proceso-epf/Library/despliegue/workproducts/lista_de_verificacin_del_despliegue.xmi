@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:ArtifactDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-qzfVhb5YZOvMPsj-fPm_pA" name="new_artifact,_pTPzgOI3EfGoE8by5lIpXg" guid="-qzfVhb5YZOvMPsj-fPm_pA" changeDate="2026-11-16T22:33:45.560-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Lista de comprobación con lo que debe cumplirse al terminar el despliegue: el backend responde, el frontend abre, los&#xD;
+    datos de ejemplo están cargados, el celular puede abrir la aplicación y las operaciones principales funcionan.&#xD;
+&lt;/p></mainDescription>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Confirmar con evidencia que el sistema quedó listo para usarse.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:ArtifactDescription>

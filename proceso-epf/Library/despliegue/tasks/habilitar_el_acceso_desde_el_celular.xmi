@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.epf.uma:TaskDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.epf.uma="http://www.eclipse.org/epf/uma/1.0.6/uma.ecore" xmlns:epf="http://www.eclipse.org/epf" epf:version="1.5.1" xmi:id="-vF2Z6HtZOtuDLEjUE-o8jw" name=",_cbwHMOI4EfGoE8by5lIpXg" guid="-vF2Z6HtZOtuDLEjUE-o8jw" changeDate="2026-11-16T22:39:29.858-0500">
+  <mainDescription>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    El ingeniero DevOps permite que el dueño de la tienda abra la aplicación desde su celular conectado al mismo WiFi que&#xD;
+    el computador, usando la dirección de red que muestra &lt;code spellcheck=&quot;false&quot; autocapitalize=&quot;off&quot;&#xD;
+    autocorrect=&quot;off&quot;>npm run dev&lt;/code>, y autoriza a Node.js en el firewall de Windows si el sistema lo pide.&#xD;
+&lt;/p></mainDescription>
+  <keyConsiderations>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    El computador y el celular deben estar en la misma red WiFi. La primera vez, Windows puede pedir permiso para Node.js&#xD;
+    en el firewall: hay que aceptarlo para que el celular pueda conectarse.&#xD;
+&lt;/p></keyConsiderations>
+  <sections xmi:id="_jY9J4OI4EfGoE8by5lIpXg" name="1.  Copiar la dirección &quot;Network&quot; que muestra npm run dev, por ejemplo http://192.168.1.20:5173." guid="_jY9J4OI4EfGoE8by5lIpXg"/>
+  <sections xmi:id="_kDPdAOI4EfGoE8by5lIpXg" name="2.  Aceptar el permiso del firewall de Windows para Node.js." guid="_kDPdAOI4EfGoE8by5lIpXg"/>
+  <sections xmi:id="_lPM50OI4EfGoE8by5lIpXg" name="3.  Abrir esa dirección desde el celular y comprobar que carga la aplicación.New Step" guid="_lPM50OI4EfGoE8by5lIpXg"/>
+  <purpose>&lt;p data-pm-slice=&quot;1 1 []&quot; data-lfile-container=&quot;5d3fe9bf-f3cd-46ce-aefe-c57f53309748&quot;>&#xD;
+    Cumplir el requisito de usar el sistema desde el celular del dueño.&#xD;
+&lt;/p></purpose>
+</org.eclipse.epf.uma:TaskDescription>
